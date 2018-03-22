@@ -3,9 +3,10 @@
 | Date | Version | Description | Author |
 |  :-: |   :-:  |    :-:    |  :-:  |
 |03/14/2018| 0.1 | Document Creation| Filipe Toyoshima|
-|03/16/2018| 0.1.1 | Sections 1.1, 1.2, 1.3, 1.4 e 1.5 of the Introduction added | Eduardo Lima, Lucas Vitor|
-|17/03/2018| 0.1.2 | Sections 4.1, 4.2 of the Product Overview added | Rossicler Júnior|
-|18/03/2018| 0.1.3 | Section 2.3 of Positioning added | Lucas Vitor |
+|03/16/2018| 0.2 | Sections 1.1, 1.2, 1.3, 1.4 e 1.5 of the Introduction added | Eduardo Lima, Lucas Vitor|
+|03/17/2018| 0.3 | Sections 4.1, 4.2 of the Product Overview added | Rossicler Júnior|
+|03/18/2018| 0.4 | Section 2.3 of Positioning added | Lucas Vitor |
+|03/20/2018| 0.5 | Translation to English | Filipe Toyoshima |
 
 
 # 1.	Introdução
