@@ -1,1 +1,5 @@
-theme: jekyll-theme-merlot
+title: VoxPop Docs
+description: Welcome to the VoxPop documentation!
+show_downloads: false
+google_analytics:
+theme: jekyll-theme-architect
