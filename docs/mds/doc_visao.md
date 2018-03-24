@@ -1,5 +1,11 @@
+---
+layout: default
+title: Documento de Visão
+category: MDS
+---
 
 ### Revision History
+
 | Date | Version | Description | Author |
 |  :-: |   :-:  |    :-:    |  :-:  |
 |03/14/2018| 0.1 | Document Creation| Filipe Toyoshima|
@@ -18,10 +24,12 @@ The project's main features are to stabilish a electoral ranking system by using
 This ranking system will be based on indicators such as confiability, assiduity, vote participation, number of approved guidelines, total costs by the Union with the politician among other data collected by the original government database.
 
 ## 1.3	Definitions, acronyms and abbreviations:
+
 |Acronym|Definition|
-|-:|:-|
+|:-:|:-:|
 | MDS |Software Development Methods |
 | EPS |Software Product Engineering|
+
 ## 1.4	References:
 IBM Knowledge Center - Vision Document
 https://www.ibm.com/support/knowledgecenter/pt-br/SSWMEQ_3.0.1/com.ibm.rational.rrm.help.doc/topics/r_vision_doc.htm. Accessed in: 14th of march 2018
