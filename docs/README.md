@@ -1,12 +1,28 @@
----
-layout: default
----
+# VoxPop WebApp
 
-# Quem somos nós
+<p align="center">
+  <a href="https://github.com/fga-gpp-mds/2018.1-VoxPop-WebApp"><img src="https://img.shields.io/badge/WEB_APP-VoxPop-orange.svg" alt="VoxPop-WebAPP"></a>
+    <a href='http://jenkins.voxpop.ml/job/webapp-build/'><img src='http://jenkins.voxpop.ml/job/webapp-build/job/master/badge/icon' alt="Jenkins-VoxPop-WebAPP"></a>
+  <br>
+  <a href="https://github.com/fga-gpp-mds/2018.1-VoxPop-API"><img src="https://img.shields.io/badge/REST_API-VoxPop-orange.svg" alt="VoxPop-API"></a>
+    <a href='http://jenkins.voxpop.ml/job/api-build/'><img src='http://jenkins.voxpop.ml/job/api-build/job/master/badge/icon' alt="Jenkins-VoxPop-API"></a>
+</p>
+
+<p align="center">
+  <a href="https://opensource.org/licenses/GPL-3.0"><img src="https://img.shields.io/badge/License-GPL-blue.svg" alt="License: GPL-3.0"></a>
+  <a href="https://www.npmjs.com/package/angular2"><img src="https://img.shields.io/badge/Angular_2-2.0.0--beta_21-red.svg" alt="Angular 2"></a>
+  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img src="https://img.shields.io/badge/Javascript-ECMAScript_6-yellow.svg" alt="Javascript"></a>
+</p>
+
+## Quem somos nós
 
 O VoxPop é uma aplicação creada no contexto das disciplinas Métodos de Desenvolvimento de Software (MDS) e Engenharia de Produto de Software (EPS) da Universidade de Brasília (UnB) - Faculdade do Gama (FGA), que visa criar uma classificação pessoal de deputados com base na compatibilidade dos usuários com os parlamentares.
 
-# Nossos endereços
+## Mais informações
+
+Para mais informações sobre o projeto, veja a documentação completa aqui: [VoxPop Docs](https://docs.voxpop.ml/)
+
+## Nossos endereços
 
 * ![Online](https://img.shields.io/badge/STATUS-Online-green.svg) **--->** [**Documentação [https://docs.voxpop.ml]**](https://docs.voxpop.ml)
 * ![Online](https://img.shields.io/badge/STATUS-Online-green.svg) **--->** [**Jenkins (CI) [http://jenkins.voxpop.ml]**](http://jenkins.voxpop.ml)
@@ -15,7 +31,7 @@ O VoxPop é uma aplicação creada no contexto das disciplinas Métodos de Desen
 * ![Offline](https://img.shields.io/badge/STATUS-Offline-red.svg) **--->** [**API de Produção [http://api.voxpop.ml]**](http://hml.api.voxpop.ml)
 * ![Offline](https://img.shields.io/badge/STATUS-Offline-red.svg) **--->** [**WebApp de Produção [http://voxpop.ml]**](http://hml.voxpop.ml)
 
-# Nosso time
+## Nosso time
 
 | | **Nome** | **E-mail** | **GitHub** |
 |-|------|--------|--------|

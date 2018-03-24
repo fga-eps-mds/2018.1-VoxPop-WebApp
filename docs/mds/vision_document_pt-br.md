@@ -133,7 +133,4 @@ O projeto deve aderir a uma licença Open Source, seguindo as guidelines da comu
 ## 6.2 Escopo e Tempo
 O projeto deve seguir no período de 17 semanas o [escopo definido](#1.2-escopo).
 
-## 6.3 Custo
-
-## 6.4 Risco
-## 6.5 Recursos
+[Voltar](./../)

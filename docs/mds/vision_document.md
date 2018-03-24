@@ -128,9 +128,8 @@ The web application will provide the following features to users:
 The Project must adhere to an Open Source Licence, following the comunity guidelines described [here](https://opensource.guide/).
 ## 6.2 Time and Scope
 The project must be follow the [defined scope](#1.2-escopo) during a period of 17 weeks.
-## 6.3 Custo
 
-## 6.4 Risk
-## 6.5 Resources
 # 7.	Quality ranges
 Define the quality ranges for performance, robustness, fault tolerance, usability, and similar characteristics that the feature set does not describe.
+
+[Voltar](./../)
