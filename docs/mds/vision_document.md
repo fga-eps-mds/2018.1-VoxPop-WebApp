@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Documento de Visão
+title: Documento de Visão  (inglês)
 category: MDS
 ---
 
@@ -15,11 +15,13 @@ category: MDS
 |03/20/2018| 0.2 | Translated document | Eduardo Lima, Filipe Toyoshima, Lucas Vitor, Érico Bandeira, Rossicler Júnior |
 |03/23/2018| 0.2.1 | Requested changes in [pull request](https://github.com/fga-gpp-mds/2018.1-VoxPop-WebApp/pull/3) | Filipe Toyoshima |
 |03/23/2018| 0.2.2 | Corrected section 1.2 | Lucas Vitor |
+|03/24/2018| 0.2.3 | Requested changes in pull request | Lucas Vitor |
 
 # 1.	Introduction
 
 ## 1.1 Purpose:
 The purpose of this document is to specify in general terms the characteristics of the VoxPop application.
+
 ## 1.2 Scope:
 The project's main features are to stabilish a personal electoral ranking system by using a linked information database regarding brazillian politicians. The ranking is based on a service which compares the user's political tendencies with the most compatible politician by using a legislation project approval questionnaire.
 
@@ -48,7 +50,7 @@ The low political representativeness is a problem that affects the whole Brazili
 As an addendum, most law projects in motion on the parliament are not widely spread through common media, such as TV, radio, and newspapers, which contributes to this cryptic view of the parliamentary flow.
 
 ## 2.3	Problem Positioning:
-Aimed at the brazilian population, which has a considerably low political representation. VoxPop 2.0 is a project that pursues better transparency and practicity in order to find politicians who are more compatible with the elector's opinions by tracking their votes on the Deputy Chamber's law projects and the Senate's corroboration on these matters.
+Aimed at the brazilian population, which has a considerably low political representation. VoxPop is a project that pursues better transparency and practicity in order to find politicians who are more compatible with the elector's opinions by tracking their votes on the Deputy Chamber's law projects and the Senate's corroboration on these matters.
 
 As a method to assess the current situation of brazilian politics, our product compares the politician's decisions with the user's in order to shed light on the political compatibility between them.
 

@@ -13,7 +13,9 @@ category: MDS
 |17/03/2018| 0.1.2 | Inseridas seções 4.1, 4.2 da Visão Geral do Produto | Rossicler Júnior|
 |03/18/2018| 0.1.3 | Seção 2.3 de Posicionamento adicionada | Lucas Vitor |
 |03/23/2018| 0.2.1 | Mudanças pedidas em [pull request](https://github.com/fga-gpp-mds/2018.1-VoxPop-WebApp/pull/3) | Filipe Toyoshima |
-|03/23/2018| 0.2.1.1 | Criada versão em português | Filipe Toyoshima |
+|03/23/2018| 0.2.2 | Corrigida section 1.2 | Lucas Vitor |
+|03/23/2018| 0.2.2.1 | Criada versão em português | Filipe Toyoshima |
+|03/24/2018| 0.2.3 | Mudanças pedidas em pull request | Lucas Vitor |
 
 # 1.	Introdução
 
