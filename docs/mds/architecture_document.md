@@ -3,15 +3,14 @@
 **Versão 1.0**
 
 ### Revision History
-| Date | Version | Description | Author |
+| Data | Versão | Descrição | Autor |
 |  :-: |   :-:  |    :-:    |  :-:  |
-|03/19/2018| 0.1 | Document Creation| Filipe Toyoshima|
+|19/03/2018| 0.1 | Criação do Documento| Filipe Toyoshima|
+|24/03/2018| 0.1 | Tradução para Português| Samuel Borges|
 
 # Introdução
 
-In this document, the main details of the proposed architecture for the project will be presented. The presentation aims to cover the major technical aspects relative to the system's development and implementation. The main goal is to formalize structural decisions concerning the project's overall development stack and deployment/testing.
-
-
+Nesse documento são apresentados os principais detalhes da arquitetura proposta para o projeto. Isso tem como objetivo cobrir os aspectos técnicos mais importantes do desenvolvimento e implementação do sistema. A principal função disso é formalizar as decisões estruturais sobre o stack de desenvolvimento, implantação, e teste do projeto.
 
 ## Referências
 
@@ -38,13 +37,13 @@ Na utilização do Django, framework web de alto nível escrito em Python, o pad
 
 A aplicação do padrão de arquitetura para esse projeto possui algumas metas e restrições:
 
-* Modularidade: O sistema deve seguir a arquitetura em camadas MVC (model, view, controller), em que um módulo define bem uma interação interna. 
+* Modularidade: O sistema deve seguir a arquitetura em camadas MVC (model, view, controller), em que um módulo define bem uma interação interna.
 * Manutenibilidade: a estrutura arquitetural em módulos facilita a manutenção do software e define as interfaces de interação entre elas.
 * Reusabilidade: a estrutura deve permitir a economia e o reuso de código, favorecendo a qualidade do software.
 * O framework utilizado será o django 1.10, compatível com a linguagem python3.
 * A base de dados relacionais do sistema será o PostgreSQL.
 * Será utilizada uma API (Interface de programação de aplicação), tendo como meta um software final RESTful.
-  
+
 # Visão de Casos de Uso
 
 **Atores**
@@ -93,7 +92,7 @@ Clique [aqui](https://github.com/fga-gpp-mds/2016.2-SAAP/wiki/Diagrama-de-Casos-
 
 4. **Enviar tickets**
 
-* O ator Cidadão pode ter acesso ao gabinete cadastrado e saber de algumas atividades desenvolvidas por ele. Também pode fazer o envio de tickets e estabelecer uma interação. 
+* O ator Cidadão pode ter acesso ao gabinete cadastrado e saber de algumas atividades desenvolvidas por ele. Também pode fazer o envio de tickets e estabelecer uma interação.
 
 # Visão Lógica
 
@@ -101,7 +100,7 @@ Clique [aqui](https://github.com/fga-gpp-mds/2016.2-SAAP/wiki/Diagrama-de-Casos-
 
 A aplicação do modelo de arquitetura MVC, no caso MVT em Django, obedece a organização do framework Python/django organizada em pacotes.
 
-![VL](http://i.imgur.com/vUfAbhp.png) 
+![VL](http://i.imgur.com/vUfAbhp.png)
 
 
 #Visão de Implementação
