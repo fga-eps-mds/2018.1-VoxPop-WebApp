@@ -68,17 +68,17 @@ Brazil follows a political model of indirect democracy in which the population e
 | Professors | Professor of both disciplines mentioned above and invited professors | Follow-up of team evolution and rating the work is done |
 | Coaches | Monitors od the abovementioned disciplines | Monitoring the progress of the project, basic orientation to the team. It also plays the role of customer, thus suggesting the necessary features of the product. |
 
-## 3.3	User Description:
+## 3.3 User Description:
 
 The user may be anyone who has the interest in the project features and has access to the internet. The purpose is to reach major part of the Brazillian population. This means people with a low education level and/or not so used to the web.
 
-## 3.4	User Environment:
+## 3.4 User Environment:
 
 The proposal is a fast web application, able to work without major problems on devices with limited resources. It should contain intuitive options, which do not require a tutorial or guide for full use, which should happen by easy and obvious clicks.
 
 The user must have in view all the most relevant options so that he can quickly enjoy the features that the product offers, without the need to read many texts.
 
-## 3.5	Alternatives and Competition:
+## 3.5 Alternatives and Competition:
 
 ### 3.5.1 Brazilian Transparency
 
@@ -98,24 +98,16 @@ In the same idea of ranking politicians, the web application [Ranking dos Polít
 
 Although the Ranking of Politicians organizes well the decisions that each parliamentarian has made about legislative projects, the classification of a vote is favorable or not so that the politician in question rises in the ranking is the decision of the administrators of the application, being a strong indicator of bias and impartiality in the ranking process.
 
-# 4.	Visão Geral do Produto
 # 4.    Product Overview
 
-## 4.1	Perspectiva do Produto
 ## 4.1  Product Perspective
-Atualmente há um grande número de candidatos para deputados, onde muitas vezes é difícil encontrar o parlamentar que apoia aqueles projetos que o eleitor valoriza, vendo então uma necessidade de uma maior transparência, legitimidade e praticidade de encontrar e comparar esses candidatos. Além de comparar se os votos sobre os projetos de lei do usuário tem uma similaridade com o do deputado ao qual o usuário votou. Tendo então um objetivo de fornecer aos usuários uma simples forma de encontrar e comparar os candidatos com a maior semelhança de decisões a partir de projetos de lei que foram a voto na Câmara dos Deputados.
 
-Nowadays,Brazillian has a vast number of candidates for deputy, most of the time it is hard to find the deputy that support the projects that the voter care. With that in mind, we saw the need for a better transparancy, legitimacy and practicality to find and compare candidates. Furthermore, it will be possible to compare votes about the projects of the user with the deputy votes, then you can see if you have a similarity with the deputy that you voted and find the similarity with the others. The objective is to provide for the user a easy way to find and compare the similarity of the user decisions with those deputies about the projects of law that were voted on the Câmara dos Deputados.
+Nowadays, Brazillian has a vast number of candidates for deputy, most of the time it is hard to find the deputy that support the projects that the voter care. With that in mind, we saw the need for a better transparancy, legitimacy and practicality to find and compare candidates. Furthermore, it will be possible to compare votes about the projects of the user with the deputy votes, then you can see if you have a similarity with the deputy that you voted and find the similarity with the others. The objective is to provide for the user a easy way to find and compare the similarity of the user decisions with those deputies about the projects of law that were voted on the Câmara dos Deputados.
 
-## 4.2	Suposições e Dependências
 ## 4.2 Assumptions and Dependencies
 
-**Requisitos mínimos do sistema:**
 **Minimal system requirements:**
 
-* Dispositivo com acesso a um browser
-* Dispositivo com acesso a internet
-* Certas partes do sistema requer um cadastro no sistema
 * Device with a browser and acess to the internet
 * Somes features need the user to login on the website
 
@@ -131,17 +123,13 @@ The web application will provide the following features to users:
 * Track all updated proposed legislation and terms of office.
 * Allow the user to rank his or her chosen deputies based on his or her favorite proposed legislations.
 # 6.	Constraints
-## 6.1 Licença Open Source
 ## 6.1 Open Source Licence
-O projeto deve aderir a uma licença Open Source, seguindo as guidelines da comunidade, descritas [aqui](https://opensource.guide/).
 The Project must adhere to an Open Source Licence, following the comunity guidelines described [here](https://opensource.guide/).
-## 6.2 Escopo e Tempo
 ## 6.2 Time and Scope
-O projeto deve seguir no período de 17 semanas o [escopo definido](#1.2-escopo).
 The project must be follow the [defined scope](#1.2-escopo) during a period of 17 weeks.
 ## 6.3 Custo
 
-## 6.4 Risco
-## 6.5 Recursos
+## 6.4 Risk
+## 6.5 Resources
 # 7.	Quality ranges
 Define the quality ranges for performance, robustness, fault tolerance, usability, and similar characteristics that the feature set does not describe.
