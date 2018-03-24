@@ -2,6 +2,10 @@
 layout: default
 ---
 
+# Who we are
+
+VoxPop is an application created in the context of the disciplines Software Development Methods (MDS) and Software Product Engineering (EPS) of the University of Brasília (UnB) - Faculdade do Gama (FGA), that aims to create a personal ranking of deputies based on users' compatibility with parliamentarians.
+
 # Our links
 
 * ![Online](https://img.shields.io/badge/STATUS-Online-green.svg) **--->** [**Documentation [http://docs.voxpop.ml]**](http://docs.voxpop.ml)

@@ -4,8 +4,16 @@ title: Sprint 0
 category: Acompanhamento
 ---
 
-## Sprint 0
+# Sprint 0
 
-[TODO]
+## Duração
+
+De 04 de março de 2018 (04/03/2018) à 10 de março de 2018 (10/03/2018).
+
+## Principais atividades
+
+* Formação dos grupos
+* Brainstorm a respeito de tema, metodologia, ferramentas e tecnologias
+* Alinhamento de horários e conhecimentos dos membros dos grupos
 
 [Voltar](./../)
