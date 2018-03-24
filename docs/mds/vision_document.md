@@ -14,6 +14,7 @@ category: MDS
 |03/18/2018| 0.1.3 | Section 2.3 of Positioning added | Lucas Vitor |
 |03/20/2018| 0.2 | Translated document | Eduardo Lima, Filipe Toyoshima, Lucas Vitor, Érico Bandeira, Rossicler Júnior |
 |03/23/2018| 0.2.1 | Requested changes in [pull request](https://github.com/fga-gpp-mds/2018.1-VoxPop-WebApp/pull/3) | Filipe Toyoshima |
+|03/23/2018| 0.2.2 | Corrected section 1.2 | Lucas Vitor |
 
 # 1.	Introduction
 
@@ -21,8 +22,6 @@ category: MDS
 The purpose of this document is to specify in general terms the characteristics of the VoxPop application.
 ## 1.2 Scope:
 The project's main features are to stabilish a personal electoral ranking system by using a linked information database regarding brazillian politicians. The ranking is based on a service which compares the user's political tendencies with the most compatible politician by using a legislation project approval questionnaire.
-
-This ranking system will be based on indicators such as confiability, assiduity, vote participation, number of approved guidelines, total costs by the Union with the politician among other data collected by the original government database.
 
 ## 1.3	Definitions, acronyms and abbreviations:
 
