@@ -74,28 +74,6 @@ Gerencia e cadastra todos os eventos e tarefas do seu respectivo gabinete.
 
 Responsável por criar, visualizar, editar e deletar seu próprio cadastro. Pode enviar um ou mais tickets a um administrador de gabinete.
 
-**Diagramas de Casos de Uso**
-
-Clique [aqui](https://github.com/fga-gpp-mds/2016.2-SAAP/wiki/Diagrama-de-Casos-de-Uso) para acessar.
-
-##Realizações de Casos de Uso
-
-1. **Designar administradores do gabinete**
-
-* O ator Administrador de sistema pode delegar a alguém a função de administrador do gabinete;
-
-2. **Enviar mala direta**
-
-* O ator Administrador de gabinete, após ser integrado ao sistema pelo Administrador de sistema, poderá acessá-lo por meio de seu login. Assim, poderá enviar mala direta a uma lista de contatos;
-
-3. **Manter contatos**
-
-* O ator Organizador de contatos mantém os contatos por cadastrar, exibir, atualizar e deletar contatos;
-
-4. **Enviar tickets**
-
-* O ator Cidadão pode ter acesso ao gabinete cadastrado e saber de algumas atividades desenvolvidas por ele. Também pode fazer o envio de tickets e estabelecer uma interação.
-
 # Visão Lógica
 
 ## Visão Geral
@@ -110,9 +88,3 @@ A aplicação do modelo de arquitetura MVC, no caso MVT em Django, obedece a org
 O diagrama abaixo descreve o modo como o sistema será implementado:
 
 ![VI](http://i.imgur.com/naHkKZj.jpg)
-
-* **Diagrama de Classes**
-
-![Diagrama de Classes](http://i.imgur.com/GvFTz1Rg.png)
-
-Pode-se fazer o download do diagrama de classes clicando [aqui](http://i.imgur.com/GvFTz1Rg.png).
