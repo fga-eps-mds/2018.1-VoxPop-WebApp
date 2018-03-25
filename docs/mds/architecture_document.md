@@ -46,33 +46,6 @@ A aplicação do padrão de arquitetura para esse projeto possui algumas metas e
 * A base de dados relacionais do sistema será o PostgreSQL.
 * Será utilizada uma API (Interface de programação de aplicação), tendo como meta um software final REST.
 
-# Visão de Casos de Uso
-
-**Atores**
-
-Os atores do sistema estão representados na figura abaixo. A seguir, haverá a descrição das ações de cada um.
-
-![imagemAtores](http://i.imgur.com/HQ5TtTc.png)
-
-* Administrador do Sistema:
-
-O administrador do sistema é o responsável por criar, exibir, atualizar e deletar um gabinete dentro do sistema. Além disso, ele designa qual usuário será o administrador do gabinete criado.
-
-* Administrador do gabinete:
-
-O administrador do gabinete pode criar e enviar boletins eletrônicos ou documentos; pode também gerenciar e responder tickets que são recebidos do ator Cidadão. Além disso, poderá importar e exportar os dados do gabinete. Designa organizador de contato e agenda.
-
-* Organizador de Contato
-
-Gerencia e cadastra todos os contatos do seu respectivo gabinete.
-
-* Organizador de Agenda
-
-Gerencia e cadastra todos os eventos e tarefas do seu respectivo gabinete.
-
-* Cidadão
-
-Responsável por criar, visualizar, editar e deletar seu próprio cadastro. Pode enviar um ou mais tickets a um administrador de gabinete.
 
 # Visão Lógica
 
