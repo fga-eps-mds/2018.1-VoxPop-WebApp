@@ -3,16 +3,16 @@
 **Versão 1.0**
 
 ### Revision History
+
 | Date | Version | Description | Author |
-|  :-: |   :-:  |    :-:    |  :k-:  |
+|  :-: |   :-:  |    :-:    |  :-:  |
 |03/19/2018| 0.1 | Document Creation| Filipe Toyoshima|
-|03/19/2018| 1.1 | Metas e Restrições de Arquitetura| Rossicler Júnior|
+|24/03/2018| 0.2 | Tradução para Português| Samuel Borges|
+|03/19/2018| 1.0 | Metas e Restrições de Arquitetura| Rossicler Júnior|
 
 # Introdução
 
-In this document, the main details of the proposed architecture for the project will be presented. The presentation aims to cover the major technical aspects relative to the system's development and implementation. The main goal is to formalize structural decisions concerning the project's overall development stack and deployment/testing.
-
-
+Nesse documento são apresentados os principais detalhes da arquitetura proposta para o projeto. Isso tem como objetivo cobrir os aspectos técnicos mais importantes do desenvolvimento e implementação do sistema. A principal função disso é formalizar as decisões estruturais sobre o stack de desenvolvimento, implantação, e teste do projeto.
 
 ## Referências
 
@@ -45,7 +45,7 @@ A aplicação do padrão de arquitetura para esse projeto possui algumas metas e
 * O framework utilizado para desenvolvimento da API será o django, compatível com a linguagem python3. Para o front-end, será usado o framework Angular 2, com a linguagem TypeScript.
 * A base de dados relacionais do sistema será o PostgreSQL.
 * Será utilizada uma API (Interface de programação de aplicação), tendo como meta um software final REST.
-  
+
 # Visão de Casos de Uso
 
 **Atores**
@@ -94,7 +94,7 @@ Clique [aqui](https://github.com/fga-gpp-mds/2016.2-SAAP/wiki/Diagrama-de-Casos-
 
 4. **Enviar tickets**
 
-* O ator Cidadão pode ter acesso ao gabinete cadastrado e saber de algumas atividades desenvolvidas por ele. Também pode fazer o envio de tickets e estabelecer uma interação. 
+* O ator Cidadão pode ter acesso ao gabinete cadastrado e saber de algumas atividades desenvolvidas por ele. Também pode fazer o envio de tickets e estabelecer uma interação.
 
 # Visão Lógica
 
@@ -102,7 +102,7 @@ Clique [aqui](https://github.com/fga-gpp-mds/2016.2-SAAP/wiki/Diagrama-de-Casos-
 
 A aplicação do modelo de arquitetura MVC, no caso MVT em Django, obedece a organização do framework Python/django organizada em pacotes.
 
-![VL](http://i.imgur.com/vUfAbhp.png) 
+![VL](http://i.imgur.com/vUfAbhp.png)
 
 
 #Visão de Implementação
