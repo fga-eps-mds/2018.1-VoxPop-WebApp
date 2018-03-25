@@ -6,10 +6,10 @@
 
 | Data | Versão | Descrição | Autor |
 |  :-: |   :-:  |    :-:    |  :-:  |
-|03/19/2018| 0.1 | Criação do Documento | Filipe Toyoshima|
-|03/24/2018| 0.2 | Tradução para Português| Samuel Borges|
-|03/24/2018| 0.3 | Metas e Restrições de Arquitetura| Rossicler Júnior|
-|03/24/2018| 0.4 | Representação da Arquitetura | Lucas Vitor|
+|19/03/2018| 0.1 | Criação do Documento | Filipe Toyoshima|
+|24/03/2018| 0.2 | Tradução para Português| Samuel Borges|
+|24/03/2018| 0.3 | Metas e Restrições de Arquitetura| Rossicler Júnior|
+|24/03/2018| 0.4 | Representação da Arquitetura | Lucas Vitor|
 
 
 # Introdução
@@ -20,7 +20,8 @@ Nesse documento são apresentados os principais detalhes da arquitetura proposta
 
 |**ID**|**Nome**|**Data**|**Disponível em**|
 | :---: | --- | --- | --- |
-| 01 | Documentation | 03/24/2018 | https://docs.djangoproject.com/pt-br/2.0/faq/general/|
+| 01 | Documentation | 24/03/2018 | https://docs.djangoproject.com/pt-br/2.0/faq/general/ |
+| 02 | O que é MVC? | 24/03/2018 | https://tableless.com.br/mvc-afinal-e-o-que/ |
 
 
 
@@ -28,11 +29,11 @@ Nesse documento são apresentados os principais detalhes da arquitetura proposta
 
 Para o desenvolvimento do sistema VoxPop será utilizado o framework web de alto nível Django, escrito em python, que utiliza um padrão semelhante ao MVC (Model View Controller), onde:
 
-** Model ** é a responsável pela manipuação (leitura e escrita) dos dados, ou seja, interface com o banco de dados;
+**Model** é a responsável pela manipuação (leitura e escrita) dos dados, ou seja, interface com o banco de dados;
 
-** View ** é a responsável pela interação direta com o usuário (por meio de html, css, javaScript etc), basicamente, sua função é a exibição dos dados;
+**View** é a responsável pela interação direta com o usuário (por meio de html, css, javaScript etc), basicamente, sua função é a exibição dos dados;
 
-** Controller ** é a responsável por receber e processar requisições e controlar qual model e qual  view será mostrada ao usuário.
+**Controller** é a responsável por receber e processar requisições e controlar qual model e qual view será mostrada ao usuário.
 
 Abaixo está uma imagem representativa do modelo MVC:
 
