@@ -4,8 +4,9 @@
 
 ### Revision History
 | Date | Version | Description | Author |
-|  :-: |   :-:  |    :-:    |  :-:  |
+|  :-: |   :-:  |    :-:    |  :k-:  |
 |03/19/2018| 0.1 | Document Creation| Filipe Toyoshima|
+|03/19/2018| 1.1 | Metas e Restrições de Arquitetura| Rossicler Júnior|
 
 # Introdução
 
@@ -38,12 +39,12 @@ Na utilização do Django, framework web de alto nível escrito em Python, o pad
 
 A aplicação do padrão de arquitetura para esse projeto possui algumas metas e restrições:
 
-* Modularidade: O sistema deve seguir a arquitetura em camadas MVC (model, view, controller), em que um módulo define bem uma interação interna. 
+* Modularidade: O sistema da API deve seguir a arquitetura em micro-serviços onde cada serviço seguirá a arquitetura em camadas MTV (model, template, view), para o front-end, iremos seguir a arquitetura em camadas MVVM (model, view, viewmodel) em que um módulo define bem uma interação interna. 
 * Manutenibilidade: a estrutura arquitetural em módulos facilita a manutenção do software e define as interfaces de interação entre elas.
 * Reusabilidade: a estrutura deve permitir a economia e o reuso de código, favorecendo a qualidade do software.
-* O framework utilizado será o django 1.10, compatível com a linguagem python3.
+* O framework utilizado para desenvolvimento da API será o django, compatível com a linguagem python3. Para o front-end, será usado o framework Angular 2, com a linguagem TypeScript.
 * A base de dados relacionais do sistema será o PostgreSQL.
-* Será utilizada uma API (Interface de programação de aplicação), tendo como meta um software final RESTful.
+* Será utilizada uma API (Interface de programação de aplicação), tendo como meta um software final REST.
   
 # Visão de Casos de Uso
 
