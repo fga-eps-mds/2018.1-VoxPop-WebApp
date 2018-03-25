@@ -11,21 +11,28 @@
 |24/03/2018| 0.3 | Metas e Restrições de Arquitetura| Rossicler Júnior|
 |24/03/2018| 0.4 | Representação da Arquitetura | Lucas Vitor|
 
+## Sumário
+1. [Introdução](#1-introdu%C3%A7%C3%A3o)   
+    1.1 [Referências](#11-referencias)
+2. [Representação da Arquitetura](#2-representa%C3%A7%C3%A3o-da-arquitetura)  
+3. [Metas e Restrições da Arquitetura](#3-metas-e-restri%C3%A7%C3%B5es-da-arquitetura) 
+4. [Visão Lógica](#5-vis%C3%A3o-l%C3%B3gica)
+    4.1 [Visão geral](#15-vis%C3%A3o-geral)    
+5. [Visão de Implementação](#6-vis%C3%A3o-de-implementa%C3%A7%C3%A3o)   
 
-# Introdução
+***
+## 1. Introdução
 
-Nesse documento são apresentados os principais detalhes da arquitetura proposta para o projeto. Isso tem como objetivo cobrir os aspectos técnicos mais importantes do desenvolvimento e implementação do sistema. A principal função disso é formalizar as decisões estruturais sobre o stack de desenvolvimento, implantação, e teste do projeto.
+Nesse documento serão apresentados os principais detalhes da arquitetura proposta para o projeto. Isso tem como objetivo cobrir os aspectos técnicos mais importantes do desenvolvimento até a implementação do sistema. A principal função disso é formalizar as decisões estruturais sobre o stack de desenvolvimento, implantação, e teste do projeto.
 
-## Referências
+### 1.1. Referências
 
 |**ID**|**Nome**|**Data**|**Disponível em**|
 | :---: | --- | --- | --- |
 | 01 | Documentation | 24/03/2018 | https://docs.djangoproject.com/pt-br/2.0/faq/general/ |
 | 02 | O que é MVC? | 24/03/2018 | https://tableless.com.br/mvc-afinal-e-o-que/ |
 
-
-
-# Representação da Arquitetura
+## 2. Representação da Arquitetura
 
 Para o desenvolvimento do sistema VoxPop será utilizado o framework web de alto nível Django, escrito em python, que utiliza um padrão semelhante ao MVC (Model View Controller), onde:
 
@@ -47,7 +54,7 @@ Abaixo é apresentada uma imagem do modelo MVT:
 
 
 
-# Metas e Restrições de Arquitetura
+## 3. Metas e Restrições de Arquitetura
 
 A aplicação do padrão de arquitetura para esse projeto possui algumas metas e restrições:
 
@@ -59,16 +66,16 @@ A aplicação do padrão de arquitetura para esse projeto possui algumas metas e
 * Será utilizada uma API (Interface de programação de aplicação), tendo como meta um software final REST.
 
 
-# Visão Lógica
+## 4. Visão Lógica
 
-## Visão Geral
+### 4.1 Visão Geral
 
 A aplicação do modelo de arquitetura MVC, no caso MVT em Django, obedece a organização do framework Python/django organizada em pacotes.
 
 ![VL](http://i.imgur.com/vUfAbhp.png)
 
 
-# Visão de Implementação
+## 5. Visão de Implementação
 
 O diagrama abaixo descreve o modo como o sistema será implementado:
 
