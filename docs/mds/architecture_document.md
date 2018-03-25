@@ -2,13 +2,15 @@
 
 **Versão 1.0**
 
-### Revision History
+### Histórico de Revisão
 
-| Date | Version | Description | Author |
+| Data | Versão | Descrição | Autor |
 |  :-: |   :-:  |    :-:    |  :-:  |
-|03/19/2018| 0.1 | Document Creation| Filipe Toyoshima|
-|24/03/2018| 0.2 | Tradução para Português| Samuel Borges|
-|03/19/2018| 1.0 | Metas e Restrições de Arquitetura| Rossicler Júnior|
+|03/19/2018| 0.1 | Criação do Documento | Filipe Toyoshima|
+|03/24/2018| 0.2 | Tradução para Português| Samuel Borges|
+|03/24/2018| 0.3 | Metas e Restrições de Arquitetura| Rossicler Júnior|
+|03/24/2018| 0.4 | Representação da Arquitetura | Lucas Vitor|
+
 
 # Introdução
 
@@ -18,28 +20,37 @@ Nesse documento são apresentados os principais detalhes da arquitetura proposta
 
 |**ID**|**Nome**|**Data**|**Disponível em**|
 | :---: | --- | --- | --- |
+| 01 | Documentation | 03/24/2018 | https://docs.djangoproject.com/pt-br/2.0/faq/general/|
 
 
 
 # Representação da Arquitetura
 
-O padrão arquitetural utilizado no desenvolvimento do sistema SAAP será o MVC (Model-View-Controller). Esse padrão de arquitetura divide a aplicação em camadas: Controladores (Controller) que tratam o fluxo da aplicação, a camada Modelo (Model) que provê as principais funcionalidades do sistema e a camada Visão (View) que mostra ao usuário as informações. O objetivo é separar dados ou lógica de negócios (Model) da interface do usuário (View) e do fluxo da aplicação (Controller).
+Para o desenvolvimento do sistema VoxPop será utilizado o framework web de alto nível Django, escrito em python, que utiliza um padrão semelhante ao MVC (Model View Controller), onde:
+
+** Model ** é a responsável pela manipuação (leitura e escrita) dos dados, ou seja, interface com o banco de dados;
+
+** View ** é a responsável pela interação direta com o usuário (por meio de html, css, javaScript etc), basicamente, sua função é a exibição dos dados;
+
+** Controller ** é a responsável por receber e processar requisições e controlar qual model e qual  view será mostrada ao usuário.
+
+Abaixo está uma imagem representativa do modelo MVC:
+
+![MVC](https://imgur.com/DCbCeGg.png)
+
+Mais especificamente,  o Django utiliza o MVT (Model View Template), onde a model continua sendo a model, a view se chama template e a controller se chama view.
+
+Abaixo é apresentada uma imagem do modelo MVT:
+
+![MVC-Django](https://4.bp.blogspot.com/-NEcYwo9PBC4/V8MrvCyN_bI/AAAAAAAAKWA/UXlkbAFd4gwgWmfWBeTFur7W9TtN39KWQCLcB/s1600/MTV.png)
 
 
-![MVC](http://i.imgur.com/bggVjec.png)
 
-
-Na utilização do Django, framework web de alto nível escrito em Python, o padrão arquitetural MVC será respeitado, porém o nome dado às camadas sofrem modestas alterações. A camada de Controle chama-se View, a camada de Visão chama-se Template e a camada de Modelo chama-se Model. A interação entre as camadas permanece a mesma, apesar da mudança nominal.  
-
-
-![MVC-Django](https://2.bp.blogspot.com/-Q0ERCQLUfdU/V8r7RUQLryI/AAAAAAAABaE/oaQo_TmYfW4sYHjEx2P-WCrnZNOcm_wEwCLcB/s640/DjangoGeneral.png)
-
-
-#Metas e Restrições de Arquitetura
+# Metas e Restrições de Arquitetura
 
 A aplicação do padrão de arquitetura para esse projeto possui algumas metas e restrições:
 
-* Modularidade: O sistema da API deve seguir a arquitetura em micro-serviços onde cada serviço seguirá a arquitetura em camadas MTV (model, template, view), para o front-end, iremos seguir a arquitetura em camadas MVVM (model, view, viewmodel) em que um módulo define bem uma interação interna. 
+* Modularidade: O sistema da API deve seguir a arquitetura em micro-serviços onde cada serviço seguirá a arquitetura em camadas MTV (model, template, view), para o front-end, iremos seguir a arquitetura em camadas MVVM (model, view, viewmodel) em que um módulo define bem uma interação interna.
 * Manutenibilidade: a estrutura arquitetural em módulos facilita a manutenção do software e define as interfaces de interação entre elas.
 * Reusabilidade: a estrutura deve permitir a economia e o reuso de código, favorecendo a qualidade do software.
 * O framework utilizado para desenvolvimento da API será o django, compatível com a linguagem python3. Para o front-end, será usado o framework Angular 2, com a linguagem TypeScript.
@@ -56,7 +67,7 @@ A aplicação do modelo de arquitetura MVC, no caso MVT em Django, obedece a org
 ![VL](http://i.imgur.com/vUfAbhp.png)
 
 
-#Visão de Implementação
+# Visão de Implementação
 
 O diagrama abaixo descreve o modo como o sistema será implementado:
 
