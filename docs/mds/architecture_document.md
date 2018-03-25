@@ -15,7 +15,7 @@
 1. [Introdução](#1-introdu%C3%A7%C3%A3o)   
     1.1 [Referências](#11-referencias)
 2. [Representação da Arquitetura](#2-representa%C3%A7%C3%A3o-da-arquitetura)  
-3. [Metas e Restrições da Arquitetura](#3-metas-e-restri%C3%A7%C3%B5es-da-arquitetura) 
+3. [Metas e Restrições da Arquitetura](#3-metas-e-restri%C3%A7%C3%B5es-da-arquitetura)
 4. [Visão Lógica](#5-vis%C3%A3o-l%C3%B3gica)
     4.1 [Visão geral](#15-vis%C3%A3o-geral)    
 5. [Visão de Implementação](#6-vis%C3%A3o-de-implementa%C3%A7%C3%A3o)   
@@ -72,7 +72,7 @@ A aplicação do padrão de arquitetura para esse projeto possui algumas metas e
 
 A aplicação do modelo de arquitetura MVC, no caso MVT em Django, obedece a organização do framework Python/django organizada em pacotes.
 
-![VL](http://i.imgur.com/vUfAbhp.png)
+![VL](https://i.imgur.com/fgxC0zD.jpg)
 
 
 ## 5. Visão de Implementação
