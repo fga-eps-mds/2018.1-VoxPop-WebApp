@@ -79,4 +79,4 @@ A aplicação do modelo de arquitetura MVC, no caso MVT em Django, obedece a org
 
 O diagrama abaixo descreve o modo como o sistema será implementado:
 
-![VI](http://i.imgur.com/naHkKZj.jpg)
+![VI](https://image.ibb.co/irKG4n/pao_De_Batata.jpg)
