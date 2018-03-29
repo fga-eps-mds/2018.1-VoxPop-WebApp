@@ -10,6 +10,7 @@
 |24/03/2018| 0.2 | Tradução para Português| Samuel Borges|
 |24/03/2018| 0.3 | Metas e Restrições de Arquitetura| Rossicler Júnior|
 |24/03/2018| 0.4 | Representação da Arquitetura | Lucas Vitor|
+|28/03/2018| 0.5 | Representação da Arquitetura | Rossicler Junior, Eduardo Lima|
 
 ## Sumário
 1. [Introdução](#1-introdu%C3%A7%C3%A3o)   
@@ -36,20 +37,31 @@ Nesse documento serão apresentados os principais detalhes da arquitetura propos
 
 Para o desenvolvimento do sistema VoxPop será utilizado o framework web de alto nível Django, escrito em Python, que utiliza um padrão semelhante ao MTV (Model-View-Templae), onde:
 
-A **model** é a camada responsável pela manipuação (leitura e escrita) dos dados e informações acerca dos mesmos, ou seja, interface com o banco de dados;
+A **Model** é a camada responsável pela manipuação (leitura e escrita) dos dados e informações acerca dos mesmos, ou seja, interface com o banco de dados;
 
-A **view** é camada responsável pela implementação das regras de apresentação e negócio entre a model e a template, cadastrando e tratando os dados vindos da model para serem posteriormente retornados para a template;
+A **View** é camada responsável pela implementação das regras de apresentação e negócio entre a model e a template, cadastrando e tratando os dados vindos da model para serem posteriormente retornados para a template;
 
-A **template** é camada responsável pela visualisação dos dados para o usuário, geralmente compostas por HTML, CSS ou Javascript para apresentação.
-
-![MVC-Django](https://4.bp.blogspot.com/-NEcYwo9PBC4/V8MrvCyN_bI/AAAAAAAAKWA/UXlkbAFd4gwgWmfWBeTFur7W9TtN39KWQCLcB/s1600/MTV.png)
+A **Template** é camada responsável pela visualisação dos dados para o usuário, geralmente compostas por HTML, CSS ou Javascript para apresentação.
 
 É importante ressaltar que as resoluções das rotas das URLs, responsabilidade comumente dada à **Controller** do MVC(Model-View-Controller) é uma tarefa já feita pela própria framework do Django.
 
 Abaixo é apresentada uma imagem do modelo MVT:
 
+![MVC-Django](https://4.bp.blogspot.com/-NEcYwo9PBC4/V8MrvCyN_bI/AAAAAAAAKWA/UXlkbAFd4gwgWmfWBeTFur7W9TtN39KWQCLcB/s1600/MTV.png)
 
+Para o desenvolvimento do front-end, iremos utilizar o framework Angular 2, utilizando o TypeScript. O Angular 2 segue um modelo **MV***, onde não existe um modelo padrão, porém iremos utilizar uma abordagem muito parecida com o modelo **MVVM** (Model, View, ViewModel).
 
+O modelo **MVVM** é representado por:
+
+A **Model** encapsula a lógica de negócios e os dados. O Modelo nada mais é do que o Modelo de domínio de uma aplicação, ou seja, as classes de negócio que serão utilizadas em uma determinada aplicação. O Modelo também contém os papéis e também a validação dos dados de acordo com o negócio, cuja aplicação em questão visa atender.
+
+A **View** é a que define a aparência ou estrutura que o usuário vê na tela. O ideal é que o codebehind da view, contenha apenas a chamada ao método InitializeComponent dentro do construtor, ou em alguns casos, código que manipule os controles visuais, ou crie animações. A View se liga ao ViewModel, através da propriedade DataContext que é setada para a classe ViewModel correspondente à aquela View.
+
+A **ViewModel** é aquela que disponibiliza para a View uma lógica de apresentação. A View Model não tem nenhum conhecimento específico sobre a view, ou como ela implementada, nem o seu tipo, ela implementa propriedades e comandos, para que a View possa preencher seus controles e notifica a mesma, caso haja alteração de estado, seja através de eventos ou notificação de alteração. A ViewModel é peça fundamental no MVVM, por que é ela quem vai coordenar as iterações da View com o Model, haja vista, ambos não terem conhecimento um do outro.
+
+Abaixo é apresentado uma imagem que representa o modelo MVVM:
+
+![MVVM](http://www.devmedia.com.br/imagens/articles/233575/MVVMOverview.png)
 
 
 ## 3. Metas e Restrições de Arquitetura
