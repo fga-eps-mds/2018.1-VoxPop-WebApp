@@ -12,6 +12,7 @@
 |24/03/2018| 0.4 | Representação da Arquitetura | Lucas Vitor|
 |28/03/2018| 0.5 | Representação da Arquitetura | Rossicler Junior, Eduardo Lima|
 |28/03/2018| 0.6 | Representação da Arquitetura | Érico Bandeira, Lucas Vitor|
+|29/03/2018| 0.7 | Representação da Arquitetura | Érico Bandeira, Samuel Borges|
 
 ## Sumário
 1. [Introdução](#1-introdu%C3%A7%C3%A3o)   
