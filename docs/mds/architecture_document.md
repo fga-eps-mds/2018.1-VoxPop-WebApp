@@ -34,23 +34,21 @@ Nesse documento serão apresentados os principais detalhes da arquitetura propos
 
 ## 2. Representação da Arquitetura
 
-Para o desenvolvimento do sistema VoxPop será utilizado o framework web de alto nível Django, escrito em python, que utiliza um padrão semelhante ao MVC (Model View Controller), onde:
+Para o desenvolvimento do sistema VoxPop será utilizado o framework web de alto nível Django, escrito em Python, que utiliza um padrão semelhante ao MTV (Model-View-Templae), onde:
 
-**Model** é a responsável pela manipuação (leitura e escrita) dos dados, ou seja, interface com o banco de dados;
+A **model** é a camada responsável pela manipuação (leitura e escrita) dos dados e informações acerca dos mesmos, ou seja, interface com o banco de dados;
 
-**View** é a responsável pela interação direta com o usuário (por meio de html, css, javaScript etc), basicamente, sua função é a exibição dos dados;
+A **view** é camada responsável pela implementação das regras de apresentação e negócio entre a model e a template, cadastrando e tratando os dados vindos da model para serem posteriormente retornados para a template;
 
-**Controller** é a responsável por receber e processar requisições e controlar qual model e qual view será mostrada ao usuário.
+A **template** é camada responsável pela visualisação dos dados para o usuário, geralmente compostas por HTML, CSS ou Javascript para apresentação.
 
-Abaixo está uma imagem representativa do modelo MVC:
+![MVC-Django](https://4.bp.blogspot.com/-NEcYwo9PBC4/V8MrvCyN_bI/AAAAAAAAKWA/UXlkbAFd4gwgWmfWBeTFur7W9TtN39KWQCLcB/s1600/MTV.png)
 
-![MVC](https://imgur.com/DCbCeGg.png)
-
-Mais especificamente,  o Django utiliza o MVT (Model View Template), onde a model continua sendo a model, a view se chama template e a controller se chama view.
+É importante ressaltar que as resoluções das rotas das URLs, responsabilidade comumente dada à **Controller** do MVC(Model-View-Controller) é uma tarefa já feita pela própria framework do Django.
 
 Abaixo é apresentada uma imagem do modelo MVT:
 
-![MVC-Django](https://4.bp.blogspot.com/-NEcYwo9PBC4/V8MrvCyN_bI/AAAAAAAAKWA/UXlkbAFd4gwgWmfWBeTFur7W9TtN39KWQCLcB/s1600/MTV.png)
+
 
 
 
