@@ -31,7 +31,7 @@ Nesse documento serão apresentados os principais detalhes da arquitetura propos
 
 |**ID**|**Nome**|**Data**|**Disponível em**|
 | :---: | --- | --- | --- |
-| 01 | Documentation | 24/03/2018 | https://docs.djangoproject.com/pt-br/2.0/faq/general/ 
+| 01 | Documentation | 24/03/2018 | https://docs.djangoproject.com/pt-br/2.0/faq/general/
 
 ## 2. Representação da Arquitetura
 
@@ -65,6 +65,8 @@ A **ViewModel** é aquela que disponibiliza para a View uma lógica de apresenta
 Abaixo é apresentado uma imagem que representa o modelo MVVM:
 
 ![MVVM](http://www.devmedia.com.br/imagens/articles/233575/MVVMOverview.png)
+
+O front-end se comunica com o back-end com requisições HTTP de maneira explícita e representativa, através de uma API REST. O front-end recebe um input do usuário e manda a requisição HTTP necessária para que o back-end a processe e retorne um resultado. Após isso , o resultado é tratado pelo front-end e exibido para o usuário.
 
 
 ## 3. Metas e Restrições de Arquitetura
