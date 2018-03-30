@@ -38,11 +38,11 @@ Nesse documento serão apresentados os principais detalhes da arquitetura propos
 
 Para o desenvolvimento do sistema VoxPop será utilizado o framework web de alto nível Django, escrito em Python, que utiliza um padrão semelhante ao MTV (Model-View-Template), onde:
 
-A **Model** é a camada responsável pela manipuação (leitura e escrita) dos dados e informações acerca dos mesmos, ou seja, interface com o banco de dados;
+A **Model** é a camada responsável pela manipulação (leitura e escrita) dos dados e informações acerca dos mesmos, ou seja, interface com o banco de dados;
 
 A **View** é camada responsável pela implementação das regras de apresentação e negócio entre a model e a template, cadastrando e tratando os dados vindos da model para serem posteriormente retornados para a template;
 
-A **Template** é camada responsável pela visualisação dos dados para o usuário, geralmente compostas por HTML, CSS ou Javascript para apresentação.
+A **Template** é camada responsável pela visualização dos dados para o usuário, geralmente compostas por HTML, CSS ou Javascript para apresentação.
 
 É importante ressaltar que as resoluções das rotas das URLs, responsabilidade comumente dada à **Controller** do MVC(Model-View-Controller) é uma tarefa já feita pela própria framework do Django.
 
@@ -61,7 +61,7 @@ A **Model** encapsula a lógica de negócios e os dados. O Modelo nada mais é d
 
 A **View** é a que define a aparência ou estrutura que o usuário vê na tela. O ideal é que o codebehind da view, contenha apenas a chamada ao método InitializeComponent dentro do construtor, ou em alguns casos, código que manipule os controles visuais, ou crie animações. A View se liga ao ViewModel, através da propriedade DataContext que é setada para a classe ViewModel correspondente à aquela View.
 
-A **ViewModel** é aquela que disponibiliza para a View uma lógica de apresentação. A View Model não tem nenhum conhecimento específico sobre a view, ou como ela implementada, nem o seu tipo, ela implementa propriedades e comandos, para que a View possa preencher seus controles e notifica a mesma, caso haja alteração de estado, seja através de eventos ou notificação de alteração. A ViewModel é peça fundamental no MVVM, por que é ela quem vai coordenar as iterações da View com o Model, haja vista, ambos não terem conhecimento um do outro.
+A **ViewModel** é aquela que disponibiliza para a View uma lógica de apresentação. A View Model não tem nenhum conhecimento específico sobre a view, ou como ela implementada, nem o seu tipo, ela implementa propriedades e comandos, para que a View possa preencher seus controles e notificar a mesma, caso haja alteração de estado, seja através de eventos ou notificação de alteração. A ViewModel é peça fundamental no MVVM, por que é ela quem vai coordenar as iterações da View com o Model, haja vista, ambos não terem conhecimento um do outro.
 
 Abaixo é apresentado uma imagem que representa o modelo MVVM:
 
