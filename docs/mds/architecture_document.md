@@ -36,7 +36,7 @@ Nesse documento serão apresentados os principais detalhes da arquitetura propos
 
 ## 2. Representação da Arquitetura
 
-Para o desenvolvimento do sistema VoxPop será utilizado o framework web de alto nível Django, escrito em Python, que utiliza um padrão semelhante ao MTV (Model-View-Templae), onde:
+Para o desenvolvimento do sistema VoxPop será utilizado o framework web de alto nível Django, escrito em Python, que utiliza um padrão semelhante ao MTV (Model-View-Template), onde:
 
 A **Model** é a camada responsável pela manipuação (leitura e escrita) dos dados e informações acerca dos mesmos, ou seja, interface com o banco de dados;
 
