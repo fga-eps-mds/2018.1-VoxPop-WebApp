@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-4 col-md-offset-4">
+    <form (submit)="registerUser($event)">
+      <div class="form-group">
+        <label>Nome de usuário</label>
+        <input type="text" class="form-control" minlength="4" maxlength="15" placeholder="Entre o nome do usuário">
+      </div>
+      <div class="form-group">
+        <label>Senha</label>
+        <input type="password" class="form-control" minlength="6" maxlength="20" 
+        (keyup)="onKeyPass($event)" placeholder="Senha">
+      </div>
+      <div class="form-group">
+        <label>Confirmar Senha</label>
+        <input type="password" class="form-control" minlength="6" maxlength="20" 
+        (keyup)="onKey($event)" placeholder="Confirmar senha">
+        <div class="alert alert-danger" role="alert" id="alert" style="display:none">
+          <p>{{values}}</p>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>E-mail</label>
+        <input type="email" class="form-control" placeholder="exemplo@exemplo.com">
+      </div>
+      <button class="btn btn-primary" type="submit" id="registerBtn">Cadastrar</button>
+    </form>
+    </div>
+  </div>
+</div>
