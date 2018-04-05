@@ -33,7 +33,7 @@
         chdir: "{{ install_root }}/{{ project_name }}"
 
     - name: Create/recreate application container
-      command: "docker run -p 80:80 {{ project_name }}:{{ env }}"
+      command: "docker run -d -p 80:80 {{ project_name }}:{{ env }}"
       become: true
       args:
         chdir: "{{ install_root }}/{{ project_name }}"
