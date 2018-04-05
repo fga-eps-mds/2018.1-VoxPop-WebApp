@@ -1,0 +1,13 @@
+---
+project_name: voxpop
+
+install_root: /home/ubuntu
+
+repository_url: https://github.com/fga-gpp-mds/2018.1-VoxPop-WebApp
+
+env: prod
+
+system_packages:
+  - git
+  - docker
+  - docker-compose

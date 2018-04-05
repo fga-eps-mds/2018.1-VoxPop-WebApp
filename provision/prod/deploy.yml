@@ -1,0 +1,39 @@
+---
+- hosts: "voxpop_{{ env }}"
+  vars_files:
+    - vars.yml
+    - "{{ install_root }}/.credentials/db.yml"
+  gather_facts: false
+  become: yes
+
+  tasks:
+    - name: Install system packages
+      apt:
+        pkg: "{{ item }}"
+        update-cache: yes
+      with_items: "{{ system_packages }}"
+
+    - name: Clean repository directory
+      file:
+        state: absent
+        path: "{{ install_root }}/{{ project_name }}"
+
+    - name: Clone/pull project repository
+      git:
+        repo: "{{ repository_url }}"
+        version: dev
+        dest: "{{ install_root }}/{{ project_name }}"
+        accept_hostkey: yes
+        force: yes
+
+    - name: Build/rebuild application image
+      command: "docker build -t {{ project_name }}:{{ env }} ."
+      become: true
+      args:
+        chdir: "{{ install_root }}/{{ project_name }}"
+
+    - name: Create/recreate application container
+      command: "docker run -p 80:80 {{ project_name }}:{{ env }}"
+      become: true
+      args:
+        chdir: "{{ install_root }}/{{ project_name }}"

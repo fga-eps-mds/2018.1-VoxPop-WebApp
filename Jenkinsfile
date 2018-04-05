@@ -1,37 +1,49 @@
 #!groovy
 
-node {
+pipeline {
+    agent any
 
-    try {
+    stages {
         stage('Checkout') {
-
-            // sh 'git fetch'
-            // sh "git log HEAD..origin/${env.BRANCH_NAME} --pretty=format:\"%h - %an, %ar: %s\" > GIT_CHANGES"
-            // def lastChanges = readFile('GIT_CHANGES')
-            // slackSend color: "warning", message: "Started `${env.JOB_NAME}#${env.BUILD_NUMBER}`\n\n_The changes:_\n${lastChanges}"
-            // checkout scm
-
+            steps {
             checkout scm
-
-            sh "git log HEAD^..HEAD --pretty=format:\"%h - %an, %ar: %s\" > GIT_CHANGES"
-            def lastChanges = readFile('GIT_CHANGES')
-            slackSend color: "warning", message: "Started `${env.JOB_NAME}#${env.BUILD_NUMBER}`\n\n_Last commit:_\n${lastChanges}"
-
+            slackSend color: "warning", message: "Started `${env.JOB_NAME}#${env.BUILD_NUMBER}`"
+            }
         }
         stage('Setup environment') {
-            echo 'Setup environment'
+            steps {
+                echo 'Setup environment'
+
+            }
         }
         stage('Test') {
-            echo 'Test'
+            steps {
+                echo 'Test'
+            }
         }
-        stage('Publish results') {
+        stage('Homologation deploy') {
+            when {
+                branch 'dev'
+            }
+            steps {
+                sh 'ansible-playbook -i provision/hosts provision/hml/deploy.yml'
+            }
+        }
+        stage('Production deploy') {
+            when {
+                branch 'master'
+            }
+            steps {
+                sh 'ansible-playbook -i provision/hosts provision/prod/deploy.yml'
+            }
+        }
+    }
+    post {
+        success {
             slackSend color: "good", message: "Build successful: `${env.JOB_NAME}#${env.BUILD_NUMBER}` <${env.BUILD_URL}|Open in Jenkins>"
         }
-    }
-    catch (err) {
-        slackSend color: "danger", message: "Build failed :face_with_head_bandage: \n`${env.JOB_NAME}#${env.BUILD_NUMBER}` <${env.BUILD_URL}|Open in Jenkins>"
-
-        throw err
+        failure {
+            slackSend color: "danger", message: "Build failed :face_with_head_bandage: \n`${env.JOB_NAME}#${env.BUILD_NUMBER}` <${env.BUILD_URL}|Open in Jenkins>"
+        }
     }
 }
-

@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  webapp:
+    build:
+      context: ../../.
+      dockerfile: provision/dev/Dockerfile
+    image: voxpop:dev
+    command: bash -c "chmod +x provision/scripts/run.sh && ./provision/scripts/run.sh"
+    volumes:
+      - ../../.:/app
+    ports:
+      - "4200:4200"
