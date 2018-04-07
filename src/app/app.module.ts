@@ -1,18 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { HttpModule } from '@angular/http';
 
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
-import { MainPageComponent } from './main-page/main-page.component'; 
+import { MainPageComponent } from './main-page/main-page.component';
 import { RouterModule, Routes, Router } from '@angular/router';
 
 const appRoutes:Routes = [
   {
     path: '',
-    component: RegisterFormComponent 
+    component: RegisterFormComponent
   },
   {
     path: 'main-page',
@@ -30,7 +31,8 @@ const appRoutes:Routes = [
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
-    BrowserModule
+    BrowserModule,
+    HttpModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
