@@ -1,3 +1,9 @@
+---
+layout: default
+title: Documento de Arquitetura
+category: MDS
+---
+
 # Documento de Arquitetura
 
 **Versão 1.0**
