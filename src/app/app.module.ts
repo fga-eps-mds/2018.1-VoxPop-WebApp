@@ -9,7 +9,8 @@ import { FooterComponent } from './footer/footer.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { RouterModule, Routes, Router } from '@angular/router';
-
+import { RequestsService } from './requests.service';
+ 
 const appRoutes:Routes = [
   {
     path: '',
@@ -27,7 +28,8 @@ const appRoutes:Routes = [
     HeaderComponent,
     FooterComponent,
     RegisterFormComponent,
-    MainPageComponent
+    MainPageComponent,
+
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -35,7 +37,7 @@ const appRoutes:Routes = [
     HttpModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA],
-  providers: [],
+  providers: [ RequestsService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { RequestsService } from '../requests.service';
+import { UserModel } from '../../models/user';
+import { SocialInformationModel } from '../../models/socialInformation'
 
 @Component({
   selector: 'app-register-form',
@@ -14,7 +17,8 @@ export class RegisterFormComponent implements OnInit {
   registerBtn = document.getElementById("registerBtn");
 
 
-  constructor(private router:Router) { }
+  constructor(private router:Router,
+              private requester:RequestsService) { }
 
   ngOnInit() {
   }
@@ -22,11 +26,18 @@ export class RegisterFormComponent implements OnInit {
   registerUser(e) {
     e.preventDefault();
     console.log(e);
-    var username = e.target.elements[0].value;
-    var password = e.target.elements[1].value;
-    var confPassword = e.target.elements[2].value;
-    var email = e.target.elements[3].value;
-    console.log(username, password, email);
+    var user : UserModel;
+    user.username = e.target.elements[0].value;
+    user.password = e.target.elements[1].value;
+    user.email = e.target.elements[3].value;
+    user.social_information.uf = e.target.elements[4].value;
+    user.social_information.city = e.target.elements[5].value;
+    user.social_information.education = e.target.elements[6].value;
+    user.social_information.job = e.target.elements[7].value;
+    user.social_information.birth_date = e.target.elements[8];
+      
+    // TODO - adicionar validação de criação. Checar http status code = 201.
+    this.requester.postUser(user);
 
     this.router.navigate(['main-page']);
 
