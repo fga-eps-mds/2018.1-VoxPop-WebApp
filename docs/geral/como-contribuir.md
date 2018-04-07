@@ -14,6 +14,80 @@ Nós amamos sua contribuição! E assim, queremos tornar a contribuição a esse
 * Propor novas features
 * Tornar-se um mantenedor
 
+## Comandos para desenvolvimento
+
+Nós possuímos Makefiles em ambos os repositórios automatizando todos os comandos necessários para o desenvolvedor. Para visualizar a lista de comandos, abra o terminal na raiz do projeto, e execute:
+
+```
+make help
+```
+
+Comandos da API:
+```
+Utilize: make <comando> [<argumentos>]
+
+Comandos disponíveis:
+
+Gerenciar docker
+	docker-start	Inicia o serviço do docker
+	docker-stop	Para o serviço do docker
+	docker-enable	Faz docker iniciar automaticamente ao iniciar o sistema
+	docker-disable	Faz docker não iniciar automaticamente ao iniciar o sistema
+
+Gerenciar containers da aplicação:
+	up		Efetua build da imagem, (re)cria e inicia todos os containers da aplicação
+	build		Efetua (re)build da imagem da aplicação
+	start		Inicia todos os containers da aplicação (já devem ter sido criados)
+	stop		Interrompe todos os containers da aplicação
+	remove		Remove todos os containers da aplicação
+	status		Exibe o status dos containers da aplicação
+	logs		Exibe os logs da aplicação
+	bash		Abre um bash dentro do container da aplicação
+	cmd		Executa um comando dentro do container da aplicação
+			Exemplo: make cmd command="python3 manage.py shell"
+
+Executar comandos do Django:
+	startapp	Cria um novo app. Argumentos necessários: name
+			Exemplo: make startapp name=auth
+	makemigrations	Gerar migrations para o projeto
+	migrate		Aplicar migrations ao banco
+	test		Roda os testes da aplicação
+	collectstatic	Coletar arquivos estáticos
+```
+
+Comandos do WebApp:
+```
+Utilize: make <comando> [<argumentos>]
+
+Comandos disponíveis:
+
+Gerenciar docker
+	docker-start	Inicia o serviço do docker
+	docker-stop	Para o serviço do docker
+	docker-enable	Faz docker iniciar automaticamente ao iniciar o sistema
+	docker-disable	Faz docker não iniciar automaticamente ao iniciar o sistema
+
+Gerenciar containers da aplicação:
+	up		Efetua build da imagem, (re)cria e inicia todos os containers da aplicação
+	build		Efetua (re)build da imagem da aplicação
+	start		Inicia todos os containers da aplicação (já devem ter sido criados)
+	stop		Interrompe todos os containers da aplicação
+	remove		Remove todos os containers da aplicação
+	status		Exibe o status dos containers da aplicação
+	logs		Exibe os logs da aplicação
+	bash		Abre um bash dentro do container da aplicação
+	cmd		Executa um comando dentro do container da aplicação
+			Exemplo: make cmd command="npm start"
+```
+
+## Qualidade de código
+
+Para garantir qualidade de código, nós utilizamos a análise estática Flake8. Para rodar a análise estática antes de enviar código para o respositório, execute:
+
+```
+flake8 --exclude='manage.py, voxpopapi/settings.py, migrations, templates, */models.py, */tests.py, */admin.py, provision, nginx, docs, setup.py' .
+```
+
 ## **Pull Requests**
 
 Nós usamos uma adaptação do [GitHub Flow](https://guides.github.com/introduction/flow/index.html), um processo leve, baseado em branches, que oferece suporte a equipes e projetos nos quais as implantações são feitas regularmente. Porém, o nosso uso desse processo se apoia em uma pequena adaptação, onde se adiciona uma branch `dev`, que serve como base para o código-fonte do nosso ambiente de homologação.
