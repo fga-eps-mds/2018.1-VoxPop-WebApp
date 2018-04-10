@@ -15,7 +15,7 @@ export class RegisterFormComponent implements OnInit {
   password = '';
   statusPassword = 0; // 0 -> False and 1 -> True
   registerBtn = document.getElementById("registerBtn");
-
+  user : UserModel;
 
   constructor(private router:Router,
               private requester:RequestsService) { }
@@ -26,18 +26,20 @@ export class RegisterFormComponent implements OnInit {
   registerUser(e) {
     e.preventDefault();
     console.log(e);
-    var user : UserModel;
-    user.username = e.target.elements[0].value;
-    user.password = e.target.elements[1].value;
-    user.email = e.target.elements[3].value;
-    user.social_information.uf = e.target.elements[4].value;
-    user.social_information.city = e.target.elements[5].value;
-    user.social_information.education = e.target.elements[6].value;
-    user.social_information.job = e.target.elements[7].value;
-    user.social_information.birth_date = e.target.elements[8];
-      
+    //this.user.username;
+    this.user.first_name = e.target.elements[1].value;
+    this.user.last_name = e.target.elements[2].value;
+    this.user.password = e.target.elements[3].value;
+    this.user.email = e.target.elements[5].value;
+    this.user.social_information.uf = e.target.elements[6].value;
+    this.user.social_information.city = e.target.elements[7].value;
+    this.user.social_information.education = e.target.elements[8].value;
+    this.user.social_information.job = e.target.elements[9].value;
+    this.user.social_information.birth_date = e.target.elements[10];
+
+    console.log(this.user);      
     // TODO - adicionar validação de criação. Checar http status code = 201.
-    this.requester.postUser(user);
+    //this.requester.postUser(user);
 
     this.router.navigate(['main-page']);
 

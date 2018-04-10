@@ -10,6 +10,7 @@ import { RegisterFormComponent } from './register-form/register-form.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { RouterModule, Routes, Router } from '@angular/router';
 import { RequestsService } from './requests.service';
+import { FormsModule } from '@angular/forms';
  
 const appRoutes:Routes = [
   {
@@ -35,7 +36,8 @@ const appRoutes:Routes = [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     HttpModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA],
   providers: [ RequestsService ],

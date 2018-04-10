@@ -5,8 +5,16 @@
 
       <div id="firstPart">
            <div class="form-group">
-                <label>Nome de usuário</label>
-                <input type="text" class="form-control" minlength="4" maxlength="15" placeholder="Entre o nome do usuário">
+                <label>Nome de Usuário</label>
+                <input type="text" class="form-control" placeholder="Entre o nome do usuário">
+           </div>
+           <div class="form-group">
+            <label>Primeiro Nome</label>
+            <input type="text" class="form-control" placeholder="Digite o seu primeiro nome">
+           </div>
+           <div class="form-group">
+            <label>Sobrenome</label>
+            <input type="text" class="form-control" placeholder="Digite o seu sobrenome">
            </div>
            <div class="form-group">
                 <label>Senha</label>
@@ -29,6 +37,7 @@
                     type="button" id="nextBtn"
                    (click)="clickFirstButton($event)">
                          Próxima parte</button>
+                         <button class="btn btn-primary" type="submit" id="registerBtn">Cadastrar</button>
       </div>
 
 
@@ -108,7 +117,7 @@
            type="button" id="returnBtn"
            (click)="clickReturnButton($event)">
            Retornar</button>
-           <button class="btn btn-primary" type="submit" id="registerBtn">Cadastrar</button>
+           
       </div>
 
     </form>
