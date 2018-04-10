@@ -14,7 +14,6 @@ export class RegisterFormComponent implements OnInit {
   values = '';
   password = '';
   statusPassword = 0; // 0 -> False and 1 -> True
-  registerBtn = document.getElementById("registerBtn");
 
   constructor(private router:Router,
               private requester:RequestsService) { }
@@ -86,6 +85,7 @@ export class RegisterFormComponent implements OnInit {
        if(this.statusPassword == 1){
             document.getElementById("firstPart").style.display = "none";
             document.getElementById("secondPart").style.display = "block";
+            document.querySelector('#registerBtn').removeAttribute('disabled');
        }
        else {
          alert("Check all the boxes, please");
@@ -95,6 +95,7 @@ export class RegisterFormComponent implements OnInit {
  clickReturnButton() {
       document.getElementById("firstPart").style.display = "block";
       document.getElementById("secondPart").style.display = "none";
+      document.querySelector('#registerBtn').setAttribute('disabled', 'disabled');
 }
 
 }
