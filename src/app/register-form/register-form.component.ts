@@ -27,14 +27,14 @@ export class RegisterFormComponent implements OnInit {
     var user : UserModel;
     var social_information : SocialInformationModel;
     user = { 
-      id: 1,
+      id: 3,
       username: e.target.elements[0].value,
       first_name: e.target.elements[1].value,
       last_name: e.target.elements[2].value,
       password: e.target.elements[3].value,
       email: e.target.elements[5].value,
       social_information: {
-        id: 1,
+        id: 3,
         uf: e.target.elements[8].value,
         city: e.target.elements[9].value,
         income: e.target.elements[10].value,
