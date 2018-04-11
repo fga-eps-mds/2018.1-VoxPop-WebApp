@@ -6,7 +6,11 @@
       <div id="firstPart">
            <div class="form-group">
                 <label>Nome de Usuário</label>
-                <input type="text" class="form-control" placeholder="Entre o nome do usuário">
+                <input type="text" class="form-control" placeholder="Entre o nome do usuário"
+                (keyup)="onKeyUsername($event)">
+                <div class="alert alert-danger" role="alert" id="alert-username" style="display:none">
+                  <p>{{valueUsername}}</p>
+                </div>
            </div>
            <div class="form-group">
             <label>Primeiro Nome</label>
@@ -19,14 +23,14 @@
            <div class="form-group">
                 <label>Senha</label>
                 <input type="password" class="form-control" minlength="6" maxlength="20"
-                (keyup)="onKeyPass($event)" placeholder="Senha">
+                (keyup)="onKeyPassword($event)" placeholder="Senha">
            </div>
            <div class="form-group">
                 <label>Confirmar Senha</label>
                 <input type="password" class="form-control" minlength="6" maxlength="20"
-                (keyup)="onKey($event)" placeholder="Confirmar senha">
-                <div class="alert alert-danger" role="alert" id="alert" style="display:none">
-                     <p>{{values}}</p>
+                (keyup)="onKeyConfirmPassword($event)" placeholder="Confirmar senha">
+                <div class="alert alert-danger" role="alert" id="alert-password" style="display:none">
+                     <p>{{valuePassword}}</p>
                 </div>
            </div>
            <div class="form-group">

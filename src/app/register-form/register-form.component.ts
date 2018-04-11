@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { RequestsService } from '../requests.service';
 import { UserModel } from '../../models/user';
 import { SocialInformationModel } from '../../models/socialInformation'
+import { and } from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-register-form',
@@ -11,9 +12,11 @@ import { SocialInformationModel } from '../../models/socialInformation'
 })
 export class RegisterFormComponent implements OnInit {
 
-  values = '';
+  valuePassword = '';
+  valueUsername = '';
   password = '';
-  statusPassword = 0; // 0 -> False and 1 -> True
+  username = '';
+  status = false;
 
   constructor(private router:Router,
               private requester:RequestsService) { }
@@ -52,22 +55,47 @@ export class RegisterFormComponent implements OnInit {
   }
 
 
-  onKeyPass(e: any) {
+  onKeyPassword(e: any) {
     this.password = e.target.value;
   }
 
-  onKey(e: any) {
+  onKeyUsername(e: any) {
+    var username = e.target.value;
+    if(this.isUsernameValid(username)){
+      document.getElementById('alert-username').style.display = "none";
+      this.valueUsername = '';
+      this.status = true;
+    } else if (username.lenght < 4 && username.lenght > 20) {
+      this.valueUsername = 'Nome de usuário deve ter entre 4 e 20 caracteres'
+      document.getElementById('alert-username').style.display = "block";
+    } else {
+      this.valueUsername = 'Digite apenas letras e números';
+      document.getElementById('alert-username').style.display = "block";
+    }
+  }
+
+  onKeyConfirmPassword(e: any) {
     var confirmPassword = e.target.value;
 
     if(this.validator(confirmPassword, this.password)){
-      document.getElementById('alert').style.display = "none";
-      this.values = '';
-      this.statusPassword = 1;
+      document.getElementById('alert-password').style.display = "none";
+      this.valuePassword = '';
+      this.status = true;
     }
     else {
-      this.values = 'Passwords do not match!';
-      document.getElementById('alert').style.display = "block";
-      this.statusPassword = 0;
+      this.valuePassword = 'A confirmação de senha não corresponde';
+      document.getElementById('alert-password').style.display = "block";
+      this.status = false;
+    }
+  }
+
+  isUsernameValid(username) {
+    var format = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+    if(format.test(username)){
+      return false;
+    }
+    else{
+      return true;
     }
   }
 
@@ -82,7 +110,7 @@ export class RegisterFormComponent implements OnInit {
   }
 
   clickFirstButton() {
-       if(this.statusPassword == 1){
+       if(this.status){
             document.getElementById("firstPart").style.display = "none";
             document.getElementById("secondPart").style.display = "block";
             document.querySelector('#registerBtn').removeAttribute('disabled');
