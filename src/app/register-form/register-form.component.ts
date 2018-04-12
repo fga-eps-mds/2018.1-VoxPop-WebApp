@@ -53,7 +53,9 @@ export class RegisterFormComponent implements OnInit {
     // TODO - adicionar validação de criação. Checar http status code = 201.
     // AINDA é TODO /\
     this.requester.postUser(user).subscribe(response => {
-      let status = response['status'];
+      let status = response.status;
+
+      console.log("STATUS CODE RETURNED: " + status;
 
       switch (status) {
         case 0:
