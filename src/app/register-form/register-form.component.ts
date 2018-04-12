@@ -55,7 +55,7 @@ export class RegisterFormComponent implements OnInit {
     this.requester.postUser(user).subscribe(response => {
       let status = response.status;
 
-      console.log("STATUS CODE RETURNED: " + status;
+      console.log("STATUS CODE RETURNED: " + status);
 
       switch (status) {
         case 0:
@@ -82,8 +82,8 @@ export class RegisterFormComponent implements OnInit {
 
   onKeyPassword(e: any) {
     this.password = e.target.value;
-    if(this.isValidPassword(this.password)){
-      this.valueInvalidPassword = 'A senha deve ter entre 6 e 30 caracteres';
+    if(!this.isValidPassword(this.password)){
+      this.valueInvalidPassword = 'Sua senha deve ter no mínimo 8 caracteres, dos quais: Um é numérico; Um é letra maiúscula; Um é caractere especial.';
       document.getElementById('alert-invalid-password').style.display = "block";
       this.statusValidPassword = false;
     } else {
@@ -153,9 +153,8 @@ export class RegisterFormComponent implements OnInit {
   }
 
   isEmailValid(email) {
-    var format1 = /[ @]/;
-    var format2 = /[ .]/;
-    if(format1.test(email) && format2.test(email)) {
+    let EMAILRGX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if(EMAILRGX.test(email)) {
       return true;
     }
     else {
@@ -171,7 +170,8 @@ export class RegisterFormComponent implements OnInit {
   }
 
   isValidPassword(password) {
-    if (password.length < 5 || password.length > 31) {
+    let PWDRGX = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
+    if (PWDRGX.test(password)) {
       return true;
     }
     return false;
