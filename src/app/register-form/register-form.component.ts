@@ -82,6 +82,14 @@ export class RegisterFormComponent implements OnInit {
 
   onKeyPassword(e: any) {
     this.password = e.target.value;
+    if(this.isValidPassword(this.password)){
+      this.valueInvalidPassword = 'A senha deve ter entre 6 e 30 caracteres';
+      document.getElementById('alert-invalid-password').style.display = "block";
+      this.statusValidPassword = false;
+    } else {
+      document.getElementById('alert-invalid-password').style.display = "none";
+      this.statusValidPassword = true;
+    }
   }
 
   onKeyConfirmPassword(e: any) {
@@ -132,15 +140,6 @@ export class RegisterFormComponent implements OnInit {
       document.getElementById('alert-password').style.display = "block";
       this.statusPassword = false;
     }
-    if(this.isValidPassword(this.password)){
-        document.getElementById('alert-invalid-password').style.display = "none";
-        this.statusValidPassword = true;
-    } else {
-        this.valueInvalidPassword = 'A senha deve ter entre 6 e 30 caracteres';
-        document.getElementById('alert-invalid-password').style.display = "block";
-        this.statusValidPassword = false;
-    }
-    
   }
 
   isUsernameValid(username) {
@@ -172,14 +171,14 @@ export class RegisterFormComponent implements OnInit {
   }
 
   isValidPassword(password) {
-    if (password.length > 5 && password.length < 31) {
+    if (password.length < 5 || password.length > 31) {
       return true;
     }
     return false;
   }
 
   clickFirstButton() {
-       if(this.statusPassword && this.statusUsername && this.statusEmail){
+       if(this.statusPassword && this.statusUsername && this.statusEmail && this.statusValidPassword){
             document.getElementById("firstPart").style.display = "none";
             document.getElementById("secondPart").style.display = "block";
             document.querySelector('#registerBtn').removeAttribute('disabled');
