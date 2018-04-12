@@ -33,48 +33,64 @@ export class RegisterFormComponent implements OnInit {
   registerUser(e) {
     e.preventDefault();
     var user : UserModel;
-    var social_information : SocialInformationModel;
+    var social_information: SocialInformationModel;
+
     user = { 
       username: e.target.elements[0].value,
       first_name: e.target.elements[1].value,
       last_name: e.target.elements[2].value,
       password: e.target.elements[3].value,
       email: e.target.elements[5].value,
-      social_information: {
+     };
+    console.log(user);      
+    // TODO - adicionar validação de criação. Checar http status code = 201.
+    // AINDA é TODO /\
+    this.requester.postUser(user).subscribe(response => {
+      let statusUser = response['status'];
+      var userId = response["id"];
+      console.log(statusUser);
+
+      social_information = {
+        owner: userId,
         state: e.target.elements[7].value,
         city: e.target.elements[8].value,
         income: e.target.elements[9].value,
         education: e.target.elements[10].value,
         job: e.target.elements[11].value,
         birth_date: e.target.elements[12].value
-      }
-     };
-    console.log(user);      
-    // TODO - adicionar validação de criação. Checar http status code = 201.
-    // AINDA é TODO /\
-    this.requester.postUser(user).subscribe(response => {
-      let status = response['status'];
+      };
+  
+      this.requester.postSocialInformation(social_information).subscribe(response => {
+        let statusSI = response['status'];
+        console.log(statusSI);
+  
+        this.checkStatus(statusSI);
+  
+      });
 
-      switch (status) {
-        case 0:
-          //CHECK RESPONSE BEFORE CHANGING SCREENS
-          console.log("Request failed with status code: " + status + ". Please check the request and try again.");
-          break;
-        case 201:
-          //redirect user to main or authentication page..
-          this.router.navigate(['main-page']);
-          break;
-        case 301:
-          //Redirect user to error page
-          console.log("Failed with status code 301: Resourced moved permanently. This may be a CORS problem.");
-        default:
-          //Redirect user to error page
-          console.log("Unspecified error. Please inspect network traffic to investigate this issue further");
-          break;
-      }
-
+      this.checkStatus(statusUser);
     });
 
+  }
+
+  checkStatus(status){
+    switch (status) {
+      case 0:
+        //CHECK RESPONSE BEFORE CHANGING SCREENS
+        console.log("Request failed with status code: " + status + ". Please check the request and try again.");
+        break;
+      case 201:
+        //redirect user to main or authentication page..
+        //this.router.navigate(['main-page']);
+        break;
+      case 301:
+        //Redirect user to error page
+        console.log("Failed with status code 301: Resourced moved permanently. This may be a CORS problem.");
+      default:
+        //Redirect user to error page
+        console.log("Unspecified error. Please inspect network traffic to investigate this issue further");
+        break;
+    }
   }
 
 
