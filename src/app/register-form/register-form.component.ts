@@ -13,12 +13,14 @@ import { and } from '@angular/router/src/utils/collection';
 export class RegisterFormComponent implements OnInit {
 
   valuePassword = '';
+  valueInvalidPassword = '';
   valueUsername = '';
   valueEmail = '';
   password = '';
   confirmPassword = '';
   username = '';
   statusPassword = false;
+  statusValidPassword = false;
   statusUsername = false;
   statusEmail = false;
 
@@ -102,16 +104,24 @@ export class RegisterFormComponent implements OnInit {
   }
 
   onKeyValidatorPassword(e: any) {
-    if(this.validator(this.confirmPassword, this.password)){
+    if(this.isConfirmedPassword(this.confirmPassword, this.password)){
       document.getElementById('alert-password').style.display = "none";
       this.valuePassword = '';
       this.statusPassword = true;
-    }
-    else {
+    } else {
       this.valuePassword = 'A confirmação de senha não corresponde';
       document.getElementById('alert-password').style.display = "block";
       this.statusPassword = false;
     }
+    if(this.isValidPassword(this.password)){
+        document.getElementById('alert-invalid-password').style.display = "none";
+        this.statusValidPassword = true;
+    } else {
+        this.valueInvalidPassword = 'A senha deve ter entre 6 e 30 caracteres';
+        document.getElementById('alert-invalid-password').style.display = "block";
+        this.statusValidPassword = false;
+    }
+    
   }
 
   isUsernameValid(username) {
@@ -135,14 +145,18 @@ export class RegisterFormComponent implements OnInit {
     }
   }
 
-  validator(password, confPassword) {
-      if(password === confPassword){
-        return true;
-      }
-      else
-      {
-        return false;
-      }
+  isConfirmedPassword(password, confPassword) {
+    if(password === confPassword){
+      return true;
+    }
+    return false;
+  }
+
+  isValidPassword(password) {
+    if (password.length > 5 && password.length < 31) {
+      return true;
+    }
+    return false;
   }
 
   clickFirstButton() {
@@ -152,7 +166,7 @@ export class RegisterFormComponent implements OnInit {
             document.querySelector('#registerBtn').removeAttribute('disabled');
        }
        else {
-         alert("Check all the boxes, please");
+         alert("Por favor, cheque os campos");
        }
  }
 

@@ -23,8 +23,11 @@
            <div class="form-group">
                 <label>Senha</label>
                 <input type="password" class="form-control" minlength="6" 
-                maxlength="20" (keyup)="onKeyPassword($event)" 
+                maxlength="30" (keyup)="onKeyPassword($event)" 
                 (keyup)="onKeyValidatorPassword($event)" placeholder="Senha">
+                <div class="alert alert-danger" role="alert" id="alert-invalid-password" style="display:none">
+                  <p>{{valueInvalidPassword}}</p>
+                </div>
            </div>
            <div class="form-group">
                 <label>Confirmar Senha</label>
