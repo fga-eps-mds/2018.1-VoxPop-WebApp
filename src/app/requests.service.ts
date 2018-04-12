@@ -1,6 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { environment } from '../environments/environment'
+import { map } from 'rxjs/operators'
+import { UserModel } from '../models/user';
 
 @Injectable()
 export class RequestsService {
@@ -15,8 +17,9 @@ export class RequestsService {
      return this.http.get(this.baseURL.concat("users/${userId}"))
   }
 
-  postUser(user) {
-    var endpoint = this.baseURL.concat('users/${user.id}')
-    this.http.post(endpoint, JSON.stringify(user), {headers: this.headers})
+  postUser(user: UserModel) {
+    var endpoint = this.baseURL.concat('users/'+user.id)
+    console.log("Making POST REQUEST ON URL: " + endpoint)
+    return this.http.post(endpoint, JSON.stringify(user), {headers: this.headers})
   }
 }
