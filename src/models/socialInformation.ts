@@ -1,6 +1,5 @@
 export interface SocialInformationModel {
-    id:number,
-    uf:string,
+    state:string,
     city:string,
     income:number,
     education:string,
