@@ -103,10 +103,10 @@ export class RegisterFormComponent implements OnInit {
       this.valueUsername = '';
       this.statusUsername = true;
     } else {
-      this.valueUsername = 'Digite apenas letras e números';
+      this.valueUsername = 'TEST';
       document.getElementById('alert-username').style.display = "block";
       this.statusUsername = false;
-    } if (username.length < 4 || username.length > 20) {
+    } if (!this.isUsernameSizeValid(username)) {
       this.valueUsername = 'Nome de usuário deve ter entre 4 e 20 caracteres'
       document.getElementById('alert-username').style.display = "block";
       this.statusUsername = false;
@@ -143,13 +143,18 @@ export class RegisterFormComponent implements OnInit {
   }
 
   isUsernameValid(username) {
-    var format = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+    var format = /^[a-zA-Z0-9]+$/;
     if(format.test(username)){
-      return false;
-    }
-    else{
       return true;
     }
+    return false;
+  }
+
+  isUsernameSizeValid(username) {
+    if (username.length > 3 && username.length < 21) {
+      return true;
+    }
+    return false;
   }
 
   isEmailValid(email) {
@@ -170,7 +175,7 @@ export class RegisterFormComponent implements OnInit {
   }
 
   isValidPassword(password) {
-    let PWDRGX = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
+    let PWDRGX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%¨&*()'`{}~^:;<>,./?°ªº¹²³⁴⁵⁶⁷⁸⁹⁰£¢¬])[A-Za-z\d$@$!%*?&]{8,}/;
     if (PWDRGX.test(password)) {
       return true;
     }
