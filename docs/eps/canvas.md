@@ -6,6 +6,7 @@ category: EPS
 
 # Canvas
 
-[Canvas](http://canvas.sebraecanvas.com/3d5365e0958449648325718d47a01298/278970/)
+![Canvas](https://github.com/kleberbritomoreira10/Markdown/blob/master/Canvas.png)
+[Clique aqui para visualizar a versão completa](https://www.sebraecanvas.com/#/dashboard/meus-canvas/278970)
 
 [Voltar](./../)
