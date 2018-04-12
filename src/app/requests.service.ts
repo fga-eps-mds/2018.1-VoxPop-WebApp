@@ -4,6 +4,7 @@ import { environment } from '../environments/environment'
 import { map } from 'rxjs/operators'
 
 import { UserModel } from '../models/user';
+import { SocialInformationModel } from '../models/socialInformation';
 
 @Injectable()
 export class RequestsService {
@@ -21,7 +22,13 @@ export class RequestsService {
 
   postUser(user: UserModel) {
     var endpoint = this.baseURL.concat('users/')
-    console.log("Making POST REQUEST ON URL: " + endpoint)
+    console.log("Making POST REQUEST USER ON URL: " + endpoint)
     return this.http.post(endpoint, JSON.stringify(user), {headers: this.headers, observe: 'response'})
+  }
+
+  postSocialInformation(socialInformation: SocialInformationModel){
+    var endpoint = this.baseURL.concat('socialInformation/')
+    console.log("Making POST REQUEST SOCIAL_INFORMATION ON URL: " + endpoint)
+    return this.http.post(endpoint, JSON.stringify(socialInformation), {headers: this.headers, observe: 'response'})
   }
 }
