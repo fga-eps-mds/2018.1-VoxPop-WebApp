@@ -41,14 +41,15 @@ export class RegisterFormComponent implements OnInit {
       last_name: e.target.elements[2].value,
       password: e.target.elements[3].value,
       email: e.target.elements[5].value,
-     };
-    console.log(user);      
+     };   
     // TODO - adicionar validação de criação. Checar http status code = 201.
     // AINDA é TODO /\
     this.requester.postUser(user).subscribe(response => {
-      let statusUser = response['status'];
+      let statusUser = response.status;
       var userId = response["id"];
-      console.log(statusUser);
+      console.log("STATUS CODE RETURNED ON USER: " + statusUser);
+
+      this.checkStatus(statusUser);
 
       social_information = {
         owner: userId,
@@ -61,14 +62,12 @@ export class RegisterFormComponent implements OnInit {
       };
   
       this.requester.postSocialInformation(social_information).subscribe(response => {
-        let statusSI = response['status'];
-        console.log(statusSI);
+        let statusSI = response.status;
+        console.log("STATUS CODE RETURNED ON SOCIAL_INFORMATION: " + statusSI);
   
         this.checkStatus(statusSI);
   
       });
-
-      this.checkStatus(statusUser);
     });
 
   }
