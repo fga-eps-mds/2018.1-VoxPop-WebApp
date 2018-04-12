@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { environment } from '../environments/environment'
 import { map } from 'rxjs/operators'
+
 import { UserModel } from '../models/user';
 
 @Injectable()
@@ -16,6 +17,7 @@ export class RequestsService {
   getUser(userId) {
      return this.http.get(this.baseURL.concat("users/${userId}"))
   }
+
 
   postUser(user: UserModel) {
     var endpoint = this.baseURL.concat('users/'+user.id)
