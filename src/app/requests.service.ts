@@ -20,7 +20,7 @@ export class RequestsService {
 
 
   postUser(user: UserModel) {
-    var endpoint = this.baseURL.concat('users/'+user.id)
+    var endpoint = this.baseURL.concat('users/')
     console.log("Making POST REQUEST ON URL: " + endpoint)
     return this.http.post(endpoint, JSON.stringify(user), {headers: this.headers})
   }

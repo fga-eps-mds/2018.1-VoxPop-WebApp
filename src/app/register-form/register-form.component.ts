@@ -54,10 +54,28 @@ export class RegisterFormComponent implements OnInit {
     console.log(user);      
     // TODO - adicionar validação de criação. Checar http status code = 201.
     // AINDA é TODO /\
-    this.requester.postUser(user).subscribe(response => console.log(response));
+    this.requester.postUser(user).subscribe(response => {
+      let status = response['status'];
 
-    this.router.navigate(['main-page']);
+      switch (status) {
+        case 0:
+          //CHECK RESPONSE BEFORE CHANGING SCREENS
+          console.log("Request failed with status code: " + status + ". Please check the request and try again.");
+          break;
+        case 201:
+          //redirect user to main or authentication page..
+          this.router.navigate(['main-page']);
+          break;
+        case 301:
+          //Redirect user to error page
+          console.log("Failed with status code 301: Resourced moved permanently. This may be a CORS problem.");
+        default:
+          //Redirect user to error page
+          console.log("Unspecified error. Please inspect network traffic to investigate this issue further");
+          break;
+      }
 
+    });
 
   }
 
