@@ -12,12 +12,12 @@ De 11 de março de 2018 (11/03/2018) à 17 de março de 2018 (17/03/2018).
 
 ## Principais atividades
 
-* Treinamento de git
-* Treinamento de técnicas de programação
-* Mini-treinamento de Python/Django
-* Definição do escopo
-* Início do documento de visão
-* Estrutura básica da arquitetura do projeto
+* Treinamento de git ([#19](https://github.com/fga-gpp-mds/2018.1-VoxPop-WebApp/issues/19))
+* Treinamento de técnicas de programação ([#20](https://github.com/fga-gpp-mds/2018.1-VoxPop-WebApp/issues/20))
+* Treinamento de Python ([#21](https://github.com/fga-gpp-mds/2018.1-VoxPop-WebApp/issues/21))
+* Definição do escopo ([#13](https://github.com/fga-gpp-mds/2018.1-VoxPop-WebApp/issues/13))
+* Início do documento de visão ([#15](https://github.com/fga-gpp-mds/2018.1-VoxPop-WebApp/issues/15))
+* Estrutura básica da arquitetura do projeto ([#28](https://github.com/fga-gpp-mds/2018.1-VoxPop-WebApp/issues/28))
 * Pesquisa e estudo (tecnologias e dados)
 
 ## Total de horas trabalhadas por membro
