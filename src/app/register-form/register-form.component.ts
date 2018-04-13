@@ -46,7 +46,7 @@ export class RegisterFormComponent implements OnInit {
     // AINDA é TODO /\
     this.requester.postUser(user).subscribe(response => {
       let statusUser = response.status;
-      var userId = response["id"];
+      var userId = response.body["id"];
       console.log("STATUS CODE RETURNED ON USER: " + statusUser);
 
       if (this.requester.didSucceed(statusUser)) {

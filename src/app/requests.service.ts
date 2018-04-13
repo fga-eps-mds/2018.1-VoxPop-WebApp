@@ -27,7 +27,7 @@ export class RequestsService {
   }
 
   postSocialInformation(socialInformation: SocialInformationModel){
-    var endpoint = this.baseURL.concat('socialInformation/')
+    var endpoint = this.baseURL.concat('social_informations/')
     console.log("Making POST REQUEST SOCIAL_INFORMATION ON URL: " + endpoint)
     return this.http.post(endpoint, JSON.stringify(socialInformation), {headers: this.headers, observe: 'response'})
   }
