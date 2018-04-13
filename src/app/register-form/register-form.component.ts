@@ -49,50 +49,30 @@ export class RegisterFormComponent implements OnInit {
       var userId = response["id"];
       console.log("STATUS CODE RETURNED ON USER: " + statusUser);
 
-      this.checkStatus(statusUser);
-
-      social_information = {
-        owner: userId,
-        state: e.target.elements[7].value,
-        city: e.target.elements[8].value,
-        income: e.target.elements[9].value,
-        education: e.target.elements[10].value,
-        job: e.target.elements[11].value,
-        birth_date: e.target.elements[12].value
+      if (this.requester.didSucceed(statusUser)) {
+        social_information = {
+          owner: userId,
+          state: e.target.elements[7].value,
+          city: e.target.elements[8].value,
+          income: e.target.elements[9].value,
+          education: e.target.elements[10].value,
+          job: e.target.elements[11].value,
+          birth_date: e.target.elements[12].value
+        };
+    
+        this.requester.postSocialInformation(social_information).subscribe(response => {
+          let statusSI = response.status;
+          console.log("STATUS CODE RETURNED ON SOCIAL_INFORMATION: " + statusSI);
+    
+          if (this.requester.didSucceed(statusSI)) {
+            this.router.navigate(['main-page']);  
+          };
+    
+        });
       };
-  
-      this.requester.postSocialInformation(social_information).subscribe(response => {
-        let statusSI = response.status;
-        console.log("STATUS CODE RETURNED ON SOCIAL_INFORMATION: " + statusSI);
-  
-        this.checkStatus(statusSI);
-  
-      });
-
     });
 
   }
-
-  checkStatus(status){
-    switch (status) {
-      case 0:
-        //CHECK RESPONSE BEFORE CHANGING SCREENS
-        console.log("Request failed with status code: " + status + ". Please check the request and try again.");
-        break;
-      case 201:
-        //redirect user to main or authentication page..
-        //this.router.navigate(['main-page']);
-        break;
-      case 301:
-        //Redirect user to error page
-        console.log("Failed with status code 301: Resourced moved permanently. This may be a CORS problem.");
-      default:
-        //Redirect user to error page
-        console.log("Unspecified error. Please inspect network traffic to investigate this issue further");
-        break;
-    }
-  }
-
 
   onKeyPassword(e: any) {
     this.password = e.target.value;

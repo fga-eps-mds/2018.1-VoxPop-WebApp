@@ -31,4 +31,24 @@ export class RequestsService {
     console.log("Making POST REQUEST SOCIAL_INFORMATION ON URL: " + endpoint)
     return this.http.post(endpoint, JSON.stringify(socialInformation), {headers: this.headers, observe: 'response'})
   }
+
+  didSucceed(status){
+    switch (status) {
+      case 0:
+        //CHECK RESPONSE BEFORE CHANGING SCREENS
+        console.log("Request failed with status code: " + status + ". Please check the request and try again.");
+        return false;
+      case 201:
+        //redirect user to main or authentication page..
+        return true;
+      case 301:
+        //Redirect user to error page
+        console.log("Failed with status code 301: Resourced moved permanently. This may be a CORS problem.");
+        return false;
+      default:
+        //Redirect user to error page
+        console.log("Unspecified error. Please inspect network traffic to investigate this issue further");
+        return false;
+    }
+  }
 }
