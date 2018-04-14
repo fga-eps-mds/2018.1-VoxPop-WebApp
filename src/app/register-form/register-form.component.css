@@ -1,0 +1,19 @@
+.vars{
+    --primary-color: #2E3950; 
+    --highlight-color: #62140E;
+    --background-color: #F2ECE9;
+    --detail-color: #C6CACD;
+    --alternative-blue: #0C5575;
+}
+
+.register-card{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2);
+    transition: .3s;
+    padding: 5% 10% 5% 10%;
+    background: #62140E;
+    color: #fff;
+}
+
+.register-card:hover {
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, .2);
+}

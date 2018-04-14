@@ -3,7 +3,7 @@
     <div class="col-md-4 col-md-offset-4">
     <form (submit)="registerUser($event)">
 
-      <div id="firstPart">
+      <div id="firstPart" class="register-card">
            <div class="form-group">
                 <label>Nome de Usuário</label>
                 <input type="text" class="form-control" placeholder="Entre o nome do usuário"
@@ -46,10 +46,12 @@
                   <p>{{valueEmail}}</p>
                 </div>
            </div>
-           <button class="btn btn-primary"
-                   type="button" id="nextBtn"
-                   (click)="clickFirstButton()">
-                   Próxima parte</button>
+           <div style="text-align: center">
+            <button class="btn btn-primary"
+            type="button" id="nextBtn"
+            (click)="clickFirstButton()">
+            Próxima parte</button>
+           </div>
       </div>
 
 
