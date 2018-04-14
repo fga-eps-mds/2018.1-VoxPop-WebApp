@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-4 col-md-offset-4">
+        <form (submit)="login()">
+            <div class="form-group">
+                 <label>Email</label>
+                 <input type="text" class="form-control" placeholder="Entre o email do usuário"
+                 (keyup)="onKeyEmail($event)">
+                 <div class="alert alert-danger" role="alert" id="alert-email" style="display:none">
+                   <p>{{valueEmail}}</p>
+                 </div>
+            </div>
+            <div class="form-group">
+                 <label>Senha</label>
+                 <input type="password" class="form-control"
+                 (keyup)="onKeyPassword($event)"
+                 placeholder="Senha">
+                 <div class="alert alert-danger" role="alert" id="alert-invalid-password" style="display:none">
+                   <p>{{valuePassword}}</p>
+                 </div>
+            </div>
+            <button class="btn btn-primary" type="submit" id="loginBtn">Entrar</button>
+        </form>
+    </div>
+  </div>
+</div>

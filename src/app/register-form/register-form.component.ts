@@ -35,13 +35,13 @@ export class RegisterFormComponent implements OnInit {
     var user : UserModel;
     var social_information: SocialInformationModel;
 
-    user = { 
+    user = {
       username: e.target.elements[0].value,
       first_name: e.target.elements[1].value,
       last_name: e.target.elements[2].value,
       password: e.target.elements[3].value,
       email: e.target.elements[5].value,
-     };   
+     };
     // TODO - adicionar validação de criação. Checar http status code = 201.
     // AINDA é TODO /\
     this.requester.postUser(user).subscribe(response => {
@@ -59,15 +59,15 @@ export class RegisterFormComponent implements OnInit {
           job: e.target.elements[11].value,
           birth_date: e.target.elements[12].value
         };
-    
+
         this.requester.postSocialInformation(social_information).subscribe(response => {
           let statusSI = response.status;
           console.log("STATUS CODE RETURNED ON SOCIAL_INFORMATION: " + statusSI);
-    
+
           if (this.requester.didSucceed(statusSI)) {
-            this.router.navigate(['main-page']);  
+            this.router.navigate(['main-page']);
           };
-    
+
         });
       };
     });
@@ -97,14 +97,14 @@ export class RegisterFormComponent implements OnInit {
       this.valueUsername = '';
       this.statusUsername = true;
     } else {
-      this.valueUsername = 'TEST';
+      this.valueUsername = 'Nome de usuário inválido';
       document.getElementById('alert-username').style.display = "block";
       this.statusUsername = false;
     } if (!this.isUsernameSizeValid(username)) {
       this.valueUsername = 'Nome de usuário deve ter entre 4 e 20 caracteres'
       document.getElementById('alert-username').style.display = "block";
       this.statusUsername = false;
-    } 
+    }
   }
 
   onKeyEmail(e: any) {
