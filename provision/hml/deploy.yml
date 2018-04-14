@@ -27,19 +27,19 @@
         force: yes
 
     - name: Stop application container if running
-      shell: "docker stop $(docker ps -a -q)"
+      shell: "docker stop $(docker ps -a -q) || true"
       become: true
       args:
         chdir: "{{ install_root }}/{{ project_name }}"
 
     - name: Remove application container if exists
-      shell: "docker rm $(docker ps -a -q)"
+      shell: "docker rm $(docker ps -a -q) || true"
       become: true
       args:
         chdir: "{{ install_root }}/{{ project_name }}"
 
     - name: Build/rebuild application image
-      command: "docker build -t {{ project_name }}:{{ env }} ."
+      command: "docker build -t {{ project_name }}:{{ env }} -f provision/{{ env }}/Dockerfile ."
       become: true
       args:
         chdir: "{{ install_root }}/{{ project_name }}"
