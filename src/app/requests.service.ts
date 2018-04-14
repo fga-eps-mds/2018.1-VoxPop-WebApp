@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators'
 
 import { UserModel } from '../models/user';
 import { SocialInformationModel } from '../models/socialInformation';
+import { LoginModel } from '../models/login'
 
 @Injectable()
 export class RequestsService {
@@ -30,6 +31,12 @@ export class RequestsService {
     var endpoint = this.baseURL.concat('social_informations/')
     console.log("Making POST REQUEST SOCIAL_INFORMATION ON URL: " + endpoint)
     return this.http.post(endpoint, JSON.stringify(socialInformation), {headers: this.headers, observe: 'response'})
+  }
+
+  postAuthentication(login: LoginModel){
+      var endpoint = this.baseURL.concat('token_auth/')
+      console.log("Making POST AUTHENTICATION REQUEST ON URL: " + endpoint)
+      return this.http.post(endpoint, JSON.stringify(login), {headers: this.headers, observe: 'response'})
   }
 
   didSucceed(status){

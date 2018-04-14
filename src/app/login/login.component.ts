@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginModel } from '../../models/login';
-// import { AuthenticationService } from '../_services/index';
+import { RequestsService } from '../requests.service';
 
 @Component({
   selector: 'app-login',
@@ -10,31 +10,32 @@ import { LoginModel } from '../../models/login';
 })
 
 export class LoginComponent implements OnInit {
-    model: LoginModel;
-    loading = false;
-    error = '';
 
-    constructor(
-        // private router: Router,
-        // private authenticationService: AuthenticationService
-    )
-         { }
+    constructor(private router:Router,
+                private requester:RequestsService){ }
 
     ngOnInit() {
-        // reset login status
-        // this.authenticationService.logout();
     }
 
-    // login() {
-    //     this.loading = true;
-    //     this.authenticationService.login(this.model.username, this.model.password)
-    //         .subscribe(result => {
-    //             if (result === true) {
-    //                 this.router.navigate(['/']);
-    //             } else {
-    //                 this.error = 'Username or password is incorrect';
-    //                 this.loading = false;
-    //             }
-    //         });
-    // }
+    login(e: any){
+        var user: LoginModel;
+        user = {
+            username: e.target.elements[0].value,
+            password: e.target.elements[1].value
+        }
+        console.log(user);
+
+        this.requester.postAuthentication(user).subscribe(response => {
+            let statusAuthentication = response.status;
+            let token = response.headers["token"];
+
+            if(this.requester.didSucceed(statusAuthentication)){
+                this.router.navigate(['main-page']);
+            }else{
+                alert("Email ou senha inválido")
+            }
+        })
+    }
+
+
 }
