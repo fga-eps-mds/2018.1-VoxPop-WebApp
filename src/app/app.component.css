@@ -1,5 +1,27 @@
-#full-page{
+/*#full-page{
     background: #0C5575;
     color: #fff;
     height: 100%;
+}*/
+
+
+#wrap {
+    min-height: 100%;
+}
+
+#main{
+    overflow: auto;
+    padding-bottom: 55px;
+
+}
+
+h1, h2, h3, h4, h5, h6, p, div {
+    font-family: sans-serif;
+}
+
+html, body{
+    padding-top: 35px;
+    height: 100%;
+    background-color: #d4dbe0;
+
 }
