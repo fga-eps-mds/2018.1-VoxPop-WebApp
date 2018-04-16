@@ -40,12 +40,12 @@ projeto, ou a área de negócio em geral. Em seguida, a análise SWOT identifica
 Forças | Fraquezas | Oportunidades | Ameaças
 -------|---------- |---------------|------- |
 Integração da equipe | Falta de experiência da maioria da equipe com a documentação e a tecnologia | Possibilidade de evolução do WebApp após o término da disciplina | Mudanças no calendário acadêmico 
-| Comunicação do time | | | Redução de membros 
-| Vontade | | | Mudanças no escopo 
-| Bom conhecimento da equipe de gerência |  |  | Atraso nas entregas das atividades 
-|  |  |  | Dificuldade com as tecnologias 
-|  |  |  | Erros de estimativas e planejamento 
-|  |  |  | Falha de comunicação entre os membros da equipe
+Comunicação do time | &nbsp; | &nbsp; | Redução de membros 
+Vontade | &nbsp; | &nbsp; | Mudanças no escopo 
+Bom conhecimento da equipe de gerência | &nbsp; | &nbsp; | Atraso nas entregas das atividades -
+&nbsp; | &nbsp; | &nbsp; | Dificuldade com as tecnologias 
+&nbsp; | &nbsp; | &nbsp; | Erros de estimativas e planejamento 
+&nbsp; | &nbsp; | &nbsp; | Falha de comunicação entre os membros da equipe
 
 ### Definições de Probabilidade, Impacto dos Riscos e Matriz de Probabilidade x Impacto
 
@@ -61,6 +61,7 @@ Moderada | 40% < P <= 60% | 3
 Alta | 60% < P <= 80% | 4
 Muito Alta | 80% < P <= 100% | 5
 
+
 **Impacto**
 
 Impacto (I) | Descrição | Peso
@@ -70,6 +71,7 @@ Baixo | Pouca influência no desenvolvimento do projeto | 2
 Moderado | Notável ao projeto, mas sem grandes consequências | 3
 Alto | Dificulta o desenvolvimento do projeto | 4
 Muito Alto | Impossibilita o prosseguimento do projeto | 5
+
 
 **Matriz de Probabilidade x Impacto**
 
@@ -82,6 +84,7 @@ Baixa | 2 | 4 | 6 | 8 | 10
 Moderada | 3 | 6 | 9 | 12 | 15
 Alta | 4 | 8 | 12 | 16 | 20
 Muito Alta | 5 | 10 | 15 | 20 | 25
+
 
 **Prioridade**
 
@@ -117,6 +120,7 @@ Falhas de comunicação na equipe | R10 | Gerencial | Falta de organização da 
 Obtenção dos dados da API da Câmara dos Deputados | R11 | Técnico | Não conseguir de maneira fidedigna os dados relacionados aos deputados e aos projetos de lei | Desenvolvimento de praticamente todas as funcionalidades do WebApp |
 Baixo entendimento do escopo do projeto | R12 | Gerencial | Integrantes produzirem o que não era esperado | Desenvolvimento do produto incorreto |
 
+
 **Riscos Positivos**
 
 Causa | Risco | Categoria | Descrição | Impacto
@@ -143,6 +147,7 @@ R09 | Moderada | Alto | Média | Mitigar - Pesquisar soluções em projetos ante
 R10 | Muito Baixa | Alto | Muito Baixa | Prevenir - Definir ferramentas de comunicação e agendar dias e horários de reuniões presenciais | André Bedran
 R11 | Moderada | Muito Alto | Alta | Prevenir - Verificar as informações da API e estudar formas de extraí-la | Mateus de Morais
 R12 | Moderada | Alto | Média | Prevenir - Comunicação constante entre os membros para manter o alinhamento da equipe | Kleber Brito
+
 
 **Riscos Positivos**
 
