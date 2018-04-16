@@ -110,10 +110,12 @@ ValorSemestral = 10 * 17 * 10 * 36,17 = R$ 61489,00
 
 Gastos com internet, energia elétrica foram desprezados pois seriam algo praticamente fixos e que seriam utilizados pelo indivíduo mesmo sem o desenvolvimento do projeto. E para a hospedagem da aplicação pretende-se utilizar o gcm, usufruindo de uns free trials.
 
-Dessa forma tem-se como gasto estimado para o desenvolvimento do VoxPop a soma do valor com os recursos humanos + aparato tecnológico:
+Dessa forma tem-se como gasto estimado para o desenvolvimento do VoxPop a soma do valor com os recursos humanos + aparato tecnológico + 10% do valor total, que é uma faixa de segurança :
 
 ```
-ValorTotal = 61489,00 + 39470,00 = R$ 100959,00
+Recursos Humanos + equipamentos = R$ 61489,00 + R$ 39470,00 = R$ 100959,00
+ValorTotal = R$ 100959,00 + R$ 10095,90 = R$ 111054,90
+
 ```
 
 ### Lista das partes interessadas:
