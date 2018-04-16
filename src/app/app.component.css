@@ -12,7 +12,11 @@
 #main{
     overflow: auto;
     padding-bottom: 55px;
+	
+}
 
+#footer{
+	bottom: 0;
 }
 
 h1, h2, h3, h4, h5, h6, p, div {
@@ -23,5 +27,6 @@ html, body{
     padding-top: 35px;
     height: 100%;
     background-color: #d4dbe0;
+    overflow: auto;
 
 }
