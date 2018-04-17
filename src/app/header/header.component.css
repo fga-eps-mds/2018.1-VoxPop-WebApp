@@ -7,7 +7,7 @@
 }
 .navbar-custom .navbar-brand:hover,
 .navbar-custom .navbar-brand:focus {
-  color: #e6e6e6;
+  color: #d4dbe0;
   background-color: transparent;
 }
 .navbar-custom .navbar-text {
@@ -20,7 +20,7 @@
 .navbar-custom .navbar-nav > li > a:hover,
 .navbar-custom .navbar-nav > li > a:focus {
   color: white;
-  background-color: #c0c0c0;
+  background-color: #5bc0de;
 }
 .navbar-custom .navbar-nav > .open > a .caret,
 .navbar-custom .navbar-nav > .open > a:hover .caret,
@@ -32,5 +32,5 @@
   color: #ffffff;
 }
 .navbar-custom .navbar-link:hover {
-  color: #c0c0c0;
+    color: #5bc0de;
 }
