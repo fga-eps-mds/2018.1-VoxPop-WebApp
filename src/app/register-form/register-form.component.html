@@ -5,24 +5,26 @@
 
       <div id="firstPart" class="register-card">
            <div class="form-group">
+                <span class="required">*</span>
                 <label>Nome de Usuário</label>
-                <input type="text" class="form-control" placeholder="Entre o nome do usuário"
+                <input type="text" class="form-control" placeholder="Entre o nome do usuário" id = "username"
                 (keyup)="onKeyUsername($event)">
                 <div class="alert alert-danger" role="alert" id="alert-username" style="display:none">
                   <p>{{valueUsername}}</p>
                 </div>
            </div>
            <div class="form-group">
-            <label>Primeiro Nome</label>
-            <input type="text" class="form-control" placeholder="Digite o seu primeiro nome">
+              <label>Primeiro Nome</label>
+              <input type="text" class="form-control" placeholder="Digite o seu primeiro nome">
            </div>
            <div class="form-group">
-            <label>Sobrenome</label>
-            <input type="text" class="form-control" placeholder="Digite o seu sobrenome">
+              <label>Sobrenome</label>
+              <input type="text" class="form-control" placeholder="Digite o seu sobrenome">
            </div>
            <div class="form-group">
+                <span class="required">*</span>
                 <label>Senha</label>
-                <input type="password" class="form-control" minlength="8" 
+                <input type="password" class="form-control" minlength="8" id="password"
                 (keyup)="onKeyPassword($event)" 
                 placeholder="Senha">
                 <div class="alert alert-danger" role="alert" id="alert-invalid-password" style="display:none">
@@ -30,8 +32,9 @@
                 </div>
            </div>
            <div class="form-group">
+                <span class="required">*</span>
                 <label>Confirmar Senha</label>
-                <input type="password" class="form-control" minlength="6" 
+                <input type="password" class="form-control" minlength="6" id="confirm-password"
                 maxlength="20" (keyup)="onKeyConfirmPassword($event)" 
                 (keyup)="onKeyValidatorPassword($event)" placeholder="Confirmar senha">
                 <div class="alert alert-danger" role="alert" id="alert-password" style="display:none">
@@ -39,12 +42,17 @@
                 </div>
            </div>
            <div class="form-group">
+                <span class="required">*</span>
                 <label>E-mail</label>
-                <input type="email" class="form-control"
+                <input type="email" class="form-control" id="email"
                 (keyup)="onKeyEmail($event)" placeholder="exemplo@exemplo.com">
                 <div class="alert alert-danger" role="alert" id="alert-email" style="display:none">
                   <p>{{valueEmail}}</p>
                 </div>
+           </div>
+           <div style="text-align: right">
+             <span class="required">*</span>
+             Obrigatório
            </div>
            <div style="text-align: center">
             <button class="btn btn-primary"
@@ -55,7 +63,7 @@
       </div>
 
 
-      <div style="display:none" id="secondPart">
+      <div style="display:none" id="secondPart" class="register-card">
            <div class="form-group">
                 <label>Estado</label>
                 <select name="Estado" class="form-control">
