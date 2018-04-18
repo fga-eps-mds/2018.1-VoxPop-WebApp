@@ -16,6 +16,7 @@ export class RegisterFormComponent implements OnInit {
   valueInvalidPassword = '';
   valueUsername = '';
   valueEmail = '';
+  valueInvalidInput = '';
   password = '';
   confirmPassword = '';
   username = '';
@@ -195,25 +196,27 @@ export class RegisterFormComponent implements OnInit {
             document.querySelector('#registerBtn').removeAttribute('disabled');
        }
        else {
+        document.getElementById('alert-invalid-inputs').style.display = "block";
+        this.valueInvalidInput = 'Por favor, preencha os campos obrigatórios';
         if(!this.statusPassword) {
           this.borderColor('password', this.danger);
           this.borderColor('confirm-password', this.danger);
-       } else {
-        this.borderColor('password', this.sucess);
-        this.borderColor('confirm-password', this.sucess);
-       }
+        } else {
+          this.borderColor('password', this.sucess);
+          this.borderColor('confirm-password', this.sucess);
+        }
 
-       if(!this.statusUsername){
-        this.borderColor('username', this.danger);
-       } else {
-        this.borderColor('username', this.sucess);
-       }
+        if(!this.statusUsername){
+          this.borderColor('username', this.danger);
+        } else {
+          this.borderColor('username', this.sucess);
+        }
 
-       if(!this.statusEmail){
-        this.borderColor('email', this.danger);
-       } else {
-         this.borderColor('email', this.sucess);
-       }
+        if(!this.statusEmail){
+          this.borderColor('email', this.danger);
+        } else {
+          this.borderColor('email', this.sucess);
+        }
        }
  }
 
