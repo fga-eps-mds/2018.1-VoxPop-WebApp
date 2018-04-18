@@ -67,7 +67,7 @@ export class RegisterFormComponent implements OnInit {
           console.log("STATUS CODE RETURNED ON SOCIAL_INFORMATION: " + statusSI);
     
           if (this.requester.didSucceed(statusSI)) {
-            this.router.navigate(['main-page']);  
+            this.router.navigate(['']);  
           };
     
         });
