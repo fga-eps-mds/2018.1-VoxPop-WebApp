@@ -1,21 +1,12 @@
 ---
 layout: default
-title: Quem somos
+title: Quem Somos
 category: Geral
 ---
 
-# Quem somos nós
+# Quem Somos
 
 O VoxPop é uma aplicação criada no contexto das disciplinas Métodos de Desenvolvimento de Software (MDS) e Engenharia de Produto de Software (EPS) da Universidade de Brasília (UnB) - Faculdade do Gama (FGA), que visa criar uma classificação pessoal de deputados com base na compatibilidade dos usuários com os parlamentares.
-
-# Nossos endereços
-
-* ![Online](https://img.shields.io/badge/STATUS-Online-green.svg) **--->** [**Documentação [https://docs.voxpop.ml]**](https://docs.voxpop.ml)
-* ![Online](https://img.shields.io/badge/STATUS-Online-green.svg) **--->** [**Jenkins (CI) [http://jenkins.voxpop.ml]**](http://jenkins.voxpop.ml)
-* ![Online](https://img.shields.io/badge/STATUS-Online-green.svg) **--->** [**API de Homologação [http://hml.api.voxpop.ml]**](http://hml.api.voxpop.ml)
-* ![Online](https://img.shields.io/badge/STATUS-Online-green.svg) **--->** [**WebApp de Homologação [http://hml.voxpop.ml]**](http://hml.voxpop.ml)
-* ![Offline](https://img.shields.io/badge/STATUS-Offline-red.svg) **--->** [**API de Produção [http://api.voxpop.ml]**](http://hml.api.voxpop.ml)
-* ![Offline](https://img.shields.io/badge/STATUS-Offline-red.svg) **--->** [**WebApp de Produção [http://voxpop.ml]**](http://hml.voxpop.ml)
 
 # Nosso time
 
