@@ -1,31 +1,32 @@
 ---
 layout: default
+title: Página Inicial
 ---
 
-# Quem somos nós
+## Página Principal
 
-O VoxPop é uma aplicação criada no contexto das disciplinas Métodos de Desenvolvimento de Software (MDS) e Engenharia de Produto de Software (EPS) da Universidade de Brasília (UnB) - Faculdade do Gama (FGA), que visa criar uma classificação pessoal de deputados com base na compatibilidade dos usuários com os parlamentares.
+![Página Principal](https://image.ibb.co/eXQEmc/prot1.png)
 
-# Nossos endereços
+[Ver em tamanho maior](https://image.ibb.co/eXQEmc/prot1.png)
 
-* ![Online](https://img.shields.io/badge/STATUS-Online-green.svg) **--->** [**Documentação [https://docs.voxpop.ml]**](https://docs.voxpop.ml)
-* ![Online](https://img.shields.io/badge/STATUS-Online-green.svg) **--->** [**Jenkins (CI) [http://jenkins.voxpop.ml]**](http://jenkins.voxpop.ml)
-* ![Online](https://img.shields.io/badge/STATUS-Online-green.svg) **--->** [**API de Homologação [http://hml.api.voxpop.ml]**](http://hml.api.voxpop.ml)
-* ![Online](https://img.shields.io/badge/STATUS-Online-green.svg) **--->** [**WebApp de Homologação [http://hml.voxpop.ml]**](http://hml.voxpop.ml)
-* ![Offline](https://img.shields.io/badge/STATUS-Offline-red.svg) **--->** [**API de Produção [http://api.voxpop.ml]**](http://hml.api.voxpop.ml)
-* ![Offline](https://img.shields.io/badge/STATUS-Offline-red.svg) **--->** [**WebApp de Produção [http://voxpop.ml]**](http://hml.voxpop.ml)
+A página principal, acessível através do clique na logo do site, leva diretamente a uma seleção aleatória de Projetos de Lei que podem ser votados ou ignorados pelo usuário. Conforme a votação é realizada, deve ser atualizada a lista de raking de representação, ordenada por indíce de representatividade, contendo o nome, partido e uma foto do deputado em questão. Ao final da lista, deve ser possível efetuar a consulta aos deputados fixados pelo usuário.
 
-# Nosso time
+## Página de Projetos de Lei
 
-| | **Nome** | **E-mail** | **GitHub** |
-|-|------|--------|--------|
-|![André Bedran](https://avatars1.githubusercontent.com/u/5595312?s=100&v=4)|André Bedran|affbedran@gmail.com|[affbedran](https://github.com/affbedran)|
-| ![Breno Mariz](https://avatars3.githubusercontent.com/u/21313218?v=4&s=100)| Breno Mariz | breno-mariz@gmail.com | [breno-mariz](https://github.com/breno-mariz) |
-|![Eduardo Lima](https://avatars0.githubusercontent.com/u/26698993?s=100&v=4)|Eduardo Lima|eduardolimrib@gmail.com|[Eduardolimr](https://github.com/Eduardolimr) |
-|![Érico Bandeira](https://avatars0.githubusercontent.com/u/26394460?s=100&v=4)|Érico Bandeira|ericobandeira@hotmail.com|[ericGOD24](https://github.com/ericGOD24) |
-|![Filipe Toyoshima](https://avatars3.githubusercontent.com/u/29482983?s=100&v=4)|Filipe Toyoshima|filipetoyoshima@gmail.com|[filipetoyoshima](https://github.com/filipetoyoshima) |
-|![Kleber Brito](https://avatars2.githubusercontent.com/u/8596276?s=100&v=4)|Kleber Brito|kleberbritomoreira10@gmail.com|[kleberbritomoreira10](https://github.com/kleberbritomoreira10) |
-|![Lucas Vitor](https://avatars1.githubusercontent.com/u/27078392?s=100&v=4)|Lucas Vitor|lucasvitorifg@gmail.com|[Lucas362](https://github.com/Lucas362) |
-|![Mateus de Morais](https://avatars1.githubusercontent.com/u/20940145?s=100&v=4)|Mateus de Morais|mateusmorais78@gmail.com|[mateusdemorais](https://github.com/mateusdemorais) |
-|![Rossicler](https://avatars1.githubusercontent.com/u/29635581?s=100&v=4)|Rossicler|rossiclerjr@gmail.com|[rossicler](https://github.com/rossicler) |
-|![Samuel Borges](https://avatars0.githubusercontent.com/u/23219524?s=100&v=4)|Samuel Borges|samuelmordred@gmail.com|[SamuelMordred](https://github.com/SamuelMordred) |
+![Página de PLs](https://image.ibb.co/i5poex/prot2.png)
+
+[Ver em tamanho maior](https://image.ibb.co/i5poex/prot2.png)
+
+A barra de navegação contém uma opção para a lista de Projetos de Lei já votados pelo usuário para alteração de histórico. É importante notar que os projetos de lei fixados devem ser exibidos no topo da lista.
+
+Cada linha dessa lista deve conter o título do PL, uma breve descrição, um botão que redireciona o usuário para o texto na íntegra, as opções de aprovar, reprovar e fixar (ou desafixar, caso já esteja fixado).
+
+## Página de Deputados
+
+![Página de Deputados](https://image.ibb.co/fcbn6c/prot3.png)
+
+[Ver em tamanho maior](https://image.ibb.co/i5poex/prot2.png)
+
+A barra de navegação contém uma opção para a lista de deputados. No topo deve conter a lista de deputados fixados.
+
+Cada linha da lista deve conter nome, foto e partido de cada deputado, além de um botão de redirecionamento para visualização completa do perfil na página da Câmara dos Deputados e de um botão para fixar o deputado.

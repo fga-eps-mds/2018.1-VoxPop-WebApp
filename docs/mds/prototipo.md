@@ -12,7 +12,7 @@ category: MDS
 
 [Ver em tamanho maior](https://image.ibb.co/eXQEmc/prot1.png)
 
-A página principal, acessível através do clique na logo do site, leva diretamente a uma seleção alatória de Projetos de Lei que podem ser votados ou ignorados pelo usuário. Conforme a votação é realizada, deve ser atualizada a lista de raking de representação, ordenada por indíce de representatividade, contendo o nome, partido e uma foto do deputado em questão. Ao final da lista, deve ser possível efetuar a consulta aos deputados fixados pelo usuário.
+A página principal, acessível através do clique na logo do site, leva diretamente a uma seleção aleatória de Projetos de Lei que podem ser votados ou ignorados pelo usuário. Conforme a votação é realizada, deve ser atualizada a lista de raking de representação, ordenada por indíce de representatividade, contendo o nome, partido e uma foto do deputado em questão. Ao final da lista, deve ser possível efetuar a consulta aos deputados fixados pelo usuário.
 
 ## Página de Projetos de Lei
 
