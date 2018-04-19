@@ -12,6 +12,7 @@ import { HttpResponseBase } from '@angular/common/http';
 
 export class LoginComponent implements OnInit {
 
+    valueInvalid = "Usuário ou senha inválida"
     constructor(private router:Router,
                 private requester:RequestsService){ }
 
@@ -39,8 +40,15 @@ export class LoginComponent implements OnInit {
         },
         error => {
             console.log(error);
+            let statusAuthentication = error.status;
+            this.errorHandler(statusAuthentication);
         })
     }
 
+    errorHandler (status){
+        if(status == 400){
+            document.getElementById('alert-invalid').style.display="block";
+        }
+    }
 
 }

@@ -4,6 +4,9 @@
       <form (submit)="login($event)">
         <div class="login-card">
           <div class="form-group">
+            <div class="alert alert-danger" role="alert" id="alert-invalid" style="display:none">
+              <p>{{valueInvalid}}</p>
+            </div>
             <label>Nome de usuário</label>
             <input type="text" class="form-control" placeholder="Entre o nome do usuário">
           </div>
