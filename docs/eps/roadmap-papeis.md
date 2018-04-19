@@ -14,4 +14,8 @@ category: EPS
 ![Scrum Master](images/RoadMap-Scrum-Master.jpg)  
 [Clique aqui para ampliar](images/RoadMap-Scrum-Master.jpg)
 
+## DevOps
+![DevOps](images/RoadMap-DevOps.png)  
+[Clique aqui para ampliar](images/RoadMap-DevOps.png)
+
 [Voltar](./../)
