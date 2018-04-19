@@ -1,7 +1,16 @@
-<div id="full-page">
-  <app-header></app-header>
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Quattrocento+Sans" />
 
-  <router-outlet></router-outlet>
+<html>
+    <app-header></app-header>
 
-  <app-footer></app-footer>
-</div>
+    <body>
+        <div id="wrap">
+            <div id="main">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+        <app-footer></app-footer>
+    </body>
+    
+
+</html>

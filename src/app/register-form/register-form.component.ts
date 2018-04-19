@@ -16,6 +16,7 @@ export class RegisterFormComponent implements OnInit {
   valueInvalidPassword = '';
   valueUsername = '';
   valueEmail = '';
+  valueInvalidInput = '';
   password = '';
   confirmPassword = '';
   username = '';
@@ -23,6 +24,8 @@ export class RegisterFormComponent implements OnInit {
   statusValidPassword = false;
   statusUsername = false;
   statusEmail = false;
+  danger = '#d9534f';
+  sucess = '#5cb85c';
 
   constructor(private router:Router,
               private requester:RequestsService) { }
@@ -65,7 +68,7 @@ export class RegisterFormComponent implements OnInit {
           console.log("STATUS CODE RETURNED ON SOCIAL_INFORMATION: " + statusSI);
     
           if (this.requester.didSucceed(statusSI)) {
-            this.router.navigate(['main-page']);  
+            this.router.navigate(['']);  
           };
     
         });
@@ -80,9 +83,11 @@ export class RegisterFormComponent implements OnInit {
       this.valueInvalidPassword = 'Sua senha deve ter no mínimo 8 caracteres, dos quais: Um é numérico; Um é letra maiúscula; Um é caractere especial.';
       document.getElementById('alert-invalid-password').style.display = "block";
       this.statusValidPassword = false;
+      this.borderColor('password', this.danger);
     } else {
       document.getElementById('alert-invalid-password').style.display = "none";
       this.statusValidPassword = true;
+      this.borderColor('password', this.sucess);
     }
   }
 
@@ -96,14 +101,17 @@ export class RegisterFormComponent implements OnInit {
       document.getElementById('alert-username').style.display = "none";
       this.valueUsername = '';
       this.statusUsername = true;
+      this.borderColor('username', this.sucess);
     } else {
       this.valueUsername = 'TEST';
       document.getElementById('alert-username').style.display = "block";
       this.statusUsername = false;
+      this.borderColor('username', this.danger);
     } if (!this.isUsernameSizeValid(username)) {
       this.valueUsername = 'Nome de usuário deve ter entre 4 e 20 caracteres'
       document.getElementById('alert-username').style.display = "block";
       this.statusUsername = false;
+      this.borderColor('username', this.danger);
     } 
   }
 
@@ -113,14 +121,17 @@ export class RegisterFormComponent implements OnInit {
       document.getElementById('alert-email').style.display = "none";
       this.valueEmail = '';
       this.statusEmail = true;
+      this.borderColor('email', this.sucess);
     } else {
       document.getElementById('alert-email').style.display = "block";
       this.valueEmail = 'Formato do E-mail está incorreto';
       this.statusEmail = false;
+      this.borderColor('email', this.danger);
     } if(email.length < 4) {
       document.getElementById('alert-email').style.display = "block";
       this.valueEmail = 'Formato do E-mail está incorreto';
       this.statusEmail = false;
+      this.borderColor('email', this.danger);
     }
   }
 
@@ -129,10 +140,12 @@ export class RegisterFormComponent implements OnInit {
       document.getElementById('alert-password').style.display = "none";
       this.valuePassword = '';
       this.statusPassword = true;
+      this.borderColor('confirm-password', this.sucess);
     } else {
       this.valuePassword = 'A confirmação de senha não corresponde';
       document.getElementById('alert-password').style.display = "block";
       this.statusPassword = false;
+      this.borderColor('confirm-password', this.danger);
     }
   }
 
@@ -183,9 +196,33 @@ export class RegisterFormComponent implements OnInit {
             document.querySelector('#registerBtn').removeAttribute('disabled');
        }
        else {
-         alert("Por favor, cheque os campos");
+        document.getElementById('alert-invalid-inputs').style.display = "block";
+        this.valueInvalidInput = 'Por favor, preencha os campos obrigatórios';
+        if(!this.statusPassword) {
+          this.borderColor('password', this.danger);
+          this.borderColor('confirm-password', this.danger);
+        } else {
+          this.borderColor('password', this.sucess);
+          this.borderColor('confirm-password', this.sucess);
+        }
+
+        if(!this.statusUsername){
+          this.borderColor('username', this.danger);
+        } else {
+          this.borderColor('username', this.sucess);
+        }
+
+        if(!this.statusEmail){
+          this.borderColor('email', this.danger);
+        } else {
+          this.borderColor('email', this.sucess);
+        }
        }
  }
+
+ borderColor(id, color){
+  document.getElementById(id).style.borderColor = color;
+}
 
  clickReturnButton() {
       document.getElementById("firstPart").style.display = "block";
