@@ -36,11 +36,12 @@ A barra de navegação contém uma opção para a lista de deputados. No topo de
 
 Cada linha da lista deve conter nome, foto e partido de cada deputado, além de um botão de redirecionamento para visualização completa do perfil na página da Câmara dos Deputados e de um botão para fixar o deputado.
 
-## Endereços - VoxPop 
+## Endereços - VoxPop
 
 * ![Online](https://img.shields.io/badge/STATUS-Online-green.svg) **--->** [**Documentação [https://docs.voxpop.ml]**](https://docs.voxpop.ml)
 * ![Online](https://img.shields.io/badge/STATUS-Online-green.svg) **--->** [**Jenkins (CI) [http://jenkins.voxpop.ml]**](http://jenkins.voxpop.ml)
+* ![Online](https://img.shields.io/badge/STATUS-Online-green.svg) **--->** [**Grafana [http://monitor.voxpop.ml]**](http://monitor.voxpop.ml)
 * ![Online](https://img.shields.io/badge/STATUS-Online-green.svg) **--->** [**API de Homologação [http://hml.api.voxpop.ml]**](http://hml.api.voxpop.ml)
 * ![Online](https://img.shields.io/badge/STATUS-Online-green.svg) **--->** [**WebApp de Homologação [http://hml.voxpop.ml]**](http://hml.voxpop.ml)
-* ![Offline](https://img.shields.io/badge/STATUS-Offline-red.svg) **--->** [**API de Produção [http://api.voxpop.ml]**](http://hml.api.voxpop.ml)
-* ![Offline](https://img.shields.io/badge/STATUS-Offline-red.svg) **--->** [**WebApp de Produção [http://voxpop.ml]**](http://hml.voxpop.ml)
+* ![Online](https://img.shields.io/badge/STATUS-Online-green.svg) **--->** [**API de Produção [http://api.voxpop.ml]**](http://hml.api.voxpop.ml)
+* ![Online](https://img.shields.io/badge/STATUS-Online-green.svg) **--->** [**WebApp de Produção [http://voxpop.ml]**](http://hml.voxpop.ml)
