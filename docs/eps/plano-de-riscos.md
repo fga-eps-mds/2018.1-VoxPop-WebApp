@@ -119,6 +119,8 @@ Erros de Estimativa e Planejamento | R09 | Gerencial | Inexperiência nas ativid
 Falhas de comunicação na equipe | R10 | Gerencial | Falta de organização da equipe | Retrabalho, execução de tarefas incorretamente, sobrecarga em membros específicos |
 Obtenção dos dados da API da Câmara dos Deputados | R11 | Técnico | Não conseguir de maneira fidedigna os dados relacionados aos deputados e aos projetos de lei | Desenvolvimento de praticamente todas as funcionalidades do WebApp |
 Baixo entendimento do escopo do projeto | R12 | Gerencial | Integrantes produzirem o que não era esperado | Desenvolvimento do produto incorreto |
+Baixa produtividade da equipe | R13 | Organizacional | Membro não estar realizando adequadamente o seu papel | Produto de má qualidade |
+Insuficiência de créditos na Cloud | R14 | Externo | Acabar os créditos da conta antes do término do semestre | Impossibilita colocar o sistema no ar |
 
 
 **Riscos Positivos**
@@ -129,7 +131,7 @@ Motivação com o projeto | RP01 | Organizacional | Interesse da equipe evoluir 
 Usuários gostarem do WebApp | RP02 | Externo | Divulgação do produto na internet | Desenvolvimento de novas funcionalidades
 Alta produtividade da equipe | RP03 | Organizacional | Entregas antes do previsto | Tempo extra para revisar artefatos, melhorar código
 
-### Análise e respostas aos riscos
+### Análise e resposta aos riscos
 
 **Riscos Negativos**
 
@@ -147,6 +149,8 @@ R09 | Moderada | Alto | Média | Mitigar - Pesquisar soluções em projetos ante
 R10 | Muito Baixa | Alto | Muito Baixa | Prevenir - Definir ferramentas de comunicação e agendar dias e horários de reuniões presenciais | André Bedran
 R11 | Moderada | Muito Alto | Alta | Prevenir - Verificar as informações da API e estudar formas de extraí-la | Mateus de Morais
 R12 | Moderada | Alto | Média | Prevenir - Comunicação constante entre os membros para manter o alinhamento da equipe | Kleber Brito
+R13 | Moderada | Alto | Média | Mitigar - Verificar porque o integrante não está produzindo aquilo que se espera, buscando romper esse empecilho de forma que seja bom para todas as partes | André Bedran
+R14 | Alta | Muito Alto | Alto | Prevenir - Conseguir outra conta que tenha crédito, em último caso disponibilizar recursos próprio para finalizar o projeto | Mateus de Morais  
 
 
 **Riscos Positivos**
