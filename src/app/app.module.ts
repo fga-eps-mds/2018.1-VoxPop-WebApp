@@ -11,6 +11,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { RouterModule, Routes, Router } from '@angular/router';
 import { RequestsService } from './requests.service';
 import { FormsModule } from '@angular/forms';
+import { PropositionsComponent } from './propositions/propositions.component';
  
 const appRoutes:Routes = [
   {
@@ -30,6 +31,7 @@ const appRoutes:Routes = [
     FooterComponent,
     RegisterFormComponent,
     MainPageComponent,
+    PropositionsComponent,
 
   ],
   imports: [

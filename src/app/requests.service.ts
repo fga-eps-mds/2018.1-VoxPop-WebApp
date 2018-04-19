@@ -5,20 +5,31 @@ import { map } from 'rxjs/operators'
 
 import { UserModel } from '../models/user';
 import { SocialInformationModel } from '../models/socialInformation';
+import { ResponseHandlerService } from '../app/response-handler.service';
 
 @Injectable()
 export class RequestsService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, 
+              private dataHandler: ResponseHandlerService) { }
 
   baseURL : string = environment.baseURL
   headers = {'Content-Type': 'application/json'}
 
 
   getUser(userId) {
-     return this.http.get(this.baseURL.concat("users/${userId}"))
+     return this.http.get(this.baseURL.concat("users/${userId}"));
   }
 
+  getProjects() {
+    this.http.get(this.baseURL.concat('propositions/')).subscribe(response => {
+      //Do this
+      return this.dataHandler.filterPropositions(response);
+
+    }, error => {
+      //Do this
+    });
+  }
 
   postUser(user: UserModel) {
     var endpoint = this.baseURL.concat('users/')
