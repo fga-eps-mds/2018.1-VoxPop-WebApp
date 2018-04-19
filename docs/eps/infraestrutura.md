@@ -1,13 +1,13 @@
 ---
 layout: default
-title: Esquemático da Infraestrutura
+title: Esquemático da Arquitetura
 category: EPS
 ---
 
-# Esquemático da Infraestrutura
+# Esquemático da Arquitetura
 
-![Esquemático da Infraestrutura](https://i.imgur.com/ui50tjF.jpg)
+![Esquemático da Infraestrutura](images/diagrama-stack.png)
 
-[Clique aqui para ver em tamanho maior](https://i.imgur.com/ui50tjF.jpg)
+[Clique aqui para ver em tamanho maior](images/diagrama-stack.png)
 
 [Voltar](./../)
