@@ -27,7 +27,7 @@ Elaborar um Plano de Medição utilizando através da abordagem GQM de forma que
 
 # 2 Plano de medição - Conceitual
 ## 2.1 Código
-|                		|                               |
+
 |-----------------------|-------------------------------|
 |Analisar				|o código						|
 |para					|entender e garantir			|
@@ -37,15 +37,13 @@ Elaborar um Plano de Medição utilizando através da abordagem GQM de forma que
 
 
 ## 2.2 Equipe
-|                		|                               |
+
 |-----------------------|-------------------------------|
 |Analisar				|a equipe de desenvolvimento	|
 |para					|entender e garantir			|
 |os pontos				|produtividade e eficiência		|
 |pelo ponto de vista	|da equipe gestão				|
 |sob o contexto			|do projeto VoxPop				|
-
-
 
 # 3 Plano de medição - Operacional
 
@@ -92,79 +90,86 @@ Elaborar um Plano de Medição utilizando através da abordagem GQM de forma que
 
 # Métricas
 
-
-| **Métrica**           | ** Erros do flake8 por arquivo** |
+| **Métrica**           | **Erros do flake8 por arquivo** |
 |---------------------|----------|
 | **Objetivo de Medição** | Garantir a simplicidade na leitura do código|
 | **Obtenção**             | A ferramenta de integração contínua executa o flake8 nos arquivos do projeto sempre que código é mandado ao reprositório|
 | **Escala**              | Absoluta  |
 | **Análise**             | Caso ocorra ao menos um erro deverá haver uma refatoração do código |
 
+<br>
 
-
-| **Métrica**           | ** Métodos com alto número de argumentos** |
+| **Métrica**           | **Métodos com alto número de argumentos** |
 |---------------------|----------|
 | **Objetivo de Medição** | Garantir a modularidade|
 | **Obtenção**             | O code climate gera alertas para cada ocorrência|
 | **Escala**              | Absoluta  |
 | **Análise**             |  Caso ocorra ao menos uma issue deverá haver uma refatoração do código|
 
+<br>
 
-| **Métrica**           | ** Arquivos com alto número de linhas** |
+| **Métrica**           | **Arquivos com alto número de linhas** |
 |---------------------|----------|
 | **Objetivo de Medição** | Garantir a modularidade do código|
 | **Obtenção**             | O code climate gera alertas para cada ocorrência|
 | **Escala**              | Absoluta  |
 | **Análise**             |  Caso ocorra ao menos uma issue deverá haver uma refatoração do código|
 
+<br>
 
-| **Métrica**           | ** Blocos de código idênticos** |
+| **Métrica**           | **Blocos de código idênticos** |
 |---------------------|----------|
 | **Objetivo de Medição** | Garantir a simplicidade de leitura do código|
 | **Obtenção**             | O code climate gera alertas para cada ocorrência|
 | **Escala**              | Absoluta  |
 | **Análise**             |  Caso ocorra ao menos uma issue deverá haver uma refatoração do código|
 
+<br>
 
-| **Métrica**           | ** Blocos de código semelhantes** |
+| **Métrica**           | **Blocos de código semelhantes** |
 |---------------------|----------|
 | **Objetivo de Medição** | Garantir a simplicidade de leitura do código|
 | **Obtenção**             | O code climate gera alertas para cada ocorrência|
 | **Escala**              | Absoluta  |
 | **Análise**             |  Caso ocorra ao menos uma issue deverá haver uma refatoração do código|
 
+<br>
 
-| **Métrica**           | ** Classes com alto número de métodos** |
+| **Métrica**           | **Classes com alto número de métodos** |
 |---------------------|----------|
 | **Objetivo de Medição** | Garantir a visibilidade das classes|
 | **Obtenção**             | O code climate gera alertas para cada ocorrência|
 | **Escala**              | Absoluta  |
 | **Análise**             |  Caso ocorra ao menos uma issue deverá haver uma refatoração do código|
 
+<br>
 
-| **Métrica**           | ** Métodos com alto número de linhas** |
+| **Métrica**           | **Métodos com alto número de linhas** |
 |---------------------|----------|
 | **Objetivo de Medição** | Garantir a visibilidade dos métodos|
 | **Obtenção**             | O code climate gera alertas para cada ocorrência|
 | **Escala**              | Absoluta  |
 | **Análise**             |  Caso ocorra ao menos uma issue deverá haver uma refatoração do código|
 
+<br>
 
-| **Métrica**           | ** Quantidade de estruturas de decisão muito aninhadas** |
+| **Métrica**           | **Quantidade de estruturas de decisão muito aninhadas** |
 |---------------------|----------|
 | **Objetivo de Medição** | Garantir a simplicidade de leitura do código|
 | **Obtenção**             | O code climate gera alertas para cada ocorrência|
 | **Escala**              | Absoluta  |
 | **Análise**             |  Caso ocorra ao menos uma issue deverá haver uma refatoração do código|
 
+<br>
 
-| **Métrica**           | ** Métodos com vários 'return'** |
+| **Métrica**           | **Métodos com vários 'return'** |
 |---------------------|----------|
 | **Objetivo de Medição** | Garantir a simplicidade de leitura do código|
 | **Obtenção**             | O code climate gera alertas para cada ocorrência|
 | **Escala**              | Absoluta  |
 | **Análise**             |  Caso ocorra ao menos uma issue deverá haver uma refatoração do código|
 
+<br>
 
 | **Métrica**           | **Velocity** |
 |---------------------|----------|
@@ -173,22 +178,25 @@ Elaborar um Plano de Medição utilizando através da abordagem GQM de forma que
 | **Escala**              | Racional  |
 | **Análise**             | Caso o velocity esteja mais baixo que a quantidade total de pontos do product backlog dividido pela quantidade de sprints disponíveis é sinal de que o velocity não está alto o suficiente e deve haver um replanejamento com a equipe |
 
+<br>
 
-| **Métrica**           | ** Nível de conhecimento** |
+| **Métrica**           | **Nível de conhecimento** |
 |---------------------|---------- |
 | **Objetivo de Medição** | Garantir que todos os membros estajam nivelados e evoluíndo|
 | **Obtenção**             | Os membros da equipe devem fornecer através de uma planilha no drive|
 | **Escala**              | Ordinal  |
 | **Análise**             |  Caso os membros estejam desbalanceado é necessário rever os pareamentos e rotações de funções, e caso os membros não evoluam é necessáio alertar esse membro e fornecer os insumos para que ele mude este quadro|
 
+<br>
 
-| **Métrica**           | ** Horas trabalhadas por semana** |
+| **Métrica**           | **Horas trabalhadas por semana** |
 |---------------------|----------|
 | **Objetivo de Medição** | Garantir que a equipe está cumprindo com com a quantidade de horas semanais que se comprometeram|
 | **Obtenção**             | As horas são obtidas através do aplicativo toptracker|
 | **Escala**              | Absoluta  |
 | **Análise**             |  Caso as horas de algum membre estajem muito altas é necessário redividir o trabalho, e caso estejam muito baixas é necessáio alertar esse membro para que mude sua conduta|
 
+<br>
 
 | **Métrica**           | **Entregas ao longo do tempo** |
 |---------------------|----------|
