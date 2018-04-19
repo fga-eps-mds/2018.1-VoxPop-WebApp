@@ -19,11 +19,11 @@ const appRoutes:Routes = [
     component: RegisterFormComponent
   },
   {
-      path: '',
+      path: 'login',
       component: LoginComponent
   },
   {
-    path: 'main-page',
+    path: '',
     component: MainPageComponent
   }
 ]
