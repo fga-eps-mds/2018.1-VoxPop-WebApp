@@ -1,0 +1,50 @@
+/*#full-page{
+    background: #0C5575;
+    color: #fff;
+    height: 100%;
+}*/
+
+.vars{ 
+    --indigo: #6610f2;
+    --purple: #6f42c1;
+    --pink: #e83e8c;
+    --red: #dc3545;
+    --orange: #fd7e14;
+    --yellow: #ffc107;
+    --green: #28a745;
+    --teal: #20c997;
+    --cyan: #17a2b8;
+    --white: #fff;
+    --gray: #6c757d;
+    --gray-dark: #122a38;
+    --primary: #3097D1;
+    --secondary: #d4dbe0;
+    --success: #5cb85c;
+    --info: #5bc0de;
+    --warning: #f0ad4e;
+    --danger: #d9534f;
+    --light: #f5f8fa;
+    --dark: #122a38;
+}
+#wrap {
+    min-height: 100%;
+}
+
+#main{
+    overflow: auto;
+    padding-bottom: 55px;
+	
+}
+
+
+h1, h2, h3, h4, h5, h6, p, div {
+    font-family: "Quattrocento Sans";
+}
+
+html, body{
+    padding-top: 35px;
+    height: 100%;
+    background-color: #d4dbe0;
+    overflow: auto;
+
+}

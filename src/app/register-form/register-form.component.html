@@ -3,26 +3,31 @@
     <div class="col-md-4 col-md-offset-4">
     <form (submit)="registerUser($event)">
 
-      <div id="firstPart">
+      <div id="firstPart" class="register-card">
+          <div class="alert alert-danger" role="alert" id="alert-invalid-inputs" style="display:none">
+            <p>{{valueInvalidInput}}</p>
+          </div>
            <div class="form-group">
+                <span class="required">*</span>
                 <label>Nome de Usuário</label>
-                <input type="text" class="form-control" placeholder="Entre o nome do usuário"
+                <input type="text" class="form-control" placeholder="Entre o nome do usuário" id = "username"
                 (keyup)="onKeyUsername($event)">
                 <div class="alert alert-danger" role="alert" id="alert-username" style="display:none">
                   <p>{{valueUsername}}</p>
                 </div>
            </div>
            <div class="form-group">
-            <label>Primeiro Nome</label>
-            <input type="text" class="form-control" placeholder="Digite o seu primeiro nome">
+              <label>Primeiro Nome</label>
+              <input type="text" class="form-control" placeholder="Digite o seu primeiro nome">
            </div>
            <div class="form-group">
-            <label>Sobrenome</label>
-            <input type="text" class="form-control" placeholder="Digite o seu sobrenome">
+              <label>Sobrenome</label>
+              <input type="text" class="form-control" placeholder="Digite o seu sobrenome">
            </div>
            <div class="form-group">
+                <span class="required">*</span>
                 <label>Senha</label>
-                <input type="password" class="form-control" minlength="8" 
+                <input type="password" class="form-control" minlength="8" id="password"
                 (keyup)="onKeyPassword($event)" 
                 placeholder="Senha">
                 <div class="alert alert-danger" role="alert" id="alert-invalid-password" style="display:none">
@@ -30,8 +35,9 @@
                 </div>
            </div>
            <div class="form-group">
+                <span class="required">*</span>
                 <label>Confirmar Senha</label>
-                <input type="password" class="form-control" minlength="6" 
+                <input type="password" class="form-control" minlength="6" id="confirm-password"
                 maxlength="20" (keyup)="onKeyConfirmPassword($event)" 
                 (keyup)="onKeyValidatorPassword($event)" placeholder="Confirmar senha">
                 <div class="alert alert-danger" role="alert" id="alert-password" style="display:none">
@@ -39,24 +45,32 @@
                 </div>
            </div>
            <div class="form-group">
+                <span class="required">*</span>
                 <label>E-mail</label>
-                <input type="email" class="form-control"
+                <input type="email" class="form-control" id="email"
                 (keyup)="onKeyEmail($event)" placeholder="exemplo@exemplo.com">
                 <div class="alert alert-danger" role="alert" id="alert-email" style="display:none">
                   <p>{{valueEmail}}</p>
                 </div>
            </div>
-           <button class="btn btn-primary"
-                   type="button" id="nextBtn"
-                   (click)="clickFirstButton()">
-                   Próxima parte</button>
+           <div style="text-align: right">
+             <span class="required">*</span>
+             Obrigatório
+           </div>
+           <div style="text-align: center">
+            <button class="btn btn-primary"
+            type="button" id="nextBtn"
+            (click)="clickFirstButton()">
+            Próxima parte</button>
+           </div>
       </div>
 
 
-      <div style="display:none" id="secondPart">
+      <div style="display:none" id="secondPart" class="register-card">
            <div class="form-group">
                 <label>Estado</label>
                 <select name="Estado" class="form-control">
+                     <option value=null>Prefiro não responder</option>
                      <option value="AC">Acre</option>
                      <option value="AL">Alagoas</option>
                      <option value="AP">Amapá</option>
@@ -93,6 +107,7 @@
            <div class="form-group">
                 <label>Renda</label>
                 <select name="Renda" class="form-control">
+                     <option value=null>Prefiro não responder</option>
                      <option value="500.00">Entre R$0,00 até R$1000,00</option>
                      <option value="2000.00">Entre R$1000,01 até R$3000,00</option>
                      <option value="4500.00">Entre R$3000,01 até R$6000,00</option>
@@ -105,6 +120,7 @@
            <div class="form-group">
                 <label>Formação</label>
                 <select name="Formacao" class="form-control">
+                     <option value=null>Prefiro não responder</option>
                      <option value="EFC">Ensino Fundamental Completo</option>
                      <option value="EFI">Ensino Fundamental Incompleto</option>
                      <option value="EMC">Ensino Médio Completo</option>
