@@ -44,35 +44,24 @@ export class RegisterFormComponent implements OnInit {
       last_name: e.target.elements[2].value,
       password: e.target.elements[3].value,
       email: e.target.elements[5].value,
+      social_information: {
+        state: e.target.elements[7].value,
+        city: e.target.elements[8].value,
+        income: e.target.elements[9].value,
+        education: e.target.elements[10].value,
+        job: e.target.elements[11].value,
+        birth_date: e.target.elements[12].value
+      }
      };
     // TODO - adicionar validação de criação. Checar http status code = 201.
     // AINDA é TODO /\
     this.requester.postUser(user).subscribe(response => {
       let statusUser = response.status;
-      var userId = response.body["id"];
       console.log("STATUS CODE RETURNED ON USER: " + statusUser);
 
-      if (this.requester.didSucceed(statusUser)) {
-        social_information = {
-          owner: userId,
-          state: e.target.elements[7].value,
-          city: e.target.elements[8].value,
-          income: e.target.elements[9].value,
-          education: e.target.elements[10].value,
-          job: e.target.elements[11].value,
-          birth_date: e.target.elements[12].value
+        if (this.requester.didSucceed(statusUser)) {
+          this.router.navigate(['']);
         };
-
-        this.requester.postSocialInformation(social_information).subscribe(response => {
-          let statusSI = response.status;
-          console.log("STATUS CODE RETURNED ON SOCIAL_INFORMATION: " + statusSI);
-
-          if (this.requester.didSucceed(statusSI)) {
-            this.router.navigate(['main-page']);
-          };
-
-        });
-      };
     });
 
   }
@@ -111,12 +100,9 @@ export class RegisterFormComponent implements OnInit {
       this.valueUsername = 'Nome de usuário deve ter entre 4 e 20 caracteres'
       document.getElementById('alert-username').style.display = "block";
       this.statusUsername = false;
-<<<<<<< HEAD
-    }
-=======
       this.borderColor('username', this.danger);
     }
->>>>>>> a1dd3d18960d80b395957944507340a97fdb7f13
+
   }
 
   onKeyEmail(e: any) {
