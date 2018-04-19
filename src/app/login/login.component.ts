@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginModel } from '../../models/login';
 import { RequestsService } from '../requests.service';
+import { HttpResponseBase } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -23,17 +24,21 @@ export class LoginComponent implements OnInit {
             username: e.target.elements[0].value,
             password: e.target.elements[1].value
         }
-        console.log(user);
 
         this.requester.postAuthentication(user).subscribe(response => {
             let statusAuthentication = response.status;
-            let token = response.headers["token"];
+            let token = response.body["token"];
+            console.log(response);
+            console.log(token);
 
             if(this.requester.didSucceed(statusAuthentication)){
-                this.router.navigate(['main-page']);
+                this.router.navigate(['']);
             }else{
-                alert("Email ou senha inválido")
+                alert("Email ou senha inválido");
             }
+        },
+        error => {
+            console.log(error);
         })
     }
 
