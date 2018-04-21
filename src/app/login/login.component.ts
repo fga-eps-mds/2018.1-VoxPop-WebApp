@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { LoginModel } from '../../models/login';
 import { RequestsService } from '../requests.service';
 import { HttpResponseBase } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,8 @@ export class LoginComponent implements OnInit {
 
     valueInvalid = "Usuário ou senha inválida"
     constructor(private router:Router,
-                private requester:RequestsService){ }
+                private requester:RequestsService,
+                private cookieService:CookieService){ }
 
     ngOnInit() {
     }
@@ -30,9 +32,10 @@ export class LoginComponent implements OnInit {
             let statusAuthentication = response.status;
             let token = response.body["token"];
             console.log(response);
-            console.log(token);
+            
 
             if(this.requester.didSucceed(statusAuthentication)){
+                this.cookieService.set('token', token);
                 this.router.navigate(['']);
             }else{
                 alert("Email ou senha inválido");

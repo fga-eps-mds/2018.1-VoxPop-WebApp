@@ -12,6 +12,7 @@ import { RouterModule, Routes, Router } from '@angular/router';
 import { RequestsService } from './requests.service';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
+import { CookieService } from 'ngx-cookie-service';
 
 const appRoutes:Routes = [
   {
@@ -46,7 +47,10 @@ const appRoutes:Routes = [
     FormsModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA],
-  providers: [ RequestsService ],
+  providers: [ 
+    RequestsService,
+    CookieService,   
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
