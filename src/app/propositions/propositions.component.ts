@@ -30,4 +30,8 @@ export class PropositionsComponent implements OnInit {
       console.log(this.proposition);
     });
   }
+
+  answerPL(vote){
+
+  }
 }

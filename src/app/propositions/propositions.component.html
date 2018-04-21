@@ -8,6 +8,11 @@
         <li>Situação: {{proposition['situation']}}</li>
         <li>Tipo: {{proposition['proposition_type']}}</li>
       </ul>
+      <div style="text-align: center">
+        <button (click)="answerPL('Y')"><span class="glyphicon glyphicon-ok"></span></button>
+        <button (click)="answerPL('A')"><span class="glyphicon glyphicon-minus"></span></button>
+        <button (click)="answerPL('N')"><span class="glyphicon glyphicon-remove"></span></button>
+      </div>
     </div>
   </div>
 </div>
