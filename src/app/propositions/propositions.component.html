@@ -1,9 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="main-card">
-      <p>
-        propositions são top
-      </p>
+      <ul *ngFor = "let proposition of propositionList">
+        <li *ngFor= "let item of proposition">
+          {{item}}
+        </li>
+      </ul>
     </div>
   </div>
 </div>
