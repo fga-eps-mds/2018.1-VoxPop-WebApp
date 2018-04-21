@@ -1,10 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="main-card">
-      <ul *ngFor = "let proposition of propositionList">
-        <li *ngFor= "let item of proposition">
-          {{item}}
-        </li>
+    <div class="main-card" *ngFor = "let proposition of propositionsList">
+      <ul>
+        <li>Número {{proposition.number}}</li>
+        <li>Ano: {{proposition.year}}</li>
+        <li>Abstract: {{proposition.abstract}}</li>
+        <li>Situação: {{proposition.situation}}</li>
+        <li>Tipo: {{proposition.proposition_type}}</li>
       </ul>
     </div>
   </div>
