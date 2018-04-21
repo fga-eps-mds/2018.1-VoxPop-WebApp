@@ -12,12 +12,10 @@ import { RouterModule, Routes, Router } from '@angular/router';
 import { RequestsService } from './requests.service';
 import { FormsModule } from '@angular/forms';
 import { PropositionsComponent } from './propositions/propositions.component';
+import { CookieService } from 'ngx-cookie-service';
+import { TokenService } from './token.service'
 
 const appRoutes:Routes = [
-  {
-    path: '',
-    component: MainPageComponent
-  },
   {
     path: 'register',
     component: RegisterFormComponent
@@ -46,7 +44,11 @@ const appRoutes:Routes = [
     FormsModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA],
-  providers: [ RequestsService ],
+  providers: [
+    RequestsService,
+    CookieService,
+    TokenService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators'
 
 import { UserModel } from '../models/user';
 import { SocialInformationModel } from '../models/socialInformation';
+import { LoginModel } from '../models/login'
 
 @Injectable()
 export class RequestsService {
@@ -39,18 +40,30 @@ export class RequestsService {
     return this.http.post(endpoint, JSON.stringify(socialInformation), {headers: this.headers, observe: 'response'})
   }
 
+  postAuthentication(login: LoginModel){
+      var endpoint = this.baseURL.concat('token_auth/')
+      console.log("Making POST AUTHENTICATION REQUEST ON URL: " + endpoint)
+      return this.http.post(endpoint, JSON.stringify(login), {headers: this.headers, observe: 'response'})
+  }
+
   didSucceed(status){
     switch (status) {
       case 0:
         //CHECK RESPONSE BEFORE CHANGING SCREENS
         console.log("Request failed with status code: " + status + ". Please check the request and try again.");
         return false;
+      case 200:
+        //redirect token on the login request
+        return true;
       case 201:
         //redirect user to main or authentication page..
         return true;
       case 301:
         //Redirect user to error page
         console.log("Failed with status code 301: Resourced moved permanently. This may be a CORS problem.");
+        return false;
+      case 400:
+        //Badrequest, some input send was wrong
         return false;
       default:
         //Redirect user to error page
