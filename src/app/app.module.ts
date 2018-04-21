@@ -13,6 +13,7 @@ import { RequestsService } from './requests.service';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { CookieService } from 'ngx-cookie-service';
+import { TokenService } from './token.service';
 
 const appRoutes:Routes = [
   {
@@ -50,6 +51,7 @@ const appRoutes:Routes = [
   providers: [ 
     RequestsService,
     CookieService,   
+    TokenService
   ],
   bootstrap: [AppComponent]
 })

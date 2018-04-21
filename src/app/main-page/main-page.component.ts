@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
+import { TokenService } from '../token.service';
+import { Token } from '@angular/compiler';
 
 @Component({
   selector: 'app-main-page',
@@ -8,15 +10,16 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class MainPageComponent implements OnInit {
 
-  cookieValue = '';
+  tokenValue = '';
 
   constructor(
-    private cookieService:CookieService
+    private cookieService:CookieService,
+    private token:TokenService
   ) { }
 
   ngOnInit() {
-    this.cookieValue = this.cookieService.get('token');
-    console.log(this.cookieValue);
+    this.tokenValue = this.cookieService.get('token');
+    this.token.checkToken(this.tokenValue);
   }
 
   

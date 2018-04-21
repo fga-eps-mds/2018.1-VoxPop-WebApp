@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
+import { TokenService } from '../token.service';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  tokenValue = '';
+
+  constructor(
+    private cookieService:CookieService,
+    private token:TokenService
+  ) { }
 
   ngOnInit() {
+    this.tokenValue = this.cookieService.get('token');
+    this.token.checkToken(this.tokenValue);
+  }
+
+  logout(){
+    this.cookieService.set('token', '');
   }
 
 }
