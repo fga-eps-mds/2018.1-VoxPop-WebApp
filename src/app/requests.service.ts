@@ -5,13 +5,11 @@ import { map } from 'rxjs/operators'
 
 import { UserModel } from '../models/user';
 import { SocialInformationModel } from '../models/socialInformation';
-import { ResponseHandlerService } from '../app/response-handler.service';
 
 @Injectable()
 export class RequestsService {
 
-  constructor(private http: HttpClient,
-              private dataHandler: ResponseHandlerService) { }
+  constructor(private http: HttpClient,) { }
 
   baseURL : string = environment.baseURL
   headers = {'Content-Type': 'application/json'}
@@ -22,7 +20,7 @@ export class RequestsService {
   }
 
   getProjects() {
-    var endpoint = this.baseURL.concat('propositions/');
+    var endpoint = this.baseURL.concat('propositions/1/');
     return this.http.get(endpoint);//.subscribe(response => {
       // return this.dataHandler.filterPropositions(response);
     // });

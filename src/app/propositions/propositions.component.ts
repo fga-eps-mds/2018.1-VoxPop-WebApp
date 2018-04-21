@@ -10,14 +10,24 @@ import { PropositionModel } from '../../models/proposition'
 })
 export class PropositionsComponent implements OnInit {
 
-  propositionsList: Array<PropositionModel>
+  proposition: any = {
+    proposition_id: 0,
+    proposition_type: '',
+    proposition_type_initials: '',
+    number: 0,
+    year: 0,
+    abstract: '',
+    processing: '',
+    situation: '',
+    url_full: ''
+  }
 
   constructor(private router:Router, private requester:RequestsService) { }
 
   ngOnInit() {
     this.requester.getProjects().subscribe( response =>{
-      this.propositionsList = response['results'];
-      console.log(this.propositionsList);
+      this.proposition = response;
+      console.log(this.proposition);
     });
   }
 }

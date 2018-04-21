@@ -12,7 +12,6 @@ import { RouterModule, Routes, Router } from '@angular/router';
 import { RequestsService } from './requests.service';
 import { FormsModule } from '@angular/forms';
 import { PropositionsComponent } from './propositions/propositions.component';
-import { ResponseHandlerService } from './response-handler.service'
 
 const appRoutes:Routes = [
   {
@@ -47,7 +46,7 @@ const appRoutes:Routes = [
     FormsModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA],
-  providers: [ RequestsService, ResponseHandlerService ],
+  providers: [ RequestsService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
