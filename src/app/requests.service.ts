@@ -10,7 +10,7 @@ import { ResponseHandlerService } from '../app/response-handler.service';
 @Injectable()
 export class RequestsService {
 
-  constructor(private http: HttpClient, 
+  constructor(private http: HttpClient,
               private dataHandler: ResponseHandlerService) { }
 
   baseURL : string = environment.baseURL
@@ -22,13 +22,11 @@ export class RequestsService {
   }
 
   getProjects() {
-    this.http.get(this.baseURL.concat('propositions/')).subscribe(response => {
-      //Do this
-      return this.dataHandler.filterPropositions(response);
+    var endpoint = this.baseURL.concat('propositions/');
+    return this.http.get(endpoint);//.subscribe(response => {
+      // return this.dataHandler.filterPropositions(response);
+    // });
 
-    }, error => {
-      //Do this
-    });
   }
 
   postUser(user: UserModel) {
