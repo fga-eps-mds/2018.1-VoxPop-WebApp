@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { RequestsService } from '../requests.service';
 import { HttpClientModule } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -18,7 +19,8 @@ describe('LoginComponent', () => {
       ],
       declarations: [ LoginComponent ],
       providers: [
-        RequestsService
+        RequestsService,
+        CookieService
       ]
     })
     .compileComponents();
