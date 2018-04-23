@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators'
 import { UserModel } from '../models/user';
 import { SocialInformationModel } from '../models/socialInformation';
 import { LoginModel } from '../models/login'
+import { VoteModel } from '../models/vote';
 
 @Injectable()
 export class RequestsService {
@@ -44,6 +45,12 @@ export class RequestsService {
       var endpoint = this.baseURL.concat('token_auth/')
       console.log("Making POST AUTHENTICATION REQUEST ON URL: " + endpoint)
       return this.http.post(endpoint, JSON.stringify(login), {headers: this.headers, observe: 'response'})
+  }
+
+  postVote(vote : VoteModel) {
+    let endpoint = this.baseURL.concat('api/user_votes/');
+    console.log("Making POST REQUEST VOTE ON URL: " + endpoint)
+    return this.http.post(endpoint, JSON.stringify(vote), {headers: this.headers, observe: 'response'})
   }
 
   didSucceed(status){

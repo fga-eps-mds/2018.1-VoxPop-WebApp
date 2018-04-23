@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RequestsService } from '../requests.service'
 import { Router } from '@angular/router';
 import { PropositionModel } from '../../models/proposition'
+import { VoteModel } from '../../models/vote'
 
 @Component({
   selector: 'app-propositions',
@@ -31,7 +32,11 @@ export class PropositionsComponent implements OnInit {
     });
   }
 
-  answerPL(vote){
-
+  answerPL(opinion){
+     var vote : any = {
+       proposition_id: this.proposition.proposition_id,
+       vote: opinion
+    }
+    this.requester.postVote(vote);
   }
 }
