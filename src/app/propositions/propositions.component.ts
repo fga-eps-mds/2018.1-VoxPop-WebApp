@@ -3,6 +3,8 @@ import { RequestsService } from '../requests.service'
 import { Router } from '@angular/router';
 import { PropositionModel } from '../../models/proposition'
 import { VoteModel } from '../../models/vote'
+import { CookieService } from 'ngx-cookie-service';
+import { TokenService } from '../token.service';
 
 @Component({
   selector: 'app-propositions',
@@ -23,7 +25,12 @@ export class PropositionsComponent implements OnInit {
     url_full: ''
   }
 
-  constructor(private router:Router, private requester:RequestsService) { }
+  constructor( 
+    private router:Router,
+    private requester:RequestsService,
+    private cookieService:CookieService,
+    private token:TokenService
+  ) { }
 
   ngOnInit() {
     this.requester.getProjects().subscribe( response =>{
