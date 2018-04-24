@@ -27,7 +27,7 @@ export class PropositionsComponent implements OnInit {
     url_full: ''
   }
 
-  constructor( 
+  constructor(
     private router:Router,
     private requester:RequestsService,
     private cookieService:CookieService,
@@ -38,8 +38,7 @@ export class PropositionsComponent implements OnInit {
     this.tokenValue = this.cookieService.get('token');
     this.token.checkToken(this.tokenValue);
     this.requester.getProjects().subscribe( response =>{
-      this.proposition = response;
-      console.log(this.proposition);
+      this.proposition = response['body'];
     });
   }
 

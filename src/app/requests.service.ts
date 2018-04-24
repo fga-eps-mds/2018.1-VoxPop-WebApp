@@ -7,26 +7,28 @@ import { UserModel } from '../models/user';
 import { SocialInformationModel } from '../models/socialInformation';
 import { LoginModel } from '../models/login'
 import { VoteModel } from '../models/vote';
+import { CookieService } from 'ngx-cookie-service';
+import { TokenService } from './token.service';
 
 @Injectable()
 export class RequestsService {
 
-  constructor(private http: HttpClient,) { }
+  constructor(private http: HttpClient,
+              private cookieService:CookieService,
+              private token:TokenService) { }
 
   baseURL : string = environment.baseURL
+  tokenValue : string = this.cookieService.get('token')
   headers = {'Content-Type': 'application/json'}
-
+  tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token '+ this.tokenValue}
 
   getUser(userId) {
      return this.http.get(this.baseURL.concat("users/${userId}"));
   }
 
   getProjects() {
-    var endpoint = this.baseURL.concat('propositions/1/');
-    return this.http.get(endpoint);//.subscribe(response => {
-      // return this.dataHandler.filterPropositions(response);
-    // });
-
+    var endpoint = this.baseURL.concat('propositions/non_voted/');
+    return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
   }
 
   postUser(user: UserModel) {
@@ -48,7 +50,7 @@ export class RequestsService {
   }
 
   postVote(vote : VoteModel) {
-    let endpoint = this.baseURL.concat('api/user_votes/');
+    let endpoint = this.baseURL.concat('user_votes/');
     console.log("Making POST REQUEST VOTE ON URL: " + endpoint)
     return this.http.post(endpoint, JSON.stringify(vote), {headers: this.headers, observe: 'response'})
   }
