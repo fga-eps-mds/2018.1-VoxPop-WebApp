@@ -37,14 +37,17 @@ export class LoginComponent implements OnInit {
             if(this.requester.didSucceed(statusAuthentication)){
                 this.cookieService.set('token', token);
                 this.router.navigate(['']);
+                return true;
             }else{
                 alert("Email ou senha inválido");
+                return false;
             }
         },
         error => {
             console.log(error);
             let statusAuthentication = error.status;
             this.errorHandler(statusAuthentication);
+            return false;
         })
     }
 

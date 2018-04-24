@@ -27,4 +27,12 @@ describe('HeaderComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should be created', () => {
+    let cookie: CookieService;
+    component.logout();
+    var token = this.cookie.get('token');
+    expect(token).toBeNull;
+  });
+
 });
