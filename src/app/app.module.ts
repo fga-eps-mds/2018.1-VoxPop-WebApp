@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { PropositionsComponent } from './propositions/propositions.component';
 import { CookieService } from 'ngx-cookie-service';
 import { TokenService } from './token.service'
+import { LoginComponent } from './login/login.component';
 
 const appRoutes:Routes = [
   {
@@ -21,9 +22,17 @@ const appRoutes:Routes = [
     component: RegisterFormComponent
   },
   {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: '',
+    component: MainPageComponent
+  },
+  {
     path: 'propositions',
     component: PropositionsComponent
-  }
+  },
 ]
 
 @NgModule({
@@ -34,7 +43,7 @@ const appRoutes:Routes = [
     RegisterFormComponent,
     MainPageComponent,
     PropositionsComponent,
-
+    LoginComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

@@ -13,6 +13,8 @@ import { TokenService } from '../token.service';
 })
 export class PropositionsComponent implements OnInit {
 
+  tokenValue = '';
+
   proposition: any = {
     proposition_id: 0,
     proposition_type: '',
@@ -33,6 +35,8 @@ export class PropositionsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.tokenValue = this.cookieService.get('token');
+    this.token.checkToken(this.tokenValue);
     this.requester.getProjects().subscribe( response =>{
       this.proposition = response;
       console.log(this.proposition);
