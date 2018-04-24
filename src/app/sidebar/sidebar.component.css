@@ -1,8 +1,26 @@
 .sidebar {
     height: 100%; 
-    width: 160px; 
+    width: 12%; 
     position: fixed; 
     z-index: 0;
     top: 0; 
     background-color: #122a38; 
+}
+
+.link-box{
+    margin-top: 70px;
+}
+
+.link-box a, a:link{
+    margin-top: 25px;
+    margin-left: 20px;
+    text-decoration: none;
+    font-family: monospace;
+    font-size: 25px;
+    color: #f5f8fa;
+    display: block;
+}
+
+.link-box a:hover{
+    color: #3097D1;
 }
