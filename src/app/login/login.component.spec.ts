@@ -10,9 +10,9 @@ import { LoginModel } from '../../models/login';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
-class MockLoginComponent{
-  login(user: LoginModel){
-    if(user.username == '' || user.password == ''){
+class MockLoginComponent {
+  login(user: LoginModel) {
+    if (user.username === '' || user.password === '') {
       return false;
     } else {
       return true;
@@ -44,9 +44,9 @@ describe('LoginComponent', () => {
       ]
     })
     .compileComponents();
-
-    submitEl = fixture.debugElement.query(By.css('button'));
-    usernameEl = fixture.debugElement.query(By.css('input[type=text]'));
+    fixture = TestBed.createComponent(LoginComponent);
+    submitEl = fixture.debugElement.query(By.css('#loginBtn'));
+    usernameEl = fixture.debugElement.query(By.css('input[type=username]'));
     passwordEl = fixture.debugElement.query(By.css('input[type=password]'));
   }));
 
@@ -61,33 +61,37 @@ describe('LoginComponent', () => {
   });
 
   it('should login', () =>  {
-    usernameEl.nativeElement.value = 'teste';
-    passwordEl.nativeElement.value = 'teste';
+    // usernameEl.nativeElement.value = 'teste';
+    // passwordEl.nativeElement.value = 'teste';
 
-    var user;
-    user = {
-      username: 'usernameEl',
-      password: 'passwordEl'
-    }
-
-    //expect(component.login(user)).toBeTruthy;
-    
-  });
-
-  it('should return false on status 400', () => {
-    var status = 400;
-    expect(component.errorHandler(status)).toBeFalsy;
-  });
-
-  it('should call post authentication service', () => {
-    spyOn(request,'postAuthentication');
     var user;
     user = {
       username: 'teste',
       password: 'teste'
     }
-    component.login(user);
-    expect(request.postAuthentication).toHaveBeenCalled();
+
+    expect(component.login(usernameEl.nativeElement.value, passwordEl.nativeElement.value)).toBeTruthy();
+
+  });
+
+  it('should return false on status 400', () => {
+    const status = 400;
+    expect(component.errorHandler(status)).toBeFalsy();
+  });
+
+  it('should auth with post authentication service', () => {
+    const user = {
+      username: 'user02',
+      password: '123456a@W'
+    };
+    var statusCode = 0;
+    var token = 'token';
+
+    component.login(user.username, user.password).subscribe( (resp) => {
+      this.statusCode = resp.status;
+      this.token = resp.body['token'];
+      expect(this.token).not.toBe('token');
+    });
   });
 
 });
