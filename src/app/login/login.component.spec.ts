@@ -6,12 +6,32 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { RequestsService } from '../requests.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
+import { LoginModel } from '../../models/login';
+import { DebugElement } from '@angular/core';
+import { By } from '@angular/platform-browser';
+
+class MockLoginComponent{
+  login(user: LoginModel){
+    if(user.username == '' || user.password == ''){
+      return false;
+    } else {
+      return true;
+    }
+  }
+}
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
+  let login: MockLoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
+  let request: RequestsService;
+  let submitEl: DebugElement;
+  let usernameEl: DebugElement;
+  let passwordEl: DebugElement;
 
   beforeEach(async(() => {
+    login = new MockLoginComponent();
+
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
@@ -24,6 +44,10 @@ describe('LoginComponent', () => {
       ]
     })
     .compileComponents();
+
+    submitEl = fixture.debugElement.query(By.css('button'));
+    usernameEl = fixture.debugElement.query(By.css('input[type=text]'));
+    passwordEl = fixture.debugElement.query(By.css('input[type=password]'));
   }));
 
   beforeEach(() => {
@@ -37,6 +61,33 @@ describe('LoginComponent', () => {
   });
 
   it('should login', () =>  {
-    //component.login();
+    usernameEl.nativeElement.value = 'teste';
+    passwordEl.nativeElement.value = 'teste';
+
+    var user;
+    user = {
+      username: 'usernameEl',
+      password: 'passwordEl'
+    }
+
+    //expect(component.login(user)).toBeTruthy;
+    
   });
+
+  it('should return false on status 400', () => {
+    var status = 400;
+    expect(component.errorHandler(status)).toBeFalsy;
+  });
+
+  it('should call post authentication service', () => {
+    spyOn(request,'postAuthentication');
+    var user;
+    user = {
+      username: 'teste',
+      password: 'teste'
+    }
+    component.login(user);
+    expect(request.postAuthentication).toHaveBeenCalled();
+  });
+
 });

@@ -11,6 +11,7 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./login.component.css']
 })
 
+
 export class LoginComponent implements OnInit {
 
     valueInvalid = "Usuário ou senha inválida"
@@ -54,6 +55,7 @@ export class LoginComponent implements OnInit {
     errorHandler (status){
         if(status == 400){
             document.getElementById('alert-invalid').style.display="block";
+            return false;
         }
     }
 
