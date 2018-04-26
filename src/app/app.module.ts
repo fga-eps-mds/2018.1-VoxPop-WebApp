@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { CookieService } from 'ngx-cookie-service';
 import { TokenService } from './token.service';
+import { MinhasPlsComponent } from './minhas-pls/minhas-pls.component';
 
 const appRoutes:Routes = [
   {
@@ -24,6 +25,10 @@ const appRoutes:Routes = [
   {
       path: 'login',
       component: LoginComponent
+  },
+  {
+    path: 'minhaspls',
+    component: MinhasPlsComponent
   },
   {
     path: '',
@@ -39,6 +44,7 @@ const appRoutes:Routes = [
     RegisterFormComponent,
     MainPageComponent,
     LoginComponent,
+    MinhasPlsComponent,
 
   ],
   imports: [
