@@ -12,7 +12,6 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { RouterModule, Routes, Router } from '@angular/router';
 import { RequestsService } from './requests.service';
 import { FormsModule } from '@angular/forms';
-import { SidebarComponent } from './sidebar/sidebar.component';
 import { LoginComponent } from './login/login.component';
 import { CookieService } from 'ngx-cookie-service';
 import { TokenService } from './token.service';
@@ -39,7 +38,6 @@ const appRoutes:Routes = [
     FooterComponent,
     RegisterFormComponent,
     MainPageComponent,
-    SidebarComponent,
     LoginComponent,
 
   ],
