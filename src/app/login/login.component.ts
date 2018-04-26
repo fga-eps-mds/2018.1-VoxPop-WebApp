@@ -14,42 +14,47 @@ import { CookieService } from 'ngx-cookie-service';
 
 export class LoginComponent implements OnInit {
 
-    valueInvalid = "Usuário ou senha inválida"
+    valueInvalid = 'Usuário ou senha inválida'
     constructor(private router:Router,
                 private requester:RequestsService,
-                private cookieService:CookieService){ }
+                private cookieService:CookieService) { }
 
     ngOnInit() {
     }
 
-    login(e: any){
-        var user: LoginModel;
+    login(username: string, password: string){
+        let user: LoginModel;
         user = {
-            username: e.target.elements[0].value,
-            password: e.target.elements[1].value
-        }
+            username: username,
+            password: password
+        }; 
 
-        this.requester.postAuthentication(user).subscribe(response => {
-            let statusAuthentication = response.status;
-            let token = response.body["token"];
-            console.log(response);
-            
+        return this.requester.postAuthentication(user);
 
-            if(this.requester.didSucceed(statusAuthentication)){
-                this.cookieService.set('token', token);
-                this.router.navigate(['']);
-                return true;
-            }else{
-                alert("Email ou senha inválido");
-                return false;
-            }
-        },
-        error => {
-            console.log(error);
-            let statusAuthentication = error.status;
-            this.errorHandler(statusAuthentication);
-            return false;
-        })
+    }
+
+    handleLoginResponse(request){
+      let statusAuthentication;
+      let token;
+
+      request.subscribe(response => {
+          statusAuthentication = response.status;
+          token = response.body["token"];
+          console.log(response);
+
+
+          if(this.requester.didSucceed(statusAuthentication)){
+              this.cookieService.set('token', token);
+              this.router.navigate(['']);
+          }else{
+              alert("Email ou senha inválido");
+          }
+      },
+      error => {
+          console.log(error);
+          let statusAuthentication = error.status;
+          this.errorHandler(statusAuthentication);
+      });
     }
 
     errorHandler (status){
