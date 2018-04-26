@@ -24,12 +24,15 @@ export class LoginComponent implements OnInit {
 
     login(username: string, password: string) {
         let user: LoginModel;
+        let req: any;
         user = {
             username: username,
             password: password
         };
 
-        return this.requester.postAuthentication(user);
+        req =  this.requester.postAuthentication(user);
+        this.handleLoginResponse(req);
+        return req;
 
     }
 
