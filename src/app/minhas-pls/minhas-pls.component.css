@@ -25,3 +25,12 @@
 .disabled {
     background-color: #3097D1;
 }
+
+.bottom {
+    position: absolute;
+    bottom: 30px;
+}
+
+.center-block {
+    float: none !important
+}

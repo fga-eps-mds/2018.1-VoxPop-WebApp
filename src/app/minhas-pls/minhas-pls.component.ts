@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MinhasPlsComponent implements OnInit {
 
+  numberPLsVoted = 20;
+
   constructor() { }
 
   ngOnInit() {
