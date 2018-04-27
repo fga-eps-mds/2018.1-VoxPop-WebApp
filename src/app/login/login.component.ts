@@ -39,15 +39,18 @@ export class LoginComponent implements OnInit {
     handleLoginResponse(request) {
       let statusAuthentication;
       let token;
+      let id;
 
       request.subscribe(response => {
           statusAuthentication = response.status;
           token = response.body['token'];
+          id =  response.body['id'];
           console.log(response);
 
 
           if (this.requester.didSucceed(statusAuthentication)){
               this.cookieService.set('token', token);
+              this.cookieService.set('id', id);
               this.router.navigate(['']);
           } else {
               alert('Email ou senha inválido');

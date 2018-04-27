@@ -17,16 +17,18 @@ export class RequestsService {
               private cookieService:CookieService,
               private token:TokenService) { }
 
-  baseURL : string = environment.baseURL
-  tokenValue : string = this.cookieService.get('token')
-  headers = {'Content-Type': 'application/json'}
-  tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token '+ this.tokenValue}
+  baseURL : string = environment.baseURL;
+  headers = {'Content-Type': 'application/json'};
+  tokenValue : string = '';
+  tokenHeader : any;
 
   getUser(userId) {
      return this.http.get(this.baseURL.concat("users/${userId}"));
   }
 
   getProjects() {
+    this.tokenValue = this.cookieService.get('token');
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token '+ this.tokenValue};
     var endpoint = this.baseURL.concat('propositions/non_voted/');
     return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
   }
@@ -50,9 +52,12 @@ export class RequestsService {
   }
 
   postVote(vote : VoteModel) {
+    this.tokenValue = this.cookieService.get('token');
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token '+ this.tokenValue};
     let endpoint = this.baseURL.concat('user_votes/');
-    console.log("Making POST REQUEST VOTE ON URL: " + endpoint)
-    return this.http.post(endpoint, JSON.stringify(vote), {headers: this.headers, observe: 'response'})
+    console.log("Making POST REQUEST VOTE ON URL: " + endpoint);
+    console.log(vote);
+    return this.http.post(endpoint, JSON.stringify(vote), {headers: this.tokenHeader, observe: 'response'});
   }
 
   didSucceed(status){

@@ -14,6 +14,7 @@ import { TokenService } from '../token.service';
 export class PropositionsComponent implements OnInit {
 
   tokenValue = '';
+  idValue = 0;
 
   proposition: any = {
     proposition_id: 0,
@@ -37,16 +38,34 @@ export class PropositionsComponent implements OnInit {
   ngOnInit() {
     this.tokenValue = this.cookieService.get('token');
     this.token.checkToken(this.tokenValue);
+    this.idValue = +this.cookieService.get('id');
     this.requester.getProjects().subscribe( response =>{
       this.proposition = response['body'];
+      console.log(response['body']);
     });
   }
 
-  answerPL(opinion){
-     var vote : any = {
-       proposition_id: this.proposition.proposition_id,
+  answerPL(opinion: string){
+    var response;
+    var request;
+    var status;
+
+     var vote : VoteModel = {
+       user: this.idValue,
+       proposition_id: this.proposition.id,
        vote: opinion
     }
-    this.requester.postVote(vote);
+
+    response = this.requester.postVote(vote);
+    request.subscribe( response=>{
+      status = response.status;
+
+      if(this.requester.didSucceed(status)){
+        console.log("Sucesso");
+      }
+      else{
+        console.log("Tá errado ai ó");
+      }
+    });
   }
 }
