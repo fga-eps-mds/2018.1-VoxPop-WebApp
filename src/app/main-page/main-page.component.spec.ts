@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MainPageComponent } from './main-page.component';
+import { CookieService } from 'ngx-cookie-service';
+import { TokenService } from '../token.service';
 
 describe('MainPageComponent', () => {
   let component: MainPageComponent;
@@ -8,6 +10,10 @@ describe('MainPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      providers: [
+        CookieService,
+        TokenService
+      ],
       declarations: [ MainPageComponent ]
     })
     .compileComponents();
