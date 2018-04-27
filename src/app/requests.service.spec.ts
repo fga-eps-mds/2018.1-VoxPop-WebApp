@@ -1,5 +1,6 @@
 import { TestBed, inject } from '@angular/core/testing';
-
+import { CookieService } from 'ngx-cookie-service';
+import { TokenService } from './token.service';
 import { RequestsService } from './requests.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
@@ -17,7 +18,9 @@ describe('RequestsService', () => {
 
   it('should check if status is succeed', () => {
     let http : HttpClient;
-    let service = new RequestsService(http);
+    let cookie : CookieService;
+    let token : TokenService;
+    let service = new RequestsService(http, cookie, token);
     expect(service.didSucceed(0)).toBeFalsy('on 0');
     expect(service.didSucceed(201)).toBeTruthy('on 201');
     expect(service.didSucceed(301)).toBeFalsy('on 301');
