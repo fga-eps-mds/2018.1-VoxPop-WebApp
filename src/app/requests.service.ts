@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { map } from 'rxjs/operators';
+import { CookieService } from 'ngx-cookie';
+import { TokenService } from './token.service';
 
 import { UserModel } from '../models/user';
 import { SocialInformationModel } from '../models/socialInformation';
@@ -10,10 +12,13 @@ import { LoginModel } from '../models/login';
 @Injectable()
 export class RequestsService {
 
-  constructor(private http: HttpClient) { }
-
+  constructor(private http: HttpClient,
+             private token: TokenService,
+             private cookieService: CookieService) { }
+  tokenValue = this.cookieService.get('token');
   baseURL: string = environment.baseURL;
   headers = {'Content-Type': 'application/json'};
+  header = {'Content-Type': 'application/json', 'Authorization': 'Token ' + this.tokenValue};
 
 
   getUser(userId) {
@@ -23,7 +28,7 @@ export class RequestsService {
   getVotedProposition(offset) {
     const endpoint = this.baseURL.concat('user_votes/?limit=10&offset=' + offset);
     console.log('Making POST REQUEST USER ON URL: ' + endpoint);
-    return this.http.get(endpoint);
+    return this.http.get(endpoint, {headers: this.header});
   }
   postUser(user: UserModel) {
     const endpoint = this.baseURL.concat('users/');

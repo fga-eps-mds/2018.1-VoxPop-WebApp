@@ -39,12 +39,12 @@ export class MinhasPlsComponent implements OnInit {
   ngOnInit() {
     this.tokenValue = this.cookieService.get('token');
     this.token.checkToken(this.tokenValue);
-    this.numberPLsVoted = 1;
-    this.propositions(0);
+    this.propositions(1);
   }
 
   propositions(offset: number) {
     this.pages = [1];
+    this.numberPLsVoted = 1;
     this.requester.getVotedProposition((offset - 1) * this.itemsPerPage).subscribe( response => {
       this.proposition = response['results'];
       this.numberPLsVoted = response['count'];
