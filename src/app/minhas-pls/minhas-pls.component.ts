@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RequestsService } from '../requests.service';
+import { PropositionModel } from '../../models/proposition';
 
 @Component({
   selector: 'app-minhas-pls',
@@ -11,7 +12,8 @@ export class MinhasPlsComponent implements OnInit {
   numberPLsVoted: number;
   pages: Array<number> = [1];
 
-  proposition: any = {
+  proposition: Array<PropositionModel> = [
+  {
     proposition_id: 0,
     proposition_type: '',
     proposition_type_initials: '',
@@ -21,19 +23,20 @@ export class MinhasPlsComponent implements OnInit {
     processing: '',
     situation: '',
     url_full: ''
-  };
+  }
+];
 
   constructor(private requester: RequestsService) { }
 
   ngOnInit() {
-    this.numberPLsVoted = 100;
-    this.propositions(10);
+    this.numberPLsVoted = 1;
+    // this.propositions(10);
   }
 
   propositions(offset: number) {
     this.requester.getVotedProposition(offset).subscribe( response => {
-      this.proposition = response;
-      this.numberPLsVoted = this.proposition.count;
+      this.proposition = response['results'];
+      this.numberPLsVoted = response['count'];
       for (let i = 2; i <= this.numberPLsVoted / 10; i++) {
         this.pages.push(i);
       }
