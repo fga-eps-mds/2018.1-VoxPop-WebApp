@@ -56,7 +56,11 @@ export class PropositionsComponent implements OnInit {
        vote: opinion
     }
     this.requester.postVote(vote).subscribe(response => {
-      
+      status = response.status;
+
+      if (!this.requester.didSucceed(status)){
+        alert("Voto não registrado, favor tentar de novo mais tarde");
+      }
     });
 
   }
