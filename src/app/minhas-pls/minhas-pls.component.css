@@ -27,8 +27,9 @@
 }
 
 .bottom {
-    position: absolute;
-    bottom: 30px;
+    text-align: center;
+    bottom: 10%;
+    width: 100%;
 }
 
 .center-block {
