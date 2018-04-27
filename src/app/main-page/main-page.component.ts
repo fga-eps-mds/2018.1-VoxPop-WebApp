@@ -13,16 +13,13 @@ export class MainPageComponent implements OnInit {
   tokenValue = '';
 
   constructor(
-    private cookieService:CookieService,
-    private token:TokenService
+    private cookieService: CookieService,
+    private token: TokenService
   ) { }
 
   ngOnInit() {
     this.tokenValue = this.cookieService.get('token');
     this.token.checkToken(this.tokenValue);
   }
-
-  
-  
 
 }

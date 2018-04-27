@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RequestsService } from '../requests.service';
 import { PropositionModel } from '../../models/proposition';
+import { CookieService } from 'ngx-cookie';
+import { TokenService } from '../token.service';
 
 @Component({
   selector: 'app-minhas-pls',
@@ -9,6 +11,7 @@ import { PropositionModel } from '../../models/proposition';
 })
 export class MinhasPlsComponent implements OnInit {
 
+  tokenValue = '';
   numberPLsVoted: number;
   pages: Array<number> = [1];
   itemsPerPage = 10;
@@ -27,11 +30,17 @@ export class MinhasPlsComponent implements OnInit {
     }
   ];
 
-  constructor(private requester: RequestsService) { }
+  constructor(
+    private requester: RequestsService,
+    private cookieService: CookieService,
+    private token: TokenService
+  ) { }
 
   ngOnInit() {
+    this.tokenValue = this.cookieService.get('token');
+    this.token.checkToken(this.tokenValue);
     this.numberPLsVoted = 1;
-    //this.propositions(10);
+    // this.propositions(10);
   }
 
   propositions(offset: number) {
