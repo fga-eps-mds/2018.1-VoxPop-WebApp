@@ -18,11 +18,11 @@ export class MinhasPlsComponent implements OnInit {
 
   proposition: Array<PropositionModel> = [
     {
-      proposition_id: 0,
+      proposition_id: null,
       proposition_type: '',
       proposition_type_initials: '',
-      number: 0,
-      year: 0,
+      number: null,
+      year: null,
       abstract: '',
       processing: '',
       situation: '',
