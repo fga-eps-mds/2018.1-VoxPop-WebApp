@@ -16,6 +16,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { LoginComponent } from './login/login.component';
 import { CookieService } from 'ngx-cookie-service';
 import { TokenService } from './token.service';
+import { ProfileComponent } from './profile/profile.component';
 
 const appRoutes:Routes = [
   {
@@ -29,6 +30,10 @@ const appRoutes:Routes = [
   {
     path: '',
     component: MainPageComponent
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent
   }
 ]
 
@@ -41,6 +46,7 @@ const appRoutes:Routes = [
     MainPageComponent,
     SidebarComponent,
     LoginComponent,
+    ProfileComponent,
 
   ],
   imports: [
