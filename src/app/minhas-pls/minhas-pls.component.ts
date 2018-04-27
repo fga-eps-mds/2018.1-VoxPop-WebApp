@@ -31,12 +31,12 @@ export class MinhasPlsComponent implements OnInit {
 
   ngOnInit() {
     this.numberPLsVoted = 1;
-    //this.propositions(10);
+    this.propositions(0);
   }
 
   propositions(offset: number) {
     this.pages = [1];
-    this.requester.getVotedProposition(offset * this.itemsPerPage).subscribe( response => {
+    this.requester.getVotedProposition((offset - 1) * this.itemsPerPage).subscribe( response => {
       this.proposition = response['results'];
       this.numberPLsVoted = response['count'];
       for (let i = 2; i <= this.numberPLsVoted / this.itemsPerPage; i++) {
