@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RequestsService } from '../requests.service';
 
 @Component({
   selector: 'app-minhas-pls',
@@ -7,11 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MinhasPlsComponent implements OnInit {
 
-  numberPLsVoted = 20;
+  numberPLsVoted: number;
+  pages: Array<number> = [1];
 
-  constructor() { }
+  constructor(private requester: RequestsService,) { }
 
   ngOnInit() {
+    this.numberPLsVoted = 0;
+    for (let i = 2; i <= this.numberPLsVoted / 10; i++) {
+      this.pages.push(i);
+    }
+  }
+
+  proposition(offset: number) {
+    this.requester.getVotedProposition(offset);
   }
 
 }
