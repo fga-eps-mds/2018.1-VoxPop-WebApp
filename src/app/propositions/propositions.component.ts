@@ -52,20 +52,12 @@ export class PropositionsComponent implements OnInit {
 
      var vote : VoteModel = {
        user: this.idValue,
-       proposition_id: this.proposition.id,
+       proposition: this.proposition.id,
        vote: opinion
     }
-
-    response = this.requester.postVote(vote);
-    request.subscribe( response=>{
-      status = response.status;
-
-      if(this.requester.didSucceed(status)){
-        console.log("Sucesso");
-      }
-      else{
-        console.log("Tá errado ai ó");
-      }
+    this.requester.postVote(vote).subscribe(response => {
+      
     });
+
   }
 }

@@ -1,5 +1,5 @@
 export interface VoteModel {
     user: number,
-    proposition_id: number,
+    proposition: number,
     vote: string
 }
