@@ -12,13 +12,14 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { RouterModule, Routes, Router } from '@angular/router';
 import { RequestsService } from './requests.service';
 import { FormsModule } from '@angular/forms';
-import { PropositionsComponent } from './propositions/propositions.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
 import { LoginComponent } from './login/login.component';
 import { CookieService } from 'ngx-cookie-service';
-import { TokenService } from './token.service'
+import { TokenService } from './token.service';
+import { MinhasPlsComponent } from './minhas-pls/minhas-pls.component';
+import { PropositionsComponent } from './propositions/propositions.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
-const appRoutes:Routes = [
+const appRoutes: Routes = [
   {
     path: 'register',
     component: RegisterFormComponent
@@ -26,6 +27,10 @@ const appRoutes:Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'mypls',
+    component: MinhasPlsComponent
   },
   {
     path: '',
@@ -44,6 +49,7 @@ const appRoutes:Routes = [
     FooterComponent,
     RegisterFormComponent,
     MainPageComponent,
+    MinhasPlsComponent,
     PropositionsComponent,
     SidebarComponent,
     LoginComponent,

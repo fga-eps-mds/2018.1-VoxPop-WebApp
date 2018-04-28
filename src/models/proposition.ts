@@ -1,5 +1,4 @@
 export interface PropositionModel {
-
     proposition_id: number,
     proposition_type: string,
     proposition_type_initials: string,
