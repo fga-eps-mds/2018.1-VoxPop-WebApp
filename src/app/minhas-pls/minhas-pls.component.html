@@ -10,9 +10,10 @@
             <li>Ano: {{p['year']}}</li>
             <li>Abstract: {{p['abstract']}}</li>
             <li>Situação: {{p['situation']}}</li>
-            <li>Na íntegra: {{p['url_full']}}</li>
+            <li>Na íntegra: <a href="{{p['url_full']}}">link íntegra</a></li>
           </p>
-          <button class="btn btn-primary disabled">Y</button>
+          <button class="btn btn-primary disabled" *ngIf="p['option'] !== ''">{{p['option']}}</button>
+          <button class="btn btn-primary disabled" *ngIf="p['option'] === ''">-</button>
         </div>
       </div>
     </div>
@@ -25,7 +26,7 @@
         <a class="page-link" href="#" tabindex="-1">Previous</a>
       </li>
       <li class="page-item" *ngFor="let i of pages">
-        <a class="page-link" [routerLink]="" (click)="propositions(i)">{{i}}</a>
+        <a class="page-link" (click)="propositions(i)">{{i}}</a>
       </li>
       <li class="page-item">
         <a class="page-link" href="#">Next</a>

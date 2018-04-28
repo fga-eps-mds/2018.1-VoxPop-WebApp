@@ -16,8 +16,10 @@ export class MinhasPlsComponent implements OnInit {
   pages: Array<number> = [1];
   itemsPerPage = 10;
 
-  proposition: Array<PropositionModel> = [
+  propositionVote: any;
+  proposition: any = [
     {
+      option: null,
       proposition_id: null,
       proposition_type: '',
       proposition_type_initials: '',
@@ -43,11 +45,23 @@ export class MinhasPlsComponent implements OnInit {
   }
 
   propositions(offset: number) {
+    let req: any;
     this.pages = [1];
     this.numberPLsVoted = 1;
+    this.proposition = [];
+    req =  this.requester.getVotedProposition((offset - 1) * this.itemsPerPage);
+        this.handlePropositionsResponse(req, offset);
+        return req;
+  }
+
+  handlePropositionsResponse(request, offset) {
     this.requester.getVotedProposition((offset - 1) * this.itemsPerPage).subscribe( response => {
-      this.proposition = response['results'];
+      this.propositionVote = response['results'];
       this.numberPLsVoted = response['count'];
+      for (let j = 0; j < this.propositionVote.length; j++) {
+        this.proposition.push(this.propositionVote[j]['proposition']);
+        this.proposition[j]['option'] = this.propositionVote[j]['option'];
+      }
       for (let i = 2; i <= this.numberPLsVoted / this.itemsPerPage; i++) {
         this.pages.push(i);
       }
