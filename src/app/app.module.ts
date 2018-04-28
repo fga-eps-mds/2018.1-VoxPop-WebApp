@@ -17,7 +17,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { TokenService } from './token.service';
 import { MinhasPlsComponent } from './minhas-pls/minhas-pls.component';
 
-const appRoutes:Routes = [
+const appRoutes: Routes = [
   {
     path: 'register',
     component: RegisterFormComponent
@@ -27,7 +27,7 @@ const appRoutes:Routes = [
       component: LoginComponent
   },
   {
-    path: 'minhaspls',
+    path: 'mypls',
     component: MinhasPlsComponent
   },
   {

@@ -62,7 +62,7 @@ export class MinhasPlsComponent implements OnInit {
         this.proposition.push(this.propositionVote[j]['proposition']);
         this.proposition[j]['option'] = this.propositionVote[j]['option'];
       }
-      for (let i = 2; i <= this.numberPLsVoted / this.itemsPerPage; i++) {
+      for (let i = 2; i <= Math.ceil(this.numberPLsVoted / this.itemsPerPage); i++) {
         this.pages.push(i);
       }
       console.log(this.proposition);

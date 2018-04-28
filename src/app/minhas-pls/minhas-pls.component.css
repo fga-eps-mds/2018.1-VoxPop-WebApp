@@ -35,3 +35,7 @@
 .center-block {
     float: none !important
 }
+
+.vote{
+    height: 35rem;
+}
