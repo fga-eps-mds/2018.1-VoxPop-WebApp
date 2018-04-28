@@ -4,14 +4,14 @@
       Projeto de Lei
     </h1>
     <div class="main-card">
-      <ul>
+      <ul style="margin-top: 10px">
         <li>Número: {{proposition['number']}}</li>
         <li>Ano: {{proposition['year']}}</li>
         <li>Abstract: {{proposition['abstract']}}</li>
         <li>Situação: {{proposition['situation']}}</li>
         <li>Tipo: {{proposition['proposition_type']}}</li>
       </ul>
-      <div style="text-align: center">
+      <div style="text-align: center; margin-bottom: 10px">
         <button class='btn btn-success' (click)="answerPL('Y')"><span class="glyphicon glyphicon-ok"></span></button>
         <button class='btn btn-light' (click)="answerPL('A')"><span class="glyphicon glyphicon-minus"></span></button>
         <button class='btn btn-danger' (click)="answerPL('N')"><span class="glyphicon glyphicon-remove"></span></button>
