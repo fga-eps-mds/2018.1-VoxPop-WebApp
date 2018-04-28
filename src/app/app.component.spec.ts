@@ -6,7 +6,11 @@ import { FooterComponent } from './footer/footer.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { CookieService } from 'ngx-cookie-service';
+import { TokenService } from './token.service';
+import { RequestsService } from './requests.service';
+import { Router } from '@angular/router';
 import { SidebarComponent } from './sidebar/sidebar.component';
+
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -23,7 +27,8 @@ describe('AppComponent', () => {
         SidebarComponent
       ],
       providers: [
-        CookieService
+        CookieService,
+        TokenService,
       ],
     }).compileComponents();
   }));

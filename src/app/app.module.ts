@@ -12,10 +12,11 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { RouterModule, Routes, Router } from '@angular/router';
 import { RequestsService } from './requests.service';
 import { FormsModule } from '@angular/forms';
+import { PropositionsComponent } from './propositions/propositions.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { LoginComponent } from './login/login.component';
 import { CookieService } from 'ngx-cookie-service';
-import { TokenService } from './token.service';
+import { TokenService } from './token.service'
 
 const appRoutes:Routes = [
   {
@@ -23,13 +24,17 @@ const appRoutes:Routes = [
     component: RegisterFormComponent
   },
   {
-      path: 'login',
-      component: LoginComponent
+    path: 'login',
+    component: LoginComponent
   },
   {
     path: '',
     component: MainPageComponent
-  }
+  },
+  {
+    path: 'propositions',
+    component: PropositionsComponent
+  },
 ]
 
 @NgModule({
@@ -39,9 +44,9 @@ const appRoutes:Routes = [
     FooterComponent,
     RegisterFormComponent,
     MainPageComponent,
+    PropositionsComponent,
     SidebarComponent,
     LoginComponent,
-
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -52,9 +57,9 @@ const appRoutes:Routes = [
     CookieModule.forRoot()
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA],
-  providers: [ 
+  providers: [
     RequestsService,
-    CookieService,   
+    CookieService,
     TokenService
   ],
   bootstrap: [AppComponent]

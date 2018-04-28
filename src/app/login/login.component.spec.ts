@@ -9,6 +9,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { LoginModel } from '../../models/login';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { TokenService } from '../token.service';
 
 class MockLoginComponent {
   login(user: LoginModel) {
@@ -40,7 +41,8 @@ describe('LoginComponent', () => {
       declarations: [ LoginComponent ],
       providers: [
         RequestsService,
-        CookieService
+        CookieService,
+        TokenService,
       ]
     })
     .compileComponents();
