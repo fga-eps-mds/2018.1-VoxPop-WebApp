@@ -8,7 +8,11 @@ describe('RequestsService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [ HttpClientModule ],
-      providers: [RequestsService]
+      providers: [
+        RequestsService,
+        CookieService,
+        TokenService
+      ]
     });
   });
 
