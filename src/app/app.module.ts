@@ -16,6 +16,8 @@ import { LoginComponent } from './login/login.component';
 import { CookieService } from 'ngx-cookie-service';
 import { TokenService } from './token.service';
 import { MinhasPlsComponent } from './minhas-pls/minhas-pls.component';
+import { PropositionsComponent } from './propositions/propositions.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 const appRoutes: Routes = [
   {
@@ -23,8 +25,8 @@ const appRoutes: Routes = [
     component: RegisterFormComponent
   },
   {
-      path: 'login',
-      component: LoginComponent
+    path: 'login',
+    component: LoginComponent
   },
   {
     path: 'mypls',
@@ -33,7 +35,11 @@ const appRoutes: Routes = [
   {
     path: '',
     component: MainPageComponent
-  }
+  },
+  {
+    path: 'propositions',
+    component: PropositionsComponent
+  },
 ]
 
 @NgModule({
@@ -43,9 +49,10 @@ const appRoutes: Routes = [
     FooterComponent,
     RegisterFormComponent,
     MainPageComponent,
-    LoginComponent,
     MinhasPlsComponent,
-
+    PropositionsComponent,
+    SidebarComponent,
+    LoginComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -56,9 +63,9 @@ const appRoutes: Routes = [
     CookieModule.forRoot()
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA],
-  providers: [ 
+  providers: [
     RequestsService,
-    CookieService,   
+    CookieService,
     TokenService
   ],
   bootstrap: [AppComponent]
