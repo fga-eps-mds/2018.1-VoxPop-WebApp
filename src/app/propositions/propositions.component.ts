@@ -60,6 +60,11 @@ export class PropositionsComponent implements OnInit {
 
       if (!this.requester.didSucceed(status)){
         alert("Voto não registrado, favor tentar de novo mais tarde");
+      } else {
+        this.requester.getProjects().subscribe( response =>{
+          this.proposition = response['body'];
+          console.log(response['body']);
+        });
       }
     });
 
