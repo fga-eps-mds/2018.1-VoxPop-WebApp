@@ -9,6 +9,8 @@ import { CookieService } from 'ngx-cookie-service';
 import { TokenService } from './token.service';
 import { RequestsService } from './requests.service';
 import { Router } from '@angular/router';
+import { SidebarComponent } from './sidebar/sidebar.component';
+
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -21,7 +23,8 @@ describe('AppComponent', () => {
         HeaderComponent,
         FooterComponent,
         RegisterFormComponent,
-        MainPageComponent
+        MainPageComponent,
+        SidebarComponent
       ],
       providers: [
         CookieService,

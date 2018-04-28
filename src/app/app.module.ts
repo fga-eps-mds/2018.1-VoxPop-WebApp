@@ -13,9 +13,10 @@ import { RouterModule, Routes, Router } from '@angular/router';
 import { RequestsService } from './requests.service';
 import { FormsModule } from '@angular/forms';
 import { PropositionsComponent } from './propositions/propositions.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { LoginComponent } from './login/login.component';
 import { CookieService } from 'ngx-cookie-service';
 import { TokenService } from './token.service'
-import { LoginComponent } from './login/login.component';
 
 const appRoutes:Routes = [
   {
@@ -44,6 +45,7 @@ const appRoutes:Routes = [
     RegisterFormComponent,
     MainPageComponent,
     PropositionsComponent,
+    SidebarComponent,
     LoginComponent,
   ],
   imports: [
