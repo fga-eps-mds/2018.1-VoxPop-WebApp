@@ -50,8 +50,8 @@ export class MinhasPlsComponent implements OnInit {
     this.numberPLsVoted = 1;
     this.proposition = [];
     req =  this.requester.getVotedProposition((offset - 1) * this.itemsPerPage);
-        this.handlePropositionsResponse(req, offset);
-        return req;
+    this.handlePropositionsResponse(req, offset);
+    return req;
   }
 
   handlePropositionsResponse(request, offset) {
