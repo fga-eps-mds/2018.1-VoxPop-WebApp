@@ -51,9 +51,9 @@ export class PropositionsComponent implements OnInit {
     var status;
 
      var vote : VoteModel = {
-       user: this.idValue,
+      //  user: this.idValue,
        proposition: this.proposition.id,
-       vote: opinion
+       option: opinion
     }
     this.requester.postVote(vote).subscribe(response => {
       status = response.status;
