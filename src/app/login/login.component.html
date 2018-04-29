@@ -1,27 +1,23 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-4 col-md-offset-4">
-      <form (submit)="login(username.value, password.value)">
-        <div class="login-card">
-          <div class="form-group">
-            <div class="alert alert-danger" role="alert" id="alert-invalid" style="display:none">
-              <p>{{valueInvalid}}</p>
-            </div>
-            <label>Nome de usuário</label>
-            <input type="username" class="form-control" placeholder="Entre o nome do usuário" #username>
-          </div>
-          <div class="form-group">
-            <label>Senha</label>
-            <input type="password" class="form-control" placeholder="Senha" #password>
-          </div>
-          <div style="text-align: center">
-            <button class="btn btn-primary" type="submit" id="loginBtn">Entrar</button>
-          </div> <br>
-          <div style="text-align: center">
-            <a href="/register">Não possui uma conta? Cadastre-se</a>
-          </div>
+<div class="col-md-6 col-md-offset-3">
+  <form (submit)="login(username.value, password.value)">
+    <div class="login-card">
+      <div class="form-group">
+        <div class="alert alert-danger" role="alert" id="alert-invalid" style="display:none">
+          <p>{{valueInvalid}}</p>
         </div>
-      </form>
+        <label>Nome de usuário</label>
+        <input type="username" class="form-control" placeholder="Entre o nome do usuário" #username>
+      </div>
+      <div class="form-group">
+        <label>Senha</label>
+        <input type="password" class="form-control" placeholder="Senha" #password>
+      </div>
+      <div style="text-align: center">
+        <button class="btn btn-primary" type="submit" id="loginBtn">Entrar</button>
+      </div> <br>
+      <div style="text-align: center">
+        <a href="/register">Não possui uma conta? Cadastre-se</a>
+      </div>
     </div>
-  </div>
+  </form>
 </div>
