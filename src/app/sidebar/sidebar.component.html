@@ -1,8 +1,61 @@
-<div class = "sidebar">
-    <div  class="link-box">
-        <a href="#">Link 1</a>
-        <a href="#">Link 2</a>
-        <a href="#">Link 3</a>
-        <a href="#">Link 4</a>
+<div class="wrapper">
+    <!-- Sidebar Holder -->
+<nav id="sidebar" class="active">
+  <div ng-class="console.log(localStorage.getItem('sidebar')) == 'true' ? 'active' : ''">
+    <div class="sidebar-header">
+        <h3>VoxPop</h3>
+        <strong>VP</strong>
     </div>
+
+    <ul class="list-unstyled components">
+        <!-- <li class="active"> -->
+        <li>
+            <a href="/">
+                <i class="glyphicon glyphicon-home"></i>
+                Página inicial
+            </a>
+        </li>
+        <!-- <li>
+            <a href="#">
+                <i class="glyphicon glyphicon-briefcase"></i>
+                About
+            </a>
+            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
+                <i class="glyphicon glyphicon-duplicate"></i>
+                Pages
+            </a>
+            <ul class="collapse list-unstyled" id="pageSubmenu">
+                <li><a href="#">Page 1</a></li>
+                <li><a href="#">Page 2</a></li>
+                <li><a href="#">Page 3</a></li>
+            </ul>
+        </li> -->
+        <li>
+            <a href="/propositions">
+                <i class="glyphicon glyphicon-link"></i>
+                Dê sua opinião
+            </a>
+        </li>
+        <li>
+            <a href="/mypls">
+                <i class="glyphicon glyphicon-paperclip"></i>
+                Meus votos
+            </a>
+        </li>
+        <li>
+            <a href="/">
+                <i class="glyphicon glyphicon-send"></i>
+                Entre em contato
+            </a>
+        </li>
+    </ul>
+    <ul class="list-unstyled CTAs">
+      <li>Contribua com o projeto! <i class="glyphicon glyphicon-heart"></i></li>
+      <br>
+      <li><a href="https://github.com/fga-gpp-mds/2018.1-VoxPop-API" class="article">Repositório da API</a></li>
+      <li><a href="https://github.com/fga-gpp-mds/2018.1-VoxPop-WebApp" class="article">Repositório do WebApp</a></li>
+    </ul>
+  </div>
+</nav>
+
 </div>

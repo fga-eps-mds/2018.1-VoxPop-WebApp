@@ -8,7 +8,6 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class HeaderComponent implements OnInit {
 
-
   constructor(
     private cookieService:CookieService,
   ) { }
@@ -18,6 +17,13 @@ export class HeaderComponent implements OnInit {
 
   logout(){
     this.cookieService.set('token', '');
+  }
+
+  toggleMenu() {
+     var sidebar = document.getElementById("sidebar");
+     sidebar.classList.toggle("active");
+     var content = document.getElementById("content");
+     content.classList.toggle("active");
   }
 
 }
