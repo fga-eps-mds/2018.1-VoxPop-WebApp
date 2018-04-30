@@ -1,0 +1,41 @@
+.main-card {
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2);
+    transition: .3s;
+    width: 95%;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+    border-color: #6c757d;
+}
+
+.main-card-content {
+    padding: 5% 10%;
+    color: #122a38;
+    text-align: center;
+}
+
+.main-card:hover {
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, .2);
+}
+
+.disabled {
+    background-color: #3097D1;
+}
+
+.bottom {
+    text-align: center;
+    bottom: 10%;
+    width: 100%;
+}
+
+.center-block {
+    float: none !important
+}
+
+.vote{
+    height: 35rem;
+}

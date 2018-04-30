@@ -1,10 +1,10 @@
-<nav class="navbar navbar-custom navbar-fixed-top">
+<nav class="navbar-custom">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="/">VoxPop</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
-      <!-- Search
+      <!-- Search -->
       <ul class="nav navbar-nav">
         <li>
           <form class="navbar-form" role="search" method="get" action="/busca">
@@ -17,7 +17,15 @@
           </form>
         </li>
       </ul>
-      -->
+      <ul class="nav navbar-nav">
+        <li>
+          <button type="button" id="sidebarCollapse" class="btn navbar-btn" (click)="toggleMenu()">
+            <i class="glyphicon glyphicon-align-left"></i>
+            <span>Menu</span>
+          </button>
+        </li>
+      </ul>
+
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/register" id="register"><span class="glyphicon glyphicon-user"></span> Criar Conta</a></li>
         <li><a href="/login" id="login"><span class="glyphicon glyphicon-log-in"></span> Efetuar Login</a></li>

@@ -6,6 +6,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { RegisterFormComponent } from './register-form.component';
 import { Http } from '@angular/http';
+import { CookieService } from 'ngx-cookie-service';
+import { TokenService } from '../token.service';
 
 describe('RegisterFormComponent', () => {
   let component: RegisterFormComponent;
@@ -18,16 +20,17 @@ describe('RegisterFormComponent', () => {
         HttpClientModule
       ],
       declarations: [ RegisterFormComponent ],
-    providers: [ RequestsService ]
+      providers: [ 
+        RequestsService,
+        CookieService,
+        TokenService,  
+      ]
     })
     .compileComponents();
-  }));
-
-  beforeEach(() => {
     fixture = TestBed.createComponent(RegisterFormComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    // fixture.detectChanges();
+  }));
 
   it('should create', () => {
     expect(component).toBeTruthy();

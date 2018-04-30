@@ -1,0 +1,34 @@
+<h1 class="card-title" align="center">Meus votos</h1>
+  <div class="col-sm-6" *ngFor="let p of proposition">
+    <div class="main-card vote">
+      <div class="main-card-content">
+        <h5 class="card-title">Projeto de lei - Número: {{p['number']}}</h5>
+        <p class="text-left">
+          <li>Tipo: {{p['proposition_type']}}</li>
+          <li>Ano: {{p['year']}}</li>
+          <li>Abstract: {{p['abstract']}}</li>
+          <li>Situação: {{p['situation']}}</li>
+          <li>Na íntegra: <a href="{{p['url_full']}}">link íntegra</a></li>
+          <li>Seu voto: {{p['option']}}</li>
+        </p>
+        <button class="btn btn-primary disabled">Editar Voto</button>
+      </div>
+    </div>
+  </div>
+  <div class="row bottom" *ngIf="proposition?.length > 0">
+    <ul class="pagination pagination-lg">
+      <li class="page-item disabled">
+        <a class="page-link" tabindex="-1">Páginas</a>
+      </li>
+      <li class="page-item" *ngFor="let i of pages">
+        <a class="page-link" (click)="propositions(i)" target="_blank">{{i}}</a>
+      </li>
+    </ul>
+  </div>
+  <div class="row" *ngIf="proposition?.length <= 0">
+    <div class="main-card">
+      <div class="main-card-content">
+        <p>Você verá aqui as propostas que votar em (lugar de votar)</p>
+      </div>
+    </div>
+  </div>
