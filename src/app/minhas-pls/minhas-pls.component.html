@@ -43,7 +43,9 @@
           <h4 class="modal-title" id="exampleModalLabel">Editar Voto</h4>
         </div>
         <div class="modal-body">
-          <h5 class="card-title">{{specificProposition['proposition_type']}} - Número: {{specificProposition['number']}}</h5>
+          <h5 class="card-title">
+            {{specificProposition['proposition_type']}} - Número: {{specificProposition['number']}}
+          </h5>
           <li>Ano: {{specificProposition['year']}}</li>
           <li>Abstract: {{specificProposition['abstract']}}</li>
           <li>Situação: {{specificProposition['situation']}}</li>
@@ -52,9 +54,15 @@
         </div>
         <div class="modal-footer">
           <div style="text-align: center; margin-bottom: 10px">
-              <button class='btn btn-success' (click)="editVote('Y')"><span class="glyphicon glyphicon-ok"></span></button>
-              <button class='btn btn-light' (click)="editVote('A')"><span class="glyphicon glyphicon-minus"></span></button>
-              <button class='btn btn-danger' (click)="editVote('N')"><span class="glyphicon glyphicon-remove"></span></button>
+              <button class='btn btn-success' data-dismiss="modal" (click)="editVote('Y')">
+                <span class="glyphicon glyphicon-ok"></span>
+              </button>
+              <button class='btn btn-light' data-dismiss="modal" (click)="editVote('A')">
+                <span class="glyphicon glyphicon-minus"></span>
+              </button>
+              <button class='btn btn-danger' data-dismiss="modal" (click)="editVote('N')">
+                <span class="glyphicon glyphicon-remove"></span>
+              </button>
             </div>
         </div>
       </div>

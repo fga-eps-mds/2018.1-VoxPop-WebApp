@@ -3,6 +3,7 @@ import { RequestsService } from '../requests.service';
 import { PropositionModel } from '../../models/proposition';
 import { CookieService } from 'ngx-cookie';
 import { TokenService } from '../token.service';
+import { VoteModel } from '../../models/vote';
 
 @Component({
   selector: 'app-minhas-pls',
@@ -54,7 +55,6 @@ export class MinhasPlsComponent implements OnInit {
     this.tokenValue = this.cookieService.get('token');
     this.token.checkToken(this.tokenValue);
     this.propositions(1);
-    this.specifyProposition(0);
   }
 
   propositions(offset: number) {
@@ -85,6 +85,25 @@ export class MinhasPlsComponent implements OnInit {
 
   specifyProposition(id) {
     this.specificProposition = this.proposition[id];
+  }
+
+  editVote(opinion: string) {
+    let status;
+
+     const vote: VoteModel = {
+       proposition: this.proposition.id,
+       option: opinion
+    };
+
+    this.requester.updateVote(vote).subscribe(response => {
+      status = response.status;
+
+      if (!this.requester.didSucceed(status)) {
+        alert('Voto não editado, favor tentar de novo mais tarde');
+      }
+
+    });
+
   }
 
 }
