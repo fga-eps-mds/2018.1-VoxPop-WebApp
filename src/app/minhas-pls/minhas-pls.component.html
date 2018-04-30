@@ -2,9 +2,8 @@
   <div class="col-sm-6" *ngFor="let p of proposition let j = index">
     <div class="main-card vote">
       <div class="main-card-content">
-        <h5 class="card-title">Projeto de lei - Número: {{p['number']}}</h5>
+        <h5 class="card-title">{{p['proposition_type']}} - Número: {{p['number']}}</h5><br>
         <p class="text-left">
-          <li>Tipo: {{p['proposition_type']}}</li>
           <li>Ano: {{p['year']}}</li>
           <li>Abstract: {{p['abstract']}}</li>
           <li>Situação: {{p['situation']}}</li>
@@ -44,8 +43,7 @@
           <h4 class="modal-title" id="exampleModalLabel">Editar Voto</h4>
         </div>
         <div class="modal-body">
-          <h5 class="card-title">Projeto de lei - Número: {{specificProposition['number']}}</h5>
-          <li>Tipo: {{specificProposition['proposition_type']}}</li>
+          <h5 class="card-title">{{specificProposition['proposition_type']}} - Número: {{specificProposition['number']}}</h5>
           <li>Ano: {{specificProposition['year']}}</li>
           <li>Abstract: {{specificProposition['abstract']}}</li>
           <li>Situação: {{specificProposition['situation']}}</li>
@@ -53,8 +51,11 @@
           <li>Seu voto: {{specificProposition['option']}}</li>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <div style="text-align: center; margin-bottom: 10px">
+              <button class='btn btn-success' (click)="editVote('Y')"><span class="glyphicon glyphicon-ok"></span></button>
+              <button class='btn btn-light' (click)="editVote('A')"><span class="glyphicon glyphicon-minus"></span></button>
+              <button class='btn btn-danger' (click)="editVote('N')"><span class="glyphicon glyphicon-remove"></span></button>
+            </div>
         </div>
       </div>
     </div>
