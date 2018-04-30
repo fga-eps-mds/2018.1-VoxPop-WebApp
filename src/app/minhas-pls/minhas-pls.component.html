@@ -11,7 +11,9 @@
           <li>Na íntegra: <a href="{{p['url_full']}}">link íntegra</a></li>
           <li>Seu voto: {{p['option']}}</li>
         </p>
-        <button class="btn btn-primary disabled">Editar Voto</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+          Editar Voto
+        </button>
       </div>
     </div>
   </div>
@@ -29,6 +31,30 @@
     <div class="main-card">
       <div class="main-card-content">
         <p>Você verá aqui as propostas que votar em (lugar de votar)</p>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Editar Voto</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <li>Tipo: {{p['proposition_type']}}</li>
+          <li>Ano: {{p['year']}}</li>
+          <li>Abstract: {{p['abstract']}}</li>
+          <li>Situação: {{p['situation']}}</li>
+          <li>Na íntegra: <a href="{{p['url_full']}}">link íntegra</a></li>
+          <li>Seu voto: {{p['option']}}</li>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
       </div>
     </div>
   </div>
