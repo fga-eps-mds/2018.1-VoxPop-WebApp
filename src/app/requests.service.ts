@@ -66,9 +66,10 @@ export class RequestsService {
     return this.http.post(endpoint, JSON.stringify(vote), {headers: this.tokenHeader, observe: 'response'});
   }
 
-  updateVote(vote: VoteModel) {
-    const endpoint = this.baseURL.concat('user_votes/');
-    console.log('Making POST REQUEST VOTE ON URL: ' + endpoint);
+  updateVote(vote: VoteModel, id: number) {
+    console.log(id);
+    const endpoint = this.baseURL.concat('user_votes/' + id + '/');
+    console.log('Making PUT REQUEST VOTE ON URL: ' + endpoint);
     console.log(vote);
     return this.http.put(endpoint, JSON.stringify(vote), {headers: this.header, observe: 'response'});
   }
