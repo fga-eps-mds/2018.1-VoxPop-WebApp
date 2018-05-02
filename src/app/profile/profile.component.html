@@ -1,13 +1,13 @@
 <body>
   <div class="row">
     <div class="column">
-      <label>Nome: </label><br>
-      <label>Email: </label><br>
-      <label>Username: </label><br>
-      <label>Cidade: </label> 
+      <label>Nome: </label>  {{ user['first_name'] }}<br>
+      <label>Email: </label>  {{ user['last_name'] }}<br>
+      <label>Username: </label>  {{ user['username'] }}<br>
+      <label>Cidade: </label>  {{ social_information['city'] }}
     </div>
     <div class="column">
-      <label>Renda: </label><br>
+      <label>Renda: </label>  {{ user['income'] }}<br>
       <label>Formação: </label><br>
       <label>Ocupação: </label><br>
       <label>Aniversário: </label>

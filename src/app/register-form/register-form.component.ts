@@ -44,14 +44,6 @@ export class RegisterFormComponent implements OnInit {
       last_name: e.target.elements[2].value,
       password: e.target.elements[3].value,
       email: e.target.elements[5].value,
-      social_information: {
-        state: e.target.elements[7].value,
-        city: e.target.elements[8].value,
-        income: e.target.elements[9].value,
-        education: e.target.elements[10].value,
-        job: e.target.elements[11].value,
-        birth_date: e.target.elements[12].value
-      }
      };
     // TODO - adicionar validação de criação. Checar http status code = 201.
     // AINDA é TODO /\

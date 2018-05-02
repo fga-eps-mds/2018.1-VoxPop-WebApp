@@ -12,7 +12,29 @@ import { RequestsService } from '../requests.service';
 export class ProfileComponent implements OnInit {
 
   userID : number;
-  user : any;
+  user : any = {
+    username: '',
+    first_name: '',
+    last_name: '',
+    email: '',
+    password: '',
+    social_information: {
+        federal_unit: '',
+        city: '',
+        income: 0,
+        education: '',
+        job: '',
+        birth_date: '',
+    }
+  }
+  social_information : any = {
+    federal_unit: '',
+    city: '',
+    income: 0,
+    education: '',
+    job: '',
+    birth_date: '',
+  }
   tokenValue = '';
 
   constructor(private cookieService: CookieService,
@@ -25,10 +47,13 @@ export class ProfileComponent implements OnInit {
     this.userID = +this.cookieService.get('userID');
     this.requester.getUser(this.userID).subscribe( response => {
       console.log("Estou aqui!");
-      this.user = response['body'];
+      this.user = response;
+      this.social_information = this.user.social_information;
+      console.log(this.user)
+      console.log(this.social_information)
     }, error => {
       console.log("something wrong")
-      //alert("Algo de errado não está certo!");
+      alert("Algo de errado não está certo!");
     });
   }
 }
