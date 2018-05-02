@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserModel } from '../../models/user';
+// import { UserModel } from '../../models/user';
 import { CookieService } from 'ngx-cookie-service';
 import { TokenService } from '../token.service';
 import { RequestsService } from '../requests.service';

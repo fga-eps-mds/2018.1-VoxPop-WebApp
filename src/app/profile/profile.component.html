@@ -7,10 +7,10 @@
       <label>Cidade: </label>  {{ social_information['city'] }}
     </div>
     <div class="column">
-      <label>Renda: </label>  {{ user['income'] }}<br>
-      <label>Formação: </label><br>
-      <label>Ocupação: </label><br>
-      <label>Aniversário: </label>
+      <label>Renda: </label>  {{ social_information['income'] }}<br>
+      <label>Formação: </label> {{ social_information['education']}} <br>
+      <label>Ocupação: </label>  {{ social_information['job'] }}<br>
+      <label>Nascimento: </label>  {{social_information['birth_date']}}
     </div>
   </div>
 </body>
