@@ -42,15 +42,15 @@
           </button>
           <h4 class="modal-title" id="exampleModalLabel">Editar Voto</h4>
         </div>
-        <div class="modal-body">
+        <div class="modal-body"  *ngIf="proposition?.length > 0">
           <h5 class="card-title">
-            {{specificProposition['proposition_type']}} - Número: {{specificProposition['number']}}
+            {{proposition[votePosition]['proposition_type']}} - Número: {{proposition[votePosition]['number']}}
           </h5>
-          <li>Ano: {{specificProposition['year']}}</li>
-          <li>Abstract: {{specificProposition['abstract']}}</li>
-          <li>Situação: {{specificProposition['situation']}}</li>
-          <li>Na íntegra: <a href="{{specificProposition['url_full']}}">link íntegra</a></li>
-          <li>Seu voto: {{specificProposition['option']}}</li>
+          <li>Ano: {{proposition[votePosition]['year']}}</li>
+          <li>Abstract: {{proposition[votePosition]['abstract']}}</li>
+          <li>Situação: {{proposition[votePosition]['situation']}}</li>
+          <li>Na íntegra: <a href="{{proposition['url_full']}}">link íntegra</a></li>
+          <li>Seu voto: {{proposition[votePosition]['option']}}</li>
         </div>
         <div class="modal-footer">
           <div style="text-align: center; margin-bottom: 10px">

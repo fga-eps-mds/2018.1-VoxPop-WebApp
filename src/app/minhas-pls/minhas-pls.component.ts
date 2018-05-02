@@ -16,7 +16,7 @@ export class MinhasPlsComponent implements OnInit {
   numberPLsVoted: number;
   pages: Array<number> = [1];
   itemsPerPage = 10;
-  votePosition: number;
+  votePosition:number;
 
   propositionVote: any;
   proposition: any = [
@@ -33,18 +33,6 @@ export class MinhasPlsComponent implements OnInit {
       url_full: ''
     }
   ];
-  specificProposition: any = {
-      option: null,
-      proposition_id: null,
-      proposition_type: '',
-      proposition_type_initials: '',
-      number: null,
-      year: null,
-      abstract: '',
-      processing: '',
-      situation: '',
-      url_full: ''
-    };
 
   constructor(
     private requester: RequestsService,
@@ -55,6 +43,7 @@ export class MinhasPlsComponent implements OnInit {
   ngOnInit() {
     this.tokenValue = this.cookieService.get('token');
     this.token.checkToken(this.tokenValue);
+    this.votePosition = 0;
     this.propositions(1);
   }
 
@@ -84,16 +73,15 @@ export class MinhasPlsComponent implements OnInit {
     });
   }
 
-  specifyProposition(id) {
-    this.specificProposition = this.proposition[id];
-    this.votePosition = id;
+  specifyProposition(position) {
+    this.votePosition = position;
   }
 
   editVote(opinion: string) {
     let status;
      const vote: UpdateVoteModel = {
        user: 10,
-       proposition: this.specificProposition.id,
+       proposition: this.proposition[this.votePosition].id,
        option: opinion
     };
 
