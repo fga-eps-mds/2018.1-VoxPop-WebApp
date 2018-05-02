@@ -18,6 +18,7 @@ import { TokenService } from './token.service';
 import { MinhasPlsComponent } from './minhas-pls/minhas-pls.component';
 import { PropositionsComponent } from './propositions/propositions.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { EditPageComponent } from './edit-page/edit-page.component';
 
 const appRoutes: Routes = [
   {
@@ -40,6 +41,10 @@ const appRoutes: Routes = [
     path: 'propositions',
     component: PropositionsComponent
   },
+  {
+    path: 'user/edit',
+    component: EditPageComponent
+  }
 ]
 
 @NgModule({
@@ -53,6 +58,7 @@ const appRoutes: Routes = [
     MinhasPlsComponent,
     PropositionsComponent,
     SidebarComponent,
+    EditPageComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
