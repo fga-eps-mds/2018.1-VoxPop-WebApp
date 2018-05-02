@@ -19,11 +19,12 @@ export class RequestsService {
   tokenValue = this.cookieService.get('token');
   baseURL: string = environment.baseURL;
   headers = {'Content-Type': 'application/json'};
-  header = {'Content-Type': 'application/json', 'Authorization': 'Token ' + this.tokenValue};
+  header = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
   tokenHeader : any;
 
   getUser(userId) {
-     return this.http.get(this.baseURL.concat('users/${userId}'));
+     const endpoint = this.baseURL.concat('users/' + userId + '/');
+     return this.http.get(endpoint, {headers: this.header});
   }
 
   getVotedProposition(offset) {
