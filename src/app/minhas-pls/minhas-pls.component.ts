@@ -90,7 +90,8 @@ export class MinhasPlsComponent implements OnInit {
 
       if (!this.requester.didSucceed(status)) {
         alert('Voto não editado, favor tentar de novo mais tarde');
-      } else {
+      } else { 
+        alert('Voto editado com sucesso!');
         this.propositions(1);
       }
 
