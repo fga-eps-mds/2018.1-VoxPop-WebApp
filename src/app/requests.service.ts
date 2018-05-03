@@ -32,6 +32,12 @@ export class RequestsService {
     return this.http.get(endpoint, {headers: this.header});
   }
 
+  getProposition(offset) {
+    const endpoint = this.baseURL.concat('propositions/?limit=10&offset=' + offset);
+    console.log('Making POST REQUEST USER ON URL: ' + endpoint);
+    return this.http.get(endpoint, {headers: this.headers});
+  }
+
   getProjects() {
     this.tokenValue = this.cookieService.get('token');
     this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token '+ this.tokenValue};

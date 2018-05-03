@@ -41,6 +41,10 @@ const appRoutes: Routes = [
     path: 'propositions',
     component: PropositionsComponent
   },
+  {
+    path: 'seepl',
+    component: SeePlComponent
+  },
 ]
 
 @NgModule({
