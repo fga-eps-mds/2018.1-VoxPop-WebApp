@@ -27,10 +27,28 @@ export class EditPageComponent implements OnInit {
   statusEmail = false;
   danger = '#d9534f';
   sucess = '#5cb85c';
+  first_name  = '';
+  last_name = '';
+  email = '';
 
   tokenValue = '';
   idValue = 0;
-  user: any;
+
+  user: any = {
+    username: '',
+    first_name: '',
+    last_name: '',
+    email: '',
+    password: '',
+    social_information: {
+        state: '',
+        city: '',
+        income: 0,
+        education: '',
+        job: '',
+        birth_date: 0,
+    },
+  }
 
   constructor(private router:Router,
               private requester:RequestsService,
@@ -38,7 +56,6 @@ export class EditPageComponent implements OnInit {
               private token:TokenService) { }
 
   ngOnInit() {
-    let user: any;
     this.tokenValue = this.cookieService.get('token');
     this.token.checkToken(this.tokenValue);
     this.idValue = +this.cookieService.get('userID');
@@ -46,6 +63,10 @@ export class EditPageComponent implements OnInit {
     this.requester.getUser(this.idValue).subscribe( response =>{
       this.user = response['body'];
       console.log(this.user);
+      this.username = this.user['username'];
+      this.first_name = this.user['first_name'];
+      this.last_name = this.user['last_name'];
+      this.email = this.user['email'];
     });
   }
 
