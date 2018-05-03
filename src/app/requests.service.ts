@@ -32,8 +32,8 @@ export class RequestsService {
     return this.http.get(endpoint, {headers: this.header});
   }
 
-  getProposition(offset) {
-    const endpoint = this.baseURL.concat('propositions/?limit=10&offset=' + offset);
+  getProposition(limit, offset) {
+    const endpoint = this.baseURL.concat('propositions/?limit=' + limit + '&offset=' + offset);
     console.log('Making POST REQUEST USER ON URL: ' + endpoint);
     return this.http.get(endpoint, {headers: this.headers});
   }

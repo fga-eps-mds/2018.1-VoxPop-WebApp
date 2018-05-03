@@ -11,7 +11,7 @@ export class SeePlComponent implements OnInit {
 
   numberPLs: number;
   pages: Array<number> = [1];
-  itemsPerPage = 10;
+  itemsPerPage = 50;
 
   proposition: any = [
     {
@@ -41,13 +41,13 @@ export class SeePlComponent implements OnInit {
     this.pages = [1];
     this.numberPLs = 1;
     this.proposition = [];
-    req =  this.requester.getProposition((offset - 1) * this.itemsPerPage);
+    req =  this.requester.getProposition(this.itemsPerPage, (offset - 1) * this.itemsPerPage);
     this.handlePropositionsResponse(req, offset);
     return req;
   }
 
   handlePropositionsResponse(request, offset) {
-    this.requester.getProposition((offset - 1) * this.itemsPerPage).subscribe( response => {
+    this.requester.getProposition(this.itemsPerPage, (offset - 1) * this.itemsPerPage).subscribe( response => {
       this.proposition = response['results'];
       this.numberPLs = response['count'];
       for (let i = 2; i <= Math.ceil(this.numberPLs / this.itemsPerPage); i++) {
