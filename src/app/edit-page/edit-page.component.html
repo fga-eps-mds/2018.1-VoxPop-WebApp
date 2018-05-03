@@ -1,7 +1,7 @@
-<h1 class="card-title" align="center">Editar meus dados</h1>
-<form (submit)="registerUser($event)">
-  <div class="col-sm-6">
-    <div id="firstPart" class="register-card">
+<h1 class="text-center title">Editar meus dados</h1>
+<form (submit)="updateUser($event)" >
+  <div class="col-sm-5 col-sm-offset-1">
+    <div class="register-card">
         <div class="alert alert-danger" role="alert" id="alert-invalid-inputs" style="display:none">
           <p>{{valueInvalidInput}}</p>
         </div>
@@ -56,11 +56,89 @@
            Obrigatório
          </div>
          <div style="text-align: center">
-          <button class="btn btn-primary"
-          type="button" id="nextBtn"
-          (click)="clickFirstButton()">
-          Próxima parte</button>
-         </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-sm-5">
+    <div class="register-card">
+      <div class="form-group">
+        <label>Estado</label>
+        <select name="Estado" class="form-control">
+          <option value=null>Prefiro não responder</option>
+          <option value="AC">Acre</option>
+          <option value="AL">Alagoas</option>
+          <option value="AP">Amapá</option>
+          <option value="AM">Amazonas</option>
+          <option value="BA">Bahia</option>
+          <option value="CE">Ceará</option>
+          <option value="DF">Distrito Federal</option>
+          <option value="ES">Espírito Santo</option>
+          <option value="GO">Goiás</option>
+          <option value="MA">Maranhão</option>
+          <option value="MT">Mato Grosso</option>
+          <option value="MS">Mato Grosso do Sul</option>
+          <option value="MG">Minas Gerais</option>
+          <option value="PA">Pará</option>
+          <option value="PB">Paraíba</option>
+          <option value="PR">Paraná</option>
+          <option value="PE">Pernambuco</option>
+          <option value="PI">Piauí</option>
+          <option value="RJ">Rio de Janeiro</option>
+          <option value="RN">Rio Grande do Norte</option>
+          <option value="RS">Rio Grande do Sul</option>
+          <option value="RO">Rondônia</option>
+          <option value="RR">Roraima</option>
+          <option value="SC">Santa Catarina</option>
+          <option value="SP">São Paulo</option>
+          <option value="SE">Sergipe</option>
+          <option value="TO">Tocantins</option>
+        </select>
+      </div>
+      <div class="form-group">
+          <label>Cidade</label>
+          <input type="text" class="form-control" placeholder="Cidade">
+      </div>
+      <div class="form-group">
+        <label>Renda</label>
+        <select name="Renda" class="form-control">
+          <option value=null>Prefiro não responder</option>
+          <option value="500.00">Entre R$0,00 até R$1000,00</option>
+          <option value="2000.00">Entre R$1000,01 até R$3000,00</option>
+          <option value="4500.00">Entre R$3000,01 até R$6000,00</option>
+          <option value="7500.00">Entre R$6000,01 até R$9000,00</option>
+          <option value="12000.00">Entre R$9000,01 até R$15000,00</option>
+          <option value="20000.00">Entre R$15000,01 até R$25000,00</option>
+          <option value="25000.00">R$25000,01 para cima</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Formação</label>
+        <select name="Formacao" class="form-control">
+          <option value=null>Prefiro não responder</option>
+          <option value="EFC">Ensino Fundamental Completo</option>
+          <option value="EFI">Ensino Fundamental Incompleto</option>
+          <option value="EMC">Ensino Médio Completo</option>
+          <option value="EMI">Ensino Médio Incompleto</option>
+          <option value="ESC">Ensino Superior Completo</option>
+          <option value="ESI">Ensino Superior Incompleto</option>
+          <option value="PG">Pós Graduação</option>
+          <option value="ME">Mestrado</option>
+          <option value="DO">Doutorado</option>
+          <option value="PD">Pós Doutorado</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Profissão</label>
+        <input type="text" class="form-control" placeholder="Profissão">
+      </div>
+      <div class="form-group">
+        <label>Data de Nascimento</label>
+        <input type="date" class="form-control" value="0001-01-01">
+      </div>
+      <div class="text-right ">
+    <button class="btn btn-primary"> Salvar</button>
+  </div>
     </div>
   </div>
 </form>
