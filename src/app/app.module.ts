@@ -18,6 +18,7 @@ import { TokenService } from './token.service';
 import { MinhasPlsComponent } from './minhas-pls/minhas-pls.component';
 import { PropositionsComponent } from './propositions/propositions.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { SeePlComponent } from './see-pl/see-pl.component';
 
 const appRoutes: Routes = [
   {
@@ -53,6 +54,7 @@ const appRoutes: Routes = [
     MinhasPlsComponent,
     PropositionsComponent,
     SidebarComponent,
+    SeePlComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
