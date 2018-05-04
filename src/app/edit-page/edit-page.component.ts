@@ -48,19 +48,19 @@ export class EditPageComponent implements OnInit {
         job: '',
         birth_date: 0,
     },
-  }
+  };
 
-  constructor(private router:Router,
-              private requester:RequestsService,
-              private cookieService:CookieService,
-              private token:TokenService) { }
+  constructor(private router: Router,
+              private requester: RequestsService,
+              private cookieService: CookieService,
+              private token: TokenService) { }
 
   ngOnInit() {
     this.tokenValue = this.cookieService.get('token');
     this.token.checkToken(this.tokenValue);
     this.idValue = +this.cookieService.get('userID');
     console.log(this.idValue);
-    this.requester.getUser(this.idValue).subscribe( response =>{
+    this.requester.getUser(this.idValue).subscribe( response => {
       this.user = response['body'];
       console.log(this.user);
       this.username = this.user['username'];
