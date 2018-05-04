@@ -23,7 +23,8 @@ export class RequestsService {
   tokenHeader: any;
 
   getUser(userId) {
-     return this.http.get(this.baseURL.concat('users/${userId}'));
+     const endpoint = this.baseURL.concat('users/' + userId + '/');
+     return this.http.get(endpoint, {headers: this.header});
   }
 
   getVotedProposition(offset) {

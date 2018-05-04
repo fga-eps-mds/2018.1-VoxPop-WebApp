@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { CookieService } from 'ngx-cookie-service';
 import { TokenService } from './token.service';
+import { ProfileComponent } from './profile/profile.component';
 import { MinhasPlsComponent } from './minhas-pls/minhas-pls.component';
 import { PropositionsComponent } from './propositions/propositions.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -37,6 +38,10 @@ const appRoutes: Routes = [
     component: MainPageComponent
   },
   {
+    path: 'profile',
+    component: ProfileComponent
+  },
+  {
     path: 'propositions',
     component: PropositionsComponent
   },
@@ -50,6 +55,7 @@ const appRoutes: Routes = [
     RegisterFormComponent,
     MainPageComponent,
     LoginComponent,
+    ProfileComponent,
     MinhasPlsComponent,
     PropositionsComponent,
     SidebarComponent,
