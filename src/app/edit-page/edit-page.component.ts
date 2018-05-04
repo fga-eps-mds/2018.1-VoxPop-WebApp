@@ -59,14 +59,10 @@ export class EditPageComponent implements OnInit {
     this.tokenValue = this.cookieService.get('token');
     this.token.checkToken(this.tokenValue);
     this.idValue = +this.cookieService.get('userID');
-    console.log(this.idValue);
     this.requester.getUser(this.idValue).subscribe( response => {
       this.user = response['body'];
       console.log(this.user);
-      this.username = this.user['username'];
-      this.first_name = this.user['first_name'];
-      this.last_name = this.user['last_name'];
-      this.email = this.user['email'];
+      console.log(this.user.social_information);
     });
   }
 
