@@ -28,10 +28,10 @@ export class EditPageComponent implements OnInit {
   statusEmail = false;
   danger = '#d9534f';
   sucess = '#5cb85c';
-  birth_date = new Date('0001-01-01');
+
 
   tokenValue = '';
-  idValue = 0;
+  userID = 0;
 
   user: any = {
     username: '',
@@ -45,24 +45,51 @@ export class EditPageComponent implements OnInit {
         income: 0,
         education: '',
         job: '',
-        birth_date: this.birth_date,
+        birth_date: 0,
     },
   };
 
   constructor(private router: Router,
               private requester: RequestsService,
               private cookieService: CookieService,
-              private token: TokenService) { }
+              private token: TokenService,
+  ) { }
 
   ngOnInit() {
     this.tokenValue = this.cookieService.get('token');
     this.token.checkToken(this.tokenValue);
-    this.idValue = +this.cookieService.get('userID');
-    this.requester.getUser(this.idValue).subscribe( response => {
+    this.userID = +this.cookieService.get('userID');
+    this.requester.getUser(this.userID).subscribe( response => {
       this.user = response['body'];
       console.log(this.user);
-      console.log(this.user.social_information);
     });
+  }
+
+  updateUser(e: any) {
+    let user: UserModel;
+    user = {
+      username: e.target.elements[0].value,
+      first_name: e.target.elements[1].value,
+      last_name: e.target.elements[2].value,
+      password: e.target.elements[3].value,
+      email: e.target.elements[5].value,
+      social_information: {
+        state: e.target.elements[6].value,
+        city: e.target.elements[7].value,
+        income: e.target.elements[8].value,
+        education: e.target.elements[8].value,
+        job: e.target.elements[10].value,
+        birth_date: e.target.elements[11].value
+      }
+     };
+     this.requester.putUser(user, this.userID).subscribe(response => {
+        const statusUser = response.status;
+        console.log('STATUS CODE RETURNED ON USER: ' + statusUser);
+
+        if (this.requester.didSucceed(statusUser)) {
+          this.router.navigate(['']);
+        }
+     });
   }
 
 }

@@ -27,16 +27,15 @@ export class RegisterFormComponent implements OnInit {
   danger = '#d9534f';
   sucess = '#5cb85c';
 
-  constructor(private router:Router,
-              private requester:RequestsService) { }
+  constructor(private router: Router,
+              private requester: RequestsService) { }
 
   ngOnInit() {
   }
 
   registerUser(e) {
     e.preventDefault();
-    var user : UserModel;
-    var social_information: SocialInformationModel;
+    let user: UserModel;
 
     user = {
       username: e.target.elements[0].value,
@@ -56,12 +55,12 @@ export class RegisterFormComponent implements OnInit {
     // TODO - adicionar validação de criação. Checar http status code = 201.
     // AINDA é TODO /\
     this.requester.postUser(user).subscribe(response => {
-      let statusUser = response.status;
-      console.log("STATUS CODE RETURNED ON USER: " + statusUser);
+      const statusUser = response.status;
+      console.log('STATUS CODE RETURNED ON USER: ' + statusUser);
 
         if (this.requester.didSucceed(statusUser)) {
           this.router.navigate(['']);
-        };
+        }
     });
 
   }
@@ -70,11 +69,11 @@ export class RegisterFormComponent implements OnInit {
     this.password = e.target.value;
     if(!this.isValidPassword(this.password)){
       this.valueInvalidPassword = 'Sua senha deve ter no mínimo 8 caracteres, dos quais: Um é numérico; Um é letra maiúscula; Um é caractere especial.';
-      document.getElementById('alert-invalid-password').style.display = "block";
+      document.getElementById('alert-invalid-password').style.display = 'block';
       this.statusValidPassword = false;
       this.borderColor('password', this.danger);
     } else {
-      document.getElementById('alert-invalid-password').style.display = "none";
+      document.getElementById('alert-invalid-password').style.display = 'none';
       this.statusValidPassword = true;
       this.borderColor('password', this.sucess);
     }
@@ -85,20 +84,20 @@ export class RegisterFormComponent implements OnInit {
   }
 
   onKeyUsername(e: any) {
-    var username = e.target.value;
+    let username = e.target.value;
     if(this.isUsernameValid(username)){
-      document.getElementById('alert-username').style.display = "none";
+      document.getElementById('alert-username').style.display = 'none';
       this.valueUsername = '';
       this.statusUsername = true;
       this.borderColor('username', this.sucess);
     } else {
       this.valueUsername = 'Nome de usuário inválido';
-      document.getElementById('alert-username').style.display = "block";
+      document.getElementById('alert-username').style.display = 'block';
       this.statusUsername = false;
       this.borderColor('username', this.danger);
     } if (!this.isUsernameSizeValid(username)) {
-      this.valueUsername = 'Nome de usuário deve ter entre 4 e 20 caracteres'
-      document.getElementById('alert-username').style.display = "block";
+      this.valueUsername = 'Nome de usuário deve ter entre 4 e 20 caracteres';
+      document.getElementById('alert-username').style.display = 'block';
       this.statusUsername = false;
       this.borderColor('username', this.danger);
     }
@@ -106,7 +105,7 @@ export class RegisterFormComponent implements OnInit {
   }
 
   onKeyEmail(e: any) {
-    var email = e.target.value;
+    let email = e.target.value;
     if(this.isEmailValid(email)){
       document.getElementById('alert-email').style.display = "none";
       this.valueEmail = '';
@@ -140,8 +139,8 @@ export class RegisterFormComponent implements OnInit {
   }
 
   isUsernameValid(username) {
-    var format = /^[a-zA-Z0-9]+$/;
-    if(format.test(username)){
+    const format = /^[a-zA-Z0-9]+$/;
+    if (format.test(username)) {
       return true;
     }
     return false;
@@ -155,24 +154,23 @@ export class RegisterFormComponent implements OnInit {
   }
 
   isEmailValid(email) {
-    let EMAILRGX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if(EMAILRGX.test(email)) {
+    const EMAILRGX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (EMAILRGX.test(email)) {
       return true;
-    }
-    else {
+    } else {
       return false;
     }
   }
 
   isConfirmedPassword(password, confPassword) {
-    if(password === confPassword){
+    if (password === confPassword){
       return true;
     }
     return false;
   }
 
   isValidPassword(password) {
-    let PWDRGX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%¨&*()'`{}~^:;<>,./?°ªº¹²³⁴⁵⁶⁷⁸⁹⁰£¢¬])[A-Za-z\d$@$!%*?&]{8,}/;
+    const PWDRGX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%¨&*()'`{}~^:;<>,./?°ªº¹²³⁴⁵⁶⁷⁸⁹⁰£¢¬])[A-Za-z\d$@$!%*?&]{8,}/;
     if (PWDRGX.test(password)) {
       return true;
     }
@@ -180,15 +178,14 @@ export class RegisterFormComponent implements OnInit {
   }
 
   clickFirstButton() {
-       if(this.statusPassword && this.statusUsername && this.statusEmail && this.statusValidPassword){
-            document.getElementById("firstPart").style.display = "none";
-            document.getElementById("secondPart").style.display = "block";
+       if (this.statusPassword && this.statusUsername && this.statusEmail && this.statusValidPassword) {
+            document.getElementById('firstPart').style.display = 'none';
+            document.getElementById('secondPart').style.display = 'block';
             document.querySelector('#registerBtn').removeAttribute('disabled');
-       }
-       else {
-        document.getElementById('alert-invalid-inputs').style.display = "block";
+       } else {
+        document.getElementById('alert-invalid-inputs').style.display = 'block';
         this.valueInvalidInput = 'Por favor, preencha os campos obrigatórios';
-        if(!this.statusPassword) {
+        if (!this.statusPassword) {
           this.borderColor('password', this.danger);
           this.borderColor('confirm-password', this.danger);
         } else {
@@ -196,13 +193,13 @@ export class RegisterFormComponent implements OnInit {
           this.borderColor('confirm-password', this.sucess);
         }
 
-        if(!this.statusUsername){
+        if (!this.statusUsername) {
           this.borderColor('username', this.danger);
         } else {
           this.borderColor('username', this.sucess);
         }
 
-        if(!this.statusEmail){
+        if (!this.statusEmail) {
           this.borderColor('email', this.danger);
         } else {
           this.borderColor('email', this.sucess);
@@ -210,13 +207,13 @@ export class RegisterFormComponent implements OnInit {
        }
  }
 
- borderColor(id, color){
+ borderColor(id, color) {
   document.getElementById(id).style.borderColor = color;
 }
 
  clickReturnButton() {
-      document.getElementById("firstPart").style.display = "block";
-      document.getElementById("secondPart").style.display = "none";
+      document.getElementById('firstPart').style.display = 'block';
+      document.getElementById('secondPart').style.display = 'none';
       document.querySelector('#registerBtn').setAttribute('disabled', 'disabled');
 }
 

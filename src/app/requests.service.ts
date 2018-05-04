@@ -54,8 +54,8 @@ export class RequestsService {
     return this.http.post(endpoint, JSON.stringify(socialInformation), {headers: this.headers, observe: 'response'});
   }
 
-  putUser(user: UserModel) {
-      const endpoint = this.baseURL.concat('users/');
+  putUser(user: UserModel, userId) {
+      const endpoint = this.baseURL.concat('users/' + userId.toString() + '/');
       this.tokenValue = this.cookieService.get('token');
       this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
       console.log('Making PUT REQUEST USER ON URL: ' + endpoint);
