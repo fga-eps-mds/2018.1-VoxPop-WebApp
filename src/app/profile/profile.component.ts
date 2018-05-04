@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// import { UserModel } from '../../models/user';
+import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { TokenService } from '../token.service';
 import { RequestsService } from '../requests.service';
@@ -37,7 +37,8 @@ export class ProfileComponent implements OnInit {
   }
   tokenValue = '';
 
-  constructor(private cookieService: CookieService,
+  constructor(private router: Router,
+              private cookieService: CookieService,
               private token: TokenService,
               private requester: RequestsService) { }
 
@@ -46,14 +47,18 @@ export class ProfileComponent implements OnInit {
     this.token.checkToken(this.tokenValue);
     this.userID = +this.cookieService.get('userID');
     this.requester.getUser(this.userID).subscribe( response => {
-      console.log("Estou aqui!");
+      console.log(response);
       this.user = response;
       this.social_information = this.user.social_information;
-      console.log(this.user)
-      console.log(this.social_information)
+      console.log(this.user);
+      console.log(this.social_information);
     }, error => {
       console.log("something wrong")
       alert("Algo de errado não está certo!");
     });
+  }
+
+  edit(){
+    this.router.navigate(['profile/edits']);
   }
 }
