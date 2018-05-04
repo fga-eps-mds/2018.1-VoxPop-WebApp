@@ -12,6 +12,7 @@ export class SeePlComponent implements OnInit {
   numberPLs: number;
   pages: Array<number> = [1];
   itemsPerPage = 50;
+  offset = 1;
 
   proposition: any = [
     {
@@ -30,7 +31,7 @@ export class SeePlComponent implements OnInit {
   constructor(
     private requester: RequestsService,
   ) { }
-    
+
 
   ngOnInit() {
     this.propositions(1);
@@ -41,6 +42,7 @@ export class SeePlComponent implements OnInit {
     this.pages = [1];
     this.numberPLs = 1;
     this.proposition = [];
+    this.offset = offset;
     req =  this.requester.getProposition(this.itemsPerPage, (offset - 1) * this.itemsPerPage);
     this.handlePropositionsResponse(req, offset);
     return req;
