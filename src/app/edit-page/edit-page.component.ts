@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { RequestsService } from '../requests.service';
 import { CookieService } from 'ngx-cookie-service';
 import { TokenService } from '../token.service';
+import { UserModel } from '../../models/user';
 
 @Component({
   selector: 'app-edit-page',
@@ -27,9 +28,7 @@ export class EditPageComponent implements OnInit {
   statusEmail = false;
   danger = '#d9534f';
   sucess = '#5cb85c';
-  first_name  = '';
-  last_name = '';
-  email = '';
+  birth_date = new Date('0001-01-01');
 
   tokenValue = '';
   idValue = 0;
@@ -46,7 +45,7 @@ export class EditPageComponent implements OnInit {
         income: 0,
         education: '',
         job: '',
-        birth_date: 0,
+        birth_date: this.birth_date,
     },
   };
 

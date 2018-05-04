@@ -42,7 +42,7 @@ const appRoutes: Routes = [
     component: PropositionsComponent
   },
   {
-    path: 'user/edit',
+    path: 'profile/edit',
     component: EditPageComponent
   }
 ]
