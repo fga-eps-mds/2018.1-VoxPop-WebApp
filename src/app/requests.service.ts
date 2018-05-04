@@ -7,7 +7,7 @@ import { TokenService } from './token.service';
 
 import { UserModel } from '../models/user';
 import { SocialInformationModel } from '../models/socialInformation';
-import { LoginModel } from '../models/login'
+import { LoginModel } from '../models/login';
 import { VoteModel } from '../models/vote';
 
 @Injectable()
@@ -19,8 +19,8 @@ export class RequestsService {
   tokenValue = this.cookieService.get('token');
   baseURL: string = environment.baseURL;
   headers = {'Content-Type': 'application/json'};
-  header = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
-  tokenHeader : any;
+  header = {'Content-Type': 'application/json', 'Authorization': 'Token ' + this.tokenValue};
+  tokenHeader: any;
 
   getUser(userId) {
      const endpoint = this.baseURL.concat('users/' + userId + '/');
@@ -29,14 +29,14 @@ export class RequestsService {
 
   getVotedProposition(offset) {
     const endpoint = this.baseURL.concat('user_votes/?limit=10&offset=' + offset);
-    console.log('Making POST REQUEST USER ON URL: ' + endpoint);
+    console.log('Making GET REQUEST VOTED PROPOITION ON URL: ' + endpoint);
     return this.http.get(endpoint, {headers: this.header});
   }
 
   getProjects() {
     this.tokenValue = this.cookieService.get('token');
-    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token '+ this.tokenValue};
-    var endpoint = this.baseURL.concat('propositions/non_voted/');
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
+    const endpoint = this.baseURL.concat('propositions/non_voted/');
     return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
   }
 
@@ -58,16 +58,24 @@ export class RequestsService {
       return this.http.post(endpoint, JSON.stringify(login), {headers: this.headers, observe: 'response'});
   }
 
-  postVote(vote : VoteModel) {
+  postVote(vote: VoteModel) {
     this.tokenValue = this.cookieService.get('token');
-    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token '+ this.tokenValue};
-    let endpoint = this.baseURL.concat('user_votes/');
-    console.log("Making POST REQUEST VOTE ON URL: " + endpoint);
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
+    const endpoint = this.baseURL.concat('user_votes/');
+    console.log('Making POST REQUEST VOTE ON URL: ' + endpoint);
     console.log(vote);
     return this.http.post(endpoint, JSON.stringify(vote), {headers: this.tokenHeader, observe: 'response'});
   }
 
-  didSucceed(status){
+  updateVote(vote: VoteModel, id: number) {
+    console.log(id);
+    const endpoint = this.baseURL.concat('user_votes/' + id + '/');
+    console.log('Making PUT REQUEST VOTE ON URL: ' + endpoint);
+    console.log(vote);
+    return this.http.put(endpoint, JSON.stringify(vote), {headers: this.header, observe: 'response'});
+  }
+
+  didSucceed(status) {
     switch (status) {
       case 0:
         // CHECK RESPONSE BEFORE CHANGING SCREENS
