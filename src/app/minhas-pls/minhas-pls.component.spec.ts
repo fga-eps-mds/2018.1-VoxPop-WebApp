@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MinhasPlsComponent } from './minhas-pls.component';
+import { RequestsService } from '../requests.service';
+import { HttpClientModule } from '@angular/common/http';
+import { TokenService } from '../token.service';
 
 describe('MinhasPlsComponent', () => {
   let component: MinhasPlsComponent;
@@ -8,7 +11,14 @@ describe('MinhasPlsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MinhasPlsComponent ]
+      imports: [
+        HttpClientModule
+      ],
+      declarations: [ MinhasPlsComponent ],
+      providers: [
+        RequestsService,
+        TokenService,
+      ]
     })
     .compileComponents();
   }));
