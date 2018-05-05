@@ -19,6 +19,7 @@ import { MinhasPlsComponent } from './minhas-pls/minhas-pls.component';
 import { PropositionsComponent } from './propositions/propositions.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { EditPageComponent } from './edit-page/edit-page.component';
+import { InputValidatorService } from './input-validator.service';
 
 const appRoutes: Routes = [
   {
@@ -72,7 +73,8 @@ const appRoutes: Routes = [
   providers: [
     RequestsService,
     CookieService,
-    TokenService
+    TokenService,
+    InputValidatorService
   ],
   bootstrap: [AppComponent]
 })
