@@ -42,9 +42,10 @@ export class SeePlComponent implements OnInit {
     this.pages = [1];
     this.numberPLs = 1;
     this.proposition = [];
-    this.offset = offset;
-    req =  this.requester.getProposition(this.itemsPerPage, (offset - 1) * this.itemsPerPage);
-    this.handlePropositionsResponse(req, offset);
+    offset > 1 ? this.offset = offset : this.offset = 1;
+    offset < 90 ? this.offset = offset : this.offset = 90;
+    req =  this.requester.getProposition(this.itemsPerPage, (this.offset - 1) * this.itemsPerPage);
+    this.handlePropositionsResponse(req, this.offset);
     return req;
   }
 
