@@ -13,18 +13,6 @@ import { InputValidatorService } from '../input-validator.service';
 })
 export class RegisterFormComponent implements OnInit {
 
-  valuePassword = '';
-  valueInvalidPassword = '';
-  valueUsername = '';
-  valueEmail = '';
-  valueInvalidInput = '';
-  password = '';
-  confirmPassword = '';
-  username = '';
-  statusPassword = false;
-  statusValidPassword = false;
-  statusUsername = false;
-  statusEmail = false;
   danger = '#d9534f';
   sucess = '#5cb85c';
 
@@ -67,36 +55,6 @@ export class RegisterFormComponent implements OnInit {
     });
 
   }
-
-  clickFirstButton() {
-       if (this.validator.statusPassword && this.validator.statusUsername && this.validator.statusEmail && this.validator.statusValidPassword) {
-            document.getElementById('firstPart').style.display = 'none';
-            document.getElementById('secondPart').style.display = 'block';
-            document.querySelector('#registerBtn').removeAttribute('disabled');
-       } else {
-        document.getElementById('alert-invalid-inputs').style.display = 'block';
-        this.valueInvalidInput = 'Por favor, preencha os campos obrigatórios';
-        if (!this.statusPassword) {
-          this.validator.borderColor('password', this.danger);
-          this.validator.borderColor('confirm-password', this.danger);
-        } else {
-          this.validator.borderColor('password', this.sucess);
-          this.validator.borderColor('confirm-password', this.sucess);
-        }
-
-        if (!this.statusUsername) {
-          this.validator.borderColor('username', this.danger);
-        } else {
-          this.validator.borderColor('username', this.sucess);
-        }
-
-        if (!this.statusEmail) {
-          this.validator.borderColor('email', this.danger);
-        } else {
-          this.validator.borderColor('email', this.sucess);
-        }
-       }
- }
 
  clickReturnButton() {
       document.getElementById('firstPart').style.display = 'block';

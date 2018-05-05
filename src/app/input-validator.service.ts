@@ -132,7 +132,7 @@ export class InputValidatorService {
     return false;
   }
 
-  clickFirstButton() {
+  validatorUser() {
        if (this.statusPassword && this.statusUsername && this.statusEmail && this.statusValidPassword) {
             document.getElementById('firstPart').style.display = 'none';
             document.getElementById('secondPart').style.display = 'block';
