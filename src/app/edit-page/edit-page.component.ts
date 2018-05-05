@@ -5,6 +5,7 @@ import { RequestsService } from '../requests.service';
 import { CookieService } from 'ngx-cookie-service';
 import { TokenService } from '../token.service';
 import { UserModel } from '../../models/user';
+import { InputValidatorService } from '../input-validator.service';
 
 @Component({
   selector: 'app-edit-page',
@@ -13,22 +14,6 @@ import { UserModel } from '../../models/user';
 })
 
 export class EditPageComponent implements OnInit {
-
-  valuePassword = '';
-  valueInvalidPassword = '';
-  valueUsername = '';
-  valueEmail = '';
-  valueInvalidInput = '';
-  password = '';
-  confirmPassword = '';
-  username = '';
-  statusPassword = false;
-  statusValidPassword = false;
-  statusUsername = false;
-  statusEmail = false;
-  danger = '#d9534f';
-  sucess = '#5cb85c';
-
 
   tokenValue = '';
   userID = 0;
@@ -53,6 +38,7 @@ export class EditPageComponent implements OnInit {
               private requester: RequestsService,
               private cookieService: CookieService,
               private token: TokenService,
+              private validator: InputValidatorService
   ) { }
 
   ngOnInit() {

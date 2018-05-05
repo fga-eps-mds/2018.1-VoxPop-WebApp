@@ -132,34 +132,59 @@ export class InputValidatorService {
     return false;
   }
 
-  validatorUser() {
-       if (this.statusPassword && this.statusUsername && this.statusEmail && this.statusValidPassword) {
-            document.getElementById('firstPart').style.display = 'none';
-            document.getElementById('secondPart').style.display = 'block';
-            document.querySelector('#registerBtn').removeAttribute('disabled');
-       } else {
-        document.getElementById('alert-invalid-inputs').style.display = 'block';
-        this.valueInvalidInput = 'Por favor, preencha os campos obrigatórios';
-        if (!this.statusPassword) {
-          this.borderColor('password', this.danger);
-          this.borderColor('confirm-password', this.danger);
-        } else {
-          this.borderColor('password', this.sucess);
-          this.borderColor('confirm-password', this.sucess);
-        }
+  validatorEditUser() {
+    if (!this.statusPassword && !this.statusUsername && !this.statusEmail && !this.statusValidPassword) {
+      document.getElementById('alert-invalid-inputs').style.display = 'block';
+      this.valueInvalidInput = 'Por favor, preencha os campos obrigatórios';
+      if (!this.statusPassword) {
+      this.borderColor('password', this.danger);
+      this.borderColor('confirm-password', this.danger);
+      } else {
+        this.borderColor('password', this.sucess);
+        this.borderColor('confirm-password', this.sucess);
+      }
 
-        if (!this.statusUsername) {
-          this.borderColor('username', this.danger);
-        } else {
-          this.borderColor('username', this.sucess);
-        }
+      if (!this.statusUsername) {
+        this.borderColor('username', this.danger);
+      } else {
+        this.borderColor('username', this.sucess);
+      }
 
-        if (!this.statusEmail) {
-          this.borderColor('email', this.danger);
-        } else {
-          this.borderColor('email', this.sucess);
-        }
-       }
+      if (!this.statusEmail) {
+        this.borderColor('email', this.danger);
+      } else {
+        this.borderColor('email', this.sucess);
+      }
+    }
+  }
+  validatorRegisterUser() {
+    if (this.statusPassword && this.statusUsername && this.statusEmail && this.statusValidPassword) {
+      document.getElementById('firstPart').style.display = 'none';
+      document.getElementById('secondPart').style.display = 'block';
+      document.querySelector('#registerBtn').removeAttribute('disabled');
+    } else {
+      document.getElementById('alert-invalid-inputs').style.display = 'block';
+      this.valueInvalidInput = 'Por favor, preencha os campos obrigatórios';
+      if (!this.statusPassword) {
+      this.borderColor('password', this.danger);
+      this.borderColor('confirm-password', this.danger);
+      } else {
+        this.borderColor('password', this.sucess);
+        this.borderColor('confirm-password', this.sucess);
+      }
+
+      if (!this.statusUsername) {
+        this.borderColor('username', this.danger);
+      } else {
+        this.borderColor('username', this.sucess);
+      }
+
+      if (!this.statusEmail) {
+        this.borderColor('email', this.danger);
+      } else {
+        this.borderColor('email', this.sucess);
+      }
+    }
  }
 
  borderColor(id, color) {

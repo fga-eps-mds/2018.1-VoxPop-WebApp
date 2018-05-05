@@ -13,9 +13,6 @@ import { InputValidatorService } from '../input-validator.service';
 })
 export class RegisterFormComponent implements OnInit {
 
-  danger = '#d9534f';
-  sucess = '#5cb85c';
-
   constructor(private router: Router,
               private requester: RequestsService,
               private validator: InputValidatorService,
