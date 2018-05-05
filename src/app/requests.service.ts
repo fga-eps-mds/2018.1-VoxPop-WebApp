@@ -31,7 +31,7 @@ export class RequestsService {
 
   getVotedProposition(offset) {
     const endpoint = this.baseURL.concat('user_votes/?limit=10&offset=' + offset);
-    console.log('Making POST REQUEST USER ON URL: ' + endpoint);
+    console.log('Making GET REQUEST VOTED PROPOITION ON URL: ' + endpoint);
     return this.http.get(endpoint, {headers: this.header});
   }
 
@@ -75,6 +75,14 @@ export class RequestsService {
     console.log('Making POST REQUEST VOTE ON URL: ' + endpoint);
     console.log(vote);
     return this.http.post(endpoint, JSON.stringify(vote), {headers: this.tokenHeader, observe: 'response'});
+  }
+
+  updateVote(vote: VoteModel, id: number) {
+    console.log(id);
+    const endpoint = this.baseURL.concat('user_votes/' + id + '/');
+    console.log('Making PUT REQUEST VOTE ON URL: ' + endpoint);
+    console.log(vote);
+    return this.http.put(endpoint, JSON.stringify(vote), {headers: this.header, observe: 'response'});
   }
 
   didSucceed(status) {

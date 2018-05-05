@@ -3,6 +3,7 @@ import { RequestsService } from '../requests.service';
 import { PropositionModel } from '../../models/proposition';
 import { CookieService } from 'ngx-cookie';
 import { TokenService } from '../token.service';
+import { UpdateVoteModel } from '../../models/vote';
 
 @Component({
   selector: 'app-minhas-pls',
@@ -15,6 +16,7 @@ export class MinhasPlsComponent implements OnInit {
   numberPLsVoted: number;
   pages: Array<number> = [1];
   itemsPerPage = 10;
+  votePosition:number;
 
   propositionVote: any;
   proposition: any = [
@@ -41,6 +43,7 @@ export class MinhasPlsComponent implements OnInit {
   ngOnInit() {
     this.tokenValue = this.cookieService.get('token');
     this.token.checkToken(this.tokenValue);
+    this.votePosition = 0;
     this.propositions(1);
   }
 
@@ -68,6 +71,32 @@ export class MinhasPlsComponent implements OnInit {
       console.log(this.proposition);
       console.log(this.numberPLsVoted);
     });
+  }
+
+  specifyProposition(position) {
+    this.votePosition = position;
+  }
+
+  editVote(opinion: string) {
+    let status;
+     const vote: UpdateVoteModel = {
+       user: 10,
+       proposition: this.proposition[this.votePosition].id,
+       option: opinion
+    };
+
+    this.requester.updateVote(vote, this.propositionVote[this.votePosition]['id']).subscribe(response => {
+      status = response.status;
+
+      if (!this.requester.didSucceed(status)) {
+        alert('Voto não editado, favor tentar de novo mais tarde');
+      } else { 
+        alert('Voto editado com sucesso!');
+        this.propositions(1);
+      }
+
+    });
+
   }
 
 }
