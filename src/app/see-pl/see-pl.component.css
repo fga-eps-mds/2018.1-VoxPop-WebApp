@@ -39,3 +39,12 @@
 .vote{
     height: 32rem;
 }
+
+.center {
+    margin: auto;
+    width: 29%;
+}
+
+.p-center {
+    text-align: center;
+}
