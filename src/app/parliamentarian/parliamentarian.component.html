@@ -1,3 +1,35 @@
-<p>
-  parliamentarian works!
-</p>
+<h1 class="card-title" align="center">Deputados</h1>
+<div class="col-sm-6" *ngFor="let p of parliamentarians">
+  <div class="main-card vote">
+    <div class="main-card-content">
+      <h5 class="card-title">{{ p['name'] }}</h5>
+      <p class="text-left">
+        <img src="{{ p['photo'] }}" alt="woops, someting went wrong">
+        <li>Estado: {{p['federal_unit']}}</li>
+      </p>
+    </div>
+  </div>
+</div>
+
+<ul class="nav nav-pills center">
+  <li role="presentation">
+    <button class="btn" (click)="parliamentarians(1)">Inicio</button>
+  </li> 
+  <li role="presentation">
+    <button class="btn" (click)="parliamentarians(offset-1)">Ant.</button>
+  </li>
+  <li role="presentation">
+    <input type="text" size="3" class="form-control" #page>
+  </li>
+  <li role="presentation">
+    <button class="btn" (click)="parliamentarians(page.value)">Ir</button>
+  </li>
+  <li role="presentation">
+    <button class="btn" (click)="parliamentarians(offset+1)">Prox.</button>
+  </li> 
+  <li role="presentation">
+    <button class="btn" (click)="parliamentarians(pages.length)">Fim</button>
+  </li>
+</ul>
+<br><p class="p-center">Página: {{offset}}/{{pages.length}}</p><br>
+
