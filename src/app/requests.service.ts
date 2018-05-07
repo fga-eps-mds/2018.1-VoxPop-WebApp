@@ -23,10 +23,8 @@ export class RequestsService {
   tokenHeader: any;
 
   getUser(userId) {
-    this.tokenValue = this.cookieService.get('token');
-    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
-    const endpoint = this.baseURL.concat('users/' + userId.toString() + '/');
-    return this.http.get(endpoint,  {headers: this.tokenHeader, observe: 'response'});
+     const endpoint = this.baseURL.concat('users/' + userId + '/');
+     return this.http.get(endpoint, {headers: this.header});
   }
 
   getVotedProposition(offset) {
@@ -52,14 +50,6 @@ export class RequestsService {
     const endpoint = this.baseURL.concat('social_informations/');
     console.log('Making POST REQUEST SOCIAL_INFORMATION ON URL: ' + endpoint);
     return this.http.post(endpoint, JSON.stringify(socialInformation), {headers: this.headers, observe: 'response'});
-  }
-
-  putUser(user: UserModel, userId) {
-      const endpoint = this.baseURL.concat('users/' + userId.toString() + '/');
-      this.tokenValue = this.cookieService.get('token');
-      this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
-      console.log('Making PUT REQUEST USER ON URL: ' + endpoint);
-      return this.http.put(endpoint, JSON.stringify(user),  {headers: this.tokenHeader, observe: 'response'});
   }
 
   postAuthentication(login: LoginModel) {

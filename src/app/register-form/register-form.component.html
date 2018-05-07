@@ -3,15 +3,15 @@
 
     <div id="firstPart" class="register-card">
         <div class="alert alert-danger" role="alert" id="alert-invalid-inputs" style="display:none">
-          <p>{{validator.valueInvalidInput}}</p>
+          <p>{{valueInvalidInput}}</p>
         </div>
          <div class="form-group">
               <span class="required">*</span>
               <label>Nome de Usuário</label>
               <input type="text" class="form-control" placeholder="Entre o nome do usuário" id = "username"
-              (keyup)="validator.onKeyUsername($event)">
+              (keyup)="onKeyUsername($event)">
               <div class="alert alert-danger" role="alert" id="alert-username" style="display:none">
-                <p>{{validator.valueUsername}}</p>
+                <p>{{valueUsername}}</p>
               </div>
          </div>
          <div class="form-group">
@@ -26,29 +26,29 @@
               <span class="required">*</span>
               <label>Senha</label>
               <input type="password" class="form-control" minlength="8" id="password"
-              (keyup)="validator.onKeyPassword($event)"
+              (keyup)="onKeyPassword($event)"
               placeholder="Senha">
               <div class="alert alert-danger" role="alert" id="alert-invalid-password" style="display:none">
-                <p>{{validator.valueInvalidPassword}}</p>
+                <p>{{valueInvalidPassword}}</p>
               </div>
          </div>
          <div class="form-group">
               <span class="required">*</span>
               <label>Confirmar Senha</label>
               <input type="password" class="form-control" minlength="6" id="confirm-password"
-              maxlength="20" (keyup)="validator.onKeyConfirmPassword($event)"
-              (keyup)="validator.onKeyValidatorPassword($event)" placeholder="Confirmar senha">
+              maxlength="20" (keyup)="onKeyConfirmPassword($event)"
+              (keyup)="onKeyValidatorPassword($event)" placeholder="Confirmar senha">
               <div class="alert alert-danger" role="alert" id="alert-password" style="display:none">
-                   <p>{{validator.valuePassword}}</p>
+                   <p>{{valuePassword}}</p>
               </div>
          </div>
          <div class="form-group">
               <span class="required">*</span>
               <label>E-mail</label>
               <input type="email" class="form-control" id="email"
-              (keyup)="validator.onKeyEmail($event)" placeholder="exemplo@exemplo.com">
+              (keyup)="onKeyEmail($event)" placeholder="exemplo@exemplo.com">
               <div class="alert alert-danger" role="alert" id="alert-email" style="display:none">
-                <p>{{validator.valueEmail}}</p>
+                <p>{{valueEmail}}</p>
               </div>
          </div>
          <div style="text-align: right">
@@ -58,7 +58,7 @@
          <div style="text-align: center">
           <button class="btn btn-primary"
           type="button" id="nextBtn"
-          (click)="validator.validatorRegisterUser()">
+          (click)="clickFirstButton()">
           Próxima parte</button>
          </div>
     </div>
