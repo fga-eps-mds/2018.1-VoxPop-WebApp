@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
-import { CookieModule } from 'ngx-cookie';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -15,9 +14,12 @@ import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { CookieService } from 'ngx-cookie-service';
 import { TokenService } from './token.service';
+import { ProfileComponent } from './profile/profile.component';
 import { MinhasPlsComponent } from './minhas-pls/minhas-pls.component';
 import { PropositionsComponent } from './propositions/propositions.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { EditPageComponent } from './edit-page/edit-page.component';
+import { InputValidatorService } from './input-validator.service';
 import { SeePlComponent } from './see-pl/see-pl.component';
 
 const appRoutes: Routes = [
@@ -38,13 +40,23 @@ const appRoutes: Routes = [
     component: MainPageComponent
   },
   {
+    path: 'profile',
+    component: ProfileComponent
+  },
+  {
     path: 'propositions',
     component: PropositionsComponent
   },
   {
+<<<<<<< HEAD
+    path: 'profile/edit',
+    component: EditPageComponent
+  }
+=======
     path: 'seepl',
     component: SeePlComponent
   },
+>>>>>>> dev
 ]
 
 @NgModule({
@@ -55,10 +67,15 @@ const appRoutes: Routes = [
     RegisterFormComponent,
     MainPageComponent,
     LoginComponent,
+    ProfileComponent,
     MinhasPlsComponent,
     PropositionsComponent,
     SidebarComponent,
+<<<<<<< HEAD
+    EditPageComponent,
+=======
     SeePlComponent,
+>>>>>>> dev
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -66,13 +83,13 @@ const appRoutes: Routes = [
     HttpModule,
     HttpClientModule,
     FormsModule,
-    CookieModule.forRoot()
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA],
   providers: [
     RequestsService,
     CookieService,
-    TokenService
+    TokenService,
+    InputValidatorService
   ],
   bootstrap: [AppComponent]
 })

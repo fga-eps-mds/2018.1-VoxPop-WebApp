@@ -1,0 +1,27 @@
+<body>
+  <div class="main-card">
+    <div class="row">
+      <div class="column">
+        <label>Nome: </label>  {{ user['first_name'] }} {{ user['last_name'] }}<br>
+        <label>Username: </label>  {{ user['username'] }}<br>
+        <label>Email: </label>  {{ user['email'] }}<br>
+        <label>Cidade: </label>  {{ user.social_information['city'] }}
+      </div>
+      <div class="column">
+        <label>Renda: </label>  {{ user.social_information['income'] }}<br>
+        <label>Formação: </label> {{ user.social_information['education']}} <br>
+        <label>Ocupação: </label>  {{ user.social_information['job'] }}<br>
+        <label>Nascimento: </label>  {{user.social_information['birth_date']}}
+      </div>
+    </div>
+    <div style="text-align: right;
+                margin-bottom: 10px;
+                margin-right: 10px">
+      <button class='btn' (click)="edit()">
+        <span class="glyphicon glyphicon-edit">
+        </span>
+        Editar
+      </button>
+    </div>
+  </div>
+</body>

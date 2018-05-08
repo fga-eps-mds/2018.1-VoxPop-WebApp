@@ -1,6 +1,5 @@
 export interface SocialInformationModel {
-    owner: number;
-    state: string;
+    federal_unit: string;
     city: string;
     income: number;
     education: string;

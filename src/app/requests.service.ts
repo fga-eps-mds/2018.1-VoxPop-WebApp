@@ -2,34 +2,41 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { map } from 'rxjs/operators';
-import { CookieService } from 'ngx-cookie';
+import { CookieService } from 'ngx-cookie-service';
 import { TokenService } from './token.service';
 
 import { UserModel } from '../models/user';
 import { SocialInformationModel } from '../models/socialInformation';
-import { LoginModel } from '../models/login'
+import { LoginModel } from '../models/login';
 import { VoteModel } from '../models/vote';
 
 @Injectable()
 export class RequestsService {
 
-  constructor(private http: HttpClient,
-             private token: TokenService,
-             private cookieService: CookieService) { }
-  tokenValue = this.cookieService.get('token');
+  constructor(
+            private http: HttpClient,
+            private token: TokenService,
+            private cookieService: CookieService
+  ) { }
+  tokenValue = '';
   baseURL: string = environment.baseURL;
   headers = {'Content-Type': 'application/json'};
   header = {'Content-Type': 'application/json', 'Authorization': 'Token ' + this.tokenValue};
-  tokenHeader : any;
+  tokenHeader: any;
 
   getUser(userId) {
-     return this.http.get(this.baseURL.concat('users/${userId}'));
+    this.tokenValue = this.cookieService.get('token');
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
+    const endpoint = this.baseURL.concat('users/' + userId.toString() + '/');
+    return this.http.get(endpoint,  {headers: this.tokenHeader, observe: 'response'});
   }
 
   getVotedProposition(offset) {
+    this.tokenValue = this.cookieService.get('token');
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
     const endpoint = this.baseURL.concat('user_votes/?limit=10&offset=' + offset);
-    console.log('Making POST REQUEST USER ON URL: ' + endpoint);
-    return this.http.get(endpoint, {headers: this.header});
+    console.log('Making GET REQUEST VOTED PROPOITION ON URL: ' + endpoint);
+    return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
   }
 
   getProposition(limit, offset) {
@@ -40,8 +47,8 @@ export class RequestsService {
 
   getProjects() {
     this.tokenValue = this.cookieService.get('token');
-    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token '+ this.tokenValue};
-    var endpoint = this.baseURL.concat('propositions/non_voted/');
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
+    const endpoint = this.baseURL.concat('propositions/non_voted/');
     return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
   }
 
@@ -57,22 +64,38 @@ export class RequestsService {
     return this.http.post(endpoint, JSON.stringify(socialInformation), {headers: this.headers, observe: 'response'});
   }
 
-  postAuthentication(login: LoginModel) {
-      const endpoint = this.baseURL.concat('token_auth/');
-      console.log('Making POST AUTHENTICATION REQUEST ON URL: ' + endpoint);
-      return this.http.post(endpoint, JSON.stringify(login), {headers: this.headers, observe: 'response'});
+  putUser(user: UserModel, userId) {
+    const endpoint = this.baseURL.concat('users/' + userId.toString() + '/');
+    this.tokenValue = this.cookieService.get('token');
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
+    console.log('Making PUT REQUEST USER ON URL: ' + endpoint);
+    return this.http.put(endpoint, JSON.stringify(user),  {headers: this.tokenHeader, observe: 'response'});
   }
 
-  postVote(vote : VoteModel) {
+  postAuthentication(login: LoginModel) {
+    const endpoint = this.baseURL.concat('token_auth/');
+    console.log('Making POST AUTHENTICATION REQUEST ON URL: ' + endpoint);
+    return this.http.post(endpoint, JSON.stringify(login), {headers: this.headers, observe: 'response'});
+  }
+
+  postVote(vote: VoteModel) {
     this.tokenValue = this.cookieService.get('token');
-    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token '+ this.tokenValue};
-    let endpoint = this.baseURL.concat('user_votes/');
-    console.log("Making POST REQUEST VOTE ON URL: " + endpoint);
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
+    const endpoint = this.baseURL.concat('user_votes/');
+    console.log('Making POST REQUEST VOTE ON URL: ' + endpoint);
     console.log(vote);
     return this.http.post(endpoint, JSON.stringify(vote), {headers: this.tokenHeader, observe: 'response'});
   }
 
-  didSucceed(status){
+  updateVote(vote: VoteModel, id: number) {
+    console.log(id);
+    const endpoint = this.baseURL.concat('user_votes/' + id + '/');
+    console.log('Making PUT REQUEST VOTE ON URL: ' + endpoint);
+    console.log(vote);
+    return this.http.put(endpoint, JSON.stringify(vote), {headers: this.header, observe: 'response'});
+  }
+
+  didSucceed(status) {
     switch (status) {
       case 0:
         // CHECK RESPONSE BEFORE CHANGING SCREENS

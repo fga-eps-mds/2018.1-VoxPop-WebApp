@@ -38,7 +38,7 @@ export class PropositionsComponent implements OnInit {
   ngOnInit() {
     this.tokenValue = this.cookieService.get('token');
     this.token.checkToken(this.tokenValue);
-    this.idValue = +this.cookieService.get('id');
+    this.idValue = +this.cookieService.get('userID');
     this.requester.getProjects().subscribe( response =>{
       this.proposition = response['body'];
       console.log(response['body']);
