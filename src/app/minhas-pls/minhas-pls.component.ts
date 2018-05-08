@@ -16,7 +16,7 @@ export class MinhasPlsComponent implements OnInit {
   numberPLsVoted: number;
   pages: Array<number> = [1];
   itemsPerPage = 10;
-  votePosition:number;
+  votePosition: number;
 
   propositionVote: any;
   proposition: any = [
@@ -59,9 +59,10 @@ export class MinhasPlsComponent implements OnInit {
 
   handlePropositionsResponse(request, offset) {
     this.requester.getVotedProposition((offset - 1) * this.itemsPerPage).subscribe( response => {
-      this.propositionVote = response['results'];
-      this.numberPLsVoted = response['count'];
-      for (let j = 0; j < this.propositionVote.length; j++) {
+      const body = response['body'];
+      this.propositionVote = body['results'];
+      this.numberPLsVoted = body['count'];
+      for (let j = 0; j < this.numberPLsVoted; j++) {
         this.proposition.push(this.propositionVote[j]['proposition']);
         this.proposition[j]['option'] = this.propositionVote[j]['option'];
       }
@@ -90,7 +91,7 @@ export class MinhasPlsComponent implements OnInit {
 
       if (!this.requester.didSucceed(status)) {
         alert('Voto não editado, favor tentar de novo mais tarde');
-      } else { 
+      } else {
         alert('Voto editado com sucesso!');
         this.propositions(1);
       }
