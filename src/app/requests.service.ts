@@ -30,7 +30,7 @@ export class RequestsService {
   getVotedProposition(offset) {
     const endpoint = this.baseURL.concat('user_votes/?limit=10&offset=' + offset);
     console.log('Making GET REQUEST VOTED PROPOITION ON URL: ' + endpoint);
-    return this.http.get(endpoint, {headers: this.header});
+    return this.http.get(endpoint, {headers: this.header, observe: 'response'});
   }
 
   getProposition(limit, offset) {
