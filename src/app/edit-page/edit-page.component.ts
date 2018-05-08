@@ -60,7 +60,7 @@ export class EditPageComponent implements OnInit {
       password: e.target.elements[3].value,
       email: e.target.elements[5].value,
       social_information: {
-        state: e.target.elements[6].value,
+        federal_unit: e.target.elements[6].value,
         city: e.target.elements[7].value,
         income: e.target.elements[8].value,
         education: e.target.elements[8].value,

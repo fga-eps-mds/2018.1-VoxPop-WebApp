@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { map } from 'rxjs/operators';
-import { CookieService } from 'ngx-cookie';
+import { CookieService } from 'ngx-cookie-service';
 import { TokenService } from './token.service';
 
 import { UserModel } from '../models/user';
@@ -13,17 +13,19 @@ import { VoteModel } from '../models/vote';
 @Injectable()
 export class RequestsService {
 
-  constructor(private http: HttpClient,
-             private token: TokenService,
-             private cookieService: CookieService) { }
-  tokenValue = this.cookieService.get('token');
+  constructor(
+            private http: HttpClient,
+            private token: TokenService,
+            private cookieService: CookieService
+  ) { }
+  tokenValue = '';
   baseURL: string = environment.baseURL;
   headers = {'Content-Type': 'application/json'};
   header = {'Content-Type': 'application/json', 'Authorization': 'Token ' + this.tokenValue};
   tokenHeader: any;
 
   getUser(userId) {
-    this.tokenValue = this.cookieService.get('token');
+    // this.tokenValue = this.cookieService.get('token');
     this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
     const endpoint = this.baseURL.concat('users/' + userId.toString() + '/');
     return this.http.get(endpoint,  {headers: this.tokenHeader, observe: 'response'});
@@ -36,7 +38,7 @@ export class RequestsService {
   }
 
   getProjects() {
-    this.tokenValue = this.cookieService.get('token');
+    // this.tokenValue = this.cookieService.get('token');
     this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
     const endpoint = this.baseURL.concat('propositions/non_voted/');
     return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
@@ -56,7 +58,7 @@ export class RequestsService {
 
   putUser(user: UserModel, userId) {
       const endpoint = this.baseURL.concat('users/' + userId.toString() + '/');
-      this.tokenValue = this.cookieService.get('token');
+      // this.tokenValue = this.cookieService.get('token');
       this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
       console.log('Making PUT REQUEST USER ON URL: ' + endpoint);
       return this.http.put(endpoint, JSON.stringify(user),  {headers: this.tokenHeader, observe: 'response'});
@@ -69,7 +71,7 @@ export class RequestsService {
   }
 
   postVote(vote: VoteModel) {
-    this.tokenValue = this.cookieService.get('token');
+    // this.tokenValue = this.cookieService.get('token');
     this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
     const endpoint = this.baseURL.concat('user_votes/');
     console.log('Making POST REQUEST VOTE ON URL: ' + endpoint);

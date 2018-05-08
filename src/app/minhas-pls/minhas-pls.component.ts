@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RequestsService } from '../requests.service';
 import { PropositionModel } from '../../models/proposition';
-import { CookieService } from 'ngx-cookie';
+import { CookieService } from 'ngx-cookie-service';
 import { TokenService } from '../token.service';
 import { UpdateVoteModel } from '../../models/vote';
 
