@@ -20,6 +20,7 @@ import { PropositionsComponent } from './propositions/propositions.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { EditPageComponent } from './edit-page/edit-page.component';
 import { InputValidatorService } from './input-validator.service';
+import { SeePlComponent } from './see-pl/see-pl.component';
 
 const appRoutes: Routes = [
   {
@@ -47,9 +48,15 @@ const appRoutes: Routes = [
     component: PropositionsComponent
   },
   {
+<<<<<<< HEAD
     path: 'profile/edit',
     component: EditPageComponent
   }
+=======
+    path: 'seepl',
+    component: SeePlComponent
+  },
+>>>>>>> dev
 ]
 
 @NgModule({
@@ -64,7 +71,11 @@ const appRoutes: Routes = [
     MinhasPlsComponent,
     PropositionsComponent,
     SidebarComponent,
+<<<<<<< HEAD
     EditPageComponent,
+=======
+    SeePlComponent,
+>>>>>>> dev
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
