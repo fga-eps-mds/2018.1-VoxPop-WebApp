@@ -25,6 +25,8 @@ export class EditPageComponent implements OnInit {
     email: '',
     password: '',
     social_information: {
+        id: 0,
+        owner: 0,
         federal_unit: '',
         city: '',
         income: 0,
@@ -52,7 +54,7 @@ export class EditPageComponent implements OnInit {
   }
 
   updateUser(e: any) {
-    let user: UserModel;
+    let user: any;
     user = {
       username: e.target.elements[0].value,
       first_name: e.target.elements[1].value,
@@ -68,6 +70,7 @@ export class EditPageComponent implements OnInit {
         birth_date: e.target.elements[11].value
       }
      };
+     console.log(user);
      this.requester.putUser(user, this.userID).subscribe(response => {
         const statusUser = response.status;
         console.log('STATUS CODE RETURNED ON USER: ' + statusUser);

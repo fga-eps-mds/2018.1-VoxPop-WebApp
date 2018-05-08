@@ -5,13 +5,13 @@
         <label>Nome: </label>  {{ user['first_name'] }} {{ user['last_name'] }}<br>
         <label>Username: </label>  {{ user['username'] }}<br>
         <label>Email: </label>  {{ user['email'] }}<br>
-        <label>Cidade: </label>  {{ social_information['city'] }}
+        <label>Cidade: </label>  {{ user.social_information['city'] }}
       </div>
       <div class="column">
-        <label>Renda: </label>  {{ social_information['income'] }}<br>
-        <label>Formação: </label> {{ social_information['education']}} <br>
-        <label>Ocupação: </label>  {{ social_information['job'] }}<br>
-        <label>Nascimento: </label>  {{social_information['birth_date']}}
+        <label>Renda: </label>  {{ user.social_information['income'] }}<br>
+        <label>Formação: </label> {{ user.social_information['education']}} <br>
+        <label>Ocupação: </label>  {{ user.social_information['job'] }}<br>
+        <label>Nascimento: </label>  {{user.social_information['birth_date']}}
       </div>
     </div>
     <div style="text-align: right;
