@@ -48,15 +48,13 @@ const appRoutes: Routes = [
     component: PropositionsComponent
   },
   {
-<<<<<<< HEAD
     path: 'profile/edit',
     component: EditPageComponent
-  }
-=======
+  },
+  {
     path: 'seepl',
     component: SeePlComponent
   },
->>>>>>> dev
 ]
 
 @NgModule({
@@ -71,11 +69,8 @@ const appRoutes: Routes = [
     MinhasPlsComponent,
     PropositionsComponent,
     SidebarComponent,
-<<<<<<< HEAD
     EditPageComponent,
-=======
     SeePlComponent,
->>>>>>> dev
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
