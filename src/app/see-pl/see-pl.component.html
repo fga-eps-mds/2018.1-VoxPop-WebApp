@@ -1,0 +1,37 @@
+<h1 class="card-title" align="center">Projetos de Lei</h1>
+<div class="col-sm-6" *ngFor="let p of proposition">
+  <div class="main-card vote">
+    <div class="main-card-content">
+      <h5 class="card-title">{{p['proposition_type']}} - Número: {{p['number']}}</h5>
+      <p class="text-left">
+        <li>Ano: {{p['year']}}</li>
+        <li>Abstract: {{p['abstract']}}</li>
+        <li>Situação: {{p['situation']}}</li>
+        <li>Na íntegra: <a href="{{p['url_full']}}">link íntegra</a></li>
+      </p>
+    </div>
+  </div>
+</div>
+
+<ul class="nav nav-pills center">
+  <li role="presentation">
+    <button class="btn" (click)="propositions(1)">Inicio</button>
+  </li> 
+  <li role="presentation">
+    <button class="btn" (click)="propositions(offset-1)">Ant.</button>
+  </li>
+  <li role="presentation">
+    <input type="text" size="3" class="form-control" #page>
+  </li>
+  <li role="presentation">
+    <button class="btn" (click)="propositions(page.value)">Ir</button>
+  </li>
+  <li role="presentation">
+    <button class="btn" (click)="propositions(offset+1)">Prox.</button>
+  </li> 
+  <li role="presentation">
+    <button class="btn" (click)="propositions(pages.length)">Fim</button>
+  </li>
+</ul>
+<br><p class="p-center">Página: {{offset}}/{{pages.length}}</p><br>
+

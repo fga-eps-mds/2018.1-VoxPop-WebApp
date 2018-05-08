@@ -19,6 +19,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { MinhasPlsComponent } from './minhas-pls/minhas-pls.component';
 import { PropositionsComponent } from './propositions/propositions.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { SeePlComponent } from './see-pl/see-pl.component';
 
 const appRoutes: Routes = [
   {
@@ -45,6 +46,10 @@ const appRoutes: Routes = [
     path: 'propositions',
     component: PropositionsComponent
   },
+  {
+    path: 'seepl',
+    component: SeePlComponent
+  },
 ]
 
 @NgModule({
@@ -59,6 +64,7 @@ const appRoutes: Routes = [
     MinhasPlsComponent,
     PropositionsComponent,
     SidebarComponent,
+    SeePlComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
