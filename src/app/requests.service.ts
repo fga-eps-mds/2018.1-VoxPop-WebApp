@@ -25,7 +25,7 @@ export class RequestsService {
   tokenHeader: any;
 
   getUser(userId) {
-    // this.tokenValue = this.cookieService.get('token');
+    this.tokenValue = this.cookieService.get('token');
     this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
     const endpoint = this.baseURL.concat('users/' + userId.toString() + '/');
     return this.http.get(endpoint,  {headers: this.tokenHeader, observe: 'response'});
@@ -38,7 +38,7 @@ export class RequestsService {
   }
 
   getProjects() {
-    // this.tokenValue = this.cookieService.get('token');
+    this.tokenValue = this.cookieService.get('token');
     this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
     const endpoint = this.baseURL.concat('propositions/non_voted/');
     return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
@@ -57,21 +57,21 @@ export class RequestsService {
   }
 
   putUser(user: UserModel, userId) {
-      const endpoint = this.baseURL.concat('users/' + userId.toString() + '/');
-      // this.tokenValue = this.cookieService.get('token');
-      this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
-      console.log('Making PUT REQUEST USER ON URL: ' + endpoint);
-      return this.http.put(endpoint, JSON.stringify(user),  {headers: this.tokenHeader, observe: 'response'});
+    const endpoint = this.baseURL.concat('users/' + userId.toString() + '/');
+    this.tokenValue = this.cookieService.get('token');
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
+    console.log('Making PUT REQUEST USER ON URL: ' + endpoint);
+    return this.http.put(endpoint, JSON.stringify(user),  {headers: this.tokenHeader, observe: 'response'});
   }
 
   postAuthentication(login: LoginModel) {
-      const endpoint = this.baseURL.concat('token_auth/');
-      console.log('Making POST AUTHENTICATION REQUEST ON URL: ' + endpoint);
-      return this.http.post(endpoint, JSON.stringify(login), {headers: this.headers, observe: 'response'});
+    const endpoint = this.baseURL.concat('token_auth/');
+    console.log('Making POST AUTHENTICATION REQUEST ON URL: ' + endpoint);
+    return this.http.post(endpoint, JSON.stringify(login), {headers: this.headers, observe: 'response'});
   }
 
   postVote(vote: VoteModel) {
-    // this.tokenValue = this.cookieService.get('token');
+    this.tokenValue = this.cookieService.get('token');
     this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
     const endpoint = this.baseURL.concat('user_votes/');
     console.log('Making POST REQUEST VOTE ON URL: ' + endpoint);

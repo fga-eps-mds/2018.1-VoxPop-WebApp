@@ -25,7 +25,7 @@ export class EditPageComponent implements OnInit {
     email: '',
     password: '',
     social_information: {
-        state: '',
+        federal_unit: '',
         city: '',
         income: 0,
         education: '',
