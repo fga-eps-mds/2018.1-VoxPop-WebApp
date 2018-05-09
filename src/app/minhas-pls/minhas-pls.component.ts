@@ -47,6 +47,10 @@ export class MinhasPlsComponent implements OnInit {
     this.propositions(1);
   }
 
+  searchPL() {
+    this.propositionsSearch(1);
+  }
+
   propositions(offset: number) {
     let req: any;
     this.pages = [1];
@@ -57,7 +61,34 @@ export class MinhasPlsComponent implements OnInit {
     return req;
   }
 
+  propositionsSearch(offset: number) {
+    let req: any;
+    this.pages = [1];
+    this.numberPLsVoted = 1;
+    this.proposition = [];
+    req =  this.requester.getVotedProposition((offset - 1) * this.itemsPerPage);
+    this.handlePropositionsSearchResponse(req, offset);
+    return req;
+  }
+
   handlePropositionsResponse(request, offset) {
+    this.requester.getVotedProposition((offset - 1) * this.itemsPerPage).subscribe( response => {
+      const body = response['body'];
+      this.propositionVote = body['results'];
+      this.numberPLsVoted = body['count'];
+      for (let j = 0; j < this.numberPLsVoted; j++) {
+        this.proposition.push(this.propositionVote[j]['proposition']);
+        this.proposition[j]['option'] = this.propositionVote[j]['option'];
+      }
+      for (let i = 2; i <= Math.ceil(this.numberPLsVoted / this.itemsPerPage); i++) {
+        this.pages.push(i);
+      }
+      console.log(this.proposition);
+      console.log(this.numberPLsVoted);
+    });
+  }
+
+  handlePropositionsSearchResponse(request, offset) {
     this.requester.getVotedProposition((offset - 1) * this.itemsPerPage).subscribe( response => {
       const body = response['body'];
       this.propositionVote = body['results'];
@@ -98,9 +129,6 @@ export class MinhasPlsComponent implements OnInit {
 
     });
 
-  }
-
-  searchPL() {
   }
 
 }
