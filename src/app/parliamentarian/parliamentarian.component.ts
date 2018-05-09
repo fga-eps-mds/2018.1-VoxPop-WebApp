@@ -9,6 +9,7 @@ import { PropositionModel } from '../../models/proposition';
 })
 export class ParliamentarianComponent implements OnInit {
 
+  pages = 1;
   itemsPerPage = 36;
   offset = 1;
 
@@ -34,8 +35,8 @@ export class ParliamentarianComponent implements OnInit {
   getParliamentarians(offset: number) {
     let req: any;
     this.parliamentarians = [];
-    this.offset = offset;
-    req =  this.requester.getParliamentarian(this.itemsPerPage, (offset - 1) * this.itemsPerPage);
+    this.offset = Number(offset);
+    req =  this.requester.getParliamentarian(this.itemsPerPage, (this.offset - 1) * this.itemsPerPage);
     this.handleParliamentariansResponse(req, this.offset);
     return req;
   }
@@ -43,8 +44,9 @@ export class ParliamentarianComponent implements OnInit {
   handleParliamentariansResponse(request, offset) {
     this.requester.getParliamentarian(this.itemsPerPage, (offset - 1) * this.itemsPerPage).subscribe( response => {
       this.parliamentarians = response['body']['results'];
+      this.pages = Math.ceil(response['body']['count'] / this.itemsPerPage);
       console.log(this.parliamentarians);
-      console.log(this.parliamentarians.length);
+      console.log(this.pages);
     });
   }
 

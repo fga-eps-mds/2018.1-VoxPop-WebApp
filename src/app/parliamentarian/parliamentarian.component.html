@@ -30,8 +30,8 @@
     <button class="btn" (click)="getParliamentarians(offset+1)">Prox.</button>
   </li> 
   <li role="presentation">
-    <button class="btn" (click)="getParliamentarians(parliamentarians.length)">Fim</button>
+    <button class="btn" (click)="getParliamentarians(pages)">Fim</button>
   </li>
-</ul>
-<br><p class="p-center">Página: {{offset}}/{{parliamentarians.length}}</p><br>
+</ul><br>
+<br><p class="p-center">Página: {{offset}}/{{pages}}</p><br>
 
