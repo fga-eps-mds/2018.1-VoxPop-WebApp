@@ -46,6 +46,11 @@ export class RequestsService {
     return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
   }
 
+  getParlimentarian(parlimentaryId){
+    const endpoint = this.baseURL.concat('parliamentarians' + parlimentaryId + '/');
+    return this.http.get(endpoint, {headers: this.header});
+  }
+
   postUser(user: UserModel) {
     const endpoint = this.baseURL.concat('users/');
     console.log('Making POST REQUEST USER ON URL: ' + endpoint);
