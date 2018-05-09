@@ -39,3 +39,12 @@
 .vote{
     height: 35rem;
 }
+
+.header {
+    margin-bottom: 60px;
+}
+
+.search {
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
