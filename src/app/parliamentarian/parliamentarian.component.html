@@ -13,3 +13,25 @@
   </div>
 </div>
 
+<ul class="nav nav-pills center">
+  <li role="presentation">
+    <button class="btn" (click)="getParliamentarians(1)">Inicio</button>
+  </li> 
+  <li role="presentation">
+    <button class="btn" (click)="getParliamentarians(offset-1)">Ant.</button>
+  </li>
+  <li role="presentation">
+    <input type="text" size="3" class="form-control" #page>
+  </li>
+  <li role="presentation">
+    <button class="btn" (click)="getParliamentarians(page.value)">Ir</button>
+  </li>
+  <li role="presentation">
+    <button class="btn" (click)="getParliamentarians(offset+1)">Prox.</button>
+  </li> 
+  <li role="presentation">
+    <button class="btn" (click)="getParliamentarians(parliamentarians.length)">Fim</button>
+  </li>
+</ul>
+<br><p class="p-center">Página: {{offset}}/{{parliamentarians.length}}</p><br>
+

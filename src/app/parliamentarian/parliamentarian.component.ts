@@ -34,7 +34,7 @@ export class ParliamentarianComponent implements OnInit {
   getParliamentarians(offset: number) {
     let req: any;
     this.parliamentarians = [];
-
+    this.offset = offset;
     req =  this.requester.getParliamentarian(this.itemsPerPage, (offset - 1) * this.itemsPerPage);
     this.handleParliamentariansResponse(req, this.offset);
     return req;
