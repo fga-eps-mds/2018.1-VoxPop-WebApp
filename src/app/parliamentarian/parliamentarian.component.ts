@@ -9,8 +9,6 @@ import { PropositionModel } from '../../models/proposition';
 })
 export class ParliamentarianComponent implements OnInit {
 
-  numberPLs: number;
-  pages: Array<number> = [1];
   itemsPerPage = 50;
   offset = 1;
 
@@ -44,10 +42,9 @@ export class ParliamentarianComponent implements OnInit {
 
   handleParliamentariansResponse(request, offset) {
     this.requester.getParliamentarian().subscribe( response => {
-      this.parliamentarians = response['results'];
-      this.numberPLs = response['count'];
+      this.parliamentarians = response['body']['results'];
       console.log(this.parliamentarians);
-      console.log(this.numberPLs);
+      console.log(this.parliamentarians.length);
     });
   }
 

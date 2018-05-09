@@ -1,13 +1,15 @@
 <h1 class="card-title" align="center">Deputados</h1>
-<div class="col-sm-6" *ngFor="let p of parliamentarians">
+<div class="col-sm-2" *ngFor="let p of parliamentarians">
   <div class="main-card vote">
     <div class="main-card-content">
-      <h5 class="card-title">{{ p['name'] }}</h5>
-      <p class="text-left">
+      <div>
         <img src="{{ p['photo'] }}" alt="woops, someting went wrong">
+      </div>
+      <div>
+        <h5 class="card-title">{{ p['name'] }}</h5>
         <li>Estado: {{p['federal_unit']}}</li>
-      </p>
+      </div>
     </div>
   </div>
-</div>
+</div><br><br><br><br>
 
