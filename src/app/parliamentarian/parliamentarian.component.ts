@@ -22,6 +22,15 @@ export class ParliamentarianComponent implements OnInit {
       photo: '',
     }
   ];
+  auxParliamentarian: any = [
+    {
+      parliamentarian_id: null,
+      name: '',
+      gender: '',
+      federal_unit: '',
+      photo: '',
+    }
+  ];
 
   constructor(
     private requester: RequestsService,
@@ -29,13 +38,18 @@ export class ParliamentarianComponent implements OnInit {
 
 
   ngOnInit() {
-    this.getParliamentarians(1);
+    this.loadPage(1);
   }
 
-  getParliamentarians(offset: number) {
+  loadPage(offset: number) {
     let req: any;
-    this.parliamentarians = [];
+    console.log(Number(offset));
+    if (offset < 1 || isNaN(Number(offset))) {
+      alert("Número de páginas inválido, favor digitar um número positivo");
+      return -1;
+    }
     this.offset = Number(offset);
+    console.log(this.offset);
     req =  this.requester.getParliamentarian(this.itemsPerPage, (this.offset - 1) * this.itemsPerPage);
     this.handleParliamentariansResponse(req, this.offset);
     return req;
@@ -43,12 +57,18 @@ export class ParliamentarianComponent implements OnInit {
 
   handleParliamentariansResponse(request, offset) {
     this.requester.getParliamentarian(this.itemsPerPage, (offset - 1) * this.itemsPerPage).subscribe( response => {
-      this.parliamentarians = response['body']['results'];
+      this.auxParliamentarian = response['body']['results'];
       this.pages = Math.ceil(response['body']['count'] / this.itemsPerPage);
+      if (this.auxParliamentarian.length <= 0) {
+        alert("Número da página inválido, favor digitar entre 1 e " + this.pages)
+        return
+      }
+      this.parliamentarians = this.auxParliamentarian
       console.log(this.parliamentarians);
       console.log(this.pages);
     });
   }
+
 
 }
 

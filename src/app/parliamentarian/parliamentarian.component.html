@@ -15,22 +15,22 @@
 
 <ul class="nav nav-pills center">
   <li role="presentation">
-    <button class="btn" (click)="getParliamentarians(1)">Inicio</button>
+    <button class="btn" (click)="loadPage(1)">Inicio</button>
   </li> 
   <li role="presentation">
-    <button class="btn" (click)="getParliamentarians(offset-1)">Ant.</button>
+    <button class="btn" (click)="loadPage(offset-1)">Ant.</button>
   </li>
   <li role="presentation">
     <input type="text" size="3" class="form-control" #page>
   </li>
   <li role="presentation">
-    <button class="btn" (click)="getParliamentarians(page.value)">Ir</button>
+    <button class="btn" (click)="loadPage(page.value)">Ir</button>
   </li>
   <li role="presentation">
-    <button class="btn" (click)="getParliamentarians(offset+1)">Prox.</button>
+    <button class="btn" (click)="loadPage(offset+1)">Prox.</button>
   </li> 
   <li role="presentation">
-    <button class="btn" (click)="getParliamentarians(pages)">Fim</button>
+    <button class="btn" (click)="loadPage(pages)">Fim</button>
   </li>
 </ul><br>
 <br><p class="p-center">Página: {{offset}}/{{pages}}</p><br>
