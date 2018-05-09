@@ -6,4 +6,5 @@ export interface UserModel {
     last_name: string;
     email: string;
     password: string;
+    social_information: SocialInformationModel;
 }

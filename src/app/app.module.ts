@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
-import { CookieModule } from 'ngx-cookie';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -20,6 +19,9 @@ import { MinhasPlsComponent } from './minhas-pls/minhas-pls.component';
 import { PropositionsComponent } from './propositions/propositions.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ParliamentarianComponent } from './parliamentarian/parliamentarian.component';
+import { EditPageComponent } from './edit-page/edit-page.component';
+import { InputValidatorService } from './input-validator.service';
+import { SeePlComponent } from './see-pl/see-pl.component';
 
 const appRoutes: Routes = [
   {
@@ -49,7 +51,15 @@ const appRoutes: Routes = [
   {
     path: 'parliamentarians',
     component: ParliamentarianComponent
-  }
+  },
+  {
+    path: 'profile/edit',
+    component: EditPageComponent
+  },
+  {
+    path: 'seepl',
+    component: SeePlComponent
+  },
 ]
 
 @NgModule({
@@ -65,6 +75,8 @@ const appRoutes: Routes = [
     PropositionsComponent,
     SidebarComponent,
     ParliamentarianComponent,
+    EditPageComponent,
+    SeePlComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -72,13 +84,13 @@ const appRoutes: Routes = [
     HttpModule,
     HttpClientModule,
     FormsModule,
-    CookieModule.forRoot()
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA],
   providers: [
     RequestsService,
     CookieService,
-    TokenService
+    TokenService,
+    InputValidatorService
   ],
   bootstrap: [AppComponent]
 })
