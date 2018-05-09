@@ -40,8 +40,8 @@ export class RequestsService {
     return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
   }
 
-  getParliamentarian () {
-    const endpoint = this.baseURL.concat('parliamentarians/');
+  getParliamentarian (limit, offset) {
+    const endpoint = this.baseURL.concat('parliamentarians/?limit=' + limit + '&offset=' + offset);
     return this.http.get(endpoint, {headers: this.headers, observe: 'response'});
   }
 
