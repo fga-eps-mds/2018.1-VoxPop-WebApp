@@ -100,4 +100,7 @@ export class MinhasPlsComponent implements OnInit {
 
   }
 
+  searchPL() {
+  }
+
 }
