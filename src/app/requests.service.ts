@@ -47,8 +47,10 @@ export class RequestsService {
   }
 
   getParlimentarian(parlimentaryId){
-    const endpoint = this.baseURL.concat('parliamentarians' + parlimentaryId + '/');
-    return this.http.get(endpoint, {headers: this.header});
+    this.tokenValue = this.cookieService.get('token');
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
+    const endpoint = this.baseURL.concat('parliamentarians/' + parlimentaryId + '/');
+    return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
   }
 
   postUser(user: UserModel) {
