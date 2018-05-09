@@ -20,7 +20,7 @@ import { MinhasPlsComponent } from './minhas-pls/minhas-pls.component';
 import { PropositionsComponent } from './propositions/propositions.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SeePlComponent } from './see-pl/see-pl.component';
-import { SeePoliticianComponent } from './see-politician/see-politician.component';
+import { SeePoliticianDetailedComponent } from './see-politician-detail/see-politician-detail.component';
 
 const appRoutes: Routes = [
   {
@@ -51,6 +51,10 @@ const appRoutes: Routes = [
     path: 'seepl',
     component: SeePlComponent
   },
+  {
+    path: 'politician-details/:id',
+    component: SeePoliticianDetailedComponent
+  },
 ]
 
 @NgModule({
@@ -66,7 +70,7 @@ const appRoutes: Routes = [
     PropositionsComponent,
     SidebarComponent,
     SeePlComponent,
-    SeePoliticianComponent,
+    SeePoliticianDetailedComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
