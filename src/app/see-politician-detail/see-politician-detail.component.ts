@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
+import { RequestsService } from '../requests.service'
 
 @Component({
   selector: 'app-see-politician',
@@ -16,12 +16,18 @@ export class SeePoliticianDetailedComponent implements OnInit {
     federal_unit: '',
     photo: ''
   }
-  constructor(private route: ActivatedRoute,) { }
+  constructor(
+    private route: ActivatedRoute,
+    private requester:RequestsService,) { }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       this.id = +params['id']; 
       console.log(this.id);
    });
+   this.requester.getParlimentarian(this.id).subscribe( response =>{
+     this.parlimentarian = response['body'];
+     console.log(this.parlimentarian);
+   })
   }
 }
