@@ -36,6 +36,17 @@ export class SeePoliticianDetailedComponent implements OnInit {
     else if (this.parlimentarian['gender'] == 'F'){
       this.gender = "Feminino";
     }
+    else{
+      this.gender = "N/A";
+    }
+   }, error=>{
+    console.log(error.status);
+    this.parlimentarian = {
+      name : "DEPUTADO NÃO ENCONTRADO",
+      gender : "N/A",
+      federal_unit: "N/A",
+      photo: "N/A"
+    }
    });
   }
 }
