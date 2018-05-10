@@ -21,7 +21,6 @@ export class RequestsService {
   tokenValue = '';
   baseURL: string = environment.baseURL;
   headers = {'Content-Type': 'application/json'};
-  header = {'Content-Type': 'application/json', 'Authorization': 'Token ' + this.tokenValue};
   tokenHeader: any;
 
   getUser(userId) {
@@ -93,11 +92,12 @@ export class RequestsService {
   }
 
   updateVote(vote: VoteModel, id: number) {
-    console.log(id);
+    this.tokenValue = this.cookieService.get('token');
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
     const endpoint = this.baseURL.concat('user_votes/' + id + '/');
     console.log('Making PUT REQUEST VOTE ON URL: ' + endpoint);
     console.log(vote);
-    return this.http.put(endpoint, JSON.stringify(vote), {headers: this.header, observe: 'response'});
+    return this.http.put(endpoint, JSON.stringify(vote), {headers: this.tokenHeader, observe: 'response'});
   }
 
   didSucceed(status) {
