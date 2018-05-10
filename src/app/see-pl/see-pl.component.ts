@@ -10,11 +10,25 @@ import { PropositionModel } from '../../models/proposition';
 export class SeePlComponent implements OnInit {
 
   numberPLs: number;
-  pages: Array<number> = [1];
-  itemsPerPage = 50;
+  pages = 1;
+  itemsPerPage = 20;
   offset = 1;
 
   proposition: any = [
+    {
+      proposition_id: null,
+      proposition_type: '',
+      proposition_type_initials: '',
+      number: null,
+      year: null,
+      abstract: '',
+      processing: '',
+      situation: '',
+      url_full: ''
+    }
+  ];
+
+  auxProposition: any = [
     {
       proposition_id: null,
       proposition_type: '',
@@ -34,21 +48,17 @@ export class SeePlComponent implements OnInit {
 
 
   ngOnInit() {
-    this.propositions(1);
+    this.loadPage(1);
   }
 
-  propositions(offset: number) {
+  loadPage(offset: number) {
     let req: any;
-    this.pages = [1];
-    this.numberPLs = 1;
-    this.proposition = [];
-    if (Number(offset) > 1 && Number(offset) < 90) {
-      this.offset = Number(offset);
-    } else if (Number(offset) <= 1) {
-      this.offset = 1;
-    } else {
-      this.offset = 90;
+    console.log(Number(offset));
+    if (offset < 1 || isNaN(Number(offset))) {
+      alert("Número de páginas inválido, favor digitar um número positivo");
+      return -1;
     }
+    this.offset = Number(offset);
     req =  this.requester.getProposition(this.itemsPerPage, (this.offset - 1) * this.itemsPerPage);
     this.handlePropositionsResponse(req, this.offset);
     return req;
@@ -56,15 +66,17 @@ export class SeePlComponent implements OnInit {
 
   handlePropositionsResponse(request, offset) {
     this.requester.getProposition(this.itemsPerPage, (offset - 1) * this.itemsPerPage).subscribe( response => {
-      this.proposition = response['results'];
+      this.auxProposition = response['results'];
       this.numberPLs = response['count'];
-      for (let i = 2; i <= Math.ceil(this.numberPLs / this.itemsPerPage); i++) {
-        this.pages.push(i);
+      this.pages = Math.ceil(this.numberPLs/this.itemsPerPage);
+      if (this.auxProposition.length <= 0) {
+        alert("Número da página inválido, favor digitar entre 1 e " + this.pages)
+        return
       }
+      this.proposition = this.auxProposition;
       console.log(this.proposition);
       console.log(this.numberPLs);
     });
   }
 
 }
-
