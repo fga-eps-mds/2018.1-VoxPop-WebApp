@@ -13,10 +13,10 @@ import { UpdateVoteModel } from '../../models/vote';
 export class MinhasPlsComponent implements OnInit {
 
   tokenValue = '';
-  numberPLsVoted: number;
   pages: Array<number> = [1];
   itemsPerPage = 10;
   votePosition: number;
+  userId: number;
 
   propositionVote: any;
   proposition: any = [
@@ -42,6 +42,7 @@ export class MinhasPlsComponent implements OnInit {
 
   ngOnInit() {
     this.tokenValue = this.cookieService.get('token');
+    this.userId = Number(this.cookieService.get('userID'));
     this.token.checkToken(this.tokenValue);
     this.votePosition = 0;
     this.propositions(1);
@@ -50,7 +51,6 @@ export class MinhasPlsComponent implements OnInit {
   propositions(offset: number) {
     let req: any;
     this.pages = [1];
-    this.numberPLsVoted = 1;
     this.proposition = [];
     req =  this.requester.getVotedProposition((offset - 1) * this.itemsPerPage);
     this.handlePropositionsResponse(req, offset);
@@ -61,16 +61,11 @@ export class MinhasPlsComponent implements OnInit {
     this.requester.getVotedProposition((offset - 1) * this.itemsPerPage).subscribe( response => {
       const body = response['body'];
       this.propositionVote = body['results'];
-      this.numberPLsVoted = body['count'];
-      for (let j = 0; j < this.numberPLsVoted; j++) {
-        this.proposition.push(this.propositionVote[j]['proposition']);
-        this.proposition[j]['option'] = this.propositionVote[j]['option'];
-      }
-      for (let i = 2; i <= Math.ceil(this.numberPLsVoted / this.itemsPerPage); i++) {
+      for (let i = 2; i <= Math.ceil(this.propositionVote.length / this.itemsPerPage); i++) {
         this.pages.push(i);
       }
-      console.log(this.proposition);
-      console.log(this.numberPLsVoted);
+      console.log(this.propositionVote);
+      console.log(this.propositionVote.length);
     });
   }
 
@@ -81,8 +76,8 @@ export class MinhasPlsComponent implements OnInit {
   editVote(opinion: string) {
     let status;
      const vote: UpdateVoteModel = {
-       user: 10,
-       proposition: this.proposition[this.votePosition].id,
+       user: this.userId,
+       proposition: this.propositionVote[this.votePosition].proposition.id,
        option: opinion
     };
 
