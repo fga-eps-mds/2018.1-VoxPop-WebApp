@@ -2,9 +2,11 @@
   <h1 class="card-title">Meus votos</h1>
   <form class="col-sm-4 col-sm-offset-4 search" role="search" method="get" action="/busca">
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="Buscar entre os projetos de lei votados">
+      <input type="text" class="form-control" placeholder="Buscar entre os projetos de lei votados" #search>
       <div class="input-group-btn">
-        <button class="btn btn-default" type="submit" (click)="searchPL()"><i class="glyphicon glyphicon-search"></i></button>
+        <button class="btn btn-default" type="submit" (click)="searchPL(search.value)">
+          <i class="glyphicon glyphicon-search"></i>
+        </button>
       </div>
     </div>
   </form>
