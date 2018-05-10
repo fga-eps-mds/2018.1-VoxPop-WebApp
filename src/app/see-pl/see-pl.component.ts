@@ -73,10 +73,28 @@ export class SeePlComponent implements OnInit {
         alert("Número da página inválido, favor digitar entre 1 e " + this.pages)
         return
       }
+      this.updateButtonsAppearence(this.offset, this.pages)
       this.proposition = this.auxProposition;
       console.log(this.proposition);
       console.log(this.numberPLs);
     });
+  }
+
+  updateButtonsAppearence(offset, limit){
+    if (offset === 1) {
+      document.getElementById("beforeBtn1").style.display = "none";
+      document.getElementById("beforeBtn2").style.display = "none";
+    } else {
+      document.getElementById("beforeBtn1").style.display = "block";
+      document.getElementById("beforeBtn2").style.display = "block";
+    }
+    if (offset === limit) {
+      document.getElementById("afterBtn1").style.display = "none";
+      document.getElementById("afterBtn2").style.display = "none";
+    } else {
+      document.getElementById("afterBtn1").style.display = "block";
+      document.getElementById("afterBtn2").style.display = "block";
+    }
   }
 
 }
