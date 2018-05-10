@@ -42,7 +42,7 @@ export class RequestsService {
   getSearchVotedProposition(offset, keyword) {
     this.tokenValue = this.cookieService.get('token');
     this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
-    const endpoint = this.baseURL.concat('user_votes/?limit=10&offset=' + offset + '/' + keyword);
+    const endpoint = this.baseURL.concat('user_votes/?limit=10&offset=' + offset);
     console.log('Making GET REQUEST VOTED PROPOITION ON URL: ' + endpoint);
     return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
   }
