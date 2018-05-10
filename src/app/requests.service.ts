@@ -52,6 +52,11 @@ export class RequestsService {
     return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
   }
 
+  getParliamentarian (limit, offset) {
+    const endpoint = this.baseURL.concat('parliamentarians/?limit=' + limit + '&offset=' + offset);
+    return this.http.get(endpoint, {headers: this.headers, observe: 'response'});
+  }
+
   postUser(user: UserModel) {
     const endpoint = this.baseURL.concat('users/');
     console.log('Making POST REQUEST USER ON URL: ' + endpoint);

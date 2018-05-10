@@ -18,6 +18,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { MinhasPlsComponent } from './minhas-pls/minhas-pls.component';
 import { PropositionsComponent } from './propositions/propositions.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { ParliamentarianComponent } from './parliamentarian/parliamentarian.component';
 import { EditPageComponent } from './edit-page/edit-page.component';
 import { InputValidatorService } from './input-validator.service';
 import { SeePlComponent } from './see-pl/see-pl.component';
@@ -48,6 +49,10 @@ const appRoutes: Routes = [
     component: PropositionsComponent
   },
   {
+    path: 'parliamentarians',
+    component: ParliamentarianComponent
+  },
+  {
     path: 'profile/edit',
     component: EditPageComponent
   },
@@ -69,6 +74,7 @@ const appRoutes: Routes = [
     MinhasPlsComponent,
     PropositionsComponent,
     SidebarComponent,
+    ParliamentarianComponent,
     EditPageComponent,
     SeePlComponent,
   ],
