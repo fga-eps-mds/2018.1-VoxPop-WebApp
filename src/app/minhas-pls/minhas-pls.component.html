@@ -11,23 +11,23 @@
     </div>
   </form>
 </div>
-<div class="col-sm-6" *ngFor="let p of proposition let j = index">
-    <div class="main-card vote">
-      <div class="main-card-content">
-        <h5 class="card-title">{{p.proposition['proposition_type']}} - Número: {{p.proposition['number']}}</h5><br>
-        <p class="text-left">
-          <li>Ano: {{p.proposition['year']}}</li>
-          <li>Abstract: {{p.proposition['abstract']}}</li>
-          <li>Situação: {{p.proposition['situation']}}</li>
-          <li>Na íntegra: <a href="{{p.proposition['url_full']}}">link íntegra</a></li>
-          <li>Seu voto: {{p['option']}}</li>
-        </p>
-        <button type="button" class="btn btn-primary" (click)="specifyProposition(j)" data-toggle="modal" data-target="#exampleModal">
-          Editar Voto
-        </button>
-      </div>
+<div class="col-sm-6" *ngFor="let p of propositionVote let j = index">
+  <div class="main-card vote">
+    <div class="main-card-content">
+      <h5 class="card-title">{{p.proposition['proposition_type']}} - Número: {{p.proposition['number']}}</h5><br>
+      <p class="text-left">
+        <li>Ano: {{p.proposition['year']}}</li>
+        <li>Abstract: {{p.proposition['abstract']}}</li>
+        <li>Situação: {{p.proposition['situation']}}</li>
+        <li>Na íntegra: <a href="{{p.proposition['url_full']}}">link íntegra</a></li>
+        <li>Seu voto: {{p['option']}}</li>
+      </p>
+      <button type="button" class="btn btn-primary" (click)="specifyProposition(j)" data-toggle="modal" data-target="#exampleModal">
+        Editar Voto
+      </button>
     </div>
   </div>
+</div>
   <div class="row bottom" *ngIf="propositionVote?.length > 0">
     <ul class="pagination pagination-lg">
       <li class="page-item disabled">
