@@ -1,5 +1,17 @@
-<h1 class="card-title" align="center">Meus votos</h1>
-  <div class="col-sm-6" *ngFor="let p of proposition let j = index">
+<div class="header" align="center">
+  <h1 class="card-title">Meus votos</h1>
+  <form class="col-sm-4 col-sm-offset-4 search" role="search" method="get" action="/busca">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Buscar entre os projetos de lei votados" #search>
+      <div class="input-group-btn">
+        <button class="btn btn-default" type="submit" (click)="searchPL(search.value)">
+          <i class="glyphicon glyphicon-search"></i>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="col-sm-6" *ngFor="let p of proposition let j = index">
     <div class="main-card vote">
       <div class="main-card-content">
         <h5 class="card-title">{{p['proposition_type']}} - Número: {{p['number']}}</h5><br>

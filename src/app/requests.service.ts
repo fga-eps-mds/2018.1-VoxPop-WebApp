@@ -39,6 +39,14 @@ export class RequestsService {
     return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
   }
 
+  getSearchVotedProposition(offset, keyword) {
+    this.tokenValue = this.cookieService.get('token');
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
+    const endpoint = this.baseURL.concat('user_votes/?limit=10&offset=' + offset);
+    console.log('Making GET REQUEST VOTED PROPOITION ON URL: ' + endpoint);
+    return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
+  }
+
   getProposition(limit, offset) {
     const endpoint = this.baseURL.concat('propositions/?limit=' + limit + '&offset=' + offset);
     console.log('Making POST REQUEST USER ON URL: ' + endpoint);

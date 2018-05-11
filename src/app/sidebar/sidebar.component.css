@@ -30,6 +30,7 @@ i, span {
     display: flex;
     align-items: stretch;
     min-height: calc(100vh - 50px);
+    height: 100%;
 }
 
 #sidebar {
