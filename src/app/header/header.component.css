@@ -34,3 +34,12 @@
 .navbar-custom .navbar-link:hover {
     color: #5bc0de;
 }
+
+.menu {
+  background-color: #7386D5;
+}
+
+.glyphicon-menu-hamburger {
+  color: white;
+  font-size: 16px;
+}

@@ -24,13 +24,11 @@
     width: 95%;
     background: #fff;
     border: 1px solid rgba(0, 0, 0, 0.125);
-    border-radius: 1rem;
+    border-radius: 0.25rem;
     border-color: #6c757d;
-    border-width: 2px;
-    length: 50%;
 }
 
 .btn {
     border-color: gray;
-  
+    background-color: #7386D5;
 }
