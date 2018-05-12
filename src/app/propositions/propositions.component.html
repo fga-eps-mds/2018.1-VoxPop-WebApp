@@ -2,16 +2,18 @@
   Proposição
 </h1>
 <div class="main-card">
-  <ul style="margin-top: 10px">
-    <li>Número: {{proposition['number']}}</li>
-    <li>Ano: {{proposition['year']}}</li>
-    <li>Abstract: {{proposition['abstract']}}</li>
-    <li>Situação: {{proposition['situation']}}</li>
-    <li>Tipo: {{proposition['proposition_type']}}</li>
-  </ul>
-  <div style="text-align: center; margin-bottom: 10px">
-    <button class='btn btn-success' (click)="answerPL('Y')"><span class="glyphicon glyphicon-ok"></span></button>
-    <button class='btn btn-light' (click)="answerPL('A')"><span class="glyphicon glyphicon-minus"></span></button>
-    <button class='btn btn-danger' (click)="answerPL('N')"><span class="glyphicon glyphicon-remove"></span></button>
+  <div class="main-card-content">
+    <h5 class="card-title">{{proposition['proposition_type']}} - Número: {{proposition['number']}}</h5><br>
+    <ul class="text-left">
+      <li>Ano: {{proposition['year']}}</li>
+      <li>Abstract: {{proposition['abstract']}}</li>
+      <li>Situação: {{proposition['situation']}}</li>
+      <li>Na íntegra: <a href="{{proposition['url_full']}}">link íntegra</a></li>
+    </ul>
+    <div style="text-align: center; margin-bottom: 10px">
+      <button class='btn btn-success' (click)="answerPL('Y')"><span class="glyphicon glyphicon-ok"></span></button>
+      <button class='btn btn-light' (click)="answerPL('A')"><span class="glyphicon glyphicon-minus"></span></button>
+      <button class='btn btn-danger' (click)="answerPL('N')"><span class="glyphicon glyphicon-remove"></span></button>
+    </div>
   </div>
 </div>
