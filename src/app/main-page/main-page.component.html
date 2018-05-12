@@ -1,15 +1,17 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-6 text-left" *ngFor="let p of proposition">
-      <div class="main-card vote">
-        <div class="main-card-content">
-        <h5 class="card-title">{{p['proposition_type']}} - Número: {{p['number']}}</h5><br>
-          <p class="text-left">
-            <li>Ano: {{p['year']}}</li>
-            <li>Abstract: {{p['abstract']}}</li>
-            <li>Situação: {{p['situation']}}</li>
-            <li>Na íntegra: <a href="{{p['url_full']}}">link íntegra</a></li>
-          </p>
+    <div class="col-sm-6 text-left">
+      <div *ngFor="let p of proposition">
+        <div class="main-card vote">
+          <div class="main-card-content">
+          <h5 class="card-title">{{p['proposition_type']}} - Número: {{p['number']}}</h5><br>
+            <p class="text-left">
+              <li>Ano: {{p['year']}}</li>
+              <li>Abstract: {{p['abstract']}}</li>
+              <li>Situação: {{p['situation']}}</li>
+              <li>Na íntegra: <a href="{{p['url_full']}}">link íntegra</a></li>
+            </p>
+          </div>
         </div>
       </div>
     </div>
