@@ -16,7 +16,9 @@ export class SeePoliticianDetailedComponent implements OnInit {
     partido: '',
     federal_unit: '',
     photo: ''
-  }
+  };
+  gender: string = '';
+
   constructor(
     private route: ActivatedRoute,
     private requester:RequestsService,) { }
@@ -27,8 +29,25 @@ export class SeePoliticianDetailedComponent implements OnInit {
       console.log(this.id);
    });
    this.requester.getParlimentarian(this.id).subscribe( response =>{
-     this.parlimentarian = response['body'];
-     console.log(this.parlimentarian);
-   })
+    this.parlimentarian = response['body'];
+    console.log(this.parlimentarian);
+    if(this.parlimentarian['gender'] == 'M'){
+      this.gender = "Masculino";  
+    }
+    else if (this.parlimentarian['gender'] == 'F'){
+      this.gender = "Feminino";
+    }
+    else{
+      this.gender = "N/A";
+    }
+   }, error=>{
+    console.log(error.status);
+    this.parlimentarian = {
+      name : "DEPUTADO NÃO ENCONTRADO",
+      gender : "N/A",
+      federal_unit: "N/A",
+      photo: "N/A"
+    }
+   });
   }
 }
