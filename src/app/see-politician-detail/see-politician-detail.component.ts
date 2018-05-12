@@ -13,6 +13,7 @@ export class SeePoliticianDetailedComponent implements OnInit {
   parlimentarian: any = {
     name: '',
     gender: '',
+    partido: '',
     federal_unit: '',
     photo: ''
   };
