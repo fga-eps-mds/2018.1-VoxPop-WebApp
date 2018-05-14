@@ -1,22 +1,24 @@
 <h1 class="card-title" align="center">Deputados</h1>
-<div class="col-sm-2" *ngFor="let p of parliamentarians">
+<div class="col-sm-2" *ngFor="let p of parliamentarians let id = index">
   <div class="main-card vote">
-    <div class="main-card-content">
-      <div>
-        <img src="{{ p['photo'] }}" width="114" height="152" alt="woops, someting went wrong">
+    <a routerLink="/parliamentarians/{{id+1}}" routerLinkActivate="active">
+      <div class="main-card-content">
+        <div>
+          <img src="{{ p['photo'] }}" width="114" height="152" alt="woops, someting went wrong">
+        </div>
+        <div>
+          <h5 class="card-title">{{ p['name'] }}</h5>
+          <li>Estado: {{p['federal_unit']}}</li>
+        </div>
       </div>
-      <div>
-        <h5 class="card-title">{{ p['name'] }}</h5>
-        <li>Estado: {{p['federal_unit']}}</li>
-      </div>
-    </div>
+    </a>
   </div>
 </div>
 <div class="col-sm-12">
   <ul class="nav nav-pills center">
     <li role="presentation">
       <button id="beforeBtn1" class="btn" (click)="loadPage(1)">Inicio</button>
-    </li> 
+    </li>
     <li role="presentation">
       <button id="beforeBtn2" class="btn" (click)="loadPage(offset-1)">Ant.</button>
     </li>
@@ -28,12 +30,13 @@
     </li>
     <li role="presentation">
       <button id="afterBtn1" class="btn" (click)="loadPage(offset+1)">Prox.</button>
-    </li> 
+    </li>
     <li role="presentation">
       <button id="afterBtn2" class="btn" (click)="loadPage(pages)">Fim</button>
     </li>
-  </ul><br>
-  <br><p class="p-center">Página: {{offset}}/{{pages}}</p><br>
+  </ul>
+  <br>
+  <br>
+  <p class="p-center">Página: {{offset}}/{{pages}}</p>
+  <br>
 </div>
-  
-  
