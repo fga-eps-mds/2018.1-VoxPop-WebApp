@@ -28,7 +28,7 @@ export class SeePoliticianDetailedComponent implements OnInit {
       this.id = +params['id']; 
       console.log(this.id);
    });
-   this.requester.getParlimentarian(this.id).subscribe( response =>{
+   this.requester.getParlimentarianSpecific(this.id).subscribe( response =>{
     this.parlimentarian = response['body'];
     console.log(this.parlimentarian);
     if(this.parlimentarian['gender'] == 'M'){
