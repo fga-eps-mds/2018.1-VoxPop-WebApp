@@ -62,7 +62,7 @@ const appRoutes: Routes = [
     component: SeePlComponent
   },
   {
-    path: 'politician-details/:id',
+    path: 'parliamentarians/:id',
     component: SeePoliticianDetailedComponent
   },
 ]
