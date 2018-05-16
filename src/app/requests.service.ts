@@ -68,7 +68,7 @@ export class RequestsService {
 
   getSearchedParliamentarian (limit, offset, keyword) {
     keyword.toUpperCase();
-    const endpoint = this.baseURL.concat('parliamentarians/?query=' + keyword);
+    const endpoint = this.baseURL.concat('parliamentarians/?limit=' + limit + '&offset=' + offset + '&query=' + keyword);
     console.log('Making QUERY REQUEST USER ON URL: ' + endpoint);
     return this.http.get(endpoint, {headers: this.headers, observe: 'response'});
   }
