@@ -74,7 +74,7 @@ export class ParliamentarianComponent implements OnInit {
       this.auxParliamentarian = response['body']['results'];
       this.pages = Math.ceil(response['body']['count'] / this.itemsPerPage);
       if (this.auxParliamentarian.length <= 0) {
-        alert('Número da página inválido, favor digitar entre 1 e ' + this.pages)
+        alert('Número da página inválido, favor digitar entre 1 e ' + this.pages);
         return;
       }
       this.updateButtonsAppearence(this.offset, this.pages);
@@ -88,8 +88,11 @@ export class ParliamentarianComponent implements OnInit {
     this.requester.getSearchedParliamentarian(this.itemsPerPage, (offset - 1) * this.itemsPerPage, term).subscribe( response => {
       this.auxParliamentarian = response['body']['results'];
       this.pages = Math.ceil(response['body']['count'] / this.itemsPerPage);
-      if (this.auxParliamentarian.length <= 0) {
-        alert('Número da página inválido, favor digitar entre 1 e ' + this.pages)
+      if (this.pages === 0) {
+        alert('A pesquisa não retornou resultados');
+        return;
+      } else if (this.auxParliamentarian.length <= 0) {
+        alert('Número da página inválido, favor digitar entre 1 e ' + this.pages);
         return;
       }
       this.updateButtonsAppearence(this.offset, this.pages);
@@ -113,6 +116,13 @@ export class ParliamentarianComponent implements OnInit {
     } else {
       document.getElementById('afterBtn1').style.display = 'block';
       document.getElementById('afterBtn2').style.display = 'block';
+    }
+    if (this.pages < 2) {
+      document.getElementById('pageBtn1').style.display = 'none';
+      document.getElementById('pageBtn2').style.display = 'none';
+    } else {
+      document.getElementById('pageBtn1').style.display = 'block';
+      document.getElementById('pageBtn2').style.display = 'block';
     }
 
   }

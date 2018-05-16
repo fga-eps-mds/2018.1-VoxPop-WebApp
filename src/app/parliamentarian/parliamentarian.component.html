@@ -35,10 +35,10 @@
       <button id="beforeBtn2" class="btn" (click)="loadPage(offset-1)">Ant.</button>
     </li>
     <li role="presentation">
-      <input type="text" size="3" class="form-control" #page>
+      <input id="pageBtn1" type="text" size="3" class="form-control" #page>
     </li>
     <li role="presentation">
-      <button class="btn" (click)="loadPage(page.value)">Ir</button>
+      <button id="pageBtn2" class="btn" (click)="loadPage(page.value)">Ir</button>
     </li>
     <li role="presentation">
       <button id="afterBtn1" class="btn" (click)="loadPage(offset+1)">Prox.</button>
