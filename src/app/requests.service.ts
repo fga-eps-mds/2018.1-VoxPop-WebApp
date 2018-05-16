@@ -41,7 +41,7 @@ export class RequestsService {
   getSearchVotedProposition(offset, keyword) {
     this.tokenValue = this.cookieService.get('token');
     this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
-    const endpoint = this.baseURL.concat('user_votes/?limit=10&offset=' + offset);
+    const endpoint = this.baseURL.concat('user_votes/?limit=10&offset=' + offset + '&query=' + keyword);
     console.log('Making GET REQUEST VOTED PROPOITION ON URL: ' + endpoint);
     return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
   }
@@ -66,8 +66,7 @@ export class RequestsService {
     return this.http.get(endpoint, {headers: this.headers, observe: 'response'});
   }
 
-  getSearchedParliamentarian (limit, offset, keyword) {
-    keyword.toUpperCase();
+  getSearchedParliamentarian (limit, offset, keyword: string) {
     const endpoint = this.baseURL.concat('parliamentarians/?limit=' + limit + '&offset=' + offset + '&query=' + keyword);
     console.log('Making QUERY REQUEST USER ON URL: ' + endpoint);
     return this.http.get(endpoint, {headers: this.headers, observe: 'response'});

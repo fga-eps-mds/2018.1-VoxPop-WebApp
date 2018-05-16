@@ -57,6 +57,7 @@ export class ParliamentarianComponent implements OnInit {
 
   loadPageSearch(offset: number, term) {
     let req: any;
+    term = term.toUpperCase();
     console.log(Number(offset));
     if (offset < 1 || isNaN(Number(offset))) {
       alert('Número de páginas inválido, favor digitar um número positivo');
