@@ -45,7 +45,7 @@ export class ParliamentarianComponent implements OnInit {
     let req: any;
     console.log(Number(offset));
     if (offset < 1 || isNaN(Number(offset))) {
-      alert("Número de páginas inválido, favor digitar um número positivo");
+      alert('Número de páginas inválido, favor digitar um número positivo');
       return -1;
     }
     this.offset = Number(offset);
@@ -59,7 +59,7 @@ export class ParliamentarianComponent implements OnInit {
     let req: any;
     console.log(Number(offset));
     if (offset < 1 || isNaN(Number(offset))) {
-      alert("Número de páginas inválido, favor digitar um número positivo");
+      alert('Número de páginas inválido, favor digitar um número positivo');
       return -1;
     }
     this.offset = Number(offset);
@@ -74,11 +74,11 @@ export class ParliamentarianComponent implements OnInit {
       this.auxParliamentarian = response['body']['results'];
       this.pages = Math.ceil(response['body']['count'] / this.itemsPerPage);
       if (this.auxParliamentarian.length <= 0) {
-        alert("Número da página inválido, favor digitar entre 1 e " + this.pages)
-        return
+        alert('Número da página inválido, favor digitar entre 1 e ' + this.pages)
+        return;
       }
       this.updateButtonsAppearence(this.offset, this.pages);
-      this.parliamentarians = this.auxParliamentarian
+      this.parliamentarians = this.auxParliamentarian;
       console.log(this.parliamentarians);
       console.log(this.pages);
     });
@@ -89,30 +89,30 @@ export class ParliamentarianComponent implements OnInit {
       this.auxParliamentarian = response['body']['results'];
       this.pages = Math.ceil(response['body']['count'] / this.itemsPerPage);
       if (this.auxParliamentarian.length <= 0) {
-        alert("Número da página inválido, favor digitar entre 1 e " + this.pages)
-        return
+        alert('Número da página inválido, favor digitar entre 1 e ' + this.pages)
+        return;
       }
       this.updateButtonsAppearence(this.offset, this.pages);
-      this.parliamentarians = this.auxParliamentarian
+      this.parliamentarians = this.auxParliamentarian;
       console.log(this.parliamentarians);
       console.log(this.pages);
     });
   }
 
-  updateButtonsAppearence(offset, limit){
+  updateButtonsAppearence(offset, limit) {
     if (offset === 1) {
-      document.getElementById("beforeBtn1").style.display = "none";
-      document.getElementById("beforeBtn2").style.display = "none";
+      document.getElementById('beforeBtn1').style.display = 'none';
+      document.getElementById('beforeBtn2').style.display = 'none';
     } else {
-      document.getElementById("beforeBtn1").style.display = "block";
-      document.getElementById("beforeBtn2").style.display = "block";
+      document.getElementById('beforeBtn1').style.display = 'block';
+      document.getElementById('beforeBtn2').style.display = 'block';
     }
     if (offset === limit) {
-      document.getElementById("afterBtn1").style.display = "none";
-      document.getElementById("afterBtn2").style.display = "none";
+      document.getElementById('afterBtn1').style.display = 'none';
+      document.getElementById('afterBtn2').style.display = 'none';
     } else {
-      document.getElementById("afterBtn1").style.display = "block";
-      document.getElementById("afterBtn2").style.display = "block";
+      document.getElementById('afterBtn1').style.display = 'block';
+      document.getElementById('afterBtn2').style.display = 'block';
     }
 
   }
