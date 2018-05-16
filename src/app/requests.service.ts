@@ -66,6 +66,11 @@ export class RequestsService {
     return this.http.get(endpoint, {headers: this.headers, observe: 'response'});
   }
 
+  getSearchedParliamentarian (limit, offset, keyword) {
+    const endpoint = this.baseURL.concat('parliamentarians/?limit=' + limit + '&offset=' + offset);
+    return this.http.get(endpoint, {headers: this.headers, observe: 'response'});
+  }
+
   getParlimentarianSpecific(parlimentaryId){
     this.tokenValue = this.cookieService.get('token');
     this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};

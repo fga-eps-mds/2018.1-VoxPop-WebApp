@@ -4,7 +4,7 @@
     <div class="input-group">
       <input type="text" class="form-control" placeholder="Buscar entre os deputados" #search>
       <div class="input-group-btn">
-        <button class="btn btn-default" type="submit" (click)="searchDep(search.value)">
+        <button class="btn btn-default" type="submit" (click)="loadPageSearch(1, search.value)">
           <i class="glyphicon glyphicon-search"></i>
         </button>
       </div>
