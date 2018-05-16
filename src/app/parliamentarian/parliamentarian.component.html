@@ -13,7 +13,7 @@
 </div>
 <div class="col-sm-2" *ngFor="let p of parliamentarians">
   <div class="main-card vote">
-    <a routerLink="/parliamentarians/{{id+1}}" routerLinkActivate="active">
+    <a routerLink="/parliamentarians/{{p['id']}}" routerLinkActivate="active">
       <div class="main-card-content">
         <div>
           <img src="{{ p['photo'] }}" width="114" height="152" alt="woops, someting went wrong">
