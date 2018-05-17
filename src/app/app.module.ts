@@ -66,7 +66,11 @@ const appRoutes: Routes = [
     path: 'parliamentarians/:id',
     component: SeePoliticianDetailedComponent
   },
-]
+  {
+    path: 'user-following',
+    component: UserFollowingComponent
+  },
+];
 
 @NgModule({
   declarations: [
