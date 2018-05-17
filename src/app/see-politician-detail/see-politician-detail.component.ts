@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { RequestsService } from '../requests.service'
+import { RequestsService } from '../requests.service';
+import { TokenService } from '../token.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-see-politician',
@@ -8,6 +10,7 @@ import { RequestsService } from '../requests.service'
   styleUrls: ['./see-politician-detail.component.css']
 })
 export class SeePoliticianDetailedComponent implements OnInit {
+  tokenValue = '';
   sub: any;
   id: number = 0;
   parlimentarian: any = {
@@ -21,13 +24,20 @@ export class SeePoliticianDetailedComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private requester:RequestsService,) { }
+    private requester:RequestsService,
+    private token: TokenService,
+    private cookieService: CookieService
+  ) { }
 
   ngOnInit() {
+    this.tokenValue = this.cookieService.get('token');
+    this.token.checkToken(this.tokenValue);
+
     this.sub = this.route.params.subscribe(params => {
       this.id = +params['id']; 
       console.log(this.id);
-   });
+    });
+
    this.requester.getParlimentarianSpecific(this.id).subscribe( response =>{
     this.parlimentarian = response['body'];
     console.log(this.parlimentarian);
@@ -51,10 +61,9 @@ export class SeePoliticianDetailedComponent implements OnInit {
    });
   }
 
-  followParlimentarian(id: Number){
+  followParliamentarian(){
     var status;
-
-    this.requester.postFollow(id).subscribe(response => {
+    this.requester.postFollow(this.parlimentarian.id).subscribe(response => {
       status = response.status;
       console.log(status);
     });
