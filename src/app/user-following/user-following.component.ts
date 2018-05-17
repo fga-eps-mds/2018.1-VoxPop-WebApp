@@ -72,9 +72,36 @@ export class UserFollowingComponent implements OnInit {
         return;
       }
       this.parliamentarians = this.auxParliamentarian;
+      this.updateButtonsAppearence(this.offset, this.pages);
+      this.parliamentarians = this.auxParliamentarian;
       console.log(this.parliamentarians);
       console.log(this.pages);
     });
+  }
+
+  updateButtonsAppearence(offset, limit) {
+    if (offset === 1) {
+      document.getElementById('beforeBtn1').style.display = 'none';
+      document.getElementById('beforeBtn2').style.display = 'none';
+    } else {
+      document.getElementById('beforeBtn1').style.display = 'block';
+      document.getElementById('beforeBtn2').style.display = 'block';
+    }
+    if (offset === limit) {
+      document.getElementById('afterBtn1').style.display = 'none';
+      document.getElementById('afterBtn2').style.display = 'none';
+    } else {
+      document.getElementById('afterBtn1').style.display = 'block';
+      document.getElementById('afterBtn2').style.display = 'block';
+    }
+    if (this.pages < 2) {
+      document.getElementById('pageBtn1').style.display = 'none';
+      document.getElementById('pageBtn2').style.display = 'none';
+    } else {
+      document.getElementById('pageBtn1').style.display = 'block';
+      document.getElementById('pageBtn2').style.display = 'block';
+    }
+
   }
 
 }
