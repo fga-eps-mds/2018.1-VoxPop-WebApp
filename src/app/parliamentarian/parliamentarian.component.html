@@ -1,7 +1,19 @@
-<h1 class="card-title" align="center">Deputados</h1>
-<div class="col-sm-2" *ngFor="let p of parliamentarians let id = index">
+<div class="header" align="center">
+  <h1 class="card-title" align="center">Deputados</h1>
+  <form class="col-sm-4 col-sm-offset-4 search" role="search" method="get" action="/busca">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Buscar entre os deputados" #search>
+      <div class="input-group-btn">
+        <button class="btn btn-default" type="submit" (click)="loadPageSearch(1, search.value)">
+          <i class="glyphicon glyphicon-search"></i>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="col-sm-2" *ngFor="let p of parliamentarians">
   <div class="main-card vote">
-    <a routerLink="/parliamentarians/{{id+1}}" routerLinkActivate="active">
+    <a routerLink="/parliamentarians/{{p['id']}}" routerLinkActivate="active">
       <div class="main-card-content">
         <div>
           <img src="{{ p['photo'] }}" width="114" height="152" alt="woops, someting went wrong">
@@ -23,10 +35,10 @@
       <button id="beforeBtn2" class="btn" (click)="loadPage(offset-1)">Ant.</button>
     </li>
     <li role="presentation">
-      <input type="text" size="3" class="form-control" #page>
+      <input id="pageBtn1" type="text" size="3" class="form-control" #page>
     </li>
     <li role="presentation">
-      <button class="btn" (click)="loadPage(page.value)">Ir</button>
+      <button id="pageBtn2" class="btn" (click)="loadPage(page.value)">Ir</button>
     </li>
     <li role="presentation">
       <button id="afterBtn1" class="btn" (click)="loadPage(offset+1)">Prox.</button>
