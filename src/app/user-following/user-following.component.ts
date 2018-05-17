@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { RequestsService } from '../requests.service';
+import { CookieService } from 'ngx-cookie-service';
+import { TokenService } from '../token.service';
 
 @Component({
   selector: 'app-user-following',
@@ -7,7 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserFollowingComponent implements OnInit {
 
-  constructor() { }
+  tokenValue = '';
+
+  constructor(private requester: RequestsService,
+    private cookieService: CookieService,
+    private token: TokenService) { }
 
   ngOnInit() {
   }
