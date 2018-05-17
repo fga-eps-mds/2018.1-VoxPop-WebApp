@@ -17,20 +17,24 @@ export class UserFollowingComponent implements OnInit {
 
   parliamentarians: any = [
     {
-      parliamentarian_id: null,
-      name: '',
-      gender: '',
-      federal_unit: '',
-      photo: '',
+      parliamentary: {
+        parliamentarian_id: null,
+        name: '',
+        gender: '',
+        federal_unit: '',
+        photo: '',
+      }
     }
   ];
   auxParliamentarian: any = [
     {
-      parliamentarian_id: null,
-      name: '',
-      gender: '',
-      federal_unit: '',
-      photo: '',
+      parliamentary: {
+        parliamentarian_id: null,
+        name: '',
+        gender: '',
+        federal_unit: '',
+        photo: '',
+      }
     }
   ];
 
