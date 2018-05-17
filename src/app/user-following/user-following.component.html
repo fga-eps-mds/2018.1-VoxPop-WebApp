@@ -1,16 +1,18 @@
 <h1 class="card-title" align="center">Deputados</h1>
 <div class="col-sm-2" *ngFor="let p of parliamentarians">
-  <div class="main-card vote">
-    <div class="main-card-content">
-      <div>
-        <img src="{{ p.parliamentary['photo'] }}" alt="woops, someting went wrong">
-      </div>
-      <div>
-        <h5 class="card-title">{{ p.parliamentary['name'] }}</h5>
-        <li>Estado: {{p.parliamentary['federal_unit']}}</li>
+  <a routerLink="/parliamentarians/{{p.parliamentary['id']}}" routerLinkActivate="active">
+    <div class="main-card vote">
+      <div class="main-card-content">
+        <div>
+          <img src="{{ p.parliamentary['photo'] }}" alt="woops, someting went wrong">
+        </div>
+        <div>
+          <h5 class="card-title">{{ p.parliamentary['name'] }}</h5>
+          <li>Estado: {{p.parliamentary['federal_unit']}}</li>
+        </div>
       </div>
     </div>
-  </div>
+  </a>
 </div>
 <div class="col-sm-12">
   <ul class="nav nav-pills center">
