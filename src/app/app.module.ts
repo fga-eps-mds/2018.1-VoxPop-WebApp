@@ -23,6 +23,7 @@ import { EditPageComponent } from './edit-page/edit-page.component';
 import { InputValidatorService } from './input-validator.service';
 import { SeePlComponent } from './see-pl/see-pl.component';
 import { SeePoliticianDetailedComponent } from './see-politician-detail/see-politician-detail.component';
+import { UserFollowingComponent } from './user-following/user-following.component';
 
 const appRoutes: Routes = [
   {
@@ -83,6 +84,7 @@ const appRoutes: Routes = [
     EditPageComponent,
     SeePlComponent,
     SeePoliticianDetailedComponent,
+    UserFollowingComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
