@@ -20,6 +20,7 @@
 
 .container {
     padding-left: 30%;
+    position: relative;
 }
 
 .main-card{
@@ -28,8 +29,10 @@
 .center{
     padding-left: 35%;
 }
+.right{
+    margin: auto;
+}
 .btn{
-    position: relative;
-    margin-left: 195px;
+    margin-left: 70%;
     margin-bottom: 10px;
 }
