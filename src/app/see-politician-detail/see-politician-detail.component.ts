@@ -50,4 +50,14 @@ export class SeePoliticianDetailedComponent implements OnInit {
     }
    });
   }
+
+  followParlimentarian(id: Number){
+    var status;
+
+    this.requester.postFollow(id).subscribe(response => {
+      status = response.status;
+      console.log(status);
+    });
+  }
 }
+

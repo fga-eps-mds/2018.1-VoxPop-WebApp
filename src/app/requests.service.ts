@@ -114,6 +114,15 @@ export class RequestsService {
     return this.http.post(endpoint, JSON.stringify(vote), {headers: this.tokenHeader, observe: 'response'});
   }
 
+  postFollow(id: Number) {
+    this.tokenValue = this.cookieService.get('token');
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
+    const endpoint = this.baseURL.concat('user_following/');
+    console.log('Making POST REQUEST FOLLOW ON URL: ' + endpoint);
+    console.log(id);
+    return this.http.post(endpoint, JSON.stringify(id), {headers: this.tokenHeader, observe: 'response'});
+  }
+
   updateVote(vote: VoteModel, id: number) {
     this.tokenValue = this.cookieService.get('token');
     this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
