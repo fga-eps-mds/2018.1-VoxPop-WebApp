@@ -1,13 +1,24 @@
 <body>
   <div class="main-card">
     <div class="card">
-      <div class ="right">
-          <button class='btn btn-light' (click)="followParliamentarian()">
-              <span class="glyphicon glyphicon-pushpin"> 
-                Seguir 
-              </span>
-          </button>
+      <div id="follow">
+        <div class ="right">
+            <button class='btn btn-light' (click)="followParliamentarian()" >
+                <span class="glyphicon glyphicon-eye-open"> 
+                  Seguir
+                </span>
+            </button>
+        </div>
       </div>
+      <!-- <div id="unfollow">
+        <div class ="right">
+            <button class='btn btn-light btn2' (click)="followParliamentarian()" >
+                <span class="glyphicon glyphicon-eye-close"> 
+                  Deixar de Seguir
+                </span>
+            </button>
+        </div>
+      </div>          -->
       <div class="img-container">
         <img class="card-image" src="{{parlimentarian['photo']}}">
       </div>
@@ -19,3 +30,14 @@
     </div>
   </div>
 </body>
+
+
+<!-- <div ng-switch="myVar">
+    <div ng-switch-when="dogs">
+      <h1>Dogs</h1>
+      <p>Welcome to a world of dogs.</p>
+    </div>
+    <div ng-switch-when="tuts">
+      <h1>Tutorials</h1>
+      <p>Learn from examples.</p>
+    </div> -->

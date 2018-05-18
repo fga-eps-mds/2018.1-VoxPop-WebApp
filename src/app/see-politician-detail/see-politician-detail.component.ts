@@ -66,7 +66,31 @@ export class SeePoliticianDetailedComponent implements OnInit {
     this.requester.postFollow(this.parlimentarian.id).subscribe(response => {
       status = response.status;
       console.log(status);
+      
+    });
+  }
+
+  isParliamentarianFollowed() {
+    var statusCode = 0; 
+
+    this.requester.getFollow(this.id).subscribe( response =>{
+      statusCode = response['status'];
+      console.log(statusCode);
+      if(statusCode == 200){
+        document.getElementById('unfollow').style.display = 'block';
+        document.getElementById('follow').style.display = 'none';  
+        document.querySelector('#registerBtn').setAttribute('disabled', 'disabled');
+      }
+      else if (statusCode == 404){
+        document.getElementById('follow').style.display = 'block';
+        document.getElementById('unfollow').style.display = 'none';
+        document.querySelector('#registerBtn').setAttribute('disabled', 'disabled');
+      }
+      else{
+        document.getElementById('follow').style.display = 'none';
+        document.getElementById('unfollow').style.display = 'none';
+        alert("Político não encontrado");
+      }
     });
   }
 }
-

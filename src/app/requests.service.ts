@@ -79,6 +79,13 @@ export class RequestsService {
     return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
   }
 
+  getFollow(id) {
+    this.tokenValue = this.cookieService.get('token');
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
+    const endpoint = this.baseURL.concat('user_following/' + id + '/');
+    return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
+  }
+
   postUser(user: UserModel) {
     const endpoint = this.baseURL.concat('users/');
     console.log('Making POST REQUEST USER ON URL: ' + endpoint);
