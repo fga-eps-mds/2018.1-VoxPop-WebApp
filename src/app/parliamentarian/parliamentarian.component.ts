@@ -11,6 +11,7 @@ import { TokenService } from '../token.service';
 })
 export class ParliamentarianComponent implements OnInit {
 
+  term = '';
   tokenValue = '';
   pages = 1;
   itemsPerPage = 36;
@@ -45,24 +46,11 @@ export class ParliamentarianComponent implements OnInit {
   ngOnInit() {
     this.tokenValue = this.cookieService.get('token');
     this.token.checkToken(this.tokenValue);
-    this.loadPage(1);
+    this.loadPage(1, '');
   }
 
-  loadPage(offset: number) {
-    let req: any;
-    console.log(Number(offset));
-    if (offset < 1 || isNaN(Number(offset))) {
-      alert('Número de páginas inválido, favor digitar um número positivo');
-      return -1;
-    }
-    this.offset = Number(offset);
-    console.log(this.offset);
-    req =  this.requester.getParliamentarian(this.itemsPerPage, (this.offset - 1) * this.itemsPerPage);
-    this.handleParliamentariansResponse(req, this.offset);
-    return req;
-  }
-
-  loadPageSearch(offset: number, term) {
+  loadPage(offset: number, term) {
+    this.term = term;
     let req: any;
     term = term.toUpperCase();
     console.log(Number(offset));
@@ -75,21 +63,6 @@ export class ParliamentarianComponent implements OnInit {
     req =  this.requester.getSearchedParliamentarian(this.itemsPerPage, (this.offset - 1) * this.itemsPerPage, term);
     this.handleParliamentariansSearchResponse(req, this.offset, term);
     return req;
-  }
-
-  handleParliamentariansResponse(request, offset) {
-    this.requester.getParliamentarian(this.itemsPerPage, (offset - 1) * this.itemsPerPage).subscribe( response => {
-      this.auxParliamentarian = response['body']['results'];
-      this.pages = Math.ceil(response['body']['count'] / this.itemsPerPage);
-      if (this.auxParliamentarian.length <= 0) {
-        alert('Número da página inválido, favor digitar entre 1 e ' + this.pages);
-        return;
-      }
-      this.updateButtonsAppearence(this.offset, this.pages);
-      this.parliamentarians = this.auxParliamentarian;
-      console.log(this.parliamentarians);
-      console.log(this.pages);
-    });
   }
 
   handleParliamentariansSearchResponse(request, offset, term) {
