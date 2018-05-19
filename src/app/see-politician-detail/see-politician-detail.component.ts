@@ -18,7 +18,10 @@ export class SeePoliticianDetailedComponent implements OnInit {
     gender: '',
     partido: '',
     federal_unit: '',
-    photo: ''
+    photo: '',
+    birth_date: '',
+    education: '',
+    email: ''
   };
   gender = '';
 

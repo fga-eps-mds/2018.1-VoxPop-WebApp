@@ -1,0 +1,42 @@
+<h1 class="card-title" align="center">Deputados Seguidos</h1>
+<div class="col-sm-2" *ngFor="let p of parliamentarians">
+  <a routerLink="/parliamentarians/{{p.parliamentary['id']}}" routerLinkActivate="active">
+    <div class="main-card vote">
+      <div class="main-card-content">
+        <div>
+          <img src="{{ p.parliamentary['photo'] }}" alt="woops, someting went wrong">
+        </div>
+        <div>
+          <h5 class="card-title">{{ p.parliamentary['name'] }}</h5>
+          <li>Estado: {{p.parliamentary['federal_unit']}}</li>
+        </div>
+      </div>
+    </div>
+  </a>
+</div>
+<div class="col-sm-12">
+  <ul class="nav nav-pills center">
+    <li role="presentation">
+      <button id="beforeBtn1" class="btn" (click)="loadPage(1)">Inicio</button>
+    </li>
+    <li role="presentation">
+      <button id="beforeBtn2" class="btn" (click)="loadPage(offset-1)">Ant.</button>
+    </li>
+    <li role="presentation">
+      <input id="pageBtn1" type="text" size="3" class="form-control" #page>
+    </li>
+    <li role="presentation">
+      <button id="pageBtn2" class="btn" (click)="loadPage(page.value)">Ir</button>
+    </li>
+    <li role="presentation">
+      <button id="afterBtn1" class="btn" (click)="loadPage(offset+1)">Prox.</button>
+    </li>
+    <li role="presentation">
+      <button id="afterBtn2" class="btn" (click)="loadPage(pages)">Fim</button>
+    </li>
+  </ul>
+  <br>
+  <br>
+  <p class="p-center">Página: {{offset}}/{{pages}}</p>
+  <br>
+</div>
