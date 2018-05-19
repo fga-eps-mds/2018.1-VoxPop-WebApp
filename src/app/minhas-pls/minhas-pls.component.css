@@ -44,6 +44,11 @@
     margin-bottom: 60px;
 }
 
+.center {
+    margin: auto;
+    width: 30%;
+}
+
 .search {
     margin-top: 10px;
     margin-bottom: 15px;
