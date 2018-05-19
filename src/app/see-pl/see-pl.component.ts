@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RequestsService } from '../requests.service';
 import { PropositionModel } from '../../models/proposition';
+import { TokenService } from '../token.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-see-pl',
@@ -44,11 +46,15 @@ export class SeePlComponent implements OnInit {
 
   constructor(
     private requester: RequestsService,
+    private cookieService: CookieService,
+    private token: TokenService,
   ) { }
 
 
   ngOnInit() {
     this.loadPage(1);
+    this.tokenValue = this.cookieService.get('token');
+    this.token.checkToken(this.tokenValue);
   }
 
   loadPage(offset: number) {
