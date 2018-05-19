@@ -125,7 +125,7 @@ export class InputValidatorService {
   }
 
   isValidPassword(password) {
-    const PWDRGX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%¨&*()'`{}~^:;<>,./?°ªº¹²³⁴⁵⁶⁷⁸⁹⁰£¢¬])[A-Za-z\d$@$!%*?&]{8,}/;
+    const PWDRGX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z0-9.])[A-Za-z\d$@$!%*?&]{8,}/;
     if (PWDRGX.test(password)) {
       return true;
     }
