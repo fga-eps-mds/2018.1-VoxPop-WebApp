@@ -69,11 +69,38 @@ export class MinhasPlsComponent implements OnInit {
       const body = response['body'];
       this.propositionVote = body['results'];
       this.numberPLsVoted = body['count'];
-      for (let j = 0; j < this.numberPLsVoted; j++) {
-        this.proposition.push(this.propositionVote[j]['proposition']);
-        this.proposition[j]['option'] = this.propositionVote[j]['option'];
+      this.pages = Math.ceil(this.numberPLsVoted / this.itemsPerPage);
+      if (this.numberPLsVoted <= 0 && this.pages > 0) {
+        alert('Número da página inválido, favor digitar entre 1 e ' + this.pages);
+        return;
       }
+      this.updateButtonsAppearence(this.offset, this.pages);
     });
+  }
+
+  updateButtonsAppearence(offset, limit) {
+    if (offset === 1) {
+      document.getElementById('beforeBtn1').style.display = 'none';
+      document.getElementById('beforeBtn2').style.display = 'none';
+    } else {
+      document.getElementById('beforeBtn1').style.display = 'block';
+      document.getElementById('beforeBtn2').style.display = 'block';
+    }
+    if (offset === limit) {
+      document.getElementById('afterBtn1').style.display = 'none';
+      document.getElementById('afterBtn2').style.display = 'none';
+    } else {
+      document.getElementById('afterBtn1').style.display = 'block';
+      document.getElementById('afterBtn2').style.display = 'block';
+    }
+    if (this.pages < 2) {
+      document.getElementById('pageBtn1').style.display = 'none';
+      document.getElementById('pageBtn2').style.display = 'none';
+    } else {
+      document.getElementById('pageBtn1').style.display = 'block';
+      document.getElementById('pageBtn2').style.display = 'block';
+    }
+
   }
 
   specifyProposition(position) {
