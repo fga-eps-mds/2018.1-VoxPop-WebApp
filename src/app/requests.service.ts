@@ -128,7 +128,6 @@ export class RequestsService {
     const endpoint = this.baseURL.concat('user_following/');
     console.log('Making POST REQUEST FOLLOW ON URL: ' + endpoint);
     console.log(jsonString);
-    console.log('ué');
     return this.http.post(endpoint, jsonString, {headers: this.tokenHeader, observe: 'response'});
   }
 

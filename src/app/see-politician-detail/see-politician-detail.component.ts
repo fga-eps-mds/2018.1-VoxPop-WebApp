@@ -65,9 +65,9 @@ export class SeePoliticianDetailedComponent implements OnInit {
     this.requester.postFollow(this.parlimentarian.id).subscribe(response => {
       status = response.status;
       console.log(status);
+      this.renderUnfollowButton();
     });
 
-    this.checkParliamentarianFollowed();
   }
 
   unfollowParliamentarian() {
@@ -75,30 +75,40 @@ export class SeePoliticianDetailedComponent implements OnInit {
     this.requester.deleteFollow(this.parlimentarian.id).subscribe(response => {
       status = response.status;
       console.log(status);
+      this.renderFollowButton();
     });
 
-    this.checkParliamentarianFollowed();
+  }
+
+  renderUnfollowButton() {
+    document.getElementById('unfollow').style.display = 'block';
+    document.getElementById('follow').style.display = 'none';
+  }
+
+  renderFollowButton() {
+    document.getElementById('unfollow').style.display = 'none';
+    document.getElementById('follow').style.display = 'block';
+  }
+
+  derrenderBothButtons() {
+    document.getElementById('follow').style.display = 'none';
+    document.getElementById('unfollow').style.display = 'none';
   }
 
   checkParliamentarianFollowed() {
-    let statusCode = 0;
-
     this.requester.getFollow(this.id).subscribe( response => {
-      statusCode = response['status'];
-      console.log(statusCode);
-      if (statusCode === 200) {
-        document.getElementById('unfollow').style.display = 'block';
-        document.getElementById('follow').style.display = 'none';
+      console.log('Get this parliamentar follow: ' + response['status']);
+      if (response['status'] === 200) {
+        this.renderUnfollowButton();
       } else {
-        document.getElementById('follow').style.display = 'none';
-        document.getElementById('unfollow').style.display = 'none';
+        this.derrenderBothButtons();
         alert('Político não encontrado');
       }
     }, error => {
       if (error['status'] === 404) {
-        document.getElementById('follow').style.display = 'block';
-        document.getElementById('unfollow').style.display = 'none';
+        this.renderFollowButton();
       } else {
+        this.derrenderBothButtons();
         alert('Erro inesperado, favor recarregar a página novamente em alguns minutos');
       }
     });
