@@ -66,6 +66,18 @@ export class SeePoliticianDetailedComponent implements OnInit {
       status = response.status;
       console.log(status);
     });
+
+    this.checkParliamentarianFollowed();
+  }
+
+  unfollowParliamentarian() {
+    let status;
+    this.requester.deleteFollow(this.parlimentarian.id).subscribe(response => {
+      status = response.status;
+      console.log(status);
+    });
+
+    this.checkParliamentarianFollowed();
   }
 
   checkParliamentarianFollowed() {

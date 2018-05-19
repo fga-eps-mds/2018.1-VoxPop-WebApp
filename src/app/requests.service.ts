@@ -132,6 +132,13 @@ export class RequestsService {
     return this.http.post(endpoint, jsonString, {headers: this.tokenHeader, observe: 'response'});
   }
 
+  deleteFollow(id: Number) {
+    this.tokenValue = this.cookieService.get('token');
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
+    const endpoint = this.baseURL.concat('user_following/' + id + '/');
+    return this.http.delete(endpoint, {headers: this.tokenHeader, observe: 'response'});
+  }
+
   updateVote(vote: VoteModel, id: number) {
     this.tokenValue = this.cookieService.get('token');
     this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
