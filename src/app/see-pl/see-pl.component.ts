@@ -12,7 +12,6 @@ import { CookieService } from 'ngx-cookie-service';
 export class SeePlComponent implements OnInit {
 
   tokenValue = '';
-  numberPLs: number;
   pages = 1;
   itemsPerPage = 20;
   offset = 1;
@@ -62,7 +61,7 @@ export class SeePlComponent implements OnInit {
     let req: any;
     console.log(Number(offset));
     if (offset < 1 || isNaN(Number(offset))) {
-      alert("Número de páginas inválido, favor digitar um número positivo");
+      alert('Número de páginas inválido, favor digitar um número positivo');
       return -1;
     }
     this.offset = Number(offset);
@@ -73,34 +72,31 @@ export class SeePlComponent implements OnInit {
 
   handlePropositionsResponse(request, offset) {
     this.requester.getProposition(this.itemsPerPage, (offset - 1) * this.itemsPerPage).subscribe( response => {
-      this.auxProposition = response['results'];
-      this.numberPLs = response['count'];
-      this.pages = Math.ceil(this.numberPLs/this.itemsPerPage);
+      this.auxProposition = response['body']['results'];
+      this.pages = Math.ceil(response['body']['count'] / this.itemsPerPage);
       if (this.auxProposition.length <= 0) {
-        alert("Número da página inválido, favor digitar entre 1 e " + this.pages)
-        return
+        alert('Número da página inválido, favor digitar entre 1 e ' + this.pages);
+        return;
       }
-      this.updateButtonsAppearence(this.offset, this.pages)
+      this.updateButtonsAppearence(this.offset, this.pages);
       this.proposition = this.auxProposition;
-      console.log(this.proposition);
-      console.log(this.numberPLs);
     });
   }
 
-  updateButtonsAppearence(offset, limit){
+  updateButtonsAppearence(offset, limit) {
     if (offset === 1) {
-      document.getElementById("beforeBtn1").style.display = "none";
-      document.getElementById("beforeBtn2").style.display = "none";
+      document.getElementById('beforeBtn1').style.display = 'none';
+      document.getElementById('beforeBtn2').style.display = 'none';
     } else {
-      document.getElementById("beforeBtn1").style.display = "block";
-      document.getElementById("beforeBtn2").style.display = "block";
+      document.getElementById('beforeBtn1').style.display = 'block';
+      document.getElementById('beforeBtn2').style.display = 'block';
     }
     if (offset === limit) {
-      document.getElementById("afterBtn1").style.display = "none";
-      document.getElementById("afterBtn2").style.display = "none";
+      document.getElementById('afterBtn1').style.display = 'none';
+      document.getElementById('afterBtn2').style.display = 'none';
     } else {
-      document.getElementById("afterBtn1").style.display = "block";
-      document.getElementById("afterBtn2").style.display = "block";
+      document.getElementById('afterBtn1').style.display = 'block';
+      document.getElementById('afterBtn2').style.display = 'block';
     }
   }
 
