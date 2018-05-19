@@ -11,6 +11,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class SeePlComponent implements OnInit {
 
+  tokenValue = '';
   numberPLs: number;
   pages = 1;
   itemsPerPage = 20;
