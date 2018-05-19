@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RequestsService } from '../requests.service';
 import { PropositionModel } from '../../models/proposition';
+import { CookieService } from 'ngx-cookie-service';
+import { TokenService } from '../token.service';
 
 @Component({
   selector: 'app-parliamentarian',
@@ -9,6 +11,7 @@ import { PropositionModel } from '../../models/proposition';
 })
 export class ParliamentarianComponent implements OnInit {
 
+  tokenValue = '';
   pages = 1;
   itemsPerPage = 36;
   offset = 1;
@@ -34,10 +37,14 @@ export class ParliamentarianComponent implements OnInit {
 
   constructor(
     private requester: RequestsService,
+    private cookieService: CookieService,
+    private token: TokenService
   ) { }
 
 
   ngOnInit() {
+    this.tokenValue = this.cookieService.get('token');
+    this.token.checkToken(this.tokenValue);
     this.loadPage(1);
   }
 
