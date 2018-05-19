@@ -79,6 +79,13 @@ export class RequestsService {
     return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
   }
 
+  getFollow(id) {
+    this.tokenValue = this.cookieService.get('token');
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
+    const endpoint = this.baseURL.concat('user_following/' + id + '/');
+    return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
+  }
+
   getFollowingParliamentarians(limit, offset) {
     this.tokenValue = this.cookieService.get('token');
     this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
@@ -120,6 +127,23 @@ export class RequestsService {
     console.log('Making POST REQUEST VOTE ON URL: ' + endpoint);
     console.log(vote);
     return this.http.post(endpoint, JSON.stringify(vote), {headers: this.tokenHeader, observe: 'response'});
+  }
+
+  postFollow(id: Number) {
+    const jsonString = '{"parliamentary": ' + id + '}';
+    this.tokenValue = this.cookieService.get('token');
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
+    const endpoint = this.baseURL.concat('user_following/');
+    console.log('Making POST REQUEST FOLLOW ON URL: ' + endpoint);
+    console.log(jsonString);
+    return this.http.post(endpoint, jsonString, {headers: this.tokenHeader, observe: 'response'});
+  }
+
+  deleteFollow(id: Number) {
+    this.tokenValue = this.cookieService.get('token');
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
+    const endpoint = this.baseURL.concat('user_following/' + id + '/');
+    return this.http.delete(endpoint, {headers: this.tokenHeader, observe: 'response'});
   }
 
   updateVote(vote: VoteModel, id: number) {
