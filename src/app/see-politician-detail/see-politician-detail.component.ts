@@ -12,7 +12,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class SeePoliticianDetailedComponent implements OnInit {
   tokenValue = '';
   sub: any;
-  id: number = 0;
+  id = 0;
   parlimentarian: any = {
     name: '',
     gender: '',
@@ -20,11 +20,11 @@ export class SeePoliticianDetailedComponent implements OnInit {
     federal_unit: '',
     photo: ''
   };
-  gender: string = '';
+  gender = '';
 
   constructor(
     private route: ActivatedRoute,
-    private requester:RequestsService,
+    private requester: RequestsService,
     private token: TokenService,
     private cookieService: CookieService
   ) { }
@@ -34,62 +34,57 @@ export class SeePoliticianDetailedComponent implements OnInit {
     this.token.checkToken(this.tokenValue);
 
     this.sub = this.route.params.subscribe(params => {
-      this.id = +params['id']; 
+      this.id = +params['id'];
       console.log(this.id);
     });
 
-   this.requester.getParlimentarianSpecific(this.id).subscribe( response =>{
+   this.requester.getParlimentarianSpecific(this.id).subscribe( response => {
     this.parlimentarian = response['body'];
     console.log(this.parlimentarian);
-    if(this.parlimentarian['gender'] == 'M'){
-      this.gender = "Masculino";  
+    if (this.parlimentarian['gender'] === 'M') {
+      this.gender = 'Masculino';
+    } else if (this.parlimentarian['gender'] === 'F') {
+      this.gender = 'Feminino';
+    } else {
+      this.gender = 'N/A';
     }
-    else if (this.parlimentarian['gender'] == 'F'){
-      this.gender = "Feminino";
-    }
-    else{
-      this.gender = "N/A";
-    }
-   }, error=>{
+   }, error => {
     console.log(error.status);
     this.parlimentarian = {
-      name : "DEPUTADO NÃO ENCONTRADO",
-      gender : "N/A",
-      federal_unit: "N/A",
-      photo: "N/A"
-    }
+      name : 'DEPUTADO NÃO ENCONTRADO',
+      gender : 'N/A',
+      federal_unit: 'N/A',
+      photo: 'N/A'
+    };
    });
   }
 
-  followParliamentarian(){
-    var status;
+  followParliamentarian() {
+    let status;
     this.requester.postFollow(this.parlimentarian.id).subscribe(response => {
       status = response.status;
       console.log(status);
-      
     });
   }
 
   isParliamentarianFollowed() {
-    var statusCode = 0; 
+    let statusCode = 0;
 
-    this.requester.getFollow(this.id).subscribe( response =>{
+    this.requester.getFollow(this.id).subscribe( response => {
       statusCode = response['status'];
       console.log(statusCode);
-      if(statusCode == 200){
+      if (statusCode === 200) {
         document.getElementById('unfollow').style.display = 'block';
-        document.getElementById('follow').style.display = 'none';  
+        document.getElementById('follow').style.display = 'none';
         document.querySelector('#registerBtn').setAttribute('disabled', 'disabled');
-      }
-      else if (statusCode == 404){
+      } else if (statusCode === 404) {
         document.getElementById('follow').style.display = 'block';
         document.getElementById('unfollow').style.display = 'none';
         document.querySelector('#registerBtn').setAttribute('disabled', 'disabled');
-      }
-      else{
+      } else {
         document.getElementById('follow').style.display = 'none';
         document.getElementById('unfollow').style.display = 'none';
-        alert("Político não encontrado");
+        alert('Político não encontrado');
       }
     });
   }

@@ -122,13 +122,12 @@ export class RequestsService {
   }
 
   postFollow(id: Number) {
-  
-    var jsonString = '{"parliamentary": ' + id + '}'
+    const jsonString = '{"parliamentary": ' + id + '}';
     this.tokenValue = this.cookieService.get('token');
     this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
     const endpoint = this.baseURL.concat('user_following/');
     console.log('Making POST REQUEST FOLLOW ON URL: ' + endpoint);
-    console.log(jsonString)
+    console.log(jsonString);
     console.log('ué');
     return this.http.post(endpoint, jsonString, {headers: this.tokenHeader, observe: 'response'});
   }
