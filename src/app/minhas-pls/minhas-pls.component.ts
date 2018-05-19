@@ -12,8 +12,10 @@ import { UpdateVoteModel } from '../../models/vote';
 })
 export class MinhasPlsComponent implements OnInit {
 
+  term = '';
+  offset = 1;
   tokenValue = '';
-  pages: Array<number> = [1];
+  pages = 1;
   itemsPerPage = 10;
   votePosition: number;
   userId: number;
@@ -45,42 +47,21 @@ export class MinhasPlsComponent implements OnInit {
     this.userId = Number(this.cookieService.get('userID'));
     this.token.checkToken(this.tokenValue);
     this.votePosition = 0;
-    this.propositions(1);
+    this.propositions(1, '');
   }
 
-  searchPL(term) {
-    this.propositionsSearch(1, term);
-  }
-
-  propositions(offset: number) {
+  propositions(offset: number, term) {
+    this.term = term;
     let req: any;
-    this.pages = [1];
-    this.proposition = [];
-    req =  this.requester.getVotedProposition((offset - 1) * this.itemsPerPage);
-    this.handlePropositionsResponse(req, offset);
-    return req;
-  }
-
-  propositionsSearch(offset: number, term) {
-    let req: any;
-    this.pages = [1];
-    this.numberPLsVoted = 1;
-    this.proposition = [];
+    term = term.toUpperCase();
+    if (offset < 1 || isNaN(Number(offset))) {
+      alert('Número de páginas inválido, favor digitar um número positivo');
+      return -1;
+    }
+    this.offset = Number(offset);
     req =  this.requester.getSearchVotedProposition((offset - 1) * this.itemsPerPage, term);
     this.handlePropositionsSearchResponse(req, offset, term);
     return req;
-  }
-
-  handlePropositionsResponse(request, offset) {
-    this.requester.getVotedProposition((offset - 1) * this.itemsPerPage).subscribe( response => {
-      const body = response['body'];
-      this.propositionVote = body['results'];
-      for (let i = 2; i <= Math.ceil(this.propositionVote.length / this.itemsPerPage); i++) {
-        this.pages.push(i);
-      }
-      console.log(this.propositionVote);
-      console.log(this.propositionVote.length);
-    });
   }
 
   handlePropositionsSearchResponse(request, offset, term) {
@@ -91,9 +72,6 @@ export class MinhasPlsComponent implements OnInit {
       for (let j = 0; j < this.numberPLsVoted; j++) {
         this.proposition.push(this.propositionVote[j]['proposition']);
         this.proposition[j]['option'] = this.propositionVote[j]['option'];
-      }
-      for (let i = 2; i <= Math.ceil(this.numberPLsVoted / this.itemsPerPage); i++) {
-        this.pages.push(i);
       }
     });
   }
@@ -117,7 +95,7 @@ export class MinhasPlsComponent implements OnInit {
         alert('Voto não editado, favor tentar de novo mais tarde');
       } else {
         alert('Voto editado com sucesso!');
-        this.propositions(1);
+        this.propositions(1, '');
       }
 
     });
