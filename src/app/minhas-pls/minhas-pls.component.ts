@@ -13,7 +13,8 @@ import { UpdateVoteModel } from '../../models/vote';
 export class MinhasPlsComponent implements OnInit {
 
   tokenValue = '';
-  pages: Array<number> = [1];
+  pages = 1;
+  offset = 0;
   itemsPerPage = 10;
   votePosition: number;
   userId: number;
@@ -54,7 +55,7 @@ export class MinhasPlsComponent implements OnInit {
 
   propositions(offset: number) {
     let req: any;
-    this.pages = [1];
+    this.pages = 1;
     this.proposition = [];
     req =  this.requester.getVotedProposition((offset - 1) * this.itemsPerPage);
     this.handlePropositionsResponse(req, offset);
@@ -63,7 +64,7 @@ export class MinhasPlsComponent implements OnInit {
 
   propositionsSearch(offset: number, term) {
     let req: any;
-    this.pages = [1];
+    this.pages = 1;
     this.numberPLsVoted = 1;
     this.proposition = [];
     req =  this.requester.getSearchVotedProposition((offset - 1) * this.itemsPerPage, term);
@@ -75,11 +76,9 @@ export class MinhasPlsComponent implements OnInit {
     this.requester.getVotedProposition((offset - 1) * this.itemsPerPage).subscribe( response => {
       const body = response['body'];
       this.propositionVote = body['results'];
-      for (let i = 2; i <= Math.ceil(this.propositionVote.length / this.itemsPerPage); i++) {
-        this.pages.push(i);
-      }
-      console.log(this.propositionVote);
-      console.log(this.propositionVote.length);
+      this.offset = offset;
+      this.pages = Math.ceil(response['body']['count'] / this.itemsPerPage);
+      this.updateButtonsAppearence(this.offset, this.pages);
     });
   }
 
@@ -87,14 +86,9 @@ export class MinhasPlsComponent implements OnInit {
     this.requester.getSearchVotedProposition((offset - 1) * this.itemsPerPage, term).subscribe( response => {
       const body = response['body'];
       this.propositionVote = body['results'];
-      this.numberPLsVoted = body['count'];
-      for (let j = 0; j < this.numberPLsVoted; j++) {
-        this.proposition.push(this.propositionVote[j]['proposition']);
-        this.proposition[j]['option'] = this.propositionVote[j]['option'];
-      }
-      for (let i = 2; i <= Math.ceil(this.numberPLsVoted / this.itemsPerPage); i++) {
-        this.pages.push(i);
-      }
+      this.offset = offset;
+      this.pages = Math.ceil(response['body']['count'] / this.itemsPerPage);
+      this.updateButtonsAppearence(this.offset, this.pages);
     });
   }
 
@@ -121,6 +115,31 @@ export class MinhasPlsComponent implements OnInit {
       }
 
     });
+
+  }
+
+  updateButtonsAppearence(offset, limit) {
+    if (offset === 1) {
+      document.getElementById('beforeBtn1').style.display = 'none';
+      document.getElementById('beforeBtn2').style.display = 'none';
+    } else {
+      document.getElementById('beforeBtn1').style.display = 'block';
+      document.getElementById('beforeBtn2').style.display = 'block';
+    }
+    if (offset === limit) {
+      document.getElementById('afterBtn1').style.display = 'none';
+      document.getElementById('afterBtn2').style.display = 'none';
+    } else {
+      document.getElementById('afterBtn1').style.display = 'block';
+      document.getElementById('afterBtn2').style.display = 'block';
+    }
+    if (this.pages < 2) {
+      document.getElementById('pageBtn1').style.display = 'none';
+      document.getElementById('pageBtn2').style.display = 'none';
+    } else {
+      document.getElementById('pageBtn1').style.display = 'block';
+      document.getElementById('pageBtn2').style.display = 'block';
+    }
 
   }
 
