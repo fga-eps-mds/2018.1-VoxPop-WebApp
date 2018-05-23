@@ -8,6 +8,7 @@ import { RegisterFormComponent } from './register-form.component';
 import { Http } from '@angular/http';
 import { CookieService } from 'ngx-cookie-service';
 import { TokenService } from '../token.service';
+import { FormsModule } from '@angular/forms';
 
 describe('RegisterFormComponent', () => {
   let component: RegisterFormComponent;
@@ -17,7 +18,8 @@ describe('RegisterFormComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
-        HttpClientModule
+        HttpClientModule,
+        FormsModule
       ],
       declarations: [ RegisterFormComponent ],
       providers: [ 

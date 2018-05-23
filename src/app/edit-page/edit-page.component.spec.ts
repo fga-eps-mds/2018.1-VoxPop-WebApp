@@ -6,7 +6,9 @@ import { RequestsService } from '../requests.service';
 import { HttpClient } from 'selenium-webdriver/http';
 import { HttpClientModule } from '@angular/common/http';
 import { TokenService } from '../token.service';
-import { CookieService } from 'ngx-cookie';
+import { CookieService } from 'ngx-cookie-service';
+import { FormsModule } from '@angular/forms';
+import { InputValidatorService } from '../input-validator.service';
 
 describe('EditPageComponent', () => {
   let component: EditPageComponent;
@@ -16,7 +18,9 @@ describe('EditPageComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
-        HttpClientModule
+        HttpClientModule,
+        FormsModule,
+        InputValidatorService
       ],
       declarations: [ EditPageComponent ],
       providers: [
