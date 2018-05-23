@@ -65,27 +65,33 @@ describe('RegisterFormComponent', () => {
 
   });
 
+  it('should register user', () => {
+
+    component.user = {
+      username: 123,
+      first_name: 'john',
+      last_name: 'doe',
+      email: 'john',
+      password: '123qwe!@#QWE',
+      social_information: {
+        federal_unit: null,
+        city: '',
+        income: null,
+        education: null,
+        job: '',
+        birth_date: ''
+      }
+    };
+    var statusCode = 0;
+    component.registerUser().subscribe( (resp) => {
+      //  = resp.status;
+      expect(component.registerUser().statusUser).not.toBe(0);
+    });
+
+  });
+
   it('should return false on status 500', () => {
     const status = 500;
     expect(component.errorHandler(status)).toBeFalsy();
   });
-
-  // it('should register', () => {
-  //   component.user = {
-  //     username: 'johndoe2',
-  //     first_name: 'john',
-  //     last_name: 'doe',
-  //     email: 'john@doe.com',
-  //     password: '123qwe!@#QWE',
-  //     social_information: {
-  //       federal_unit: null,
-  //       city: '',
-  //       income: null,
-  //       education: null,
-  //       job: '',
-  //       birth_date: ''
-  //     }
-  //   };
-  //   expect(component.registerUser().toBeTruthy());
-  // });
 });
