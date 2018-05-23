@@ -27,10 +27,10 @@ export class EditPageComponent implements OnInit {
     social_information: {
         id: 0,
         owner: 0,
-        federal_unit: '',
+        federal_unit: null,
         city: '',
-        income: 0,
-        education: '',
+        income: null,
+        education: null,
         job: '',
         birth_date: 0,
     },
@@ -53,32 +53,16 @@ export class EditPageComponent implements OnInit {
     });
   }
 
-  updateUser(e: any) {
-    let user: any;
-    user = {
-      username: e.target.elements[0].value,
-      first_name: e.target.elements[1].value,
-      last_name: e.target.elements[2].value,
-      password: e.target.elements[3].value,
-      email: e.target.elements[5].value,
-      social_information: {
-        federal_unit: e.target.elements[6].value,
-        city: e.target.elements[7].value,
-        income: e.target.elements[8].value,
-        education: e.target.elements[8].value,
-        job: e.target.elements[10].value,
-        birth_date: e.target.elements[11].value
-      }
-     };
-     console.log(user);
-     this.requester.putUser(user, this.userID).subscribe(response => {
-        const statusUser = response.status;
-        console.log('STATUS CODE RETURNED ON USER: ' + statusUser);
+  updateUser() {
+    console.log(this.user);
+    this.requester.putUser(this.user, this.userID).subscribe(response => {
+      const statusUser = response.status;
+      console.log('STATUS CODE RETURNED ON USER: ' + statusUser);
 
-        if (this.requester.didSucceed(statusUser)) {
-          this.router.navigate(['']);
-        }
-     });
+      if (this.requester.didSucceed(statusUser)) {
+        this.router.navigate(['']);
+      }
+    });
   }
 
 }
