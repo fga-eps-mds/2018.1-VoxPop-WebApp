@@ -8,6 +8,7 @@ import { RegisterFormComponent } from './register-form.component';
 import { Http } from '@angular/http';
 import { CookieService } from 'ngx-cookie-service';
 import { TokenService } from '../token.service';
+import { InputValidatorService } from '../input-validator.service';
 
 describe('RegisterFormComponent', () => {
   let component: RegisterFormComponent;
@@ -20,10 +21,11 @@ describe('RegisterFormComponent', () => {
         HttpClientModule
       ],
       declarations: [ RegisterFormComponent ],
-      providers: [ 
+      providers: [
         RequestsService,
         CookieService,
-        TokenService,  
+        TokenService,
+        InputValidatorService,
       ]
     })
     .compileComponents();

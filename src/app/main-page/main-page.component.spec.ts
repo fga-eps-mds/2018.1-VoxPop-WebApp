@@ -3,6 +3,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MainPageComponent } from './main-page.component';
 import { CookieService } from 'ngx-cookie-service';
 import { TokenService } from '../token.service';
+import { RequestsService } from '../requests.service';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('MainPageComponent', () => {
   let component: MainPageComponent;
@@ -10,7 +12,11 @@ describe('MainPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        HttpClientModule,
+      ],
       providers: [
+        RequestsService,
         CookieService,
         TokenService
       ],
@@ -26,6 +32,13 @@ describe('MainPageComponent', () => {
   });
 
   it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should initialize the page', () => {
+    component.tokenValue = 'token';
+    component.ngOnInit();
+
     expect(component).toBeTruthy();
   });
 });
