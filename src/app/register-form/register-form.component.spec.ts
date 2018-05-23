@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
 import { RequestsService } from '../requests.service';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -9,6 +9,7 @@ import { Http } from '@angular/http';
 import { CookieService } from 'ngx-cookie-service';
 import { TokenService } from '../token.service';
 import { FormsModule } from '@angular/forms';
+import { InputValidatorService } from '../input-validator.service';
 
 describe('RegisterFormComponent', () => {
   let component: RegisterFormComponent;
@@ -19,13 +20,14 @@ describe('RegisterFormComponent', () => {
       imports: [
         RouterTestingModule,
         HttpClientModule,
-        FormsModule
+        FormsModule,
+        InputValidatorService
       ],
       declarations: [ RegisterFormComponent ],
-      providers: [ 
+      providers: [
         RequestsService,
         CookieService,
-        TokenService,  
+        TokenService,
       ]
     })
     .compileComponents();
@@ -37,4 +39,53 @@ describe('RegisterFormComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should register user', () => {
+
+    component.user = {
+      username: 'johndoe',
+      first_name: 'john',
+      last_name: 'doe',
+      email: 'john@doe.com',
+      password: '123qwe!@#QWE',
+      social_information: {
+        federal_unit: null,
+        city: '',
+        income: null,
+        education: null,
+        job: '',
+        birth_date: ''
+      }
+    };
+    var statusCode = 0;
+    component.registerUser().subscribe( (resp) => {
+      //  = resp.status;
+      expect(component.registerUser().statusUser).not.toBe(0);
+    });
+
+  });
+
+  it('should return false on status 500', () => {
+    const status = 500;
+    expect(component.errorHandler(status)).toBeFalsy();
+  });
+
+  // it('should register', () => {
+  //   component.user = {
+  //     username: 'johndoe2',
+  //     first_name: 'john',
+  //     last_name: 'doe',
+  //     email: 'john@doe.com',
+  //     password: '123qwe!@#QWE',
+  //     social_information: {
+  //       federal_unit: null,
+  //       city: '',
+  //       income: null,
+  //       education: null,
+  //       job: '',
+  //       birth_date: ''
+  //     }
+  //   };
+  //   expect(component.registerUser().toBeTruthy());
+  // });
 });
