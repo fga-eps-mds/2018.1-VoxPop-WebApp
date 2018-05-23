@@ -55,14 +55,37 @@ export class EditPageComponent implements OnInit {
 
   updateUser() {
     console.log(this.user);
-    this.requester.putUser(this.user, this.userID).subscribe(response => {
+    const request = this.requester.putUser(this.user, this.userID);
+    this.updateUserHandler(request);
+    return request;
+  }
+
+
+  updateUserHandler(request) {
+    request.subscribe(response => {
       const statusUser = response.status;
       console.log('STATUS CODE RETURNED ON USER: ' + statusUser);
-
       if (this.requester.didSucceed(statusUser)) {
         this.router.navigate(['']);
       }
+    }, error => {
+      this.errorHandler(error.status);
     });
   }
 
+  errorHandler(status) {
+    if (status === 401) {
+      alert('Usuário não logado, falha de autenticação');
+      return true;
+    }
+    if (status === 500) {
+      alert('Edição falhou, tente novamente mais tarde');
+      return true;
+    }
+    if (status === 400) {
+      alert('Erro, cheque se os dados foram inseridos corretamente');
+      return true;
+    }
+    return false;
+  }
 }
