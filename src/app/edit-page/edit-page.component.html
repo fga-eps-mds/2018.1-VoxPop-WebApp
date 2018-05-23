@@ -8,26 +8,30 @@
          <div class="form-group">
               <span class="required">*</span>
               <label>Nome de Usuário</label>
-              <input type="text" class="form-control" id = "username"
-              (keyup)="validator.onKeyUsername($event)" value="{{user.username}}">
+              <input name="username" type="text" class="form-control" id = "username"
+              (keyup)="validator.onKeyUsername($event)" value="{{user.username}}"
+              [(ngModel)]="user.username">
               <div class="alert alert-danger" role="alert" id="alert-username" style="display:none">
                 <p>{{validator.valueUsername}}</p>
               </div>
          </div>
          <div class="form-group">
             <label>Primeiro Nome</label>
-            <input type="text" class="form-control" value="{{user.first_name}}">
+            <input name="first_name" type="text" class="form-control" value="{{user.first_name}}"
+            [(ngModel)]="user.first_name">
          </div>
          <div class="form-group">
             <label>Sobrenome</label>
-            <input type="text" class="form-control" value="{{user.last_name}}">
+            <input name="last_name" type="text" class="form-control" value="{{user.last_name}}"
+            [(ngModel)]="user.last_name">
          </div>
          <div class="form-group">
               <span class="required">*</span>
               <label>Senha</label>
-              <input type="password" class="form-control" minlength="8" id="password"
+              <input name="password" type="password" class="form-control" minlength="8" id="password"
               (keyup)="validator.onKeyPassword($event)"
-              placeholder="Senha">
+              placeholder="Senha"
+              [(ngModel)]="user.password">
               <div class="alert alert-danger" role="alert" id="alert-invalid-password" style="display:none">
                 <p>{{validator.valueInvalidPassword}}</p>
               </div>
@@ -45,8 +49,9 @@
          <div class="form-group">
               <span class="required">*</span>
               <label>E-mail</label>
-              <input type="email" class="form-control" id="email"
-              (keyup)="validator.onKeyEmail($event)" value="{{user.email}}">
+              <input name="email" type="email" class="form-control" id="email"
+              (keyup)="validator.onKeyEmail($event)" value="{{user.email}}"
+              [(ngModel)]="user.email">
               <div class="alert alert-danger" role="alert" id="alert-email" style="display:none">
                 <p>{{validator.valueEmail}}</p>
               </div>
@@ -64,7 +69,8 @@
     <div class="register-card">
       <div class="form-group">
         <label>Estado</label>
-        <select name="Estado" class="form-control" value="{{user.social_information.federal_unit}}">
+        <select name="Estado" class="form-control" value="{{user.social_information.federal_unit}}"
+        [(ngModel)]="user.social_information['federal_unit']">
           <option value=null>Prefiro não responder</option>
           <option value="AC">Acre</option>
           <option value="AL">Alagoas</option>
@@ -97,11 +103,13 @@
       </div>
       <div class="form-group">
           <label>Cidade</label>
-          <input type="text" class="form-control" placeholder="Cidade" value="{{user.social_information.city}}">
+          <input name="city" type="text" class="form-control" placeholder="Cidade" value="{{user.social_information.city}}"
+          [(ngModel)]="user.social_information['city']">
       </div>
       <div class="form-group">
         <label>Renda</label>
-        <select name="Renda" class="form-control" value="{{user.social_information.income}}">
+        <select name="Renda" class="form-control" value="{{user.social_information.income}}"
+        [(ngModel)]="user.social_information['income']">
           <option value=null>Prefiro não responder</option>
           <option value="500.00">Entre R$0,00 até R$1000,00</option>
           <option value="2000.00">Entre R$1000,01 até R$3000,00</option>
@@ -114,7 +122,8 @@
       </div>
       <div class="form-group">
         <label>Formação</label>
-        <select name="Formacao" class="form-control" value="{{user.social_information.education}}">
+        <select name="Formacao" class="form-control" value="{{user.social_information.education}}"
+        [(ngModel)]="user.social_information['education']">
           <option value=null>Prefiro não responder</option>
           <option value="EFC">Ensino Fundamental Completo</option>
           <option value="EFI">Ensino Fundamental Incompleto</option>
@@ -130,11 +139,13 @@
       </div>
       <div class="form-group">
         <label>Profissão</label>
-        <input type="text" class="form-control" placeholder="Profissão" value="{{user.social_information.job}}">
+        <input name="job" type="text" class="form-control" placeholder="Profissão" value="{{user.social_information.job}}"
+        [(ngModel)]="user.social_information['job']">
       </div>
       <div class="form-group">
         <label>Data de Nascimento</label>
-        <input type="date" class="form-control" value="0001-01-01" value="{{user.social_information.birth_date}}">
+        <input name="birth_date" type="date" class="form-control" value="0001-01-01" value="{{user.social_information.birth_date}}"
+        [(ngModel)]="user.social_information['birth_date']">
       </div>
       <div class="text-right ">
     <button class="btn btn-primary" (click)="validator.validatorEditUser()"> Salvar</button>
