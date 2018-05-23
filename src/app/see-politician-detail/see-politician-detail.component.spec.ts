@@ -1,6 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SeePoliticianDetailedComponent } from './see-politician-detail.component';
+import { ActivatedRoute } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+import { RequestsService } from '../requests.service';
+import { TokenService } from '../token.service';
+import { CookieService } from 'ngx-cookie-service';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('SeePoliticianDetailedComponent', () => {
   let component: SeePoliticianDetailedComponent;
@@ -8,7 +14,16 @@ describe('SeePoliticianDetailedComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SeePoliticianDetailedComponent ]
+      imports: [
+        RouterTestingModule.withRoutes([{ path: 'parliamentarians/:id', component: SeePoliticianDetailedComponent}]),
+        HttpClientModule,
+      ],
+      declarations: [ SeePoliticianDetailedComponent ],
+      providers: [
+        RequestsService,
+        TokenService,
+        CookieService,
+      ]
     })
     .compileComponents();
   }));

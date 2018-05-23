@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SeePlComponent } from './see-pl.component';
+import { RequestsService } from '../requests.service';
+import { TokenService } from '../token.service';
+import { CookieService } from 'ngx-cookie-service';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('SeePlComponent', () => {
   let component: SeePlComponent;
@@ -8,7 +12,15 @@ describe('SeePlComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SeePlComponent ]
+      imports: [
+        HttpClientModule,
+      ],
+      declarations: [ SeePlComponent ],
+      providers: [
+        RequestsService,
+        TokenService,
+        CookieService
+      ]
     })
     .compileComponents();
   }));

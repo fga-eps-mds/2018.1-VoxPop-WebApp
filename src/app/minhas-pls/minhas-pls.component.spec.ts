@@ -4,6 +4,7 @@ import { MinhasPlsComponent } from './minhas-pls.component';
 import { RequestsService } from '../requests.service';
 import { HttpClientModule } from '@angular/common/http';
 import { TokenService } from '../token.service';
+import { CookieService } from 'ngx-cookie-service';
 
 describe('MinhasPlsComponent', () => {
   let component: MinhasPlsComponent;
@@ -17,6 +18,7 @@ describe('MinhasPlsComponent', () => {
       declarations: [ MinhasPlsComponent ],
       providers: [
         RequestsService,
+        CookieService,
         TokenService,
       ]
     })
