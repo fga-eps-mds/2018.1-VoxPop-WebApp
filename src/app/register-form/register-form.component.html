@@ -1,6 +1,5 @@
 <div class="col-md-6 col-md-offset-3">
   <form (submit)="registerUser($event)">
-
     <div id="firstPart" class="register-card">
         <div class="alert alert-danger" role="alert" id="alert-invalid-inputs" style="display:none">
           <p>{{validator.valueInvalidInput}}</p>
@@ -8,26 +7,27 @@
          <div class="form-group">
               <span class="required">*</span>
               <label>Nome de Usuário</label>
-              <input type="text" class="form-control" placeholder="Entre o nome do usuário" id = "username"
-              (keyup)="validator.onKeyUsername($event)">
+              <input name="username" type="text" class="form-control" placeholder="Entre o nome do usuário" id = "username"
+              (keyup)="validator.onKeyUsername($event)" [(ngModel)]="user.username">
               <div class="alert alert-danger" role="alert" id="alert-username" style="display:none">
                 <p>{{validator.valueUsername}}</p>
               </div>
          </div>
          <div class="form-group">
             <label>Primeiro Nome</label>
-            <input type="text" class="form-control" placeholder="Digite o seu primeiro nome">
+            <input name="first_name" type="text" class="form-control" placeholder="Digite o seu primeiro nome" [(ngModel)]="user.first_name">
          </div>
          <div class="form-group">
             <label>Sobrenome</label>
-            <input type="text" class="form-control" placeholder="Digite o seu sobrenome">
+            <input name="last_name" type="text" class="form-control" placeholder="Digite o seu sobrenome" [(ngModel)]="user.last_name">
          </div>
          <div class="form-group">
               <span class="required">*</span>
               <label>Senha</label>
-              <input type="password" class="form-control" minlength="8" id="password"
+              <input name="password" type="password" class="form-control" minlength="8" id="password"
               (keyup)="validator.onKeyPassword($event)"
-              placeholder="Senha">
+              placeholder="Senha"
+              [(ngModel)]="user.password">
               <div class="alert alert-danger" role="alert" id="alert-invalid-password" style="display:none">
                 <p>{{validator.valueInvalidPassword}}</p>
               </div>
@@ -35,7 +35,7 @@
          <div class="form-group">
               <span class="required">*</span>
               <label>Confirmar Senha</label>
-              <input type="password" class="form-control" minlength="6" id="confirm-password"
+              <input name="confirm-password" type="password" class="form-control" minlength="6" id="confirm-password"
               maxlength="20" (keyup)="validator.onKeyConfirmPassword($event)"
               (keyup)="validator.onKeyValidatorPassword($event)" placeholder="Confirmar senha">
               <div class="alert alert-danger" role="alert" id="alert-password" style="display:none">
@@ -45,8 +45,9 @@
          <div class="form-group">
               <span class="required">*</span>
               <label>E-mail</label>
-              <input type="email" class="form-control" id="email"
-              (keyup)="validator.onKeyEmail($event)" placeholder="exemplo@exemplo.com">
+              <input name="email" type="email" class="form-control" id="email"
+              (keyup)="validator.onKeyEmail($event)" placeholder="exemplo@exemplo.com"
+              [(ngModel)]="user.email">
               <div class="alert alert-danger" role="alert" id="alert-email" style="display:none">
                 <p>{{validator.valueEmail}}</p>
               </div>
@@ -67,7 +68,7 @@
     <div style="display:none" id="secondPart" class="register-card">
          <div class="form-group">
               <label>Estado</label>
-              <select name="Estado" class="form-control">
+              <select name="federal_unit" class="form-control" [(ngModel)]="user.social_information['federal_unit']">
                    <option value=null>Prefiro não responder</option>
                    <option value="AC">Acre</option>
                    <option value="AL">Alagoas</option>
@@ -100,11 +101,11 @@
          </div>
          <div class="form-group">
               <label>Cidade</label>
-              <input type="text" class="form-control" placeholder="Cidade">
+              <input name="city" type="text" class="form-control" placeholder="Cidade" [(ngModel)]="user.social_information['city']">
          </div>
          <div class="form-group">
               <label>Renda</label>
-              <select name="Renda" class="form-control">
+              <select name="income" class="form-control" [(ngModel)]="user.social_information['income']">
                    <option value=null>Prefiro não responder</option>
                    <option value="500.00">Entre R$0,00 até R$1000,00</option>
                    <option value="2000.00">Entre R$1000,01 até R$3000,00</option>
@@ -117,7 +118,7 @@
          </div>
          <div class="form-group">
               <label>Formação</label>
-              <select name="Formacao" class="form-control">
+              <select name="education" class="form-control" [(ngModel)]="user.social_information['education']">
                    <option value=null>Prefiro não responder</option>
                    <option value="EFC">Ensino Fundamental Completo</option>
                    <option value="EFI">Ensino Fundamental Incompleto</option>
@@ -133,11 +134,11 @@
          </div>
          <div class="form-group">
               <label>Profissão</label>
-              <input type="text" class="form-control" placeholder="Profissão">
+              <input name="job" type="text" class="form-control" placeholder="Profissão" [(ngModel)]="user.social_information['job']">
          </div>
          <div class="form-group">
               <label>Data de Nascimento</label>
-              <input type="date" class="form-control" value="0001-01-01">
+              <input name="birth_date" type="date" class="form-control" value="0001-01-01" [(ngModel)]="user.social_information['birth_date']">
          </div>
          <button class="btn btn-primary"
          type="button" id="returnBtn"
