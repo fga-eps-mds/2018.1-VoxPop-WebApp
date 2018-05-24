@@ -76,4 +76,11 @@ describe('RequestsService', () => {
     const promise = service.getSearchedParliamentarian(limit, offset, keyword);
     expect(promise).toBeDefined();
   }));
+
+  it('getParliamentarianSpecific should return a promise', inject([RequestsService], (service: RequestsService) => {
+    const id = 1;
+
+    const promise = service.getParlimentarianSpecific(id);
+    expect(promise).toBeDefined();
+  }));
 });
