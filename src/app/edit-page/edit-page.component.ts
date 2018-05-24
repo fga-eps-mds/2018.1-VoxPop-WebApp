@@ -49,7 +49,7 @@ export class EditPageComponent implements OnInit {
     this.userID = +this.cookieService.get('userID');
     this.requester.getUser(this.userID).subscribe( response => {
       this.user = response['body'];
-      console.log(this.user);
+      // console.log(this.user);
     });
   }
 
@@ -64,7 +64,7 @@ export class EditPageComponent implements OnInit {
   updateUserHandler(request) {
     request.subscribe(response => {
       const statusUser = response.status;
-      console.log('STATUS CODE RETURNED ON USER: ' + statusUser);
+      // console.log('STATUS CODE RETURNED ON USER: ' + statusUser);
       if (this.requester.didSucceed(statusUser)) {
         this.router.navigate(['']);
       }
@@ -75,15 +75,15 @@ export class EditPageComponent implements OnInit {
 
   errorHandler(status) {
     if (status === 401) {
-      alert('Usuário não logado, falha de autenticação');
+      document.getElementById('alert-invalid').style.display = 'block';
       return true;
     }
     if (status === 500) {
-      alert('Edição falhou, tente novamente mais tarde');
+      document.getElementById('alert-invalid').style.display = 'block';
       return true;
     }
     if (status === 400) {
-      alert('Erro, cheque se os dados foram inseridos corretamente');
+      document.getElementById('alert-invalid').style.display = 'block';
       return true;
     }
     return false;

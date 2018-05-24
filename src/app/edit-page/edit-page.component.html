@@ -1,5 +1,8 @@
 <h1 class="text-center title">Editar meus dados</h1>
 <form (submit)="updateUser($event)" >
+    <div class="alert alert-danger" role="alert" id="alert-invalid" style="display:none">
+        <p>Erro ao editar</p>
+      </div>
   <div class="col-sm-5 col-sm-offset-1">
     <div class="register-card">
         <div class="alert alert-danger" role="alert" id="alert-invalid-inputs" style="display:none">
