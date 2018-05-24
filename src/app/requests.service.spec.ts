@@ -5,6 +5,7 @@ import { RequestsService } from './requests.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { UserModel } from '../models/user';
 import { SocialInformationModel } from '../models/socialInformation';
+import { VoteModel } from '../models/vote';
 
 describe('RequestsService', () => {
   beforeEach(() => {
@@ -130,6 +131,25 @@ describe('RequestsService', () => {
       birth_date: new Date('02-05-1992'),
     };
     const promise = service.postSocialInformation(social_information);
+    expect(promise).toBeDefined();
+  }));
+
+  it('postVote should return a promise', inject([RequestsService], (service: RequestsService) => {
+    const vote: VoteModel = {
+      proposition: 123,
+      option: 'Y'
+    };
+    const promise = service.postVote(vote);
+    expect(promise).toBeDefined();
+  }));
+
+  it('updateVote should return a promise', inject([RequestsService], (service: RequestsService) => {
+    const vote: VoteModel = {
+      proposition: 124,
+      option: 'N'
+    };
+    const id = 42;
+    const promise = service.updateVote(vote, id);
     expect(promise).toBeDefined();
   }));
 });
