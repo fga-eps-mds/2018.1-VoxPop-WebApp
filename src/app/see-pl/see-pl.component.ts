@@ -59,7 +59,6 @@ export class SeePlComponent implements OnInit {
 
   loadPage(offset: number) {
     let req: any;
-    console.log(Number(offset));
     if (offset < 1 || isNaN(Number(offset))) {
       alert('Número de páginas inválido, favor digitar um número positivo');
       return -1;
@@ -76,7 +75,7 @@ export class SeePlComponent implements OnInit {
       this.pages = Math.ceil(response['body']['count'] / this.itemsPerPage);
       if (this.auxProposition.length <= 0) {
         alert('Número da página inválido, favor digitar entre 1 e ' + this.pages);
-        return;
+        return -1;
       }
       this.updateButtonsAppearence(this.offset, this.pages);
       this.proposition = this.auxProposition;
@@ -98,6 +97,7 @@ export class SeePlComponent implements OnInit {
       document.getElementById('afterBtn1').style.display = 'block';
       document.getElementById('afterBtn2').style.display = 'block';
     }
+    return true;
   }
 
 }
