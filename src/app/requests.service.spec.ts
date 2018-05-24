@@ -3,6 +3,8 @@ import { CookieService } from 'ngx-cookie-service';
 import { TokenService } from './token.service';
 import { RequestsService } from './requests.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { UserModel } from '../models/user';
+import { SocialInformationModel } from '../models/socialInformation';
 
 describe('RequestsService', () => {
   beforeEach(() => {
@@ -95,6 +97,39 @@ describe('RequestsService', () => {
     const offset = 1;
     const limit = 5;
     const promise = service.getFollowingParliamentarians(limit, offset);
+    expect(promise).toBeDefined();
+  }));
+
+  it('postUser should return a promise', inject([RequestsService], (service: RequestsService) => {
+    const user: UserModel = {
+      username: 'adalberto',
+      first_name: 'adalberto',
+      last_name: 'almeida',
+      email: 'samuel@borges.com',
+      password: 'amo0S4muel,MasÉSegredo!',
+      social_information: {
+        federal_unit: 'AC',
+        city: '',
+        income: 0,
+        education: '',
+        job: 'Gerente de Recursos Humanos em Clube de Entretenimento Adulto',
+        birth_date: new Date('12-12-1929'),
+      },
+    };
+    const promise = service.postUser(user);
+    expect(promise).toBeDefined();
+  }));
+
+  it('postSocialInformation should return a promise', inject([RequestsService], (service: RequestsService) => {
+    const social_information: SocialInformationModel = {
+      federal_unit: 'RJ',
+      city: '',
+      income: 0,
+      education: '',
+      job: '',
+      birth_date: new Date('02-05-1992'),
+    };
+    const promise = service.postSocialInformation(social_information);
     expect(promise).toBeDefined();
   }));
 });
