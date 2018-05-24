@@ -78,8 +78,6 @@ export class ParliamentarianComponent implements OnInit {
       }
       this.updateButtonsAppearence(this.offset, this.pages);
       this.parliamentarians = this.auxParliamentarian;
-      console.log(this.parliamentarians);
-      console.log(this.pages);
     });
   }
 
@@ -105,6 +103,7 @@ export class ParliamentarianComponent implements OnInit {
       document.getElementById('pageBtn1').style.display = 'block';
       document.getElementById('pageBtn2').style.display = 'block';
     }
+    return true;
 
   }
 
