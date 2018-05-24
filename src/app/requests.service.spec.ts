@@ -56,4 +56,9 @@ describe('RequestsService', () => {
     const promise = service.getProposition(limit, offset);
     expect(promise).toBeDefined();
   }));
+
+  it('getProjects should return a promise', inject([RequestsService], (service: RequestsService) => {
+    const promise = service.getProjects();
+    expect(promise).toBeDefined();
+  }));
 });
