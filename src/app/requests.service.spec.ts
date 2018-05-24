@@ -20,14 +20,12 @@ describe('RequestsService', () => {
     expect(service).toBeTruthy();
   }));
 
-  it('should check if status is succeed', () => {
-    /*let http : HttpClient;
-    let cookie : CookieService;
-    let token : TokenService;
-    let service = new RequestsService(http, token, cookie);
+  it('should check if status is succeed', inject([RequestsService], (service: RequestsService) => {
     expect(service.didSucceed(0)).toBeFalsy('on 0');
+    expect(service.didSucceed(200)).toBeTruthy('on 200');
     expect(service.didSucceed(201)).toBeTruthy('on 201');
     expect(service.didSucceed(301)).toBeFalsy('on 301');
-    expect(service.didSucceed(404)).toBeFalsy('on any other'); */
-  })
+    expect(service.didSucceed(400)).toBeFalsy('on 400');
+    expect(service.didSucceed(404)).toBeFalsy('on any other');
+  }));
 });
