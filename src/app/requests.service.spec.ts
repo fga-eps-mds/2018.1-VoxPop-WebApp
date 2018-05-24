@@ -61,4 +61,19 @@ describe('RequestsService', () => {
     const promise = service.getProjects();
     expect(promise).toBeDefined();
   }));
+
+  it('getParliamentarian should return a promise', inject([RequestsService], (service: RequestsService) => {
+    const offset = 1;
+    const limit = 5;
+    const promise = service.getParliamentarian(limit, offset);
+    expect(promise).toBeDefined();
+  }));
+
+  it('getSearchedParlimentarian should return a promise', inject([RequestsService], (service: RequestsService) => {
+    const offset = 1;
+    const limit = 5;
+    const keyword = 'john doe';
+    const promise = service.getSearchedParliamentarian(limit, offset, keyword);
+    expect(promise).toBeDefined();
+  }));
 });
