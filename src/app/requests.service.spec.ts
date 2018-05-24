@@ -28,4 +28,18 @@ describe('RequestsService', () => {
     expect(service.didSucceed(400)).toBeFalsy('on 400');
     expect(service.didSucceed(404)).toBeFalsy('on any other');
   }));
+
+  it('getUser should return a promise', inject([RequestsService], (service: RequestsService) => {
+    const userID = 1;
+
+    const promise = service.getUser(userID);
+    expect(promise).toBeDefined();
+  }));
+
+  it('getVotedProposition should return a promise', inject([RequestsService], (service: RequestsService) => {
+    const offset = 1;
+
+    const promise = service.getVotedProposition(offset);
+    expect(promise).toBeDefined();
+  }));
 });
