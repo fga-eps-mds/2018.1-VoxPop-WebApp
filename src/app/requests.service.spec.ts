@@ -83,4 +83,18 @@ describe('RequestsService', () => {
     const promise = service.getParlimentarianSpecific(id);
     expect(promise).toBeDefined();
   }));
+
+  it('getFollow should return a promise', inject([RequestsService], (service: RequestsService) => {
+    const id = 1;
+
+    const promise = service.getFollow(id);
+    expect(promise).toBeDefined();
+  }));
+
+  it('getFollowingParliamentarian should return a promise', inject([RequestsService], (service: RequestsService) => {
+    const offset = 1;
+    const limit = 5;
+    const promise = service.getFollowingParliamentarians(limit, offset);
+    expect(promise).toBeDefined();
+  }));
 });
