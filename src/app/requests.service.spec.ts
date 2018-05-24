@@ -152,4 +152,18 @@ describe('RequestsService', () => {
     const promise = service.updateVote(vote, id);
     expect(promise).toBeDefined();
   }));
+
+  it('postFollow should return a promise', inject([RequestsService], (service: RequestsService) => {
+    const id = 1;
+
+    const promise = service.postFollow(id);
+    expect(promise).toBeDefined();
+  }));
+
+  it('deleteFollow should return a promise', inject([RequestsService], (service: RequestsService) => {
+    const id = 1;
+
+    const promise = service.deleteFollow(id);
+    expect(promise).toBeDefined();
+  }));
 });
