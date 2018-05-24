@@ -38,13 +38,11 @@ export class SeePoliticianDetailedComponent implements OnInit {
 
     this.sub = this.route.params.subscribe(params => {
       this.id = +params['id'];
-      console.log(this.id);
     });
 
     this.checkParliamentarianFollowed();
     this.requester.getParlimentarianSpecific(this.id).subscribe( response => {
     this.parlimentarian = response['body'];
-    console.log(this.parlimentarian);
     if (this.parlimentarian['gender'] === 'M') {
       this.gender = 'Masculino';
     } else if (this.parlimentarian['gender'] === 'F') {
@@ -53,7 +51,6 @@ export class SeePoliticianDetailedComponent implements OnInit {
       this.gender = 'N/A';
     }
     }, error => {
-    console.log(error.status);
     this.parlimentarian = {
       name : 'DEPUTADO NÃO ENCONTRADO',
       gender : 'N/A',
@@ -67,9 +64,9 @@ export class SeePoliticianDetailedComponent implements OnInit {
     let status;
     this.requester.postFollow(this.parlimentarian.id).subscribe(response => {
       status = response.status;
-      console.log(status);
       this.renderUnfollowButton();
     });
+    return true;
 
   }
 
@@ -77,30 +74,32 @@ export class SeePoliticianDetailedComponent implements OnInit {
     let status;
     this.requester.deleteFollow(this.parlimentarian.id).subscribe(response => {
       status = response.status;
-      console.log(status);
       this.renderFollowButton();
     });
+    return true;
 
   }
 
   renderUnfollowButton() {
     document.getElementById('unfollow').style.display = 'block';
     document.getElementById('follow').style.display = 'none';
+    return true;
   }
 
   renderFollowButton() {
     document.getElementById('unfollow').style.display = 'none';
     document.getElementById('follow').style.display = 'block';
+    return true;
   }
 
   derrenderBothButtons() {
     document.getElementById('follow').style.display = 'none';
     document.getElementById('unfollow').style.display = 'none';
+    return true;
   }
 
   checkParliamentarianFollowed() {
     this.requester.getFollow(this.id).subscribe( response => {
-      console.log('Get this parliamentar follow: ' + response['status']);
       if (response['status'] === 200) {
         this.renderUnfollowButton();
       } else {
@@ -115,5 +114,6 @@ export class SeePoliticianDetailedComponent implements OnInit {
         alert('Erro inesperado, favor recarregar a página novamente em alguns minutos');
       }
     });
+    return true;
   }
 }
