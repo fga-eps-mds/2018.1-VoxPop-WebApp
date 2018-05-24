@@ -49,4 +49,11 @@ describe('RequestsService', () => {
     const promise = service.getSearchVotedProposition(offset, keyword);
     expect(promise).toBeDefined();
   }));
+
+  it('getProposition should return a promise', inject([RequestsService], (service: RequestsService) => {
+    const offset = 1;
+    const limit = 5;
+    const promise = service.getProposition(limit, offset);
+    expect(promise).toBeDefined();
+  }));
 });
