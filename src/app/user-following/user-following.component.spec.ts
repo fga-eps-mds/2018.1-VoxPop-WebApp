@@ -1,6 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserFollowingComponent } from './user-following.component';
+import { RouterModule } from '@angular/router';
+import { RequestsService } from '../requests.service';
+import { TokenService } from '../token.service';
+import { CookieService } from 'ngx-cookie-service';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('UserFollowingComponent', () => {
   let component: UserFollowingComponent;
@@ -8,7 +14,16 @@ describe('UserFollowingComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserFollowingComponent ]
+      imports: [
+        RouterTestingModule.withRoutes([{ path: 'parliamentarians/:id', component: UserFollowingComponent}]),
+        HttpClientModule,
+      ],
+      declarations: [ UserFollowingComponent ],
+      providers: [
+        RequestsService,
+        TokenService,
+        CookieService,
+      ]
     })
     .compileComponents();
   }));
