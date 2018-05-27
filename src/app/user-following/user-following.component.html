@@ -14,7 +14,14 @@
     </div>
   </a>
 </div>
-<div class="col-sm-12">
+<div class="row" *ngIf="pages == 0">
+  <div class="main-card">
+    <div class="main-card-content">
+      <p>Você verá aqui os deputados seguidos, <a href="/parliamentarians">ver deputados</a></p>
+    </div>
+  </div>
+</div>
+<div class="col-sm-12" *ngIf="pages > 0">
   <ul class="nav nav-pills center">
     <li role="presentation">
       <button id="beforeBtn1" class="btn" (click)="loadPage(1)">Inicio</button>
