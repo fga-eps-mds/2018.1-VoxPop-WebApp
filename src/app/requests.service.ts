@@ -54,6 +54,14 @@ export class RequestsService {
     return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
   }
 
+  getMostActive(limit, offset) {
+    this.tokenValue = this.cookieService.get('token');
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
+    const endpoint = this.baseURL.concat('statistics/most_active/?limit=' + limit + '&offset=' + offset);
+    console.log('Making GET REQUEST USER ON URL: ' + endpoint);
+    return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
+  }
+
   getProjects() {
     this.tokenValue = this.cookieService.get('token');
     this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};

@@ -51,12 +51,13 @@
       </div>
     </div>
     <div class="col-sm-6 text-center">
-      <h4>DEPUTADOS MAIS ATIVOS</h4>
+      <h4>PARLAMENTARES MAIS ATIVOS</h4>
       <canvas id="myChart"></canvas>
+      <br>
       <div class="panel panel-primary">
         <div class="panel-heading">
           <h3 class="panel-title">
-            <span>Deputado ABEL MESQUITA JR. </span>
+            <span>Deputado {{most_actives[0]['parliamentary']['name']}} </span>
             <i class="glyphicon glyphicon-star" style="color:yellow"></i>
             <i class="glyphicon glyphicon-star" style="color:yellow"></i>
             <i class="glyphicon glyphicon-star" style="color:yellow"></i>
@@ -64,15 +65,56 @@
         </div>
         <div class="panel-body">
           <div class="col-sm-6">
-            <img src="http://www.camara.leg.br/internet/deputado/bandep/178957.jpg" width="114" height="152" alt="woops, someting went wrong">
+            <img src="{{most_actives[0]['parliamentary']['photo']}}" width="114" height="152" alt="woops, someting went wrong">
           </div>
           <div class="col-sm-6">
             <h5>1ª lugar</h5><p class="help-block">Este é o deputado mais ativo!</p>
-            <p>DEM/SP</p>
-            <a href="#" class="btn btn-primary">Ver parlamentar</a>
+            <p>{{most_actives[0]['parliamentary']['political_party']}}/{{most_actives[0]['parliamentary']['federal_unit']}}</p>
+            <a routerLink="/parliamentarians/{{most_actives[0]['parliamentary']['id']}}" routerLinkActivate="active" class="btn btn-primary">Ver parlamentar</a>
           </div>
         </div>
-        <div class="panel-footer text-muted">Quantidade de votos: 128</div>
+        <div class="panel-footer text-muted">Quantidade de votos: {{most_actives[0]['votes']}}</div>
+      </div>
+
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <span>Deputado {{most_actives[1]['parliamentary']['name']}} </span>
+            <i class="glyphicon glyphicon-star" style="color:yellow"></i>
+            <i class="glyphicon glyphicon-star" style="color:yellow"></i>
+          </h3>
+        </div>
+        <div class="panel-body">
+          <div class="col-sm-6">
+            <img src="{{most_actives[1]['parliamentary']['photo']}}" width="114" height="152" alt="woops, someting went wrong">
+          </div>
+          <div class="col-sm-6">
+            <h5>2ª lugar</h5><p class="help-block">Este é o segundo deputado mais ativo!</p>
+            <p>{{most_actives[1]['parliamentary']['political_party']}}/{{most_actives[1]['parliamentary']['federal_unit']}}</p>
+            <a routerLink="/parliamentarians/{{most_actives[1]['parliamentary']['id']}}" routerLinkActivate="active" class="btn btn-primary">Ver parlamentar</a>
+          </div>
+        </div>
+        <div class="panel-footer text-muted">Quantidade de votos: {{most_actives[1]['votes']}}</div>
+      </div>
+
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <span>Deputado {{most_actives[2]['parliamentary']['name']}} </span>
+            <i class="glyphicon glyphicon-star" style="color:yellow"></i>
+          </h3>
+        </div>
+        <div class="panel-body">
+          <div class="col-sm-6">
+            <img src="{{most_actives[2]['parliamentary']['photo']}}" width="114" height="152" alt="woops, someting went wrong">
+          </div>
+          <div class="col-sm-6">
+            <h5>3ª lugar</h5><p class="help-block">Este é o terceiro deputado mais ativo!</p>
+            <p>{{most_actives[2]['parliamentary']['political_party']}}/{{most_actives[2]['parliamentary']['federal_unit']}}</p>
+            <a routerLink="/parliamentarians/{{most_actives[2]['parliamentary']['id']}}" routerLinkActivate="active" class="btn btn-primary">Ver parlamentar</a>
+          </div>
+        </div>
+        <div class="panel-footer text-muted">Quantidade de votos: {{most_actives[2]['votes']}}</div>
       </div>
 
       <!-- <div class="main-card vote">

@@ -30,6 +30,13 @@ export class MainPageComponent implements OnInit {
     url_full: ''
   }];
 
+  most_actives: any = [
+    {
+      parliamentary: null,
+      votes: '',
+    }
+  ];
+
   constructor(
     private cookieService: CookieService,
     private token: TokenService,
@@ -41,6 +48,7 @@ export class MainPageComponent implements OnInit {
     this.token.checkToken(this.tokenValue);
     this.idValue = +this.cookieService.get('userID');
     this.propositions(3, 0);
+    this.mostActives(3, 0);
     this.ctx = document.getElementById('myChart');
   }
 
@@ -52,18 +60,35 @@ export class MainPageComponent implements OnInit {
     return req;
   }
 
+  mostActives(limit: number, offset: number) {
+    let req: any;
+    this.most_actives = [];
+    req =  this.requester.getMostActive(limit, offset);
+    this.handleMostActivesResponse(req, limit, offset);
+    return req;
+  }
+
   handlePropositionsResponse(request, limit, offset) {
       this.requester.getProposition(limit, offset).subscribe( response =>{
       const body = response['body'];
       this.proposition = body['results'];
+    });
+  }
 
-      var i, labels_list = [];
-      for (i = 0; i < this.proposition.length; i++) {
-          labels_list.push(this.proposition[i].number);
+  handleMostActivesResponse(request, limit, offset) {
+      this.requester.getMostActive(limit, offset).subscribe( response =>{
+      const body = response['body'];
+      this.most_actives = body['results'];
+
+      var i, labels_list = [], data_list = [];
+      for (i = 0; i < this.most_actives.length; i++) {
+          labels_list.push(this.most_actives[i]['parliamentary'].name);
+          data_list.push(this.most_actives[i].votes);
       }
+      data_list.push(200);
       this.chart = new Chart(this.ctx, {
           // The type of chart we want to create
-          type: 'bar',
+          type: 'horizontalBar',
 
           // The data for our dataset
           data: {
@@ -72,7 +97,7 @@ export class MainPageComponent implements OnInit {
                   label: "Quantidade de votos",
                   backgroundColor: 'rgb(51,122,183)',
                   borderColor: 'rgb(255, 255, 255)',
-                  data: [128, 125, 120, 2, 20],
+                  data: data_list,
               }]
           },
 
