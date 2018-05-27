@@ -133,8 +133,8 @@ a.article, a.article:hover {
 ----------------------------------------------------- */
 #content {
     min-height: calc(100vh - 50px);
-    min-width: calc(100vw - 80px);
-    max-width: calc(100vw - 80px);
+    min-width: calc(100vw - 250px);
+    max-width: calc(100vw - 250px);
     transition: all 0.3s;
 }
 #content-padding {
@@ -144,6 +144,6 @@ a.article, a.article:hover {
     padding: 0;
 }
 #content.active {
-    min-width: calc(100vw - 250px);
-    max-width: calc(100vw - 250px);
+    min-width: calc(100vw - 80px);
+    max-width: calc(100vw - 80px);
 }

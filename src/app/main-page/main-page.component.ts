@@ -4,6 +4,8 @@ import { TokenService } from '../token.service';
 import { Token } from '@angular/compiler';
 import { RequestsService } from '../requests.service';
 
+declare var Chart:any;
+
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
@@ -13,6 +15,8 @@ export class MainPageComponent implements OnInit {
 
   tokenValue = '';
   idValue: Number;
+  ctx: HTMLElement;
+  chart: any;
 
   proposition: any = [{
     proposition_id: 0,
@@ -37,6 +41,7 @@ export class MainPageComponent implements OnInit {
     this.token.checkToken(this.tokenValue);
     this.idValue = +this.cookieService.get('userID');
     this.propositions(3, 0);
+    this.ctx = document.getElementById('myChart');
   }
 
   propositions(limit: number, offset: number) {
@@ -51,7 +56,31 @@ export class MainPageComponent implements OnInit {
       this.requester.getProposition(limit, offset).subscribe( response =>{
       const body = response['body'];
       this.proposition = body['results'];
+
+      var i, labels_list = [];
+      for (i = 0; i < this.proposition.length; i++) {
+          labels_list.push(this.proposition[i].number);
+      }
+      this.chart = new Chart(this.ctx, {
+          // The type of chart we want to create
+          type: 'bar',
+
+          // The data for our dataset
+          data: {
+              labels: labels_list,
+              datasets: [{
+                  label: "Quantidade de votos",
+                  backgroundColor: 'rgb(51,122,183)',
+                  borderColor: 'rgb(255, 255, 255)',
+                  data: [128, 125, 120, 2, 20],
+              }]
+          },
+
+          // Configuration options go here
+          options: {}
+      });
     });
   }
+
 
 }

@@ -1,8 +1,43 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-6 text-left">
+    <div class="text-justify">
+      <div class="text-center">
+        <h3>Seja bem-vindo ao VoxPop!</h3>
+      </div>
+      <br>
+      <h4>O que é o VoxPop?</h4>
+      <p>O VoxPop é uma aplicação criada no contexto das disciplinas Métodos de Desenvolvimento de Software (MDS) e Engenharia de Produto de Software (EPS) da Universidade de Brasília (UnB) - Faculdade do Gama (FGA), que visa criar uma classificação pessoal de deputados com base na compatibilidade dos usuários com os parlamentares.</p>
+      <br>
+      <h4>E como fazemos isso?</h4>
+      <p>Todo o conceito do VoxPop se baseia em cruzar dados abertos (<a href="https://dadosabertos.camara.leg.br/">confira aqui</a>) disponibilizados pela Câmara dos Deputados com dados fornecidor pelos usuários, podendo assim gerar estatísticas sobre os nossos parlamentares, sobre as proposições que são votadas por eles, e, acima de tudo, sobre a opinião do cidadão a respeito tanto dos parlamentares, quanto das proposições.</p>
+      <br>
+      <h4>Quais dados nós utilizamos?</h4>
+      <p>Nosso sistema utiliza sempre dados recentes disponibilizados pela Câmara dos Deputados referentes aos parlamentares atuais (informações pessoais, partidárias, etc.), às proposições votadas à partir do ano de 2015, e aos votos dos parlamentares em proposições votadas à partir do ano de 2015.</p>
+      <br>
+    </div>
+    <div class="text-center">
+      <h3>Veja o que está acontecendo na Câmara dos Deputados!</h3>
+    </div>
+    <br>
+    <div class="col-sm-6 text-center">
+      <h4>O QUE ESTÁ SENDO VOTADO</h4>
       <div *ngFor="let p of proposition">
-        <div class="main-card vote">
+
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">{{p['proposition_type_initials']}} {{p['number']}}/{{p['year']}}</h3>
+          </div>
+          <div class="panel-body">
+            <h5>{{p['proposition_type']}}</h5>
+            <div class="text-justify">
+              <p>{{p['abstract']}}</p>
+            </div>
+            <a href="{{p['url_full']}}" class="btn btn-primary">Veja na íntegra</a>
+          </div>
+          <div class="panel-footer text-muted">2 dias atrás</div>
+        </div>
+
+        <!-- <div class="main-card vote">
           <div class="main-card-content">
           <h5 class="card-title">{{p['proposition_type']}} - Número: {{p['number']}}</h5><br>
             <p class="text-left">
@@ -12,15 +47,40 @@
               <li>Na íntegra: <a href="{{p['url_full']}}">link íntegra</a></li>
             </p>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
-    <div class="col-sm-6">
-      <div class="main-card vote">
-        <div class="main-card-content">
-          <h3>Deputados</h3>
+    <div class="col-sm-6 text-center">
+      <h4>DEPUTADOS MAIS ATIVOS</h4>
+      <canvas id="myChart"></canvas>
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <span>Deputado ABEL MESQUITA JR. </span>
+            <i class="glyphicon glyphicon-star" style="color:yellow"></i>
+            <i class="glyphicon glyphicon-star" style="color:yellow"></i>
+            <i class="glyphicon glyphicon-star" style="color:yellow"></i>
+          </h3>
         </div>
+        <div class="panel-body">
+          <div class="col-sm-6">
+            <img src="http://www.camara.leg.br/internet/deputado/bandep/178957.jpg" width="114" height="152" alt="woops, someting went wrong">
+          </div>
+          <div class="col-sm-6">
+            <h5>1ª lugar</h5><p class="help-block">Este é o deputado mais ativo!</p>
+            <p>DEM/SP</p>
+            <a href="#" class="btn btn-primary">Ver parlamentar</a>
+          </div>
+        </div>
+        <div class="panel-footer text-muted">Quantidade de votos: 128</div>
       </div>
+
+      <!-- <div class="main-card vote">
+        <div class="main-card-content">
+
+        </div>
+      </div> -->
+
     </div>
   </div>
 </div>
