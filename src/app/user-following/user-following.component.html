@@ -1,23 +1,26 @@
-<h1 class="card-title" align="center">Deputados Seguidos</h1>
-<div class="col-sm-2" *ngFor="let p of parliamentarians">
+<div class="text-center">
+  <h3>Parlamentares seguidos</h3>
+</div>
+<br>
+<div class="col-sm-3 text-center" *ngFor="let p of parliamentarians">
   <a routerLink="/parliamentarians/{{p.parliamentary['id']}}" routerLinkActivate="active">
-    <div class="main-card vote">
-      <div class="main-card-content">
-        <div>
-          <img src="{{ p.parliamentary['photo'] }}" alt="woops, someting went wrong">
-        </div>
-        <div>
-          <h5 class="card-title">{{ p.parliamentary['name'] }}</h5>
-          <li>Estado: {{p.parliamentary['federal_unit']}}</li>
-        </div>
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <span>{{p.parliamentary['name']}} </span>
+        </h3>
       </div>
+      <div class="panel-body">
+        <img src="{{p.parliamentary['photo']}}" width="114" height="152" alt="woops, someting went wrong">
+      </div>
+      <div class="panel-footer text-muted">{{p.parliamentary['political_party']}}/{{p.parliamentary['federal_unit']}}</div>
     </div>
   </a>
 </div>
 <div class="row" *ngIf="pages == 0">
   <div class="main-card">
     <div class="main-card-content">
-      <p>Você verá aqui os deputados seguidos, <a href="/parliamentarians">ver deputados</a></p>
+      <p>Você verá aqui os parlamentares seguidos, <a href="/parliamentarians">ver parlamentares</a></p>
     </div>
   </div>
 </div>
