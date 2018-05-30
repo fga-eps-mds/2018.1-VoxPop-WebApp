@@ -111,7 +111,7 @@ export class SeePoliticianDetailedComponent implements OnInit {
         this.renderFollowButton();
       } else {
         this.derrenderBothButtons();
-        alert('Erro inesperado, favor recarregar a página novamente em alguns minutos');
+        // alert('Erro inesperado, favor recarregar a página novamente em alguns minutos');
       }
     });
     return true;

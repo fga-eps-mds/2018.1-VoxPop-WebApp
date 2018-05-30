@@ -14,12 +14,15 @@
 <div class="col-sm-6" *ngFor="let p of propositionVote let j = index">
   <div class="main-card vote">
     <div class="main-card-content">
-      <h5 class="card-title">{{p.proposition['proposition_type']}} - Número: {{p.proposition['number']}}</h5><br>
+      <h5 class="card-title">{{p.proposition['proposition_type']}} - Número: {{p.proposition['number']}}</h5>
+      <br>
       <p class="text-left">
         <li>Ano: {{p.proposition['year']}}</li>
         <li>Abstract: {{p.proposition['abstract']}}</li>
         <li>Situação: {{p.proposition['situation']}}</li>
-        <li>Na íntegra: <a href="{{p.proposition['url_full']}}">link íntegra</a></li>
+        <li>Na íntegra:
+          <a href="{{p.proposition['url_full']}}">link íntegra</a>
+        </li>
         <li>Seu voto: {{p['option']}}</li>
       </p>
       <button type="button" class="btn btn-primary" (click)="specifyProposition(j)" data-toggle="modal" data-target="#exampleModal">
@@ -27,6 +30,32 @@
       </button>
     </div>
   </div>
+</div>
+<div class="col-sm-12">
+  <ul class="nav nav-pills center">
+    <li role="presentation">
+      <button id="beforeBtn1" class="btn" (click)="propositions(1)">Inicio</button>
+    </li>
+    <li role="presentation">
+      <button id="beforeBtn2" class="btn" (click)="propositions(offset-1)">Ant.</button>
+    </li>
+    <li role="presentation">
+      <input id="pageBtn1" type="text" size="3" class="form-control" #page>
+    </li>
+    <li role="presentation">
+      <button id="pageBtn2" class="btn" (click)="propositions(page.value)">Ir</button>
+    </li>
+    <li role="presentation">
+      <button id="afterBtn1" class="btn" (click)="propositions(offset+1)">Prox.</button>
+    </li>
+    <li role="presentation">
+      <button id="afterBtn2" class="btn" (click)="propositions(pages)">Fim</button>
+    </li>
+  </ul>
+  <br>
+  <br>
+  <p class="p-center">Página: {{offset}}/{{pages}}</p>
+  <br>
 </div>
 <div class="row" *ngIf="propositionVote?.length <= 0">
   <div class="main-card">
@@ -44,28 +73,30 @@
         </button>
         <h4 class="modal-title" id="exampleModalLabel">Editar Voto</h4>
       </div>
-      <div class="modal-body"  *ngIf="propositionVote?.length > 0">
+      <div class="modal-body" *ngIf="propositionVote?.length > 0">
         <h5 class="card-title">
           {{propositionVote[votePosition].proposition['proposition_type']}} - Número: {{propositionVote[votePosition].proposition['number']}}
         </h5>
         <li>Ano: {{propositionVote[votePosition].proposition['year']}}</li>
         <li>Abstract: {{propositionVote[votePosition].proposition['abstract']}}</li>
         <li>Situação: {{propositionVote[votePosition].proposition['situation']}}</li>
-        <li>Na íntegra: <a href="{{propositionVote['url_full']}}">link íntegra</a></li>
+        <li>Na íntegra:
+          <a href="{{propositionVote['url_full']}}">link íntegra</a>
+        </li>
         <li>Seu voto: {{propositionVote[votePosition]['option']}}</li>
       </div>
       <div class="modal-footer">
         <div style="text-align: center; margin-bottom: 10px">
-            <button class='btn btn-success' data-dismiss="modal" (click)="editVote('Y')">
-              <span class="glyphicon glyphicon-ok"></span>
-            </button>
-            <button class='btn btn-light' data-dismiss="modal" (click)="editVote('A')">
-              <span class="glyphicon glyphicon-minus"></span>
-            </button>
-            <button class='btn btn-danger' data-dismiss="modal" (click)="editVote('N')">
-              <span class="glyphicon glyphicon-remove"></span>
-            </button>
-          </div>
+          <button class='btn btn-success' data-dismiss="modal" (click)="editVote('Y')">
+            <span class="glyphicon glyphicon-ok"></span>
+          </button>
+          <button class='btn btn-light' data-dismiss="modal" (click)="editVote('A')">
+            <span class="glyphicon glyphicon-minus"></span>
+          </button>
+          <button class='btn btn-danger' data-dismiss="modal" (click)="editVote('N')">
+            <span class="glyphicon glyphicon-remove"></span>
+          </button>
+        </div>
       </div>
     </div>
   </div>

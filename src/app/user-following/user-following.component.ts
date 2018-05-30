@@ -67,9 +67,8 @@ export class UserFollowingComponent implements OnInit {
     this.requester.getFollowingParliamentarians(this.itemsPerPage, (offset - 1) * this.itemsPerPage).subscribe( response => {
       this.auxParliamentarian = response['body']['results'];
       this.pages = Math.ceil(response['body']['count'] / this.itemsPerPage);
-      if (this.auxParliamentarian.length <= 0) {
+      if (this.auxParliamentarian.length <= 0 && this.pages > 0) {
         alert('Número da página inválido, favor digitar entre 1 e ' + this.pages);
-        return;
       }
       this.parliamentarians = this.auxParliamentarian;
       this.updateButtonsAppearence(this.offset, this.pages);

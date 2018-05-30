@@ -12,6 +12,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class SeePlComponent implements OnInit {
 
   tokenValue = '';
+  numberPLs: number;
   pages = 1;
   itemsPerPage = 20;
   offset = 1;
@@ -52,6 +53,8 @@ export class SeePlComponent implements OnInit {
 
 
   ngOnInit() {
+    this.tokenValue = this.cookieService.get('token');
+    this.token.checkToken(this.tokenValue);
     this.loadPage(1);
     this.tokenValue = this.cookieService.get('token');
     this.token.checkToken(this.tokenValue);
@@ -71,8 +74,9 @@ export class SeePlComponent implements OnInit {
 
   handlePropositionsResponse(request, offset) {
     this.requester.getProposition(this.itemsPerPage, (offset - 1) * this.itemsPerPage).subscribe( response => {
-      this.auxProposition = response['body']['results'];
-      this.pages = Math.ceil(response['body']['count'] / this.itemsPerPage);
+      this.auxProposition = response.body['results'];
+      this.numberPLs = response.body['count'];
+      this.pages = Math.ceil(this.numberPLs/this.itemsPerPage);
       if (this.auxProposition.length <= 0) {
         alert('Número da página inválido, favor digitar entre 1 e ' + this.pages);
         return -1;
@@ -100,4 +104,11 @@ export class SeePlComponent implements OnInit {
     return true;
   }
 
+  openProposition(proposition_url) {
+    window.open(
+      proposition_url,
+      '_blank',
+      'height=700, width=820, scrollbars=yes, status=yes'
+    );
+  }
 }
