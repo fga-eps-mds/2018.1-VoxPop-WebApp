@@ -2,10 +2,10 @@
     <!-- Sidebar Holder -->
 <!-- <nav id="sidebar" class="active"> -->
 <nav id="sidebar">
-  <div ng-class="console.log(localStorage.getItem('sidebar')) == 'true' ? 'active' : ''">
-    <div class="sidebar-header">
-        <h3>VoxPop</h3>
-        <strong>VP</strong>
+  <div ng-class="('true' == 'true') ? 'active' : ''">
+    <div class="sidebar-header text-center">
+        <h4><i>Descubra já quem realmente pensa como você!</i></h4>
+        <strong><i>VP</i></strong>
     </div>
 
     <ul class="list-unstyled components">
@@ -14,12 +14,6 @@
             <a href="/">
                 <i class="glyphicon glyphicon-home"></i>
                 Página inicial
-            </a>
-        </li>
-        <li>
-            <a href="/profile">
-                <i class="	glyphicon glyphicon-user"></i>
-                Ver perfil
             </a>
         </li>
         <!-- <li>
@@ -38,21 +32,21 @@
             </ul>
         </li> -->
         <li>
-            <a href="/propositions">
-                <i class="glyphicon glyphicon-link"></i>
+            <a href="/propositions" id="deSuaOpiniao" style="display:none">
+                <i class="glyphicon glyphicon-bullhorn"></i>
                 Dê sua opinião
             </a>
         </li>
         <li>
-            <a href="/mypls">
-                <i class="glyphicon glyphicon-paperclip"></i>
-                Meus votos
+            <a href="/parliamentarians">
+                <i class="	glyphicon glyphicon-briefcase"></i>
+                Deputados
             </a>
         </li>
         <li>
-            <a href="/parliamentarians">
-                <i class="	glyphicon glyphicon-user"></i>
-                Ver deputados
+            <a href="/seepl">
+                <i class="	glyphicon glyphicon-file"></i>
+                Proposições
             </a>
         </li>
         <li>
