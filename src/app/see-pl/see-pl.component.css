@@ -48,3 +48,7 @@
 .p-center {
     text-align: center;
 }
+
+.panel-body {
+  min-height: 250px;
+}
