@@ -11,6 +11,8 @@ export class TokenService {
     } else {
       document.getElementById('register').style.display = 'none';
       document.getElementById('login').style.display = 'none';
+      document.getElementById('deSuaOpiniao').style.display = 'block';
+      document.getElementById('profile').style.display = 'block';
       document.getElementById('logout').style.display = 'block';
       return true;
     }

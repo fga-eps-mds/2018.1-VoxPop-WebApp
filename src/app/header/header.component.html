@@ -1,4 +1,4 @@
-<nav class="navbar-custom">
+<nav class="navbar-custom navbar-fixed-top">
   <div class="container-fluid">
     <ul class="nav navbar-nav">
         <li>
@@ -8,12 +8,12 @@
         </li>
       </ul>
     <div class="navbar-header">
-      <a class="navbar-brand" href="/">VoxPop</a>
+      <a class="navbar-brand" href="/"><i>VoxPop</i></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <!-- Search -->
       <ul class="nav navbar-nav">
-        <li>
+        <!-- <li>
           <form class="navbar-form" role="search" method="get" action="/busca">
             <div class="input-group">
               <input type="text" class="form-control" placeholder="Buscar por" name="query" id="busca">
@@ -22,11 +22,12 @@
               </div>
             </div>
           </form>
-        </li>
+        </li> -->
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/register" id="register"><span class="glyphicon glyphicon-user"></span> Criar Conta</a></li>
         <li><a href="/login" id="login"><span class="glyphicon glyphicon-log-in"></span> Efetuar Login</a></li>
+        <li><a href="/profile" style="display:none" id="profile"><span class="glyphicon glyphicon-user"></span> Meu Perfil</a></li>
         <li><a href="/" style="display:none" id="logout" (click)="logout()">Sair</a></li>
       </ul>
     </div>

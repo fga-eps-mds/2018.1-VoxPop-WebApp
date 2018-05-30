@@ -24,6 +24,12 @@ export class HeaderComponent implements OnInit {
      sidebar.classList.toggle("active");
      var content = document.getElementById("content");
      content.classList.toggle("active");
+     //
+     if(sidebar.classList.contains('active')){
+       this.cookieService.set('sidebar', 'false');
+     } else {
+       this.cookieService.set('sidebar', 'true');
+     }
   }
 
 }

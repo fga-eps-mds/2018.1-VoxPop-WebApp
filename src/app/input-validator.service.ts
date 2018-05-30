@@ -30,8 +30,8 @@ export class InputValidatorService {
   onKeyPassword(e: any) {
     this.password = e.target.value;
     if (!this.isValidPassword(this.password)) {
-      this.valueInvalidPassword = 'Sua senha deve ter no mínimo 8 caracteres,'
-       + 'dos quais: Um é numérico; Um é letra maiúscula; Um é caractere especial.';
+      this.valueInvalidPassword = `Sua senha deve ter no mínimo 8 caracteres,
+                                   dos quais: Um é numérico; Um é letra maiúscula; Um é caractere especial.`;
       document.getElementById('alert-invalid-password').style.display = 'block';
       this.statusValidPassword = false;
       this.borderColor('password', this.danger);
@@ -48,7 +48,7 @@ export class InputValidatorService {
 
   onKeyUsername(e: any) {
     let username = e.target.value;
-    if(this.isUsernameValid(username)){
+    if (this.isUsernameValid(username)) {
       document.getElementById('alert-username').style.display = 'none';
       this.valueUsername = '';
       this.statusUsername = true;
@@ -68,8 +68,8 @@ export class InputValidatorService {
   }
 
   onKeyEmail(e: any) {
-    const email = e.target.value;
-    if (this.isEmailValid(email)) {
+    let email = e.target.value;
+    if (this.isEmailValid(email)){
       document.getElementById('alert-email').style.display = 'none';
       this.valueEmail = '';
       this.statusEmail = true;
@@ -133,7 +133,7 @@ export class InputValidatorService {
   }
 
   isValidPassword(password) {
-    const PWDRGX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%¨&*()'`{}~^:;<>,./?°ªº¹²³⁴⁵⁶⁷⁸⁹⁰£¢¬])[A-Za-z\d$@$!%*?&]{8,}/;
+    const PWDRGX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z0-9.])[A-Za-z\d$@$!%*?&]{8,}/;
     if (PWDRGX.test(password)) {
       return true;
     }

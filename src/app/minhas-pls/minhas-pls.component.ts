@@ -13,9 +13,9 @@ import { UpdateVoteModel } from '../../models/vote';
 export class MinhasPlsComponent implements OnInit {
 
   term = '';
-  offset = 1;
   tokenValue = '';
   pages = 1;
+  offset = 0;
   itemsPerPage = 10;
   votePosition: number;
   userId: number;
@@ -47,33 +47,48 @@ export class MinhasPlsComponent implements OnInit {
     this.userId = Number(this.cookieService.get('userID'));
     this.token.checkToken(this.tokenValue);
     this.votePosition = 0;
-    this.propositions(1, '');
+    this.propositionsSearch(1, '');
   }
 
-  propositions(offset: number, term) {
-    this.term = term;
+  searchPL(term) {
+    this.propositionsSearch(1, term);
+  }
+
+  propositions(offset: number) {
     let req: any;
-    term = term.toUpperCase();
-    if (offset < 1 || isNaN(Number(offset))) {
-      alert('Número de páginas inválido, favor digitar um número positivo');
-      return -1;
-    }
-    this.offset = Number(offset);
+    this.pages = 1;
+    this.proposition = [];
+    req =  this.requester.getVotedProposition((offset - 1) * this.itemsPerPage);
+    this.handlePropositionsResponse(req, offset);
+    return req;
+  }
+
+  propositionsSearch(offset: number, term) {
+    let req: any;
+    this.pages = 1;
+    this.numberPLsVoted = 1;
+    this.proposition = [];
     req =  this.requester.getSearchVotedProposition((offset - 1) * this.itemsPerPage, term);
     this.handlePropositionsSearchResponse(req, offset, term);
     return req;
+  }
+
+  handlePropositionsResponse(request, offset) {
+    this.requester.getVotedProposition((offset - 1) * this.itemsPerPage).subscribe( response => {
+      const body = response['body'];
+      this.propositionVote = body['results'];
+      this.offset = offset;
+      this.pages = Math.ceil(response['body']['count'] / this.itemsPerPage);
+      this.updateButtonsAppearence(this.offset, this.pages);
+    });
   }
 
   handlePropositionsSearchResponse(request, offset, term) {
     this.requester.getSearchVotedProposition((offset - 1) * this.itemsPerPage, term).subscribe( response => {
       const body = response['body'];
       this.propositionVote = body['results'];
-      this.numberPLsVoted = body['count'];
-      this.pages = Math.ceil(this.numberPLsVoted / this.itemsPerPage);
-      if (this.numberPLsVoted <= 0 && this.pages > 0) {
-        alert('Número da página inválido, favor digitar entre 1 e ' + this.pages);
-        return;
-      }
+      this.offset = offset;
+      this.pages = Math.ceil(response['body']['count'] / this.itemsPerPage);
       this.updateButtonsAppearence(this.offset, this.pages);
     });
   }
@@ -122,11 +137,10 @@ export class MinhasPlsComponent implements OnInit {
         alert('Voto não editado, favor tentar de novo mais tarde');
       } else {
         alert('Voto editado com sucesso!');
-        this.propositions(1, '');
+        this.propositionsSearch(1, '');
       }
 
     });
 
   }
-
 }

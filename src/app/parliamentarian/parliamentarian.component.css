@@ -52,3 +52,7 @@
 .header {
     margin-bottom: 60px;
 }
+
+.btn .btn-primary{
+    background: #7386D5;
+}
