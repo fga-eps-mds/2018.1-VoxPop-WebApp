@@ -15,8 +15,10 @@ export class MainPageComponent implements OnInit {
 
   tokenValue = '';
   idValue: Number;
-  ctx: HTMLElement;
-  chart: any;
+  proposition_ctx: HTMLElement;
+  parliamentary_ctx: HTMLElement;
+  proposition_chart: any;
+  parliamentary_chart: any;
 
   proposition: any = [{
     proposition_id: 0,
@@ -45,11 +47,13 @@ export class MainPageComponent implements OnInit {
 
   ngOnInit() {
     this.tokenValue = this.cookieService.get('token');
+    console.log(this.tokenValue);
     this.token.checkToken(this.tokenValue);
     this.idValue = +this.cookieService.get('userID');
     this.propositions(3, 0);
     this.mostActives(3, 0);
-    this.ctx = document.getElementById('myChart');
+    this.proposition_ctx = document.getElementById('propositionChart');
+    this.parliamentary_ctx = document.getElementById('parliamentaryChart');
   }
 
   propositions(limit: number, offset: number) {
@@ -72,6 +76,25 @@ export class MainPageComponent implements OnInit {
       this.requester.getProposition(limit, offset).subscribe( response =>{
       const body = response['body'];
       this.proposition = body['results'];
+
+      this.proposition_chart = new Chart(this.proposition_ctx, {
+          // The type of chart we want to create
+          type: 'horizontalBar',
+
+          // The data for our dataset
+          data: {
+              labels: [2015, 2016, 2017, 2018],
+              datasets: [{
+                  label: "Número de votações",
+                  backgroundColor: 'rgb(51,122,183)',
+                  borderColor: 'rgb(255, 255, 255)',
+                  data: [66, 75, 59, 11, 0],
+              }]
+          },
+
+          // Configuration options go here
+          options: {}
+      });
     });
   }
 
@@ -86,7 +109,7 @@ export class MainPageComponent implements OnInit {
           data_list.push(this.most_actives[i].votes);
       }
       data_list.push(200);
-      this.chart = new Chart(this.ctx, {
+      this.parliamentary_chart = new Chart(this.parliamentary_ctx, {
           // The type of chart we want to create
           type: 'horizontalBar',
 
@@ -107,5 +130,11 @@ export class MainPageComponent implements OnInit {
     });
   }
 
-
+  openProposition(proposition_url) {
+    window.open(
+      proposition_url,
+      '_blank',
+      'height=700, width=820, scrollbars=yes, status=yes'
+    );
+  }
 }
