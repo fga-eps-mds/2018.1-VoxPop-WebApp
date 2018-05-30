@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RequestsService } from '../requests.service';
 import { PropositionModel } from '../../models/proposition';
+import { TokenService } from '../token.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-see-pl',
@@ -9,6 +11,7 @@ import { PropositionModel } from '../../models/proposition';
 })
 export class SeePlComponent implements OnInit {
 
+  tokenValue = '';
   numberPLs: number;
   pages = 1;
   itemsPerPage = 20;
@@ -44,10 +47,14 @@ export class SeePlComponent implements OnInit {
 
   constructor(
     private requester: RequestsService,
+    private token: TokenService,
+    private cookieService: CookieService
   ) { }
 
 
   ngOnInit() {
+    this.tokenValue = this.cookieService.get('token');
+    this.token.checkToken(this.tokenValue);
     this.loadPage(1);
   }
 
@@ -66,8 +73,8 @@ export class SeePlComponent implements OnInit {
 
   handlePropositionsResponse(request, offset) {
     this.requester.getProposition(this.itemsPerPage, (offset - 1) * this.itemsPerPage).subscribe( response => {
-      this.auxProposition = response['results'];
-      this.numberPLs = response['count'];
+      this.auxProposition = response.body['results'];
+      this.numberPLs = response.body['count'];
       this.pages = Math.ceil(this.numberPLs/this.itemsPerPage);
       if (this.auxProposition.length <= 0) {
         alert("Número da página inválido, favor digitar entre 1 e " + this.pages)
@@ -97,4 +104,11 @@ export class SeePlComponent implements OnInit {
     }
   }
 
+  openProposition(proposition_url) {
+    window.open(
+      proposition_url,
+      '_blank',
+      'height=700, width=820, scrollbars=yes, status=yes'
+    );
+  }
 }

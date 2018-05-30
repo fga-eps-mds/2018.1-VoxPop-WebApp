@@ -47,23 +47,32 @@ export class RequestsService {
   }
 
   getProposition(limit, offset) {
-    this.tokenValue = this.cookieService.get('token');
-    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
-    const endpoint = this.baseURL.concat('propositions/?limit=' + limit + '&offset=' + offset);
+    // this.tokenValue = this.cookieService.get('token');
+    // this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
+    this.tokenHeader = {'Content-Type': 'application/json'};
+    const endpoint = this.baseURL.concat('propositions/voted_by_parliamentary/?limit=' + limit + '&offset=' + offset);
     console.log('Making POST REQUEST USER ON URL: ' + endpoint);
+    return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
+  }
+
+  getMostActive(limit, offset) {
+    this.tokenHeader = {'Content-Type': 'application/json'};
+    const endpoint = this.baseURL.concat('statistics/most_active/?limit=' + limit + '&offset=' + offset);
+    console.log('Making GET REQUEST USER ON URL: ' + endpoint);
     return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
   }
 
   getProjects() {
     this.tokenValue = this.cookieService.get('token');
     this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
-    const endpoint = this.baseURL.concat('propositions/non_voted/');
+    const endpoint = this.baseURL.concat('propositions/non_voted_by_user/');
     return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
   }
 
   getParliamentarian (limit, offset) {
+    this.tokenHeader = {'Content-Type': 'application/json'};
     const endpoint = this.baseURL.concat('parliamentarians/?limit=' + limit + '&offset=' + offset);
-    return this.http.get(endpoint, {headers: this.headers, observe: 'response'});
+    return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
   }
 
   getSearchedParliamentarian (limit, offset, keyword: string) {
@@ -73,8 +82,9 @@ export class RequestsService {
   }
 
   getParlimentarianSpecific(parlimentaryId) {
-    this.tokenValue = this.cookieService.get('token');
-    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
+    // this.tokenValue = this.cookieService.get('token');
+    // this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
+    this.tokenHeader = {'Content-Type': 'application/json'};
     const endpoint = this.baseURL.concat('parliamentarians/' + parlimentaryId + '/');
     return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
   }

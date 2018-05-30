@@ -34,11 +34,14 @@ i, span {
 }
 
 #sidebar {
+    position: fixed;
+    min-height: 100vh;
     min-width: 250px;
     max-width: 250px;
     background: #7386D5;
     color: #fff;
     transition: all 0.3s;
+    padding-top: 50px;
 }
 
 #sidebar.active {
@@ -47,7 +50,7 @@ i, span {
     text-align: center;
 }
 
-#sidebar.active .sidebar-header h3, #sidebar.active .CTAs {
+#sidebar.active .sidebar-header h4, #sidebar.active .CTAs {
     display: none;
 }
 
@@ -186,7 +189,7 @@ a.article, a.article:hover {
         margin-left: 0 !important;
     }
 
-    #sidebar .sidebar-header h3, #sidebar .CTAs {
+    #sidebar .sidebar-header h4, #sidebar .CTAs {
         display: none;
     }
 
