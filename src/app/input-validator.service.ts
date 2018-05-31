@@ -1,6 +1,13 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgModule } from '@angular/core';
 
 @Injectable()
+
+@NgModule({
+  imports: [],
+  declarations: [],
+  exports: []
+})
+
 export class InputValidatorService {
 
   valuePassword = '';

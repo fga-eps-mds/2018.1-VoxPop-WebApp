@@ -12,6 +12,7 @@ import { UpdateVoteModel } from '../../models/vote';
 })
 export class MinhasPlsComponent implements OnInit {
 
+  term = '';
   tokenValue = '';
   pages = 1;
   offset = 0;
@@ -46,7 +47,7 @@ export class MinhasPlsComponent implements OnInit {
     this.userId = Number(this.cookieService.get('userID'));
     this.token.checkToken(this.tokenValue);
     this.votePosition = 0;
-    this.propositions(1);
+    this.propositionsSearch(1, '');
   }
 
   searchPL(term) {
@@ -92,32 +93,6 @@ export class MinhasPlsComponent implements OnInit {
     });
   }
 
-  specifyProposition(position) {
-    this.votePosition = position;
-  }
-
-  editVote(opinion: string) {
-    let status;
-     const vote: UpdateVoteModel = {
-       user: this.userId,
-       proposition: this.propositionVote[this.votePosition].proposition.id,
-       option: opinion
-    };
-
-    this.requester.updateVote(vote, this.propositionVote[this.votePosition]['id']).subscribe(response => {
-      status = response.status;
-
-      if (!this.requester.didSucceed(status)) {
-        alert('Voto não editado, favor tentar de novo mais tarde');
-      } else {
-        alert('Voto editado com sucesso!');
-        this.propositions(1);
-      }
-
-    });
-
-  }
-
   updateButtonsAppearence(offset, limit) {
     if (offset === 1) {
       document.getElementById('beforeBtn1').style.display = 'none';
@@ -143,4 +118,29 @@ export class MinhasPlsComponent implements OnInit {
 
   }
 
+  specifyProposition(position) {
+    this.votePosition = position;
+  }
+
+  editVote(opinion: string) {
+    let status;
+     const vote: UpdateVoteModel = {
+       user: this.userId,
+       proposition: this.propositionVote[this.votePosition].proposition.id,
+       option: opinion
+    };
+
+    this.requester.updateVote(vote, this.propositionVote[this.votePosition]['id']).subscribe(response => {
+      status = response.status;
+
+      if (!this.requester.didSucceed(status)) {
+        alert('Voto não editado, favor tentar de novo mais tarde');
+      } else {
+        alert('Voto editado com sucesso!');
+        this.propositionsSearch(1, '');
+      }
+
+    });
+
+  }
 }
