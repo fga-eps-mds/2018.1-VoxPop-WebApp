@@ -1,50 +1,58 @@
 <div class="header" align="center">
-  <h1 class="card-title" align="center">Deputados</h1>
+  <div class="text-center">
+    <h3>Parlamentares</h3>
+  </div>
   <form class="col-sm-4 col-sm-offset-4 search" role="search" method="get" action="/busca">
     <div class="input-group">
       <input type="text" class="form-control" placeholder="Buscar entre os deputados" #search>
       <div class="input-group-btn">
-        <button class="btn btn-default" type="submit" (click)="loadPageSearch(1, search.value)">
+        <button class="btn btn-default" type="submit" (click)="loadPage(1, search.value)">
           <i class="glyphicon glyphicon-search"></i>
         </button>
       </div>
     </div>
   </form>
-</div>
-<div class="col-sm-2" *ngFor="let p of parliamentarians">
-  <div class="main-card vote">
-    <a routerLink="/parliamentarians/{{p['id']}}" routerLinkActivate="active">
-      <div class="main-card-content">
-        <div>
-          <img src="{{ p['photo'] }}" width="114" height="152" alt="woops, someting went wrong">
-        </div>
-        <div>
-          <h5 class="card-title">{{ p['name'] }}</h5>
-          <li>Estado: {{p['federal_unit']}}</li>
-        </div>
-      </div>
-    </a>
+  <div class="col-sm-3 col-sm-offset-1">
+    <a href="/user-following" class="btn btn-primary" id="userFollowing" style="display:none">Ver parlamentares seguidos</a>
   </div>
+</div>
+<br>
+<div class="col-sm-3 text-center" *ngFor="let p of parliamentarians">
+
+  <a routerLink="/parliamentarians/{{p['id']}}" routerLinkActivate="active">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <span>{{p['name']}} </span>
+        </h3>
+      </div>
+      <div class="panel-body">
+        <img src="{{p['photo']}}" width="114" height="152" alt="woops, someting went wrong">
+      </div>
+      <div class="panel-footer text-muted">{{p['political_party']}}/{{p['federal_unit']}}</div>
+    </div>
+  </a>
+
 </div>
 <div class="col-sm-12">
   <ul class="nav nav-pills center">
     <li role="presentation">
-      <button id="beforeBtn1" class="btn" (click)="loadPage(1)">Inicio</button>
+      <button id="beforeBtn1" class="btn" (click)="loadPage(1, term)">Inicio</button>
     </li>
     <li role="presentation">
-      <button id="beforeBtn2" class="btn" (click)="loadPage(offset-1)">Ant.</button>
+      <button id="beforeBtn2" class="btn" (click)="loadPage(offset-1, term)">Ant.</button>
     </li>
     <li role="presentation">
       <input id="pageBtn1" type="text" size="3" class="form-control" #page>
     </li>
     <li role="presentation">
-      <button id="pageBtn2" class="btn" (click)="loadPage(page.value)">Ir</button>
+      <button id="pageBtn2" class="btn" (click)="loadPage(page.value, term)">Ir</button>
     </li>
     <li role="presentation">
-      <button id="afterBtn1" class="btn" (click)="loadPage(offset+1)">Prox.</button>
+      <button id="afterBtn1" class="btn" (click)="loadPage(offset+1, term)">Prox.</button>
     </li>
     <li role="presentation">
-      <button id="afterBtn2" class="btn" (click)="loadPage(pages)">Fim</button>
+      <button id="afterBtn2" class="btn" (click)="loadPage(pages, term)">Fim</button>
     </li>
   </ul>
   <br>

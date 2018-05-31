@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
+import { TokenService } from '../token.service';
+import { Token } from '@angular/compiler';
 import { RequestsService } from '../requests.service';
 import { PropositionModel } from '../../models/proposition';
 
@@ -9,6 +12,8 @@ import { PropositionModel } from '../../models/proposition';
 })
 export class ParliamentarianComponent implements OnInit {
 
+  tokenValue = '';
+  idValue: Number;
   pages = 1;
   itemsPerPage = 36;
   offset = 1;
@@ -33,12 +38,24 @@ export class ParliamentarianComponent implements OnInit {
   ];
 
   constructor(
+    private cookieService: CookieService,
+    private token: TokenService,
     private requester: RequestsService,
   ) { }
 
 
   ngOnInit() {
+    this.tokenValue = this.cookieService.get('token');
+    console.log(this.tokenValue);
+    this.token.checkToken(this.tokenValue);
+    this.idValue = +this.cookieService.get('userID');
     this.loadPage(1);
+    if (this.tokenValue === '') {
+      return false;
+    } else {
+      document.getElementById('userFollowing').style.display = 'block';
+      return true;
+    }
   }
 
   loadPage(offset: number) {
@@ -98,8 +115,6 @@ export class ParliamentarianComponent implements OnInit {
       }
       this.updateButtonsAppearence(this.offset, this.pages);
       this.parliamentarians = this.auxParliamentarian;
-      console.log(this.parliamentarians);
-      console.log(this.pages);
     });
   }
 
@@ -125,8 +140,8 @@ export class ParliamentarianComponent implements OnInit {
       document.getElementById('pageBtn1').style.display = 'block';
       document.getElementById('pageBtn2').style.display = 'block';
     }
+    return true;
 
   }
 
 }
-

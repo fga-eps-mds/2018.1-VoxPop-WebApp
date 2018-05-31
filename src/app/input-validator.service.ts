@@ -1,6 +1,13 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgModule } from '@angular/core';
 
 @Injectable()
+
+@NgModule({
+  imports: [],
+  declarations: [],
+  exports: []
+})
+
 export class InputValidatorService {
 
   valuePassword = '';
@@ -22,8 +29,9 @@ export class InputValidatorService {
 
   onKeyPassword(e: any) {
     this.password = e.target.value;
-    if(!this.isValidPassword(this.password)){
-      this.valueInvalidPassword = 'Sua senha deve ter no mínimo 8 caracteres, dos quais: Um é numérico; Um é letra maiúscula; Um é caractere especial.';
+    if (!this.isValidPassword(this.password)) {
+      this.valueInvalidPassword = `Sua senha deve ter no mínimo 8 caracteres,
+                                   dos quais: Um é numérico; Um é letra maiúscula; Um é caractere especial.`;
       document.getElementById('alert-invalid-password').style.display = 'block';
       this.statusValidPassword = false;
       this.borderColor('password', this.danger);
@@ -40,7 +48,7 @@ export class InputValidatorService {
 
   onKeyUsername(e: any) {
     let username = e.target.value;
-    if(this.isUsernameValid(username)){
+    if (this.isUsernameValid(username)) {
       document.getElementById('alert-username').style.display = 'none';
       this.valueUsername = '';
       this.statusUsername = true;
@@ -61,18 +69,18 @@ export class InputValidatorService {
 
   onKeyEmail(e: any) {
     let email = e.target.value;
-    if(this.isEmailValid(email)){
-      document.getElementById('alert-email').style.display = "none";
+    if (this.isEmailValid(email)){
+      document.getElementById('alert-email').style.display = 'none';
       this.valueEmail = '';
       this.statusEmail = true;
       this.borderColor('email', this.sucess);
     } else {
-      document.getElementById('alert-email').style.display = "block";
+      document.getElementById('alert-email').style.display = 'block';
       this.valueEmail = 'Formato do E-mail está incorreto';
       this.statusEmail = false;
       this.borderColor('email', this.danger);
-    } if(email.length < 4) {
-      document.getElementById('alert-email').style.display = "block";
+    } if (email.length < 4) {
+      document.getElementById('alert-email').style.display = 'block';
       this.valueEmail = 'Formato do E-mail está incorreto';
       this.statusEmail = false;
       this.borderColor('email', this.danger);
@@ -80,14 +88,14 @@ export class InputValidatorService {
   }
 
   onKeyValidatorPassword(e: any) {
-    if(this.isConfirmedPassword(this.confirmPassword, this.password)){
-      document.getElementById('alert-password').style.display = "none";
+    if (this.isConfirmedPassword(this.confirmPassword, this.password)) {
+      document.getElementById('alert-password').style.display = 'none';
       this.valuePassword = '';
       this.statusPassword = true;
       this.borderColor('confirm-password', this.sucess);
     } else {
       this.valuePassword = 'A confirmação de senha não corresponde';
-      document.getElementById('alert-password').style.display = "block";
+      document.getElementById('alert-password').style.display = 'block';
       this.statusPassword = false;
       this.borderColor('confirm-password', this.danger);
     }
@@ -118,14 +126,14 @@ export class InputValidatorService {
   }
 
   isConfirmedPassword(password, confPassword) {
-    if (password === confPassword){
+    if (password === confPassword) {
       return true;
     }
     return false;
   }
 
   isValidPassword(password) {
-    const PWDRGX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%¨&*()'`{}~^:;<>,./?°ªº¹²³⁴⁵⁶⁷⁸⁹⁰£¢¬])[A-Za-z\d$@$!%*?&]{8,}/;
+    const PWDRGX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z0-9.])[A-Za-z\d$@$!%*?&]{8,}/;
     if (PWDRGX.test(password)) {
       return true;
     }

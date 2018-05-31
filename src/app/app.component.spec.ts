@@ -10,6 +10,7 @@ import { TokenService } from './token.service';
 import { RequestsService } from './requests.service';
 import { Router } from '@angular/router';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { FormsModule } from '@angular/forms';
 
 
 describe('AppComponent', () => {
@@ -17,6 +18,7 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
+        FormsModule
       ],
       declarations: [
         AppComponent,

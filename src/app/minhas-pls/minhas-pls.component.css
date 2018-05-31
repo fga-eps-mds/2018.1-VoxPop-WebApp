@@ -57,3 +57,12 @@
     margin-top: 10px;
     margin-bottom: 15px;
 }
+
+.center {
+    margin: auto;
+    width: 30%;
+}
+
+.p-center {
+    text-align: center;
+}

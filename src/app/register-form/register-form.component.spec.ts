@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
 import { RequestsService } from '../requests.service';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -8,6 +8,7 @@ import { RegisterFormComponent } from './register-form.component';
 import { Http } from '@angular/http';
 import { CookieService } from 'ngx-cookie-service';
 import { TokenService } from '../token.service';
+import { FormsModule } from '@angular/forms';
 import { InputValidatorService } from '../input-validator.service';
 
 describe('RegisterFormComponent', () => {
@@ -18,7 +19,9 @@ describe('RegisterFormComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
-        HttpClientModule
+        HttpClientModule,
+        FormsModule,
+        InputValidatorService
       ],
       declarations: [ RegisterFormComponent ],
       providers: [
@@ -36,5 +39,60 @@ describe('RegisterFormComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should register user', () => {
+
+    component.user = {
+      username: 'johndoe',
+      first_name: 'john',
+      last_name: 'doe',
+      email: 'john@doe.com',
+      password: '123qwe!@#QWE',
+      social_information: {
+        federal_unit: null,
+        city: '',
+        income: null,
+        education: null,
+        job: '',
+        birth_date: ''
+      }
+    };
+    const statusCode = 0;
+    component.registerUser().subscribe( (resp) => {
+      //  = resp.status;
+      expect(component.registerUser().statusUser).not.toBe(0);
+    });
+
+  });
+
+  it('should register user', () => {
+
+    component.user = {
+      username: 123,
+      first_name: 'john',
+      last_name: 'doe',
+      email: 'john',
+      password: '123qwe!@#QWE',
+      social_information: {
+        federal_unit: null,
+        city: '',
+        income: null,
+        education: null,
+        job: '',
+        birth_date: ''
+      }
+    };
+    const statusCode = 0;
+    component.registerUser().subscribe( (resp) => {
+      //  = resp.status;
+      expect(component.registerUser().statusUser).not.toBe(0);
+    });
+
+  });
+
+  it('should return false on status 500', () => {
+    const status = 500;
+    expect(component.errorHandler(status)).toBeFalsy();
   });
 });

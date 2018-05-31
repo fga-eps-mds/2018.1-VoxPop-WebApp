@@ -17,6 +17,7 @@ describe('ParliamentarianComponent', () => {
       imports: [
         RouterTestingModule.withRoutes([{ path: 'parliamentarians/:id', component: ParliamentarianComponent}]),
         HttpClientModule,
+        RouterModule,
       ],
       declarations: [ ParliamentarianComponent ],
       providers: [
@@ -37,4 +38,17 @@ describe('ParliamentarianComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should updateButton return true', () => {
+    expect(component.updateButtonsAppearence(1, 2)).toBeTruthy();
+    expect(component.updateButtonsAppearence(2, 2)).toBeTruthy();
+    expect(component.updateButtonsAppearence(3, 2)).toBeTruthy();
+    component.pages = 3;
+    expect(component.updateButtonsAppearence(3, 2)).toBeTruthy();
+  });
+
+  it('should loadPage return error code', () => {
+    expect(component.loadPage(0)).toBe(-1);
+  });
+
 });

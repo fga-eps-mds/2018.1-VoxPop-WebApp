@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RequestsService } from '../requests.service';
 import { PropositionModel } from '../../models/proposition';
+import { TokenService } from '../token.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-see-pl',
@@ -9,6 +11,7 @@ import { PropositionModel } from '../../models/proposition';
 })
 export class SeePlComponent implements OnInit {
 
+  tokenValue = '';
   numberPLs: number;
   pages = 1;
   itemsPerPage = 20;
@@ -44,18 +47,23 @@ export class SeePlComponent implements OnInit {
 
   constructor(
     private requester: RequestsService,
+    private cookieService: CookieService,
+    private token: TokenService,
   ) { }
 
 
   ngOnInit() {
+    this.tokenValue = this.cookieService.get('token');
+    this.token.checkToken(this.tokenValue);
     this.loadPage(1);
+    this.tokenValue = this.cookieService.get('token');
+    this.token.checkToken(this.tokenValue);
   }
 
   loadPage(offset: number) {
     let req: any;
-    console.log(Number(offset));
     if (offset < 1 || isNaN(Number(offset))) {
-      alert("Número de páginas inválido, favor digitar um número positivo");
+      alert('Número de páginas inválido, favor digitar um número positivo');
       return -1;
     }
     this.offset = Number(offset);
@@ -66,35 +74,41 @@ export class SeePlComponent implements OnInit {
 
   handlePropositionsResponse(request, offset) {
     this.requester.getProposition(this.itemsPerPage, (offset - 1) * this.itemsPerPage).subscribe( response => {
-      this.auxProposition = response['results'];
-      this.numberPLs = response['count'];
+      this.auxProposition = response.body['results'];
+      this.numberPLs = response.body['count'];
       this.pages = Math.ceil(this.numberPLs/this.itemsPerPage);
       if (this.auxProposition.length <= 0) {
-        alert("Número da página inválido, favor digitar entre 1 e " + this.pages)
-        return
+        alert('Número da página inválido, favor digitar entre 1 e ' + this.pages);
+        return -1;
       }
-      this.updateButtonsAppearence(this.offset, this.pages)
+      this.updateButtonsAppearence(this.offset, this.pages);
       this.proposition = this.auxProposition;
-      console.log(this.proposition);
-      console.log(this.numberPLs);
     });
   }
 
-  updateButtonsAppearence(offset, limit){
+  updateButtonsAppearence(offset, limit) {
     if (offset === 1) {
-      document.getElementById("beforeBtn1").style.display = "none";
-      document.getElementById("beforeBtn2").style.display = "none";
+      document.getElementById('beforeBtn1').style.display = 'none';
+      document.getElementById('beforeBtn2').style.display = 'none';
     } else {
-      document.getElementById("beforeBtn1").style.display = "block";
-      document.getElementById("beforeBtn2").style.display = "block";
+      document.getElementById('beforeBtn1').style.display = 'block';
+      document.getElementById('beforeBtn2').style.display = 'block';
     }
     if (offset === limit) {
-      document.getElementById("afterBtn1").style.display = "none";
-      document.getElementById("afterBtn2").style.display = "none";
+      document.getElementById('afterBtn1').style.display = 'none';
+      document.getElementById('afterBtn2').style.display = 'none';
     } else {
-      document.getElementById("afterBtn1").style.display = "block";
-      document.getElementById("afterBtn2").style.display = "block";
+      document.getElementById('afterBtn1').style.display = 'block';
+      document.getElementById('afterBtn2').style.display = 'block';
     }
+    return true;
   }
 
+  openProposition(proposition_url) {
+    window.open(
+      proposition_url,
+      '_blank',
+      'height=700, width=820, scrollbars=yes, status=yes'
+    );
+  }
 }
