@@ -10,6 +10,7 @@ import { TokenService } from '../token.service';
 })
 export class UserFollowingComponent implements OnInit {
 
+  term = '';
   tokenValue = '';
   offset = 1;
   itemsPerPage = 36;
@@ -46,11 +47,13 @@ export class UserFollowingComponent implements OnInit {
     this.tokenValue = this.cookieService.get('token');
     this.token.checkToken(this.tokenValue);
     this.token.checkToken(this.tokenValue);
-    this.loadPage(1);
+    this.loadPage(1, '');
   }
 
-  loadPage(offset: number) {
+  loadPage(offset: number, term) {
+    this.term = term;
     let req: any;
+    term = term.toUpperCase();
     console.log(Number(offset));
     if (offset < 1 || isNaN(Number(offset))) {
       alert('Número de páginas inválido, favor digitar um número positivo');
@@ -58,13 +61,13 @@ export class UserFollowingComponent implements OnInit {
     }
     this.offset = Number(offset);
     console.log(this.offset);
-    req =  this.requester.getFollowingParliamentarians(this.itemsPerPage, (this.offset - 1) * this.itemsPerPage);
+    req =  this.requester.getSearchFollowingParliamentarians(this.itemsPerPage, (this.offset - 1) * this.itemsPerPage, term);
     this.handleFollowingParliamentariansResponse(req, this.offset);
     return req;
   }
 
   handleFollowingParliamentariansResponse(request, offset) {
-    this.requester.getFollowingParliamentarians(this.itemsPerPage, (offset - 1) * this.itemsPerPage).subscribe( response => {
+    request.subscribe( response => {
       this.auxParliamentarian = response['body']['results'];
       this.pages = Math.ceil(response['body']['count'] / this.itemsPerPage);
       if (this.auxParliamentarian.length <= 0 && this.pages > 0) {
