@@ -56,13 +56,12 @@ export class UserFollowingComponent implements OnInit {
     console.log(Number(offset));
     if (offset < 1 || isNaN(Number(offset))) {
       alert('Número de páginas inválido, favor digitar um número positivo');
-      return -1;
+      return;
     }
     this.offset = Number(offset);
     console.log(this.offset);
     req =  this.requester.getSearchFollowingParliamentarians(this.itemsPerPage, (this.offset - 1) * this.itemsPerPage, term);
     this.handleFollowingParliamentariansResponse(req, this.offset);
-    return req;
   }
 
   handleFollowingParliamentariansResponse(request, offset) {
@@ -75,8 +74,8 @@ export class UserFollowingComponent implements OnInit {
       this.parliamentarians = this.auxParliamentarian;
       this.updateButtonsAppearence(this.offset, this.pages);
       this.parliamentarians = this.auxParliamentarian;
-      console.log(this.parliamentarians);
-      console.log(this.pages);
+      // console.log(this.parliamentarians);
+      // console.log(this.pages);
     });
   }
 
