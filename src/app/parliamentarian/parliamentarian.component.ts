@@ -17,6 +17,7 @@ export class ParliamentarianComponent implements OnInit {
   pages = 1;
   itemsPerPage = 36;
   offset = 1;
+  term = '';
 
   parliamentarians: any = [
     {
@@ -49,7 +50,7 @@ export class ParliamentarianComponent implements OnInit {
     console.log(this.tokenValue);
     this.token.checkToken(this.tokenValue);
     this.idValue = +this.cookieService.get('userID');
-    this.loadPage(1);
+    this.loadPage(1, '');
     if (this.tokenValue === '') {
       return false;
     } else {
@@ -58,48 +59,18 @@ export class ParliamentarianComponent implements OnInit {
     }
   }
 
-  loadPage(offset: number) {
+  loadPage(offset: number, term) {
     let req: any;
+    this.term = term.toUpperCase();
     console.log(Number(offset));
     if (offset < 1 || isNaN(Number(offset))) {
       alert('Número de páginas inválido, favor digitar um número positivo');
-      return -1;
+      return;
     }
     this.offset = Number(offset);
     console.log(this.offset);
-    req =  this.requester.getParliamentarian(this.itemsPerPage, (this.offset - 1) * this.itemsPerPage);
-    this.handleParliamentariansResponse(req, this.offset);
-    return req;
-  }
-
-  loadPageSearch(offset: number, term) {
-    let req: any;
-    term = term.toUpperCase();
-    console.log(Number(offset));
-    if (offset < 1 || isNaN(Number(offset))) {
-      alert('Número de páginas inválido, favor digitar um número positivo');
-      return -1;
-    }
-    this.offset = Number(offset);
-    console.log(this.offset);
-    req =  this.requester.getSearchedParliamentarian(this.itemsPerPage, (this.offset - 1) * this.itemsPerPage, term);
-    this.handleParliamentariansSearchResponse(req, this.offset, term);
-    return req;
-  }
-
-  handleParliamentariansResponse(request, offset) {
-    this.requester.getParliamentarian(this.itemsPerPage, (offset - 1) * this.itemsPerPage).subscribe( response => {
-      this.auxParliamentarian = response['body']['results'];
-      this.pages = Math.ceil(response['body']['count'] / this.itemsPerPage);
-      if (this.auxParliamentarian.length <= 0) {
-        alert('Número da página inválido, favor digitar entre 1 e ' + this.pages);
-        return;
-      }
-      this.updateButtonsAppearence(this.offset, this.pages);
-      this.parliamentarians = this.auxParliamentarian;
-      console.log(this.parliamentarians);
-      console.log(this.pages);
-    });
+    req =  this.requester.getSearchedParliamentarian(this.itemsPerPage, (this.offset - 1) * this.itemsPerPage, this.term);
+    this.handleParliamentariansSearchResponse(req, this.offset, this.term);
   }
 
   handleParliamentariansSearchResponse(request, offset, term) {
