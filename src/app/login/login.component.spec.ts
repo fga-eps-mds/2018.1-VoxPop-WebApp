@@ -63,8 +63,8 @@ describe('LoginComponent', () => {
   });
 
   it('should login', () =>  {
-    // usernameEl.nativeElement.value = 'teste';
-    // passwordEl.nativeElement.value = 'teste';
+    usernameEl.nativeElement.value = 'teste';
+    passwordEl.nativeElement.value = 'teste';
 
     var user;
     user = {
@@ -83,8 +83,8 @@ describe('LoginComponent', () => {
 
   it('should auth with post authentication service', () => {
     const user = {
-      username: 'user02',
-      password: '123456a@W'
+      username: 'potato',
+      password: '123qwe!@#QWE'
     };
     var statusCode = 0;
     var token = 'token';
