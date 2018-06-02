@@ -21,7 +21,7 @@
     - name: Clone/pull project repository
       git:
         repo: "{{ repository_url }}"
-        version: dev
+        version: master
         dest: "{{ install_root }}/{{ project_name }}"
         accept_hostkey: yes
         force: yes
