@@ -3,7 +3,7 @@ WORKDIR /app
 COPY package.json /app/
 RUN npm install
 COPY ./ /app/
-RUN npm run build -- --prod --environment prod
+RUN npm run build -- --environment prod
 
 FROM nginx:1.13
 COPY --from=node /app/dist/ /usr/share/nginx/html
