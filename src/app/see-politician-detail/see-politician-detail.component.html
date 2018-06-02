@@ -1,0 +1,42 @@
+<div class="text-center">
+  <h3>Informações Detalhadas do Parlamentar</h3>
+  <br>
+  <div class="col-sm-6 col-sm-offset-3">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <span>Deputado {{parlimentarian['name']}} - {{parlimentarian['political_party']}}/{{parlimentarian['federal_unit']}}</span>
+          </h3>
+        </div>
+        <div class="panel-body">
+          <div class="col-sm-3">
+            <img src="{{parlimentarian['photo']}}" width="114" height="152" alt="woops, someting went wrong">
+          </div>
+          <div class="col-sm-9">
+            <p>Gênero: {{gender}}</p>
+            <p>Data de nascimento: {{parlimentarian['birth_date']}}</p>
+            <p>Escolaridade: {{parlimentarian['education']}}</p>
+            <div id="follow" style="display: none">
+              <div class ="right">
+                  <button class="btn btn-primary" (click)="followParliamentarian()" >
+                      <span class="glyphicon glyphicon-eye-open">
+                        Seguir parlamentar
+                      </span>
+                  </button>
+              </div>
+            </div>
+            <div id="unfollow" style="display: none">
+              <div class ="right">
+                  <button class="btn btn-primary" (click)="unfollowParliamentarian()" >
+                      <span class="glyphicon glyphicon-eye-close">
+                        Deixar de seguir parlamentar
+                      </span>
+                  </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      <div class="panel-footer text-muted">{{parlimentarian['email']}}</div>
+    </div>
+  </div>
+</div>

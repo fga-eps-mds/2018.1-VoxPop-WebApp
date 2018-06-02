@@ -1,11 +1,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
 import { RequestsService } from '../requests.service';
 import { HttpClientModule } from '@angular/common/http';
 
 import { RegisterFormComponent } from './register-form.component';
 import { Http } from '@angular/http';
+import { CookieService } from 'ngx-cookie-service';
+import { TokenService } from '../token.service';
+import { FormsModule } from '@angular/forms';
+import { InputValidatorService } from '../input-validator.service';
 
 describe('RegisterFormComponent', () => {
   let component: RegisterFormComponent;
@@ -15,58 +19,79 @@ describe('RegisterFormComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
-        HttpClientModule
+        HttpClientModule,
+        FormsModule,
+        InputValidatorService
       ],
       declarations: [ RegisterFormComponent ],
-    providers: [ RequestsService ]
+      providers: [
+        RequestsService,
+        CookieService,
+        TokenService,
+      ]
     })
     .compileComponents();
-  }));
-
-  beforeEach(() => {
     fixture = TestBed.createComponent(RegisterFormComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    // fixture.detectChanges();
+  }));
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should check username lenght', () => {
-    expect(component.isUsernameSizeValid('top')).toBeFalsy('short username');
-    expect(component.isUsernameSizeValid('')).toBeFalsy('void username');
-    expect(component.isUsernameSizeValid('thisIsASuperLargeUsernameThatShouldNotBeAcceptd')).toBeFalsy('too long username');
-    expect(component.isUsernameSizeValid('ValidUserName')).toBeTruthy('valid username');
-  })
+  it('should register user', () => {
 
-  it('should not accept username with special characters', () => {
-    expect(component.isUsernameValid('two words')).toBeFalsy('two words username');
-    expect(component.isUsernameValid('V1D@_LoK4')).toBeFalsy('username with special characters');
-    expect(component.isUsernameValid(' spacebefore')).toBeFalsy('space before username');
-    expect(component.isUsernameValid('spaceafter ')).toBeFalsy('space after username');
-    expect(component.isUsernameValid('User42')).toBeTruthy('valid username');
-  })
+    component.user = {
+      username: 'johndoe',
+      first_name: 'john',
+      last_name: 'doe',
+      email: 'john@doe.com',
+      password: '123qwe!@#QWE',
+      social_information: {
+        federal_unit: null,
+        city: '',
+        income: null,
+        education: null,
+        job: '',
+        birth_date: ''
+      }
+    };
+    var statusCode = 0;
+    component.registerUser().subscribe( (resp) => {
+      //  = resp.status;
+      expect(component.registerUser().statusUser).not.toBe(0);
+    });
 
-  it('should check password lenght', () => {
-    expect(component.isValidPassword('1aA*')).toBeFalsy('short password');
-    expect(component.isValidPassword('')).toBeFalsy('empty password');
-    expect(component.isValidPassword('All Letters without a Number!')).toBeFalsy('no number password');
-    expect(component.isValidPassword('GfBirthdate0616')).toBeFalsy('No special characters');
-    expect(component.isValidPassword('superpassword123!@#')).toBeFalsy('no uppercase letters');
-    expect(component.isValidPassword('MINIPASSWORD123!@#')).toBeFalsy('no lowercase letters');
-    expect(component.isValidPassword('GfBirthdate:06/16')).toBeTruthy('Good password');
-  })
+  });
 
-  it('should check if password is confirmed', () => {
-    expect(component.isConfirmedPassword('firstOne', 'secondOne')).toBeFalsy();
-    expect(component.isConfirmedPassword('twoEquals', 'twoEquals')).toBeTruthy;
-  })
+  it('should register user', () => {
 
-  it('should check email syntax', () => {
-    expect(component.isEmailValid('email.com.br')).toBeFalsy('no "@"');
-    expect(component.isEmailValid('@twitter.io')).toBeFalsy;('no text before "@"')
-    expect(component.isEmailValid('trust.This@email')).toBeFalsy('no "." after "@"');
-    expect(component.isEmailValid('email@true.com')).toBeTruthy('valid email');
-  })
+    component.user = {
+      username: 123,
+      first_name: 'john',
+      last_name: 'doe',
+      email: 'john',
+      password: '123qwe!@#QWE',
+      social_information: {
+        federal_unit: null,
+        city: '',
+        income: null,
+        education: null,
+        job: '',
+        birth_date: ''
+      }
+    };
+    var statusCode = 0;
+    component.registerUser().subscribe( (resp) => {
+      //  = resp.status;
+      expect(component.registerUser().statusUser).not.toBe(0);
+    });
+
+  });
+
+  it('should return false on status 500', () => {
+    const status = 500;
+    expect(component.errorHandler(status)).toBeFalsy();
+  });
 });

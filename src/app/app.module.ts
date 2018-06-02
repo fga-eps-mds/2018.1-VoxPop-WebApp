@@ -11,17 +11,66 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { RouterModule, Routes, Router } from '@angular/router';
 import { RequestsService } from './requests.service';
 import { FormsModule } from '@angular/forms';
- 
-const appRoutes:Routes = [
+import { LoginComponent } from './login/login.component';
+import { CookieService } from 'ngx-cookie-service';
+import { TokenService } from './token.service';
+import { ProfileComponent } from './profile/profile.component';
+import { MinhasPlsComponent } from './minhas-pls/minhas-pls.component';
+import { PropositionsComponent } from './propositions/propositions.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { ParliamentarianComponent } from './parliamentarian/parliamentarian.component';
+import { EditPageComponent } from './edit-page/edit-page.component';
+import { InputValidatorService } from './input-validator.service';
+import { SeePlComponent } from './see-pl/see-pl.component';
+import { SeePoliticianDetailedComponent } from './see-politician-detail/see-politician-detail.component';
+import { UserFollowingComponent } from './user-following/user-following.component';
+
+const appRoutes: Routes = [
+  {
+    path: 'register',
+    component: RegisterFormComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'mypls',
+    component: MinhasPlsComponent
+  },
   {
     path: '',
     component: MainPageComponent
   },
   {
-    path: 'register',
-    component: RegisterFormComponent
-  }
-]
+    path: 'profile',
+    component: ProfileComponent
+  },
+  {
+    path: 'propositions',
+    component: PropositionsComponent
+  },
+  {
+    path: 'parliamentarians',
+    component: ParliamentarianComponent
+  },
+  {
+    path: 'profile/edit',
+    component: EditPageComponent
+  },
+  {
+    path: 'seepl',
+    component: SeePlComponent
+  },
+  {
+    path: 'parliamentarians/:id',
+    component: SeePoliticianDetailedComponent
+  },
+  {
+    path: 'user-following',
+    component: UserFollowingComponent
+  },
+];
 
 @NgModule({
   declarations: [
@@ -30,17 +79,31 @@ const appRoutes:Routes = [
     FooterComponent,
     RegisterFormComponent,
     MainPageComponent,
-
+    LoginComponent,
+    ProfileComponent,
+    MinhasPlsComponent,
+    PropositionsComponent,
+    SidebarComponent,
+    ParliamentarianComponent,
+    EditPageComponent,
+    SeePlComponent,
+    SeePoliticianDetailedComponent,
+    UserFollowingComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     HttpModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA],
-  providers: [ RequestsService ],
+  providers: [
+    RequestsService,
+    CookieService,
+    TokenService,
+    InputValidatorService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
