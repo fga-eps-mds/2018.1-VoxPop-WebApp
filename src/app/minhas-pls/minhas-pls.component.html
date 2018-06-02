@@ -4,13 +4,14 @@
     <div class="input-group">
       <input type="text" class="form-control" placeholder="Buscar entre os projetos de lei votados" #search>
       <div class="input-group-btn">
-        <button class="btn btn-default" type="submit" (click)="searchPL(search.value)">
+        <button class="btn btn-default" type="submit" (click)="propositions(1, search.value)">
           <i class="glyphicon glyphicon-search"></i>
         </button>
       </div>
     </div>
   </form>
 </div>
+
 <div class="col-sm-6" *ngFor="let p of propositionVote let j = index">
   <div class="main-card vote">
     <div class="main-card-content">
@@ -30,32 +31,6 @@
       </button>
     </div>
   </div>
-</div>
-<div class="col-sm-12">
-  <ul class="nav nav-pills center">
-    <li role="presentation">
-      <button id="beforeBtn1" class="btn" (click)="propositions(1)">Inicio</button>
-    </li>
-    <li role="presentation">
-      <button id="beforeBtn2" class="btn" (click)="propositions(offset-1)">Ant.</button>
-    </li>
-    <li role="presentation">
-      <input id="pageBtn1" type="text" size="3" class="form-control" #page>
-    </li>
-    <li role="presentation">
-      <button id="pageBtn2" class="btn" (click)="propositions(page.value)">Ir</button>
-    </li>
-    <li role="presentation">
-      <button id="afterBtn1" class="btn" (click)="propositions(offset+1)">Prox.</button>
-    </li>
-    <li role="presentation">
-      <button id="afterBtn2" class="btn" (click)="propositions(pages)">Fim</button>
-    </li>
-  </ul>
-  <br>
-  <br>
-  <p class="p-center">Página: {{offset}}/{{pages}}</p>
-  <br>
 </div>
 <div class="row" *ngIf="propositionVote?.length <= 0">
   <div class="main-card">
