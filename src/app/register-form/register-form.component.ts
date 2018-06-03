@@ -19,12 +19,12 @@ export class RegisterFormComponent implements OnInit {
     email: '',
     password: '',
     social_information: {
-      federal_unit: null,
-      city: null,
-      income: null,
-      education: null,
+      federal_unit: 'N',
+      city: '',
+      income: '-1',
+      education: 'N',
       job: '',
-      birth_date: ''
+      birth_date: '0001-01-01',
     }
   };
 
@@ -68,6 +68,6 @@ export class RegisterFormComponent implements OnInit {
         document.getElementById('alert-invalid').style.display = 'block';
         return false;
     }
-}
+  }
 
 }
