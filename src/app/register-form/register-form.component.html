@@ -1,7 +1,7 @@
 <div class="col-md-6 col-md-offset-3">
   <form (submit)="registerUser($event)">
       <div class="alert alert-danger" role="alert" id="alert-invalid" style="display:none">
-        <p>Erro ao registrar</p>
+        <p>{{validator.valueErrorHandler}}</p>
       </div>
     <div id="firstPart" class="register-card">
         <div class="alert alert-danger" role="alert" id="alert-invalid-inputs" style="display:none">

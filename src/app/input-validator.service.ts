@@ -10,6 +10,7 @@ import { Injectable, NgModule } from '@angular/core';
 
 export class InputValidatorService {
 
+  valueErrorHandler = '';
   valuePassword = '';
   valueInvalidPassword = '';
   valueUsername = '';
@@ -27,11 +28,20 @@ export class InputValidatorService {
 
   constructor() { }
 
+  errorHandler(status) {
+    if (status === 500) {
+      document.getElementById('alert-invalid').style.display = 'block';
+      this.valueErrorHandler = 'Error interno, tente novamente mais tarde';
+    } else if (status === 400) {
+      document.getElementById('alert-invalid').style.display = 'block';
+      this.valueErrorHandler = 'Nome de usuário já existente';
+    }
+  }
+
   onKeyPassword(e: any) {
     this.password = e.target.value;
     if (!this.isValidPassword(this.password)) {
-      this.valueInvalidPassword = `Sua senha deve ter no mínimo 8 caracteres,
-                                   dos quais: Um é numérico; Um é letra maiúscula; Um é caractere especial.`;
+      this.valueInvalidPassword = 'Sua senha deve ter no mínimo 6 caracteres';
       document.getElementById('alert-invalid-password').style.display = 'block';
       this.statusValidPassword = false;
       this.borderColor('password', this.danger);
@@ -133,8 +143,7 @@ export class InputValidatorService {
   }
 
   isValidPassword(password) {
-    const PWDRGX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z0-9.])[A-Za-z\d$@$!%*?&]{8,}/;
-    if (PWDRGX.test(password)) {
+    if (password.length > 5 && password.length < 50) {
       return true;
     }
     return false;

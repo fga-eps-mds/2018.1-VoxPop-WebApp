@@ -59,15 +59,7 @@ export class RegisterFormComponent implements OnInit {
     error => {
         console.log(error);
         const statusAuth = error.status;
-        this.errorHandler(statusAuth);
+        this.validator.errorHandler(statusAuth);
     });
   }
-
-  errorHandler (status) {
-    if (status === 500) {
-        document.getElementById('alert-invalid').style.display = 'block';
-        return false;
-    }
-  }
-
 }
