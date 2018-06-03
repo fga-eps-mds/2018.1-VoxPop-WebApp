@@ -197,6 +197,13 @@ export class InputValidatorService {
 
  borderColor(id, color) {
   document.getElementById(id).style.borderColor = color;
+ }
+
+ clickReturnButton () {
+  document.getElementById('firstPart').style.display = 'block';
+  document.getElementById('secondPart').style.display = 'none';
+  document.querySelector('#registerBtn').setAttribute('disabled', 'disabled');
 }
+
 
 }
