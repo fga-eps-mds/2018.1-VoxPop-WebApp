@@ -67,7 +67,7 @@ describe('SeePoliticianDetailedComponent', () => {
   it('should call checkParliamentarianFollowed', async(() => {
     const response: any[] = [];
 
-    spyOn(requestService, 'getFollow').and.returnValue(of(response))
+    spyOn(requestService, 'getFollow').and.returnValue(of(response));
 
     component.checkParliamentarianFollowed();
 
