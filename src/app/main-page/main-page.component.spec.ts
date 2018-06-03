@@ -8,6 +8,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { MockBackend } from '@angular/http/testing';
 import { BaseRequestOptions, Http, ResponseOptions, Jsonp } from '@angular/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('MainPageComponent', () => {
   let component: MainPageComponent;
@@ -17,6 +18,7 @@ describe('MainPageComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        RouterTestingModule.withRoutes([{ path: 'parliamentarians/:id', component: MainPageComponent}]),
         HttpClientModule,
         HttpClientTestingModule,
       ],
@@ -44,6 +46,11 @@ describe('MainPageComponent', () => {
 
   it('should initialize the page', () => {
     component.tokenValue = 'token';
+    component.idValue = 1;
+    component.proposition(3, 0);
+    component.mostActives(3, 0);
+    const url = 'teste.com';
+    component.openProposition(url);
     component.ngOnInit();
 
     expect(component).toBeTruthy();
@@ -53,7 +60,7 @@ describe('MainPageComponent', () => {
     const response = {
       "results": [
         {
-          "proposition_id": 12,
+          'proposition_id': 12,
           "proposition_type": 'Teste',
           "proposition_type_initials": 'T',
           "number": 32,
@@ -66,7 +73,6 @@ describe('MainPageComponent', () => {
     };
 
     component.handlePropositionsResponse(response, 1, 0);
-    
   }));
 
 });
