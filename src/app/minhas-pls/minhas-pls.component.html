@@ -15,7 +15,7 @@
 <br>
 <br>
 <div class="row">
-  <div class="col-sm-6 text-center" *ngFor="let p of propositionVote">
+  <div class="col-sm-6 text-center" *ngFor="let p of propositionVote let j = index">
     <div class="panel panel-primary">
       <div class="panel-heading">
         <h3 class="panel-title">{{p.proposition['proposition_type_initials']}} {{p.proposition['number']}}/{{p.proposition['year']}}</h3>
