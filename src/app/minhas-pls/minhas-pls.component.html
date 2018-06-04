@@ -29,10 +29,14 @@
           <div *ngIf="p.proposition['abstract'].length > 400">
             <p>{{p.proposition['abstract'].substr(0, 400)}}... [...]</p>
           </div>
-          <div>
-            <p>Seu voto: {{p['option']}}</p>
-          </div>
+          <p>
+            Seu voto: 
+            <ng-container *ngIf="p['option'] === 'Y'"><span class="glyphicon glyphicon-ok"></span> SIM</ng-container>
+            <ng-container *ngIf="p['option'] === 'A'"><span class="glyphicon glyphicon-minus"></span> ABSTENÇÃO</ng-container>
+            <ng-container *ngIf="p['option'] === 'N'"><span class="glyphicon glyphicon-remove"></span> NÃO</ng-container>
+          </p>
         </div>
+        <br>
         <button class="btn btn-primary" (click)="openProposition(p.proposition['url_full'])">Veja na íntegra</button>
         <button type="button" class="btn btn-primary" (click)="specifyProposition(j)" data-toggle="modal" data-target="#exampleModal">
           Editar Voto
