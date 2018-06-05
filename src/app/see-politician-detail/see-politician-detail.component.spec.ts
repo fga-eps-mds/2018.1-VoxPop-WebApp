@@ -69,6 +69,7 @@ describe('SeePoliticianDetailedComponent', () => {
 
   //   spyOn(requestService, 'getFollow').and.returnValue(of(response))
 
+
   //   component.checkParliamentarianFollowed();
 
   //   fixture.detectChanges();

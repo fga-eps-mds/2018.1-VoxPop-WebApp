@@ -1,5 +1,17 @@
+<div class="header" align="center">
 <div class="text-center">
   <h3>Parlamentares seguidos</h3>
+</div>
+<form class="col-sm-4 col-sm-offset-4 search" role="search" method="get" action="/busca">
+  <div class="input-group">
+    <input type="text" class="form-control" placeholder="Buscar entre os deputados" #search>
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit" (click)="loadPage(1, search.value)">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</form>
 </div>
 <br>
 <div class="col-sm-3 text-center" *ngFor="let p of parliamentarians">
@@ -27,22 +39,22 @@
 <div class="col-sm-12" *ngIf="pages > 0">
   <ul class="nav nav-pills center">
     <li role="presentation">
-      <button id="beforeBtn1" class="btn" (click)="loadPage(1)">Inicio</button>
+      <button id="beforeBtn1" class="btn" (click)="loadPage(1, term)">Inicio</button>
     </li>
     <li role="presentation">
-      <button id="beforeBtn2" class="btn" (click)="loadPage(offset-1)">Ant.</button>
+      <button id="beforeBtn2" class="btn" (click)="loadPage(offset-1, term)">Ant.</button>
     </li>
     <li role="presentation">
       <input id="pageBtn1" type="text" size="3" class="form-control" #page>
     </li>
     <li role="presentation">
-      <button id="pageBtn2" class="btn" (click)="loadPage(page.value)">Ir</button>
+      <button id="pageBtn2" class="btn" (click)="loadPage(page.value, term)">Ir</button>
     </li>
     <li role="presentation">
-      <button id="afterBtn1" class="btn" (click)="loadPage(offset+1)">Prox.</button>
+      <button id="afterBtn1" class="btn" (click)="loadPage(offset+1, term)">Prox.</button>
     </li>
     <li role="presentation">
-      <button id="afterBtn2" class="btn" (click)="loadPage(pages)">Fim</button>
+      <button id="afterBtn2" class="btn" (click)="loadPage(pages, term)">Fim</button>
     </li>
   </ul>
   <br>
