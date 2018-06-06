@@ -40,12 +40,12 @@ describe('SeePlComponent', () => {
   });
 
   it('should loadPage return error code', () => {
-    expect(component.loadPage(0)).toBe(-1);
+    expect(component.loadPage(0)).toBeFalsy();
   });
 
   it('should handlePropositionsReponse return error code', () => {
     component.auxProposition = [];
-    expect(component.handlePropositionsResponse(0, '')).toBe(-1);
+    expect(component.handlePropositionsResponse(0, '')).toBeFalsy();
   });
 
   it('should updateButton return true', () => {

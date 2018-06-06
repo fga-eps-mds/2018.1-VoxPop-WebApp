@@ -64,7 +64,7 @@ export class SeePlComponent implements OnInit {
     let req: any;
     if (offset < 1 || isNaN(Number(offset))) {
       alert('Número de páginas inválido, favor digitar um número positivo');
-      return -1;
+      return false;
     }
     this.offset = Number(offset);
     req =  this.requester.getProposition(this.itemsPerPage, (this.offset - 1) * this.itemsPerPage);
@@ -79,7 +79,7 @@ export class SeePlComponent implements OnInit {
       this.pages = Math.ceil(this.numberPLs/this.itemsPerPage);
       if (this.auxProposition.length <= 0) {
         alert('Número da página inválido, favor digitar entre 1 e ' + this.pages);
-        return -1;
+        return false;
       }
       this.updateButtonsAppearence(this.offset, this.pages);
       this.proposition = this.auxProposition;
