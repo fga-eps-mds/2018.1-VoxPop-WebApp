@@ -9,23 +9,23 @@ import { CookieService } from 'ngx-cookie-service';
 export class HeaderComponent implements OnInit {
 
   constructor(
-    private cookieService:CookieService,
+    private cookieService: CookieService,
   ) { }
 
   ngOnInit() {
   }
 
-  logout(){
+  logout() {
     this.cookieService.set('token', '');
   }
 
   toggleMenu() {
-     var sidebar = document.getElementById("sidebar");
-     sidebar.classList.toggle("active");
-     var content = document.getElementById("content");
-     content.classList.toggle("active");
+     const sidebar = document.getElementById('sidebar');
+     sidebar.classList.toggle('active');
+     const content = document.getElementById('content');
+     content.classList.toggle('active');
      //
-     if(sidebar.classList.contains('active')){
+     if (sidebar.classList.contains('active')) {
        this.cookieService.set('sidebar', 'false');
      } else {
        this.cookieService.set('sidebar', 'true');
