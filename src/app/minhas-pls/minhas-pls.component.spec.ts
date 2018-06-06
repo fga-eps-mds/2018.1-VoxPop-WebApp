@@ -17,6 +17,7 @@ describe('MinhasPlsComponent', () => {
       ],
       declarations: [ MinhasPlsComponent ],
       providers: [
+        CookieService,
         RequestsService,
         CookieService,
         TokenService,
@@ -33,5 +34,19 @@ describe('MinhasPlsComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should change variable on click', () => {
+    component.specifyProposition(42);
+    expect(component.votePosition).toBe(42);
+  });
+
+  it('should update buttons appearence', () => {
+    component.pages = 10;
+    expect(component.updateButtonsAppearence(1, 2)).toBeUndefined();
+    expect(component.updateButtonsAppearence(2, 3)).toBeUndefined();
+    expect(component.updateButtonsAppearence(2, 2)).toBeUndefined();
+    component.pages = 1;
+    expect(component.updateButtonsAppearence(3, 10)).toBeUndefined();
   });
 });

@@ -90,9 +90,4 @@ describe('RegisterFormComponent', () => {
     });
 
   });
-
-  it('should return false on status 500', () => {
-    const status = 500;
-    expect(component.errorHandler(status)).toBeFalsy();
-  });
 });

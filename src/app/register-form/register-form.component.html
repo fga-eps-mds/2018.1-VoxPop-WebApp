@@ -1,7 +1,7 @@
 <div class="col-md-6 col-md-offset-3">
   <form (submit)="registerUser($event)">
       <div class="alert alert-danger" role="alert" id="alert-invalid" style="display:none">
-        <p>Erro ao registrar</p>
+        <p>{{validator.valueErrorHandler}}</p>
       </div>
     <div id="firstPart" class="register-card">
         <div class="alert alert-danger" role="alert" id="alert-invalid-inputs" style="display:none">
@@ -72,8 +72,8 @@
          <div class="form-group">
               <label>Estado</label>
               <select name="federal_unit" class="form-control" [(ngModel)]="user.social_information['federal_unit']">
-                   <option value=null>Prefiro não responder</option>
-                   <option value="AC">Acre</option>
+                   <option value="N" selected>Prefiro não responder</option>
+                   <option value="AC" >Acre</option>
                    <option value="AL">Alagoas</option>
                    <option value="AP">Amapá</option>
                    <option value="AM">Amazonas</option>
@@ -109,20 +109,20 @@
          <div class="form-group">
               <label>Renda</label>
               <select name="income" class="form-control" [(ngModel)]="user.social_information['income']">
-                   <option value=null>Prefiro não responder</option>
-                   <option value="500.00">Entre R$0,00 até R$1000,00</option>
-                   <option value="2000.00">Entre R$1000,01 até R$3000,00</option>
-                   <option value="4500.00">Entre R$3000,01 até R$6000,00</option>
-                   <option value="7500.00">Entre R$6000,01 até R$9000,00</option>
-                   <option value="12000.00">Entre R$9000,01 até R$15000,00</option>
-                   <option value="20000.00">Entre R$15000,01 até R$25000,00</option>
-                   <option value="25000.00">R$25000,01 para cima</option>
+                   <option value="-1">Prefiro não responder</option>
+                   <option value="0">Entre R$0,00 até R$1000,00</option>
+                   <option value="1">Entre R$1000,01 até R$3000,00</option>
+                   <option value="2">Entre R$3000,01 até R$6000,00</option>
+                   <option value="3">Entre R$6000,01 até R$9000,00</option>
+                   <option value="4">Entre R$9000,01 até R$15000,00</option>
+                   <option value="5">Entre R$15000,01 até R$25000,00</option>
+                   <option value="6">R$25000,01 para cima</option>
               </select>
          </div>
          <div class="form-group">
               <label>Formação</label>
               <select name="education" class="form-control" [(ngModel)]="user.social_information['education']">
-                   <option value=null>Prefiro não responder</option>
+                   <option value="N">Prefiro não responder</option>
                    <option value="EFC">Ensino Fundamental Completo</option>
                    <option value="EFI">Ensino Fundamental Incompleto</option>
                    <option value="EMC">Ensino Médio Completo</option>
@@ -141,11 +141,11 @@
          </div>
          <div class="form-group">
               <label>Data de Nascimento</label>
-              <input name="birth_date" type="date" class="form-control" value="0001-01-01" [(ngModel)]="user.social_information['birth_date']">
+              <input name="birth_date" type="date" class="form-control" [(ngModel)]="user.social_information['birth_date']">
          </div>
          <button class="btn btn-primary"
          type="button" id="returnBtn"
-         (click)="clickReturnButton()">
+         (click)="validator.clickReturnButton()">
          Retornar</button>
          <button class="btn btn-primary" type="submit" id="registerBtn" disabled>Cadastrar</button>
 

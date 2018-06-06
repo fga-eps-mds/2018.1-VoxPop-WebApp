@@ -17,6 +17,7 @@ describe('UserFollowingComponent', () => {
       imports: [
         RouterTestingModule.withRoutes([{ path: 'parliamentarians/:id', component: UserFollowingComponent}]),
         HttpClientModule,
+        RouterModule,
       ],
       declarations: [ UserFollowingComponent ],
       providers: [
@@ -37,4 +38,18 @@ describe('UserFollowingComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should updateButton return true', () => {
+    expect(component.updateButtonsAppearence(1, 2)).toBeUndefined();
+    expect(component.updateButtonsAppearence(2, 2)).toBeUndefined();
+    expect(component.updateButtonsAppearence(3, 2)).toBeUndefined();
+    component.pages = 3;
+    expect(component.updateButtonsAppearence(3, 2)).toBeUndefined();
+  });
+
+  it('should loadPage return error code', () => {
+    expect(component.loadPage(0, '')).toBeUndefined();
+    expect(component.loadPage(2, '')).toBeUndefined();
+  });
+
 });
