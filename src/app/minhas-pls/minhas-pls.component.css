@@ -37,7 +37,7 @@
 }
 
 .vote{
-    height: 32rem;
+    height: 70rem;
 }
 
 .center {
@@ -50,5 +50,11 @@
 }
 
 .panel-body {
-  min-height: 250px;
+  min-height: 300px;
 }
+
+.buttons {
+    background-color: white;
+    border-top: 0px;
+}
+
