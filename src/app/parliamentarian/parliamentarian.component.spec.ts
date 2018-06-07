@@ -15,15 +15,15 @@ describe('ParliamentarianComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterModule,
+        RouterTestingModule.withRoutes([{ path: 'parliamentarians/:id', component: ParliamentarianComponent}]),
         HttpClientModule,
-        RouterTestingModule
+        RouterModule,
       ],
       declarations: [ ParliamentarianComponent ],
       providers: [
         RequestsService,
         TokenService,
-        CookieService
+        CookieService,
       ]
     })
     .compileComponents();
@@ -49,7 +49,7 @@ describe('ParliamentarianComponent', () => {
 
   it('should loadPage return error code', () => {
     expect(component.loadPage(0, '')).toBeUndefined();
-    expect(component.loadPage('a', '')).toBeUndefined();
+    expect(component.loadPage(2, '')).toBeUndefined();
   });
 
 });

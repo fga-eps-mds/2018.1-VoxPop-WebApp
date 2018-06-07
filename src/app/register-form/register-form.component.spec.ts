@@ -28,6 +28,7 @@ describe('RegisterFormComponent', () => {
         RequestsService,
         CookieService,
         TokenService,
+        InputValidatorService,
       ]
     })
     .compileComponents();
@@ -57,7 +58,7 @@ describe('RegisterFormComponent', () => {
         birth_date: ''
       }
     };
-    var statusCode = 0;
+    const statusCode = 0;
     component.registerUser().subscribe( (resp) => {
       //  = resp.status;
       expect(component.registerUser().statusUser).not.toBe(0);
@@ -82,7 +83,7 @@ describe('RegisterFormComponent', () => {
         birth_date: ''
       }
     };
-    var statusCode = 0;
+    const statusCode = 0;
     component.registerUser().subscribe( (resp) => {
       //  = resp.status;
       expect(component.registerUser().statusUser).not.toBe(0);

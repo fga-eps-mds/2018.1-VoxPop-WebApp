@@ -26,7 +26,8 @@ describe('EditPageComponent', () => {
       providers: [
         RequestsService,
         TokenService,
-        CookieService
+        CookieService,
+        InputValidatorService,
       ]
     })
     .compileComponents();
