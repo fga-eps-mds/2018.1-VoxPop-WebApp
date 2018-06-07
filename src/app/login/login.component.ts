@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
 
     valueInvalid = 'Usuário ou senha inválida';
     tokenValue = '';
+    registerSuccess = '';
 
     constructor(private router: Router,
                 private requester: RequestsService,
@@ -26,6 +27,8 @@ export class LoginComponent implements OnInit {
     ngOnInit() {
         this.tokenValue = this.cookieService.get('token');
         this.token.checkToken(this.tokenValue);
+        this.registerSuccess = this.cookieService.get('success');
+        this.checkRegister(this.registerSuccess);
     }
 
     login(username: string, password: string) {
@@ -40,6 +43,12 @@ export class LoginComponent implements OnInit {
         this.handleLoginResponse(req);
         return req;
 
+    }
+
+    checkRegister(success){
+        if(success == 'true'){
+            document.getElementById('registerAlert').style.display = 'block';
+        }
     }
 
     handleLoginResponse(request) {
