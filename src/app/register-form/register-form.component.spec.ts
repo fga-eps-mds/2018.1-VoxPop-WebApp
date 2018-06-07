@@ -33,7 +33,7 @@ describe('RegisterFormComponent', () => {
     .compileComponents();
     fixture = TestBed.createComponent(RegisterFormComponent);
     component = fixture.componentInstance;
-    // fixture.detectChanges();
+    fixture.detectChanges();
   }));
 
   it('should create', () => {

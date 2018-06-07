@@ -40,9 +40,6 @@ export class RegisterFormComponent implements OnInit {
 
 
   registerUser() {
-    // TODO - adicionar validação de criação. Checar http status code = 201.
-    // AINDA é TODO /\
-    // console.log(this.user);
     let req;
     req = this.requester.postUser(this.user);
     this.registerUserHandler(req);
@@ -52,17 +49,14 @@ export class RegisterFormComponent implements OnInit {
   registerUserHandler(request) {
     request.subscribe(response => {
       const statusUser = response.status;
-      // console.log('STATUS CODE RETURNED ON USER: ' + statusUser);
-
-        if (this.requester.didSucceed(statusUser)) {
-          this.router.navigate(['login']);
-          this.cookieService.set('success', 'true');
-        }
+      if (this.requester.didSucceed(statusUser)) {
+        this.router.navigate(['login']);
+        this.cookieService.set('success', 'true');
+      }
     },
     error => {
-        console.log(error);
-        const statusAuth = error.status;
-        this.validator.errorHandler(statusAuth);
+      const statusAuth = error.status;
+      this.validator.errorHandler(statusAuth);
     });
   }
 }
