@@ -49,7 +49,7 @@ describe('ParliamentarianComponent', () => {
 
   it('should loadPage return error code', () => {
     expect(component.loadPage(0, '')).toBeUndefined();
-    expect(component.loadPage('a', '')).toBeUndefined();
+    expect(component.loadPage(2, '')).toBeUndefined();
   });
 
 });

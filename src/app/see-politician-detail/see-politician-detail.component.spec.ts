@@ -55,7 +55,15 @@ describe('SeePoliticianDetailedComponent', () => {
     expect(component.unfollowParliamentarian()).toBeTruthy();
   });
 
+  it('should call followParliamentarian', () => {
+    expect(component.followParliamentarian()).toBeTruthy();
+  });
+
   it('should call renderUnfollowButton', () => {
+    const unfollow = document.createElement('div').setAttribute('id', 'unfollow');
+    document.getElementById = jasmine.createSpy('unfollow').and.returnValue(unfollow);
+    const follow = document.createElement('div').setAttribute('id', 'follow');
+    document.getElementById = jasmine.createSpy('follow').and.returnValue(follow);
     expect(component.renderUnfollowButton()).toBeTruthy();
   });
 
