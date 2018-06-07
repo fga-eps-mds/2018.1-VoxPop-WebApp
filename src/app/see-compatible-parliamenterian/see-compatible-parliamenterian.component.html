@@ -1,3 +1,23 @@
-<p>
-  see-compatible-parliamenterian works!
-</p>
+<div class="col-sm-6 text-center">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <span>Deputado {{most_actives[0]['parliamentary']['name']}} </span>
+          <i class="glyphicon glyphicon-star" style="color:yellow"></i>
+          <i class="glyphicon glyphicon-star" style="color:yellow"></i>
+          <i class="glyphicon glyphicon-star" style="color:yellow"></i>
+        </h3>
+      </div>
+      <div class="panel-body">
+        <div class="col-sm-6">
+          <img src="{{most_actives[0]['parliamentary']['photo']}}" width="114" height="152" alt="woops, someting went wrong">
+        </div>
+        <div class="col-sm-6">
+          <h5>1ª lugar</h5><p class="help-block">Este é o deputado mais ativo!</p>
+          <p>{{most_actives[0]['parliamentary']['political_party']}}/{{most_actives[0]['parliamentary']['federal_unit']}}</p>
+          <a routerLink="/parliamentarians/{{most_actives[0]['parliamentary']['id']}}" routerLinkActivate="active" class="btn btn-primary">Ver parlamentar</a>
+        </div>
+      </div>
+      <div class="panel-footer text-muted">Quantidade de votos: {{most_actives[0]['votes']}}</div>
+    </div>
+  </div>

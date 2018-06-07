@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
+import { RequestsService } from '../requests.service';
+import { TokenService } from '../token.service';
 
 @Component({
   selector: 'app-see-compatible-parliamenterian',
@@ -7,9 +10,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SeeCompatibleParliamenterianComponent implements OnInit {
 
-  constructor() { }
+  term = '';
+  most_compatible: any = [
+  ]; 
+
+  constructor(
+    private cookieService: CookieService,
+    private token: TokenService,
+    private requester: RequestsService,
+  ) { }
 
   ngOnInit() {
+    this.mostCompatible();
   }
 
+  mostCompatible() {
+    let req: any;
+    this.most_compatible = [];
+    req =  this.requester.getMostCompatible();
+    this.handleMostCompatibleResponse(req);
+    return req;
+  }
+
+  handleMostCompatibleResponse(req) {
+      req.subscribe( response =>{
+      const body = response['body'];
+      this.most_compatible = body['results'];
+      console.log(this.most_compatible);
+    });
+  }
 }

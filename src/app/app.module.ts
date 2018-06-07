@@ -71,6 +71,10 @@ const appRoutes: Routes = [
     path: 'user-following',
     component: UserFollowingComponent
   },
+  {
+    path: 'user-compatible',
+    component: SeeCompatibleParliamenterianComponent
+  },
 ];
 
 @NgModule({
