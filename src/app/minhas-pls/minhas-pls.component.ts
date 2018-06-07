@@ -47,46 +47,25 @@ export class MinhasPlsComponent implements OnInit {
     this.userId = Number(this.cookieService.get('userID'));
     this.token.checkToken(this.tokenValue);
     this.votePosition = 0;
-    this.propositionsSearch(1, '');
+    this.propositions(1, '');
   }
 
-  searchPL(term) {
-    this.propositionsSearch(1, term);
-  }
-
-  propositions(offset: number) {
-    let req: any;
-    this.pages = 1;
-    this.proposition = [];
-    req =  this.requester.getVotedProposition((offset - 1) * this.itemsPerPage);
-    this.handlePropositionsResponse(req, offset);
-    return req;
-  }
-
-  propositionsSearch(offset: number, term) {
+  propositions(offset: number, term) {
+    this.term = term.toUpperCase();
     let req: any;
     this.pages = 1;
     this.numberPLsVoted = 1;
     this.proposition = [];
-    req =  this.requester.getSearchVotedProposition((offset - 1) * this.itemsPerPage, term);
-    this.handlePropositionsSearchResponse(req, offset, term);
+    req =  this.requester.getSearchVotedProposition((offset - 1) * this.itemsPerPage, this.term);
+    this.handlePropositionsSearchResponse(req, offset);
     return req;
   }
 
-  handlePropositionsResponse(request, offset) {
-    this.requester.getVotedProposition((offset - 1) * this.itemsPerPage).subscribe( response => {
+  handlePropositionsSearchResponse(request, offset) {
+    request.subscribe( response => {
       const body = response['body'];
       this.propositionVote = body['results'];
-      this.offset = offset;
-      this.pages = Math.ceil(response['body']['count'] / this.itemsPerPage);
-      this.updateButtonsAppearence(this.offset, this.pages);
-    });
-  }
-
-  handlePropositionsSearchResponse(request, offset, term) {
-    this.requester.getSearchVotedProposition((offset - 1) * this.itemsPerPage, term).subscribe( response => {
-      const body = response['body'];
-      this.propositionVote = body['results'];
+      console.log(this.propositionVote);
       this.offset = offset;
       this.pages = Math.ceil(response['body']['count'] / this.itemsPerPage);
       this.updateButtonsAppearence(this.offset, this.pages);
@@ -137,7 +116,7 @@ export class MinhasPlsComponent implements OnInit {
         alert('Voto não editado, favor tentar de novo mais tarde');
       } else {
         alert('Voto editado com sucesso!');
-        this.propositionsSearch(1, '');
+        this.propositions(1, '');
       }
 
     });

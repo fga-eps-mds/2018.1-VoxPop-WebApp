@@ -37,11 +37,7 @@
 }
 
 .vote{
-    height: 35rem;
-}
-
-.header {
-    margin-bottom: 60px;
+    height: 70rem;
 }
 
 .center {
@@ -53,16 +49,12 @@
     text-align: center;
 }
 
-.search {
-    margin-top: 10px;
-    margin-bottom: 15px;
+.panel-body {
+  min-height: 300px;
 }
 
-.center {
-    margin: auto;
-    width: 30%;
+.buttons {
+    background-color: white;
+    border-top: 0px;
 }
 
-.p-center {
-    text-align: center;
-}
