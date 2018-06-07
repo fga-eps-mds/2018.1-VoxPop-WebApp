@@ -38,11 +38,20 @@ describe('HeaderComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('should expand sidebar', () => {
+    const dummySidebar = document.createElement('nav').setAttribute('id', 'sidebar');
+    const dummyContent = document.createElement('div').setAttribute('id', 'content');
+    document.getElementById = jasmine.createSpy('sidebar').and.returnValue(dummySidebar);
+    document.getElementById = jasmine.createSpy('content').and.returnValue(dummyContent);
+    component.toggleMenu();
+    expect(component).toBeTruthy();
+  });
+
   it('should return null', () => {
     component.logout();
     service.token = '';
     const token = service.get();
-    expect(token).toBeNull();
+    expect(token).toBe('');
   });
 
 });

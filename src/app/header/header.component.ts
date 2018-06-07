@@ -27,8 +27,10 @@ export class HeaderComponent implements OnInit {
      //
      if (sidebar.classList.contains('active')) {
        this.cookieService.set('sidebar', 'false');
+       return false;
      } else {
        this.cookieService.set('sidebar', 'true');
+       return true;
      }
   }
 
