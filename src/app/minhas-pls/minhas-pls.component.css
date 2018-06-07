@@ -33,7 +33,7 @@
 }
 
 .center-block {
-    float: none !important
+    float: none !important;
 }
 
 .vote{
@@ -50,7 +50,7 @@
 }
 
 .panel-body {
-  min-height: 300px;
+  min-height: 250px;
 }
 
 .buttons {
@@ -58,3 +58,11 @@
     border-top: 0px;
 }
 
+.see-more {
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+    cursor: pointer;
+    color: blue;
+}
