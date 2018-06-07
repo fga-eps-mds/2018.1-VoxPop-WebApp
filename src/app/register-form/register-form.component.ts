@@ -5,6 +5,7 @@ import { UserModel } from '../../models/user';
 import { SocialInformationModel } from '../../models/socialInformation'
 import { and } from '@angular/router/src/utils/collection';
 import { InputValidatorService } from '../input-validator.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-register-form',
@@ -31,6 +32,7 @@ export class RegisterFormComponent implements OnInit {
   constructor(private router: Router,
     private requester: RequestsService,
     private validator: InputValidatorService,
+    private cookieService: CookieService
   ) { }
 
   ngOnInit() {
@@ -54,6 +56,7 @@ export class RegisterFormComponent implements OnInit {
 
         if (this.requester.didSucceed(statusUser)) {
           this.router.navigate(['login']);
+          this.cookieService.set('success', 'true');
         }
     },
     error => {
