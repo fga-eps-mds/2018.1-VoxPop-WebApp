@@ -24,6 +24,7 @@ import { InputValidatorService } from './input-validator.service';
 import { SeePlComponent } from './see-pl/see-pl.component';
 import { SeePoliticianDetailedComponent } from './see-politician-detail/see-politician-detail.component';
 import { UserFollowingComponent } from './user-following/user-following.component';
+import { SeeCompatibleParliamenterianComponent } from './see-compatible-parliamenterian/see-compatible-parliamenterian.component';
 
 const appRoutes: Routes = [
   {
@@ -89,6 +90,7 @@ const appRoutes: Routes = [
     SeePlComponent,
     SeePoliticianDetailedComponent,
     UserFollowingComponent,
+    SeeCompatibleParliamenterianComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
