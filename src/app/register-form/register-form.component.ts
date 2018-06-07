@@ -53,7 +53,7 @@ export class RegisterFormComponent implements OnInit {
       // console.log('STATUS CODE RETURNED ON USER: ' + statusUser);
 
         if (this.requester.didSucceed(statusUser)) {
-          this.router.navigate(['']);
+          this.router.navigate(['login']);
         }
     },
     error => {
