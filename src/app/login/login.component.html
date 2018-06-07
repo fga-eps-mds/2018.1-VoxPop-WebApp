@@ -5,6 +5,9 @@
           <span>Efetuar Login</span>
         </h3>
       </div>
+      <div class="alert alert-success" role="alert" id="registerAlert" style="display:none">
+          <p>Registro feito com sucesso!</p>
+        </div>
       <div class="panel-body">
         <form (submit)="login(username.value, password.value)">
           <div class="form-group">
