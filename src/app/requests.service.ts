@@ -27,6 +27,7 @@ export class RequestsService {
     this.tokenValue = this.cookieService.get('token');
     this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
     const endpoint = this.baseURL.concat('users/' + userId.toString() + '/');
+    console.log('Making GET REQUEST USER ON URL: ' + endpoint);
     return this.http.get(endpoint,  {headers: this.tokenHeader, observe: 'response'});
   }
 
@@ -42,23 +43,29 @@ export class RequestsService {
     this.tokenValue = this.cookieService.get('token');
     this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
     const endpoint = this.baseURL.concat('user_votes/?limit=10&offset=' + offset + '&query=' + keyword);
-    console.log('Making GET REQUEST VOTED PROPOITION ON URL: ' + endpoint);
+    console.log('Making GET REQUEST SEARCH VOTED PROPOITION ON URL: ' + endpoint);
     return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
   }
 
   getProposition(limit, offset) {
-    // this.tokenValue = this.cookieService.get('token');
-    // this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
     this.tokenHeader = {'Content-Type': 'application/json'};
     const endpoint = this.baseURL.concat('propositions/voted_by_parliamentary/?limit=' + limit + '&offset=' + offset);
-    console.log('Making POST REQUEST USER ON URL: ' + endpoint);
+    console.log('Making GET REQUEST PREPOSITIONS ON URL: ' + endpoint);
     return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
   }
 
   getMostActive(limit, offset) {
     this.tokenHeader = {'Content-Type': 'application/json'};
     const endpoint = this.baseURL.concat('statistics/most_active/?limit=' + limit + '&offset=' + offset);
-    console.log('Making GET REQUEST USER ON URL: ' + endpoint);
+    console.log('Making GET MOST ACTIVE REQUEST ON URL: ' + endpoint);
+    return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
+  }
+
+  getMostCompatible() {
+    this.tokenValue = this.cookieService.get('token');
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
+    const endpoint = this.baseURL.concat('statistics/most_compatible/');
+    console.log('Making GET MOST COMPATIBLE REQUEST ON URL: ' + endpoint);
     return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
   }
 
@@ -66,12 +73,14 @@ export class RequestsService {
     this.tokenValue = this.cookieService.get('token');
     this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
     const endpoint = this.baseURL.concat('propositions/non_voted_by_user/');
+    console.log('Making GET PROJECTS REQUEST ON URL: ' + endpoint);
     return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
   }
 
   getParliamentarian (limit, offset) {
     this.tokenHeader = {'Content-Type': 'application/json'};
     const endpoint = this.baseURL.concat('parliamentarians/?limit=' + limit + '&offset=' + offset);
+    console.log('Making GET PARLIAMENTERIAN REQUEST ON URL: ' + endpoint);
     return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
   }
 
@@ -82,10 +91,9 @@ export class RequestsService {
   }
 
   getParlimentarianSpecific(parlimentaryId) {
-    // this.tokenValue = this.cookieService.get('token');
-    // this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
     this.tokenHeader = {'Content-Type': 'application/json'};
     const endpoint = this.baseURL.concat('parliamentarians/' + parlimentaryId + '/');
+    console.log('Making GET SPECIFIC PARLIAMENTERIAN REQUEST ON URL: ' + endpoint);
     return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
   }
 
@@ -93,6 +101,7 @@ export class RequestsService {
     this.tokenValue = this.cookieService.get('token');
     this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
     const endpoint = this.baseURL.concat('user_following/' + id + '/');
+    console.log('Making GET FOLLOW REQUEST ON URL: ' + endpoint);
     return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
   }
 
@@ -101,6 +110,7 @@ export class RequestsService {
     this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
     const endpoint = this.baseURL.concat('user_following/?limit=' + limit + '&offset=' + offset);
     console.log('Making POST REQUEST USER ON URL: ' + endpoint);
+    console.log('Making GET FOLLOWING PARLIAMENTERIANS REQUEST ON URL: ' + endpoint);
     return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
   }
 
@@ -108,7 +118,7 @@ export class RequestsService {
     this.tokenValue = this.cookieService.get('token');
     this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
     const endpoint = this.baseURL.concat('user_following/?limit=' + limit + '&offset=' + offset + '&query=' + keyword);
-    console.log('Making POST REQUEST USER ON URL: ' + endpoint);
+    console.log('Making GET SEARCH FOLLOWING PARLIAMENTARIAN REQUEST ON URL: ' + endpoint);
     return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
   }
 
@@ -161,6 +171,7 @@ export class RequestsService {
     this.tokenValue = this.cookieService.get('token');
     this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
     const endpoint = this.baseURL.concat('user_following/' + id + '/');
+    console.log('Making DELETE FOLLOW REQUEST ON URL: ' + endpoint);
     return this.http.delete(endpoint, {headers: this.tokenHeader, observe: 'response'});
   }
 
