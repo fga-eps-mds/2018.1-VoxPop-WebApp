@@ -36,7 +36,7 @@ describe('MinhasPlsComponent', () => {
   });
 
   it('should change variable on click', () => {
-    component.specifyProposition(42);
+    component.specifyProposition(42, false);
     expect(component.votePosition).toBe(42);
   });
 

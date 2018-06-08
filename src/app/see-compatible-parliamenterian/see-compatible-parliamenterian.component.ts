@@ -10,6 +10,7 @@ import { TokenService } from '../token.service';
 })
 export class SeeCompatibleParliamenterianComponent implements OnInit {
 
+  tokenValue = '';
   term = '';
   loading = true;
   most_compatible: any = [
@@ -22,6 +23,8 @@ export class SeeCompatibleParliamenterianComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.tokenValue = this.cookieService.get('token');
+    this.token.checkToken(this.tokenValue);
     this.mostCompatible();
   }
 
@@ -35,8 +38,7 @@ export class SeeCompatibleParliamenterianComponent implements OnInit {
 
   handleMostCompatibleResponse(req) {
     req.subscribe( response => {
-      const body = response['body'];
-      this.most_compatible = body['results'];
+      this.most_compatible = response['body']['results'];
       this.loading = false;
     });
   }
