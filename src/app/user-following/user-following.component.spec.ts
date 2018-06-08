@@ -15,15 +15,15 @@ describe('UserFollowingComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterModule,
+        RouterTestingModule.withRoutes([{ path: 'parliamentarians/:id', component: UserFollowingComponent}]),
         HttpClientModule,
-        RouterTestingModule
+        RouterModule,
       ],
       declarations: [ UserFollowingComponent ],
       providers: [
         RequestsService,
         TokenService,
-        CookieService
+        CookieService,
       ]
     })
     .compileComponents();

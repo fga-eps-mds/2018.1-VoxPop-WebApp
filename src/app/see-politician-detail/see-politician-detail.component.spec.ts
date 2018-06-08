@@ -1,13 +1,16 @@
 import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
 
 import { SeePoliticianDetailedComponent } from './see-politician-detail.component';
+
+import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { HttpClientModule } from '@angular/common/http';
-import { InputValidatorService } from '../input-validator.service';
 import { RequestsService } from '../requests.service';
 import { TokenService } from '../token.service';
 import { CookieService } from 'ngx-cookie-service';
+import { HttpClientModule } from '@angular/common/http';
+import { InputValidatorService } from '../input-validator.service';
 import { of } from 'rxjs/observable/of';
+
 
 describe('SeePoliticianDetailedComponent', () => {
   let component: SeePoliticianDetailedComponent;
@@ -18,7 +21,7 @@ describe('SeePoliticianDetailedComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule,
+        RouterTestingModule.withRoutes([{ path: 'parliamentarians/:id', component: SeePoliticianDetailedComponent}]),
         HttpClientModule,
         InputValidatorService
       ],
@@ -26,7 +29,7 @@ describe('SeePoliticianDetailedComponent', () => {
       providers: [
         RequestsService,
         TokenService,
-        CookieService
+        CookieService,
       ]
     })
     .compileComponents();
@@ -52,7 +55,15 @@ describe('SeePoliticianDetailedComponent', () => {
     expect(component.unfollowParliamentarian()).toBeTruthy();
   });
 
+  it('should call followParliamentarian', () => {
+    expect(component.followParliamentarian()).toBeTruthy();
+  });
+
   it('should call renderUnfollowButton', () => {
+    const unfollow = document.createElement('div').setAttribute('id', 'unfollow');
+    document.getElementById = jasmine.createSpy('unfollow').and.returnValue(unfollow);
+    const follow = document.createElement('div').setAttribute('id', 'follow');
+    document.getElementById = jasmine.createSpy('follow').and.returnValue(follow);
     expect(component.renderUnfollowButton()).toBeTruthy();
   });
 
@@ -69,12 +80,9 @@ describe('SeePoliticianDetailedComponent', () => {
 
   //   spyOn(requestService, 'getFollow').and.returnValue(of(response))
 
-
   //   component.checkParliamentarianFollowed();
 
-  //   fixture.detectChanges();
-
-  //   expect(component.checkParliamentarianFollowed()).toEqual(response);
+    // expect(component.checkParliamentarianFollowed()).toEqual(response);
   // }));
 
 });

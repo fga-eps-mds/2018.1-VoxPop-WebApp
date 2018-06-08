@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SidebarComponent } from './sidebar.component';
+import { CookieService } from 'ngx-cookie-service';
 
 describe('SidebarComponent', () => {
   let component: SidebarComponent;
@@ -8,7 +9,10 @@ describe('SidebarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SidebarComponent ]
+      declarations: [ SidebarComponent ],
+      providers: [
+        CookieService,
+      ]
     })
     .compileComponents();
   }));
@@ -22,4 +26,16 @@ describe('SidebarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should init', () => {
+    component.ngOnInit();
+    expect(component).toBeTruthy();
+  });
+
+  it('should active sidebar', () => {
+    const sidebar = 'false';
+    component.setSidebar(sidebar);
+    expect(component).toBeTruthy();
+  });
+
 });

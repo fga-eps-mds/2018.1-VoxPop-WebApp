@@ -13,6 +13,8 @@ export class SeePoliticianDetailedComponent implements OnInit {
   tokenValue = '';
   sub: any;
   id = 0;
+  unfollow;
+  follow;
   parlimentarian: any = {
     name: '',
     gender: '',
@@ -81,20 +83,20 @@ export class SeePoliticianDetailedComponent implements OnInit {
   }
 
   renderUnfollowButton() {
-    document.getElementById('unfollow').style.display = 'block';
-    document.getElementById('follow').style.display = 'none';
+    this.unfollow = document.getElementById('unfollow').style.display = 'block';
+    this.follow = document.getElementById('follow').style.display = 'none';
     return true;
   }
 
   renderFollowButton() {
-    document.getElementById('unfollow').style.display = 'none';
-    document.getElementById('follow').style.display = 'block';
+    const unfollow = document.getElementById('unfollow').style.display = 'none';
+    const follow = document.getElementById('follow').style.display = 'block';
     return true;
   }
 
   derrenderBothButtons() {
-    document.getElementById('follow').style.display = 'none';
-    document.getElementById('unfollow').style.display = 'none';
+    const unfollow = document.getElementById('follow').style.display = 'none';
+    const follow = document.getElementById('unfollow').style.display = 'none';
     return true;
   }
 

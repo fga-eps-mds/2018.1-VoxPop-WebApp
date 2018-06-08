@@ -19,6 +19,7 @@ describe('MinhasPlsComponent', () => {
       providers: [
         CookieService,
         RequestsService,
+        CookieService,
         TokenService,
       ]
     })
