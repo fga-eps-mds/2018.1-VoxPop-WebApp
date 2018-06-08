@@ -11,8 +11,9 @@ import { TokenService } from '../token.service';
 export class SeeCompatibleParliamenterianComponent implements OnInit {
 
   term = '';
+  loading = true;
   most_compatible: any = [
-  ]; 
+  ];
 
   constructor(
     private cookieService: CookieService,
@@ -33,10 +34,10 @@ export class SeeCompatibleParliamenterianComponent implements OnInit {
   }
 
   handleMostCompatibleResponse(req) {
-      req.subscribe( response =>{
+    req.subscribe( response => {
       const body = response['body'];
       this.most_compatible = body['results'];
-      console.log(this.most_compatible);
+      this.loading = false;
     });
   }
 }

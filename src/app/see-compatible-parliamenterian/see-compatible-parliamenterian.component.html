@@ -1,4 +1,9 @@
-<div *ngFor="let parliamentarian of most_compatible" class="col-sm-6 text-center" >
+<h3>Ranking de Compatibilidade</h3><br/>
+<div *ngIf="loading">
+  <p>Calculando Compatibilidade...</p>
+  <div class="loader"></div>
+</div>
+<div *ngFor="let parliamentarian of most_compatible; let i = index" class="col-sm-6 text-center" >
     <div class="panel panel-primary">
       <div class="panel-heading">
         <h3 class="panel-title">
@@ -10,7 +15,7 @@
           <img src="{{parliamentarian['parliamentary']['photo']}}" width="114" height="152" alt="woops, someting went wrong">
         </div>
       <div class="col-sm-6">
-        <h5>1ª lugar</h5><p class="help-block">Este é o deputado mais ativo!</p>
+        <h5>{{i + 1}}º lugar</h5>
         <p>{{parliamentarian['parliamentary']['political_party']}}/{{parliamentarian['parliamentary']['federal_unit']}}</p>
         <a routerLink="/parliamentarians/{{parliamentarian['parliamentary']['id']}}" routerLinkActivate="active" class="btn btn-primary">Ver parlamentar</a>
       </div>
