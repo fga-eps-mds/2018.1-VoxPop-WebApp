@@ -8,7 +8,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class SidebarComponent implements OnInit {
 
-  sidebar = ''
+  sidebar = '';
 
   constructor(
     private cookieService: CookieService,
@@ -16,11 +16,15 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
     this.sidebar = this.cookieService.get('sidebar');
-    if(this.sidebar == 'false') {
-      var sidebar = document.getElementById("sidebar");
-      sidebar.classList.toggle("active");
-      var content = document.getElementById("content");
-      content.classList.toggle("active");
+    this.setSidebar(this.sidebar);
+  }
+
+  setSidebar(sidebarCookie) {
+    if (sidebarCookie === 'false') {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('active');
+      const content = document.getElementById('content');
+      content.classList.toggle('active');
     }
   }
 

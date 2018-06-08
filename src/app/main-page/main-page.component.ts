@@ -73,7 +73,7 @@ export class MainPageComponent implements OnInit {
   }
 
   handlePropositionsResponse(request, limit, offset) {
-      this.requester.getProposition(limit, offset).subscribe( response =>{
+      this.requester.getProposition(limit, offset).subscribe( response => {
       const body = response['body'];
       this.proposition = body['results'];
 
