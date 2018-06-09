@@ -14,6 +14,7 @@ export class MinhasPlsComponent implements OnInit {
 
   term = '';
   tokenValue = '';
+  showEditButtons = false;
   pages = 1;
   offset = 0;
   itemsPerPage = 10;
@@ -97,8 +98,9 @@ export class MinhasPlsComponent implements OnInit {
 
   }
 
-  specifyProposition(position) {
+  specifyProposition(position, showButtons) {
     this.votePosition = position;
+    this.showEditButtons = showButtons;
   }
 
   editVote(opinion: string) {
