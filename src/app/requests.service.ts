@@ -97,7 +97,8 @@ export class RequestsService {
     this.tokenValue = this.cookieService.get('token');
     this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
     const endpoint = this.baseURL.concat('user_following/' + id + '/');
-    return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
+    this.headers = (this.tokenValue === '') ? this.headers : this.tokenHeader;
+    return this.http.get(endpoint, {headers: this.headers, observe: 'response'});
   }
 
   getFollowingParliamentarians(limit, offset) {
@@ -105,7 +106,8 @@ export class RequestsService {
     this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
     const endpoint = this.baseURL.concat('user_following/?limit=' + limit + '&offset=' + offset);
     console.log('Making POST REQUEST USER ON URL: ' + endpoint);
-    return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
+    this.headers = (this.tokenValue === '') ? this.headers : this.tokenHeader;
+    return this.http.get(endpoint, {headers: this.headers, observe: 'response'});
   }
 
   getSearchFollowingParliamentarians(limit, offset, keyword) {
@@ -113,7 +115,8 @@ export class RequestsService {
     this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
     const endpoint = this.baseURL.concat('user_following/?limit=' + limit + '&offset=' + offset + '&query=' + keyword);
     console.log('Making POST REQUEST USER ON URL: ' + endpoint);
-    return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
+    this.headers = (this.tokenValue === '') ? this.headers : this.tokenHeader;
+    return this.http.get(endpoint, {headers: this.headers, observe: 'response'});
   }
 
   postUser(user: UserModel) {

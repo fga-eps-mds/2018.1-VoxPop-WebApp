@@ -24,6 +24,7 @@ export class UserFollowingComponent implements OnInit {
         gender: '',
         federal_unit: '',
         photo: '',
+        compatibility: '',
       }
     }
   ];
@@ -35,6 +36,7 @@ export class UserFollowingComponent implements OnInit {
         gender: '',
         federal_unit: '',
         photo: '',
+        compatibility: '',
       }
     }
   ];
