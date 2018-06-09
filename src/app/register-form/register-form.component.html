@@ -9,7 +9,7 @@
         </div>
          <div class="form-group">
               <span class="required">*</span>
-              <label>Nome de Usuário</label>
+              <label data-toggle="tooltip" title="Este é o nome usado para entrar no site">Nome de Usuário</label>
               <input name="username" type="text" class="form-control" placeholder="Entre o nome do usuário" id = "username"
               (keyup)="validator.onKeyUsername($event)" [(ngModel)]="user.username">
               <div class="alert alert-danger" role="alert" id="alert-username" style="display:none">
@@ -26,7 +26,7 @@
          </div>
          <div class="form-group">
               <span class="required">*</span>
-              <label>Senha</label>
+              <label data-toggle="tooltip" title="Esta é a senha usada para entrar no site">Senha</label>
               <input name="password" type="password" class="form-control" minlength="8" id="password"
               (keyup)="validator.onKeyPassword($event)"
               placeholder="Senha"
@@ -37,7 +37,7 @@
          </div>
          <div class="form-group">
               <span class="required">*</span>
-              <label>Confirmar Senha</label>
+              <label data-toggle="tooltip" title="Digite a senha novamente">Confirmar Senha</label>
               <input name="confirm-password" type="password" class="form-control" minlength="6" id="confirm-password"
               maxlength="20" (keyup)="validator.onKeyConfirmPassword($event)"
               (keyup)="validator.onKeyValidatorPassword($event)" placeholder="Confirmar senha">
@@ -47,7 +47,7 @@
          </div>
          <div class="form-group">
               <span class="required">*</span>
-              <label>E-mail</label>
+              <label data-toggle="tooltip" title="Digite aqui o seu endereço de E-mail">E-mail</label>
               <input name="email" type="email" class="form-control" id="email"
               (keyup)="validator.onKeyEmail($event)" placeholder="exemplo@exemplo.com"
               [(ngModel)]="user.email">
@@ -70,7 +70,7 @@
 
     <div style="display:none" id="secondPart" class="register-card">
          <div class="form-group">
-              <label>Estado</label>
+              <label data-toggle="tooltip" title="Escolha a UF em que você mora entre as opções abaixo">Estado</label>
               <select name="federal_unit" class="form-control" [(ngModel)]="user.social_information['federal_unit']">
                    <option value="N" selected>Prefiro não responder</option>
                    <option value="AC" >Acre</option>
@@ -103,11 +103,11 @@
               </select>
          </div>
          <div class="form-group">
-              <label>Cidade</label>
+              <label data-toggle="tooltip" title="Digite o nome da cidade onde você mora">Cidade</label>
               <input name="city" type="text" class="form-control" placeholder="Cidade" [(ngModel)]="user.social_information['city']">
          </div>
          <div class="form-group">
-              <label>Renda</label>
+              <label data-toggle="tooltip" title="Escolha a sua renda mensal entre as opções abaixo">Renda</label>
               <select name="income" class="form-control" [(ngModel)]="user.social_information['income']">
                    <option value="-1">Prefiro não responder</option>
                    <option value="0">Entre R$0,00 até R$1000,00</option>
@@ -120,15 +120,15 @@
               </select>
          </div>
          <div class="form-group">
-              <label>Formação</label>
+              <label data-toggle="tooltip" title="Escolha o seu nível de escolaridade entre as opções abaixo">Formação </label>
               <select name="education" class="form-control" [(ngModel)]="user.social_information['education']">
                    <option value="N">Prefiro não responder</option>
-                   <option value="EFC">Ensino Fundamental Completo</option>
                    <option value="EFI">Ensino Fundamental Incompleto</option>
-                   <option value="EMC">Ensino Médio Completo</option>
+                   <option value="EFC">Ensino Fundamental Completo</option>
                    <option value="EMI">Ensino Médio Incompleto</option>
-                   <option value="ESC">Ensino Superior Completo</option>
+                   <option value="EMC">Ensino Médio Completo</option>
                    <option value="ESI">Ensino Superior Incompleto</option>
+                   <option value="ESC">Ensino Superior Completo</option>
                    <option value="PG">Pós Graduação</option>
                    <option value="ME">Mestrado</option>
                    <option value="DO">Doutorado</option>
@@ -136,11 +136,11 @@
               </select>
          </div>
          <div class="form-group">
-              <label>Profissão</label>
-              <input name="job" type="text" class="form-control" placeholder="Profissão" [(ngModel)]="user.social_information['job']">
+              <label data-toggle="tooltip" title="Digite o nome da sua ocupação"> Ocupação </label>
+              <input name="job" type="text" class="form-control" placeholder="Ocupação" [(ngModel)]="user.social_information['job']">
          </div>
          <div class="form-group">
-              <label>Data de Nascimento</label>
+              <label data-toggle="tooltip" title="Digite a data do seu nascimento">Data de Nascimento</label>
               <input name="birth_date" type="date" class="form-control" [(ngModel)]="user.social_information['birth_date']">
          </div>
          <button class="btn btn-primary"
