@@ -1,120 +1,137 @@
 <div class="header" align="center">
-  <h1 class="card-title">Meus votos</h1>
-  <form class="col-sm-4 col-sm-offset-4 search" role="search" method="get" action="/busca">
-    <div class="input-group">
-      <input type="text" class="form-control" placeholder="Buscar entre os projetos de lei votados" #search>
-      <div class="input-group-btn">
-        <button class="btn btn-default" type="submit" (click)="propositions(1, search.value)">
-          <i class="glyphicon glyphicon-search"></i>
-        </button>
+    <h1 class="card-title">Meus votos</h1>
+    <form class="col-sm-4 col-sm-offset-4 search" role="search" method="get" action="/busca">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Buscar entre os projetos de lei votados" #search>
+        <div class="input-group-btn">
+          <button class="btn btn-default" type="submit" (click)="propositions(1, search.value)">
+            <i class="glyphicon glyphicon-search"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <br>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col-sm-6 text-center" *ngFor="let p of propositionVote let j = index">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">{{p.proposition['proposition_type_initials']}} {{p.proposition['number']}}/{{p.proposition['year']}}</h3>
+        </div>
+        <div class="panel-body">
+          <h5>{{p.proposition['proposition_type']}}</h5>
+          <div class="text-justify">
+            <div *ngIf="p.proposition['abstract'].length <= 240">
+              <p>{{p.proposition['abstract']}}</p>
+            </div>
+            <div *ngIf="p.proposition['abstract'].length > 240">
+              <p>{{p.proposition['abstract'].substr(0, 240)}}...
+                <button (click)="specifyProposition(j, false)" class="see-more" data-toggle="modal" data-target="#exampleModal">
+                  Ver mais
+                </button>
+              </p>
+            </div>
+            <p>
+              Seu voto: 
+              <ng-container *ngIf="p['option'] === 'Y'"><span class="glyphicon glyphicon-ok"></span> SIM</ng-container>
+              <ng-container *ngIf="p['option'] === 'A'"><span class="glyphicon glyphicon-minus"></span> ABSTENÇÃO</ng-container>
+              <ng-container *ngIf="p['option'] === 'N'"><span class="glyphicon glyphicon-remove"></span> NÃO</ng-container>
+            </p>
+          </div>
+          <br>
+        </div>
+        <div class="panel-footer buttons">
+          <button class="btn btn-primary" (click)="openProposition(p.proposition['url_full'])">Veja na íntegra</button>
+          <button type="button" class="btn btn-primary" (click)="specifyProposition(j, true)" data-toggle="modal" data-target="#exampleModal">
+            Editar Voto
+          </button>
+        </div>
+        <div class="panel-footer text-muted">2 dias atrás</div>
       </div>
     </div>
-  </form>
-</div>
-<br>
-<br>
-<br>
-<div class="row">
-  <div class="col-sm-6 text-center" *ngFor="let p of propositionVote let j = index">
-    <div class="panel panel-primary">
-      <div class="panel-heading">
-        <h3 class="panel-title">{{p.proposition['proposition_type_initials']}} {{p.proposition['number']}}/{{p.proposition['year']}}</h3>
+  </div>
+  <div class="row" *ngIf="propositionVote?.length <= 0">
+    <div class="main-card">
+      <div class="main-card-content">
+        <p>Você verá aqui as propostas que votar em "Dê sua opnião"</p>
       </div>
-      <div class="panel-body">
-        <h5>{{p.proposition['proposition_type']}}</h5>
-        <div class="text-justify">
-          <div *ngIf="p.proposition['abstract'].length <= 400">
-            <p>{{p.proposition['abstract']}}</p>
+    </div>
+  </div>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header" *ngIf="showEditButtons">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+          <h4 class="modal-title" id="exampleModalLabel">Editar Voto</h4>
+        </div>
+        <div class="modal-body" *ngIf="propositionVote?.length > 0">
+            <button type="button" *ngIf="!showEditButtons" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          <h5 class="card-title">
+            {{propositionVote[votePosition].proposition['proposition_type']}} - Número: {{propositionVote[votePosition].proposition['number']}}
+          </h5>
+          <p>Ano: {{propositionVote[votePosition].proposition['year']}}</p>
+          <p>Abstract: {{propositionVote[votePosition].proposition['abstract']}}</p>
+          <p>Situação: {{propositionVote[votePosition].proposition['situation']}}</p>
+          <div>Na íntegra:
+            <a href="{{propositionVote['url_full']}}">link íntegra</a><br/>
           </div>
-          <div *ngIf="p.proposition['abstract'].length > 400">
-            <p>{{p.proposition['abstract'].substr(0, 400)}}... [...]</p>
-          </div>
-          <p>
-            Seu voto: 
-            <ng-container *ngIf="p['option'] === 'Y'"><span class="glyphicon glyphicon-ok"></span> SIM</ng-container>
-            <ng-container *ngIf="p['option'] === 'A'"><span class="glyphicon glyphicon-minus"></span> ABSTENÇÃO</ng-container>
-            <ng-container *ngIf="p['option'] === 'N'"><span class="glyphicon glyphicon-remove"></span> NÃO</ng-container>
+          <p> Seu voto: 
+            <ng-container *ngIf="propositionVote[votePosition]['option'] === 'Y'">
+              <span class="glyphicon glyphicon-ok"></span> SIM
+            </ng-container>
+            <ng-container *ngIf="propositionVote[votePosition]['option'] === 'A'">
+              <span class="glyphicon glyphicon-minus"></span> ABSTENÇÃO
+            </ng-container>
+            <ng-container *ngIf="propositionVote[votePosition]['option'] === 'N'">
+              <span class="glyphicon glyphicon-remove"></span> NÃO
+            </ng-container><br>
           </p>
         </div>
-        <br>
-      </div>
-      <div class="panel-footer buttons">
-        <button class="btn btn-primary" (click)="openProposition(p.proposition['url_full'])">Veja na íntegra</button>
-        <button type="button" class="btn btn-primary" (click)="specifyProposition(j)" data-toggle="modal" data-target="#exampleModal">
-          Editar Voto
-        </button>
-      </div>
-      <div class="panel-footer text-muted">2 dias atrás</div>
-    </div>
-  </div>
-</div>
-<div class="row" *ngIf="propositionVote?.length <= 0">
-  <div class="main-card">
-    <div class="main-card-content">
-      <p>Você verá aqui as propostas que votar em "Dê sua opnião"</p>
-    </div>
-  </div>
-</div>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h4 class="modal-title" id="exampleModalLabel">Editar Voto</h4>
-      </div>
-      <div class="modal-body" *ngIf="propositionVote?.length > 0">
-        <h5 class="card-title">
-          {{propositionVote[votePosition].proposition['proposition_type']}} - Número: {{propositionVote[votePosition].proposition['number']}}
-        </h5>
-        <li>Ano: {{propositionVote[votePosition].proposition['year']}}</li>
-        <li>Abstract: {{propositionVote[votePosition].proposition['abstract']}}</li>
-        <li>Situação: {{propositionVote[votePosition].proposition['situation']}}</li>
-        <li>Na íntegra:
-          <a href="{{propositionVote['url_full']}}">link íntegra</a>
-        </li>
-        <li>Seu voto: {{propositionVote[votePosition]['option']}}</li>
-      </div>
-      <div class="modal-footer">
-        <div style="text-align: center; margin-bottom: 10px">
-          <button class='btn btn-success' data-dismiss="modal" (click)="editVote('Y')">
-            <span class="glyphicon glyphicon-ok"></span>
-          </button>
-          <button class='btn btn-light' data-dismiss="modal" (click)="editVote('A')">
-            <span class="glyphicon glyphicon-minus"></span>
-          </button>
-          <button class='btn btn-danger' data-dismiss="modal" (click)="editVote('N')">
-            <span class="glyphicon glyphicon-remove"></span>
-          </button>
+        <div class="modal-footer" *ngIf="showEditButtons">
+          <div style="text-align: center; margin-bottom: 10px">
+            <button class='btn btn-success' data-dismiss="modal" (click)="editVote('Y')">
+              <span class="glyphicon glyphicon-ok"></span>
+            </button>
+            <button class='btn btn-light' data-dismiss="modal" (click)="editVote('A')">
+              <span class="glyphicon glyphicon-minus"></span>
+            </button>
+            <button class='btn btn-danger' data-dismiss="modal" (click)="editVote('N')">
+              <span class="glyphicon glyphicon-remove"></span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<div class="col-sm-12" *ngIf="pages > 0">
-  <ul class="nav nav-pills center">
-    <li role="presentation">
-      <button id="beforeBtn1" class="btn" (click)="propositions(1, term)">Inicio</button>
-    </li>
-    <li role="presentation">
-      <button id="beforeBtn2" class="btn" (click)="propositions(offset-1, term)">Ant.</button>
-    </li>
-    <li role="presentation">
-      <input id="pageBtn1" type="text" size="3" class="form-control" #page>
-    </li>
-    <li role="presentation">
-      <button id="pageBtn2" class="btn" (click)="propositions(page.value, term)">Ir</button>
-    </li>
-    <li role="presentation">
-      <button id="afterBtn1" class="btn" (click)="propositions(offset+1, term)">Prox.</button>
-    </li>
-    <li role="presentation">
-      <button id="afterBtn2" class="btn" (click)="propositions(pages, term)">Fim</button>
-    </li>
-  </ul>
-  <br>
-  <br>
-  <p class="p-center">Página: {{offset}}/{{pages}}</p>
-  <br>
-</div>
+  <div class="col-sm-12" *ngIf="pages > 0">
+    <ul class="nav nav-pills center">
+      <li role="presentation">
+        <button id="beforeBtn1" class="btn" (click)="propositions(1, term)">Inicio</button>
+      </li>
+      <li role="presentation">
+        <button id="beforeBtn2" class="btn" (click)="propositions(offset-1, term)">Ant.</button>
+      </li>
+      <li role="presentation">
+        <input id="pageBtn1" type="text" size="3" class="form-control" #page>
+      </li>
+      <li role="presentation">
+        <button id="pageBtn2" class="btn" (click)="propositions(page.value, term)">Ir</button>
+      </li>
+      <li role="presentation">
+        <button id="afterBtn1" class="btn" (click)="propositions(offset+1, term)">Prox.</button>
+      </li>
+      <li role="presentation">
+        <button id="afterBtn2" class="btn" (click)="propositions(pages, term)">Fim</button>
+      </li>
+    </ul>
+    <br>
+    <br>
+    <p class="p-center">Página: {{offset}}/{{pages}}</p>
+    <br>
+  </div>
