@@ -9,4 +9,6 @@ export interface PropositionModel {
     processing: string;
     situation: string;
     url_full: string;
+    parliamentarians_approval: number;
+    population_approval: number;
 }
