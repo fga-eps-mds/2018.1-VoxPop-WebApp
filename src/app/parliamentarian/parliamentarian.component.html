@@ -30,33 +30,40 @@
         <img src="{{p['photo']}}" width="114" height="152" alt="woops, someting went wrong">
       </div>
       <div class="panel-footer text-muted">{{p['political_party']}}/{{p['federal_unit']}}</div>
+      <div *ngIf="tokenValue !== ''" class="panel-footer text-muted alternative">{{p['compatibility']}}</div>
     </div>
   </a>
 
 </div>
-<div class="col-sm-12">
-  <ul class="nav nav-pills center">
-    <li role="presentation">
-      <button id="beforeBtn1" class="btn" (click)="loadPage(1, term)">Inicio</button>
-    </li>
-    <li role="presentation">
-      <button id="beforeBtn2" class="btn" (click)="loadPage(offset-1, term)">Ant.</button>
-    </li>
-    <li role="presentation">
-      <input id="pageBtn1" type="text" size="3" class="form-control" #page>
-    </li>
-    <li role="presentation">
-      <button id="pageBtn2" class="btn" (click)="loadPage(page.value, term)">Ir</button>
-    </li>
-    <li role="presentation">
-      <button id="afterBtn1" class="btn" (click)="loadPage(offset+1, term)">Prox.</button>
-    </li>
-    <li role="presentation">
-      <button id="afterBtn2" class="btn" (click)="loadPage(pages, term)">Fim</button>
-    </li>
-  </ul>
-  <br>
-  <br>
-  <p class="p-center">Página: {{offset}}/{{pages}}</p>
-  <br>
-</div>
+<table style="width:100%" *ngIf="pages > 0">
+  <tr>
+    <div class="row">
+      <div class="col-sm-12">
+        <ul class="nav nav-pills center">
+          <td>
+            <button id="beforeBtn1" class="btn" (click)="loadPage(1, term)">Inicio</button>
+          </td>
+          <td>
+            <button id="beforeBtn2" class="btn" (click)="loadPage(offset-1, term)">Ant.</button>
+          </td>
+          <td>
+            <input id="pageBtn1" type="text" size="3" class="form-control" #page>
+          </td>
+          <td>
+            <button id="pageBtn2" class="btn" (click)="loadPage(page.value, term)">Ir</button>
+          </td>
+          <td>
+            <button id="afterBtn1" class="btn" (click)="loadPage(offset+1, term)">Prox.</button>
+          </td>
+          <td>
+            <button id="afterBtn2" class="btn" (click)="loadPage(pages, term)">Fim</button>
+          </td>
+        </ul>
+        <br>
+        <br>
+        <p class="p-center">Página: {{offset}}/{{pages}}</p>
+        <br>
+      </div>
+    </div>
+  </tr>
+</table>

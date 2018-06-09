@@ -78,31 +78,37 @@ export class RequestsService {
   }
 
   getParliamentarian (limit, offset) {
-    this.tokenHeader = {'Content-Type': 'application/json'};
+    this.tokenValue = this.cookieService.get('token');
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
     const endpoint = this.baseURL.concat('parliamentarians/?limit=' + limit + '&offset=' + offset);
     console.log('Making GET PARLIAMENTERIAN REQUEST ON URL: ' + endpoint);
     return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
   }
 
   getSearchedParliamentarian (limit, offset, keyword: string) {
+    this.tokenValue = this.cookieService.get('token');
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
     const endpoint = this.baseURL.concat('parliamentarians/?limit=' + limit + '&offset=' + offset + '&query=' + keyword);
     console.log('Making QUERY REQUEST USER ON URL: ' + endpoint);
+    this.headers = (this.tokenValue === '') ? this.headers : this.tokenHeader;
     return this.http.get(endpoint, {headers: this.headers, observe: 'response'});
   }
 
   getParlimentarianSpecific(parlimentaryId) {
-    this.tokenHeader = {'Content-Type': 'application/json'};
+    this.tokenValue = this.cookieService.get('token');
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
     const endpoint = this.baseURL.concat('parliamentarians/' + parlimentaryId + '/');
-    console.log('Making GET SPECIFIC PARLIAMENTERIAN REQUEST ON URL: ' + endpoint);
-    return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
+    this.headers = (this.tokenValue === '') ? this.headers : this.tokenHeader;
+    return this.http.get(endpoint, {headers: this.headers, observe: 'response'});
   }
 
   getFollow(id) {
     this.tokenValue = this.cookieService.get('token');
     this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
     const endpoint = this.baseURL.concat('user_following/' + id + '/');
+    this.headers = (this.tokenValue === '') ? this.headers : this.tokenHeader;
     console.log('Making GET FOLLOW REQUEST ON URL: ' + endpoint);
-    return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
+    return this.http.get(endpoint, {headers: this.headers, observe: 'response'});
   }
 
   getFollowingParliamentarians(limit, offset) {
@@ -110,16 +116,19 @@ export class RequestsService {
     this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
     const endpoint = this.baseURL.concat('user_following/?limit=' + limit + '&offset=' + offset);
     console.log('Making POST REQUEST USER ON URL: ' + endpoint);
+    this.headers = (this.tokenValue === '') ? this.headers : this.tokenHeader;
     console.log('Making GET FOLLOWING PARLIAMENTERIANS REQUEST ON URL: ' + endpoint);
-    return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
+    return this.http.get(endpoint, {headers: this.headers, observe: 'response'});
   }
 
   getSearchFollowingParliamentarians(limit, offset, keyword) {
     this.tokenValue = this.cookieService.get('token');
     this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
     const endpoint = this.baseURL.concat('user_following/?limit=' + limit + '&offset=' + offset + '&query=' + keyword);
+    console.log('Making POST REQUEST USER ON URL: ' + endpoint);
+    this.headers = (this.tokenValue === '') ? this.headers : this.tokenHeader;
     console.log('Making GET SEARCH FOLLOWING PARLIAMENTARIAN REQUEST ON URL: ' + endpoint);
-    return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
+    return this.http.get(endpoint, {headers: this.headers, observe: 'response'});
   }
 
   postUser(user: UserModel) {

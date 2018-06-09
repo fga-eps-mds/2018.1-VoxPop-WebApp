@@ -20,8 +20,8 @@
               <div class ="right">
                   <button class="btn btn-primary" (click)="followParliamentarian()" >
                       <span class="glyphicon glyphicon-eye-open">
-                        Seguir parlamentar
                       </span>
+                       Seguir parlamentar
                   </button>
               </div>
             </div>
@@ -29,14 +29,15 @@
               <div class ="right">
                   <button class="btn btn-primary" (click)="unfollowParliamentarian()" >
                       <span class="glyphicon glyphicon-eye-close">
-                        Deixar de seguir parlamentar
                       </span>
+                       Deixar de seguir parlamentar
                   </button>
               </div>
             </div>
           </div>
         </div>
       <div class="panel-footer text-muted">{{parlimentarian['email']}}</div>
+      <div *ngIf="tokenValue !== ''" class="panel-footer text-muted alternative">{{parlimentarian['compatibility']}}</div>
     </div>
   </div>
 </div>
