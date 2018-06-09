@@ -86,11 +86,11 @@ export class RequestsService {
   }
 
   getParlimentarianSpecific(parlimentaryId) {
-    // this.tokenValue = this.cookieService.get('token');
-    // this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
-    this.tokenHeader = {'Content-Type': 'application/json'};
+    this.tokenValue = this.cookieService.get('token');
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
     const endpoint = this.baseURL.concat('parliamentarians/' + parlimentaryId + '/');
-    return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
+    this.headers = (this.tokenValue === '') ? this.headers : this.tokenHeader;
+    return this.http.get(endpoint, {headers: this.headers, observe: 'response'});
   }
 
   getFollow(id) {

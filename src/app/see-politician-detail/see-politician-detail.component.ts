@@ -23,7 +23,8 @@ export class SeePoliticianDetailedComponent implements OnInit {
     photo: '',
     birth_date: '',
     education: '',
-    email: ''
+    email: '',
+    compatibility: '',
   };
   gender = '';
 
