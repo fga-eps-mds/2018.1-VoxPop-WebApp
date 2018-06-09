@@ -26,6 +26,7 @@ export class ParliamentarianComponent implements OnInit {
       gender: '',
       federal_unit: '',
       photo: '',
+      compatibility: '',
     }
   ];
   auxParliamentarian: any = [
@@ -35,6 +36,7 @@ export class ParliamentarianComponent implements OnInit {
       gender: '',
       federal_unit: '',
       photo: '',
+      compatibility: '',
     }
   ];
 
