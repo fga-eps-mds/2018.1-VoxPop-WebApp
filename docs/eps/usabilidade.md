@@ -4,7 +4,7 @@ title: Teste de Usabilidade
 category: EPS
 ---
 
-# Canvas
+# Teste de Usabilidade
 
 ![Risk Burndown](images/Geral.png)  
 [Clique aqui para ampliar](images/Geral.png)  
