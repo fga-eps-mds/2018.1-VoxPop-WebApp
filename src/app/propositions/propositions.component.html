@@ -1,32 +1,50 @@
 <div class="row">
-  <div class="col-sm-4 col-sm-offset-4 text-center">
-    <h3>Dê sua opinião</h3>
-  </div>
-  <div class="col-sm-3 col-sm-offset-1">
-    <a href="/mypls" class="btn btn-primary">Ver meus votos</a>
-  </div>
-</div>
-<br>
-<div class="row">
-  <div class="col-sm-8 col-sm-offset-2">
-    <div class="panel panel-primary text-center">
-      <div class="panel-heading">
-        <h3 class="panel-title">{{proposition['proposition_type_initials']}} {{proposition['number']}}/{{proposition['year']}}</h3>
-      </div>
-      <div class="panel-body">
-        <h5>{{proposition['proposition_type']}}</h5>
-        <div class="text-justify">
-          <p>{{proposition['abstract']}}</p>
-        </div>
-        <button class="btn btn-primary" (click)="openProposition(proposition['url_full'])">Veja na íntegra</button>
-        <div style="text-align: center; margin-bottom: 10px">
-          <br>
-          <button class='btn btn-success' (click)="answerPL('Y')"><span class="glyphicon glyphicon-ok"></span> SIM</button>
-          <button class='btn btn-light' (click)="answerPL('A')"><span class="glyphicon glyphicon-minus"></span> ME ABSTENHO</button>
-          <button class='btn btn-danger' (click)="answerPL('N')"><span class="glyphicon glyphicon-remove"></span> NÃO</button>
-        </div>
-      </div>
-      <div class="panel-footer text-muted">2 dias atrás</div>
+    <div class="col-sm-4 col-sm-offset-4 text-center">
+      <h3>Dê sua opinião</h3>
+    </div>
+    <div class="col-sm-3 col-sm-offset-1">
+      <a href="/mypls" class="btn btn-primary">Ver meus votos</a>
     </div>
   </div>
-</div>
+  <br>
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <div class="panel panel-primary text-center">
+        <div class="panel-heading">
+          <h3 class="panel-title">{{proposition['proposition_type_initials']}} {{proposition['number']}}/{{proposition['year']}}</h3>
+        </div>
+        <div class="panel-body">
+          <h5>{{proposition['proposition_type']}}</h5>
+          <p>{{proposition['abstract']}}</p>
+          <br>
+          <div class="row">
+            <div class="col-sm-6">
+                <div style="font-weight: bold">Aprovação dos Parlamentares</div>
+                <div class="progress-wrapper">
+                  <round-progress [current]="50" [max]="100" [responsive]="true" [radius]="50"></round-progress>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div style="font-weight: bold">Aprovação dos Usuários</div>
+              <div class="progress-wrapper">
+                  <round-progress [current]="50" [max]="100" [responsive]="true" [radius]="50"></round-progress>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-primary" (click)="openProposition(proposition['url_full'])">Veja na íntegra</button>
+          <div style="text-align: center; margin-bottom: 10px">
+            <br>
+            <div>
+              <button class='btn btn-success' (click)="answerPL('Y')">
+              <span class="glyphicon glyphicon-ok"></span> SIM</button>
+              <button class='btn btn-light' (click)="answerPL('A')">
+              <span class="glyphicon glyphicon-minus"></span> ME ABSTENHO</button>
+              <button class='btn btn-danger' (click)="answerPL('N')">
+              <span class="glyphicon glyphicon-remove"></span> NÃO</button>
+            </div>
+          </div>
+        </div>
+        <div class="panel-footer text-muted">2 dias atrás</div>
+      </div>
+    </div>
+  </div>

@@ -25,6 +25,8 @@ import { SeePlComponent } from './see-pl/see-pl.component';
 import { SeePoliticianDetailedComponent } from './see-politician-detail/see-politician-detail.component';
 import { UserFollowingComponent } from './user-following/user-following.component';
 import { SeeCompatibleParliamenterianComponent } from './see-compatible-parliamenterian/see-compatible-parliamenterian.component';
+import {RoundProgressModule} from 'angular-svg-round-progressbar';
+
 
 const appRoutes: Routes = [
   {
@@ -102,6 +104,7 @@ const appRoutes: Routes = [
     HttpModule,
     HttpClientModule,
     FormsModule,
+    RoundProgressModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA],
   providers: [
