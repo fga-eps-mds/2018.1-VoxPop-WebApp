@@ -44,7 +44,7 @@ export class EditPageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.tokenValue = this.cookieService.get('token');
+    this.tokenValue = this.token.getToken();
     this.token.checkToken(this.tokenValue);
     this.token.filterRestrictPage(this.tokenValue);
     this.userID = +this.cookieService.get('userID');
@@ -56,9 +56,11 @@ export class EditPageComponent implements OnInit {
 
   updateUser() {
     console.log(this.user);
-    const request = this.requester.putUser(this.user, this.userID);
-    this.updateUserHandler(request);
-    return request;
+    if(this.user.email != '') {
+      const request = this.requester.putUser(this.user, this.userID);
+      this.updateUserHandler(request);
+      return request;
+    }
   }
 
 

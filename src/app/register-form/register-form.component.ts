@@ -25,7 +25,7 @@ export class RegisterFormComponent implements OnInit {
       income: '-1',
       education: 'N',
       job: '',
-      birth_date: '0001-01-01',
+      birth_date: '1900-01-01',
     }
   };
 

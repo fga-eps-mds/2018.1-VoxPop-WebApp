@@ -1,46 +1,53 @@
-<body>
-  <div class="main-card">
-    <div class="row">
-      <div class="column">
-        <label>Nome: </label>  {{ user['first_name'] }} {{ user['last_name'] }}<br>
-        <label>Username: </label>  {{ user['username'] }}<br>
-        <label>Email: </label>  {{ user['email'] }}<br>
-        <label>Cidade: </label>  {{ user.social_information['city'] }}
+<div class="container">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title text-center">
+          <span>Meu Perfil</span>
+        </h3>
       </div>
-      <div class="column">
-        <label>Renda: </label>
-          <ng-container *ngIf="user.social_information['income'] == -1"> Não informado</ng-container>
-          <ng-container *ngIf="user.social_information['income'] == 0"> Entre R$0,00 até R$1000,00</ng-container>
-          <ng-container *ngIf="user.social_information['income'] == 1"> Entre R$1000,01 até R$3000,00</ng-container>
-          <ng-container *ngIf="user.social_information['income'] == 2"> Entre R$3000,01 até R$6000,00</ng-container>
-          <ng-container *ngIf="user.social_information['income'] == 3"> Entre R$6000,01 até R$9000,00</ng-container>
-          <ng-container *ngIf="user.social_information['income'] == 4"> Entre R$9000,01 até R$15000,00</ng-container>
-          <ng-container *ngIf="user.social_information['income'] == 5"> Entre R$15000,01 até R$25000,00</ng-container>
-          <ng-container *ngIf="user.social_information['income'] == 6"> R$25000,01 para cima</ng-container><br>
-        <label>Formação: </label> 
-          <ng-container *ngIf="user.social_information['education'] == 'N'"> Não informado</ng-container>
-          <ng-container *ngIf="user.social_information['education'] == 'EFI'"> Ensino Fundamental Incompleto</ng-container>
-          <ng-container *ngIf="user.social_information['education'] == 'EFC'"> Ensino Fundamental Completo</ng-container>
-          <ng-container *ngIf="user.social_information['education'] == 'EMI'"> Ensino Médio Incompleto</ng-container>
-          <ng-container *ngIf="user.social_information['education'] == 'EMC'"> Ensino Médio Completo</ng-container>
-          <ng-container *ngIf="user.social_information['education'] == 'ESI'"> Ensino Superior Incompleto</ng-container>
-          <ng-container *ngIf="user.social_information['education'] == 'ESC'"> Ensino Superior Completo</ng-container>
-          <ng-container *ngIf="user.social_information['education'] == 'PG'"> Pós Graduação</ng-container>
-          <ng-container *ngIf="user.social_information['education'] == 'ME'"> Mestrado</ng-container>
-          <ng-container *ngIf="user.social_information['education'] == 'DO'"> Doutorado</ng-container>
-          <ng-container *ngIf="user.social_information['education'] == 'PD'"> Pós Doutorado</ng-container><br>
-        <label>Ocupação: </label>  {{ user.social_information['job'] }}<br>
-        <label >Nascimento: </label>  {{user.social_information['birth_date'] | date:'dd/MM/yyyy'}}
+      <div class="panel-body">
+        <div class="row">
+          <div class="column">
+            <label>Nome: </label>  {{ user['first_name'] }} {{ user['last_name'] }}<br>
+            <label>Username: </label>  {{ user['username'] }}<br>
+            <label>Email: </label>  {{ user['email'] }}<br>
+            <label>Cidade: </label>  {{ user.social_information['city'] }}
+          </div>
+          <div class="column">
+            <label>Renda: </label>
+              <ng-container *ngIf="user.social_information['income'] == -1"> Não informado</ng-container>
+              <ng-container *ngIf="user.social_information['income'] == 0"> Entre R$0,00 até R$1000,00</ng-container>
+              <ng-container *ngIf="user.social_information['income'] == 1"> Entre R$1000,01 até R$3000,00</ng-container>
+              <ng-container *ngIf="user.social_information['income'] == 2"> Entre R$3000,01 até R$6000,00</ng-container>
+              <ng-container *ngIf="user.social_information['income'] == 3"> Entre R$6000,01 até R$9000,00</ng-container>
+              <ng-container *ngIf="user.social_information['income'] == 4"> Entre R$9000,01 até R$15000,00</ng-container>
+              <ng-container *ngIf="user.social_information['income'] == 5"> Entre R$15000,01 até R$25000,00</ng-container>
+              <ng-container *ngIf="user.social_information['income'] == 6"> R$25000,01 para cima</ng-container><br>
+            <label>Formação: </label>
+              <ng-container *ngIf="user.social_information['education'] == 'N'"> Não informado</ng-container>
+              <ng-container *ngIf="user.social_information['education'] == 'EFI'"> Ensino Fundamental Incompleto</ng-container>
+              <ng-container *ngIf="user.social_information['education'] == 'EFC'"> Ensino Fundamental Completo</ng-container>
+              <ng-container *ngIf="user.social_information['education'] == 'EMI'"> Ensino Médio Incompleto</ng-container>
+              <ng-container *ngIf="user.social_information['education'] == 'EMC'"> Ensino Médio Completo</ng-container>
+              <ng-container *ngIf="user.social_information['education'] == 'ESI'"> Ensino Superior Incompleto</ng-container>
+              <ng-container *ngIf="user.social_information['education'] == 'ESC'"> Ensino Superior Completo</ng-container>
+              <ng-container *ngIf="user.social_information['education'] == 'PG'"> Pós Graduação</ng-container>
+              <ng-container *ngIf="user.social_information['education'] == 'ME'"> Mestrado</ng-container>
+              <ng-container *ngIf="user.social_information['education'] == 'DO'"> Doutorado</ng-container>
+              <ng-container *ngIf="user.social_information['education'] == 'PD'"> Pós Doutorado</ng-container><br>
+            <label>Ocupação: </label>  {{ user.social_information['job'] }}<br>
+            <label >Nascimento: </label>  {{user.social_information['birth_date'] | date:'dd/MM/yyyy'}}
+          </div>
+        </div>
+        <div class="text-right">
+          <button class='btn btn-primary' (click)="edit()">
+            <span class="glyphicon glyphicon-edit">
+            </span>
+            Editar
+          </button>
+        </div>
       </div>
-    </div>
-    <div style="text-align: right;
-                margin-bottom: 10px;
-                margin-right: 10px">
-      <button class='btn btn-primary' (click)="edit()">
-        <span class="glyphicon glyphicon-edit">
-        </span>
-        Editar
-      </button>
     </div>
   </div>
-</body>
+</div>

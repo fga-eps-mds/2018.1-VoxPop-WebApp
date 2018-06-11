@@ -49,8 +49,8 @@ export class ParliamentarianComponent implements OnInit {
 
 
   ngOnInit() {
-    this.tokenValue = this.cookieService.get('token');
-    console.log(this.tokenValue);
+    this.tokenValue = this.token.getToken();
+    // console.log(this.tokenValue);
     this.token.checkToken(this.tokenValue);
     this.idValue = +this.cookieService.get('userID');
     this.loadPage(1, '');
@@ -65,13 +65,13 @@ export class ParliamentarianComponent implements OnInit {
   loadPage(offset: number, term) {
     let req: any;
     this.term = term.toUpperCase();
-    console.log(Number(offset));
+    // console.log(Number(offset));
     if (offset < 1 || isNaN(Number(offset))) {
       alert('Número de páginas inválido, favor digitar um número positivo');
       return;
     }
     this.offset = Number(offset);
-    console.log(this.offset);
+    // console.log(this.offset);
     req =  this.requester.getSearchedParliamentarian(this.itemsPerPage, (this.offset - 1) * this.itemsPerPage, this.term);
     this.handleParliamentariansSearchResponse(req, this.offset, this.term);
   }

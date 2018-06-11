@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-header',
@@ -10,13 +11,14 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private cookieService: CookieService,
+    private appComponent: AppComponent,
   ) { }
 
   ngOnInit() {
   }
 
-  logout() {
-    this.cookieService.set('token', '');
+  callLogout() {
+    this.appComponent.logout(this.cookieService);
   }
 
   toggleMenu() {
@@ -24,7 +26,6 @@ export class HeaderComponent implements OnInit {
      sidebar.classList.toggle('active');
      const content = document.getElementById('content');
      content.classList.toggle('active');
-     //
      if (sidebar.classList.contains('active')) {
        this.cookieService.set('sidebar', 'false');
        return false;

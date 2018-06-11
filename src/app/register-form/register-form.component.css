@@ -15,13 +15,13 @@
 }
 
 .btn, .btn-primary{
-    background-color: #3097D1;
-}
-
-.btn:hover, .btn-primary:hover{
-    background-color: #5bc0de;
+    background-color: #4267b2;
 }
 
 .required{
     color: #f0ad4e;
+}
+
+.container{
+    width: 88%;
 }

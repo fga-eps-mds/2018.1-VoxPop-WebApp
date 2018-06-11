@@ -47,8 +47,7 @@ export class MainPageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.tokenValue = this.cookieService.get('token');
-    console.log(this.tokenValue);
+    this.tokenValue = this.token.getToken();
     this.token.checkToken(this.tokenValue);
     this.idValue = +this.cookieService.get('userID');
     this.propositions(3, 0);

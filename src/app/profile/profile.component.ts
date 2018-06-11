@@ -34,14 +34,14 @@ export class ProfileComponent implements OnInit {
               private requester: RequestsService) { }
 
   ngOnInit() {
-    this.tokenValue = this.cookieService.get('token');
+    this.tokenValue = this.token.getToken();
     this.token.checkToken(this.tokenValue);
     this.token.filterRestrictPage(this.tokenValue);
     this.userID = +this.cookieService.get('userID');
     this.requester.getUser(this.userID).subscribe( response => {
-      console.log(response);
+      // console.log(response);
       this.user = response['body'];
-      console.log(this.user);
+      // console.log(this.user);
     }, error => {
       console.log('something wrong');
     });
