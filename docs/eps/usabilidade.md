@@ -39,6 +39,33 @@ Foram selecionados os usuários para fazer o teste 1 de usabilidade, sendo 1 de 
 ## Objetivo
 Usuário conseguir sozinho transpor a interface
 
+## Critério de sucesso
+Usuário executar sem qualquer tipo de dificuldade o roteiro de testes.
+
+## Roteiro de testes
+1. Cadastrar-se;
+2. Efetuar login
+3. Ir para a página inicial
+4. Visualizar o perfil
+5. Editar as informações pessoais
+6. Visualizar se as informações foram atualizadas
+7. Ir para a página onde são exibidos os Projetos de Lei
+8. Visualizar todas as informações a respeito de um projeto de lei específico
+9. Votar em um Projeto de Lei (Concordando, Discordando ou Abstendo-se)
+10. Visualizar os Projetos de Lei que ele já votou.
+11. Pesquisar um Projeto de Lei
+12. Editar o próprio voto dado em um Projeto de Lei
+13. Visualizar os Deputados
+14. Procurar por um Deputado
+15. Visualizar as informações específicas de um Deputado
+16. Seguir o Deputado
+17. Deixar de seguir Deputado
+18. Deslogar-se
+
+## Análise
+Caso mais de um usuário tiver problema na realização de alguma tarefa, esse fluxo provavelmente deverá ser melhorado
+
+
 ![Risk Burndown](images/Geral.png)  
 [Clique aqui para ampliar](images/Geral.png)  
 
