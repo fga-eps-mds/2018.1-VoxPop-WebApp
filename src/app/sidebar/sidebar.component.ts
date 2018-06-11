@@ -9,6 +9,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class SidebarComponent implements OnInit {
 
   sidebar = '';
+  tokenValue = '';
 
   constructor(
     private cookieService: CookieService,

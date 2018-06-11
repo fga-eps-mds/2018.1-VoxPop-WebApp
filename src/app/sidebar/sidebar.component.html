@@ -16,39 +16,36 @@
                 Página inicial
             </a>
         </li>
-        <!-- <li>
-            <a href="#">
-                <i class="glyphicon glyphicon-briefcase"></i>
-                About
+        <li><!-- Link with dropdown items -->
+            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
+                <i class="glyphicon glyphicon-briefcase"></i>Deputados
             </a>
-            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
-                <i class="glyphicon glyphicon-duplicate"></i>
-                Pages
-            </a>
-            <ul class="collapse list-unstyled" id="pageSubmenu">
-                <li><a href="#">Page 1</a></li>
-                <li><a href="#">Page 2</a></li>
-                <li><a href="#">Page 3</a></li>
+            <ul class="collapse list-unstyled" id="homeSubmenu">
+                <li>
+                    <a href="parliamentarians">
+                    Ver Todos Deputados
+                    </a>
+                </li>
+                <li id="conditional">
+                    <a href="user-following">Ver Deputados seguidos</a>
+                </li>
             </ul>
-        </li> -->
-        <li>
-            <a href="/propositions" id="deSuaOpiniao" style="display:none">
-                <i class="glyphicon glyphicon-bullhorn"></i>
-                Dê sua opinião
+
+        <li><!-- Link with dropdown items -->
+            <a href="#homeSubmenu2" data-toggle="collapse" aria-expanded="false">
+                <i class="glyphicon glyphicon-file"></i>Propostas de Lei
             </a>
-        </li>
-        <li>
-            <a href="/parliamentarians">
-                <i class="	glyphicon glyphicon-briefcase"></i>
-                Deputados
-            </a>
-        </li>
-        <li>
-            <a href="/seepl">
-                <i class="	glyphicon glyphicon-file"></i>
-                Proposições
-            </a>
-        </li>
+            <ul class="collapse list-unstyled" id="homeSubmenu2">
+                <li><a href="seepl">
+                    Ver Todas Proposições
+                </a></li>
+                <li><a href="propositions" id="deSuaOpiniao">
+                    Votar em proposta
+                </a></li>
+                <li><a href="mypls" id="deSuaOpiniao">
+                    Ver votos em propostas
+                </a></li>
+            </ul>
         <li>
             <a href="/">
                 <i class="glyphicon glyphicon-send"></i>
