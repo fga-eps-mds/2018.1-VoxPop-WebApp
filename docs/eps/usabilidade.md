@@ -12,6 +12,33 @@ Esse relatório compreende o teste de Usabilidade do VoxPop ao qual foram seleci
 ## Definir o grupo de usuários:
 O VoxPop tem como público alvo todo e qualquer cidadão brasileiro ativo e que tenha direito a voto nas eleições, ou seja, jovens acima de 16 anos e que possua o título de eleitor. O sistema deve ser simples e acessível para a maior quantidade possível de pessoas, ou seja, independer do grau de escolaridade do usuário.
 
+## 1° Teste de Usabilidade – Realizado em: 27 de Maio de 2018
+Usuário: Marcos Bernardino de Freitas
+
+Idade: 33 anos
+
+Formação: Ensino Superior completo – Administração de Empresas
+
+Grau de satisfação: 3/10
+
+Comentários ou problemas: Muito pouco intuitivo, tive dificuldade de manusear
+
+Usuário: Luciana Brito Moreira
+
+Idade: 32 anos
+
+Formação: Ensino Médio Completo
+
+Grau de satisfação: 2/10
+
+Comentários ou problemas: Fiquei perdida, não consegui usar direito.
+
+## Procedimentos
+Foram selecionados os usuários para fazer o teste 1 de usabilidade, sendo 1 de cada vez, não tendo nenhum contato com o outro durante a realização do mesmo. O usuário foi deixado a vontade em posse do software, pediu-se para utilizar o sistema, tendo como intuito observar a desenvoltura do usuário sozinho, se estava tudo claro, fácil de ser compreendido e se o mesmo conseguiria utilizar o sistema sem qualquer tipo de dificuldade. Caso não e o usuário ficasse travado, o avaliador interviria no teste, fornecendo orientações para o usuário completar a tarefa e seguir para o próximo estágio. Tarefas não realizadas pelo usuário, foram solicitadas suas execuções pelo avaliador de forma que o roteiro de testes fosse executado e analisado
+
+## Objetivo
+Usuário conseguir sozinho transpor a interface
+
 ![Risk Burndown](images/Geral.png)  
 [Clique aqui para ampliar](images/Geral.png)  
 
