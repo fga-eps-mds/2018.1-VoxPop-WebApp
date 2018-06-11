@@ -2,11 +2,11 @@
   background-color: #7386D5;
   height: 50px;
 }
-.navbar-custom .navbar-brand {
+.navbar-default .navbar-brand {
   color: #ffffff;
 }
-.navbar-custom .navbar-brand:hover,
-.navbar-custom .navbar-brand:focus {
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
   color: #d4dbe0;
   background-color: transparent;
 }
@@ -14,11 +14,11 @@
   color: #ffffff;
 }
 
-.navbar-custom .navbar-nav > li > a {
+.navbar-default .navbar-nav > li > a {
   color: #ffffff;
 }
-.navbar-custom .navbar-nav > li > a:hover,
-.navbar-custom .navbar-nav > li > a:focus {
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
   color: white;
   background-color: #5bc0de;
 }
@@ -28,10 +28,10 @@
   border-top-color: #c0c0c0;
   border-bottom-color: #c0c0c0;
 }
-.navbar-custom .navbar-link {
+.navbar-default .navbar-link {
   color: #ffffff;
 }
-.navbar-custom .navbar-link:hover {
+.navbar-default .navbar-link:hover {
     color: #5bc0de;
 }
 
@@ -42,4 +42,14 @@
 .glyphicon-menu-hamburger {
   color: white;
   font-size: 16px;
+}
+
+.navbar-default {
+  background-color: #7386d5;
+  border-color: #7386d5;
+  border-bottom: 1px solid rgb(231, 231, 231);
+}
+
+.navbar-toggle, .navbar-toggle:hover, .navbar-toggle:focus {
+  background-color: white;
 }

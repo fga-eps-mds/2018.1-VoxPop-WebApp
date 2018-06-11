@@ -1,35 +1,35 @@
-<nav class="navbar-custom navbar-fixed-top">
-  <div class="container-fluid">
-    <ul class="nav navbar-nav">
-        <li>
-          <button type="button" id="sidebarCollapse" class="btn navbar-btn menu" (click)="toggleMenu()">
-            <i class="glyphicon glyphicon-menu-hamburger"></i>
-          </button>
-        </li>
-      </ul>
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/"><i>VoxPop</i></a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <!-- Search -->
-      <ul class="nav navbar-nav">
-        <!-- <li>
-          <form class="navbar-form" role="search" method="get" action="/busca">
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Buscar por" name="query" id="busca">
-              <div class="input-group-btn">
-                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-              </div>
-            </div>
-          </form>
-        </li> -->
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="/register" id="register"><span class="glyphicon glyphicon-user"></span> Criar Conta</a></li>
-        <li><a href="/login" id="login"><span class="glyphicon glyphicon-log-in"></span> Efetuar Login</a></li>
-        <li><a href="/profile" style="display:none" id="profile"><span class="glyphicon glyphicon-user"></span> Meu Perfil</a></li>
-        <li><a href="/" style="display:none" id="logout" (click)="logout()">Sair</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <table>
+          <tr>
+            <td>
+              <button type="button" id="sidebarCollapse" class="btn navbar-btn menu" (click)="toggleMenu()">
+                <i class="glyphicon glyphicon-menu-hamburger"></i>
+              </button>
+            </td>
+            <td>
+              <a class="navbar-brand" href="/"><i>VoxPop</i></a>
+            </td>
+          </tr>
+        </table>
+      </div>
+  
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/register" id="register"><span class="glyphicon glyphicon-user"></span> Criar Conta</a></li>
+            <li><a href="/login" id="login"><span class="glyphicon glyphicon-log-in"></span> Efetuar Login</a></li>
+            <li><a href="/profile" style="display:none" id="profile"><span class="glyphicon glyphicon-user"></span> Meu Perfil</a></li>
+            <li><a href="/" style="display:none" id="logout" (click)="logout()">Sair</a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
