@@ -91,8 +91,28 @@ Já em Dê sua opinião, não ficou completamente explicito do que se tratava ca
 ![Proposicao](images/proposicao.png)  
 [Clique aqui para ampliar](images/proposicao.png)
 
+## 2° Teste de Usabilidade – Realizado em: 03 de Junho de 2018
+Usuário: Adriana Brito Moreira
 
-![Risk Burndown](images/Geral.png)  
-[Clique aqui para ampliar](images/Geral.png)  
+Idade: 35 anos
+
+Formação: Ensino Superior completo – Recursos Humanos
+
+Grau de satisfação: 7/10
+
+Comentários ou problemas: Não tive muitas dificuldades ao utilizar, porém pontos de melhorias foram sugeridos
+
+Usuário: Augusto Costa Mendes
+
+Idade: 35 anos
+
+Formação: Ensino Fundamental incompleto
+
+Grau de satisfação: 8/10
+
+Comentários ou problemas: Consegui executar a maioria das coisas.
+
+## Procedimentos
+Foram selecionados os usuários para fazer o teste 2 de usabilidade, sendo 1 de cada vez, não tendo assim nenhum contato com o outro durante a realização do mesmo. O usuário foi deixado a vontade em posse do software, pediu-se para utilizar o sistema, tendo como intuito observar a desenvoltura do usuário sozinho, se estava tudo claro, fácil de ser compreendido e se o mesmo conseguiria utilizar o sistema sem qualquer tipo de dificuldade. Caso não e o usuário ficasse travado, o avaliador interviria no teste, fornecendo orientações para o usuário completar a tarefa e seguir para o próximo estágio. Tarefas não realizadas pelo usuário, foram solicitadas suas execuções pelo avaliador de forma que o roteiro de testes fosse executado e analisado
 
 [Voltar](./../)
