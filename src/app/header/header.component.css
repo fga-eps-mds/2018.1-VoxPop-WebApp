@@ -47,9 +47,9 @@
 .navbar-default {
   background-color: #7386d5;
   border-color: #7386d5;
-  border-bottom: 1px solid rgb(231, 231, 231);
 }
 
 .navbar-toggle, .navbar-toggle:hover, .navbar-toggle:focus {
   background-color: white;
+  color: gray;
 }
