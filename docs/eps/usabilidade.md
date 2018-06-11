@@ -65,6 +65,32 @@ Usuário executar sem qualquer tipo de dificuldade o roteiro de testes.
 ## Análise
 Caso mais de um usuário tiver problema na realização de alguma tarefa, esse fluxo provavelmente deverá ser melhorado
 
+## Resultados
+Os usuários tiveram muita dificuldade em utilizar o sistema, tinham poucas informações na página inicial e eles não sabiam exatamente do que se tratava, o que eles teriam que fazer, se era necessário criar uma conta e logar-se ou não, conforme pode-se observar na imagem a seguir:
+
+![Pagina Inicial](images/pagina_inicial.png)  
+[Clique aqui para ampliar](images/pagina_inicial.png)
+
+Na página de cadastro, os usuários tiveram dificuldade em se cadastrar, devido aos critérios de validação de senha serem complicados e pouco comuns.
+
+![Cadastro](images/cadastro.png)  
+[Clique aqui para ampliar](images/cadastro.png)  
+
+Após realizar o cadastro e efetuar login, não ficou claro para o usuário que isso que apareceu na tela principal se tratava dos projetos de leis, muito menos qual foi o critério escolhido para eles estarem lá.
+
+![Pagina Inicial Logado](images/pagina_inicial_logado.png)  
+[Clique aqui para ampliar](images/pagina_inicial_logado.png)
+
+Em meus votos não ficou claro para o usuário qual foi o voto dele (sim, não ou absteve-se) em um determinado projeto de lei.
+
+![Meus Votos](images/meus_votos.png)  
+[Clique aqui para ampliar](images/meus_votos.png)
+
+Já em Dê sua opinião, não ficou completamente explicito do que se tratava cada botão de votação da proposição
+
+![Proposicao](images/proposicao.png)  
+[Clique aqui para ampliar](images/proposicao.png)
+
 
 ![Risk Burndown](images/Geral.png)  
 [Clique aqui para ampliar](images/Geral.png)  
