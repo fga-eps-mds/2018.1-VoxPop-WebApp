@@ -147,5 +147,57 @@ Usuário executar sem qualquer tipo de dificuldade o roteiro de testes
 ## Análise
 Caso mais de um usuário tiver problema na realização de alguma tarefa, esse fluxo provavelmente deverá ser melhorado
 
+## Resultados
+Com esse novo layout, contendo mais informações e mais intuitivo, os usuários analisados tiveram um desempenho bem melhor em relação as analises anteriores, tendo como pontos de sugestões, melhorias expostos a seguir:
+
+![Login](images/Login.png)  
+[Clique aqui para ampliar](images/Login.png)
+
+Ao terminar de realizar o cadastro, ser redirecionado para a página de login, com um indicativo de que ele deve realizar o login para poder ter acesso as funções especiais do sistema
+
+![Criar Cadastro](images/criar-cadastro.png)  
+[Clique aqui para ampliar](images/criar-cadastro.png)
+
+Em Crie já a sua conta e comece a votar!, ter um link para o usuário clicar e ir diretamente para a página onde ele irá criar uma conta
+
+![Data de Nascimento](images/data-de-nascimento.png)  
+[Clique aqui para ampliar](images/data-de-nascimento.png)
+
+Alterar data de nascimento para o formato brasileiro: dd/mm/yyyy
+
+![Dias explicitos](images/dias-explicitos.png)  
+[Clique aqui para ampliar](images/dias-explicitos.png)
+
+Deixar explicito o que significa esse valor (2 dias atrás)
+
+![Editar](images/editar.png)  
+[Clique aqui para ampliar](images/editar.png)
+
+Informações do lado direito da página editar meus dados, não está atualizando corretamente.
+
+![Fora da Caixa](images/fora-da-caixa.png)  
+[Clique aqui para ampliar](images/fora-da-caixa.png)
+
+Arrumar informações com abstract muito grande na página de meus votos, pois o texto está ficando completamente desajustado em relação a página
+
+![Meus-Votos](images/meus-votos.png)  
+[Clique aqui para ampliar](images/meus-votos.png)
+
+Deixar claro em seu voto, se o usuário votou em sim/não ou se absteve
+
+![Seguir Deputado](images/seguir-deputado.png)  
+[Clique aqui para ampliar](images/seguir-deputado.png)
+
+Deixar com maior clareza quais benefícios/funcionalidades o usuário terá ao clicar na opção seguir deputado.
+
+![Votar](images/votar.png)  
+[Clique aqui para ampliar](images/votar.png)
+
+Trocar o nome dê a sua opinião (para algo como Votar nos Projetos de Lei), pois não está completamente explicito para o usuário que é lá onde ele deve clicar para votar nos PLs
+
+![Dias explicitos](images/dias-explicitos.png)  
+[Clique aqui para ampliar](images/dias-explicitos.png)
+
+Informações referentes a meus votos está disponível para ser acessada na página de Dê sua opinião, ficando assim um pouco ocultas do usuário e demandando um pouco de tempo de busca do mesmo para localiza-la quando solicitado.
 
 [Voltar](./../)
