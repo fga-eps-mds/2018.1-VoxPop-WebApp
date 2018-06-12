@@ -15,25 +15,32 @@
   <div class="col-sm-3 col-sm-offset-1">
     <a href="/user-following" class="btn btn-primary" id="userFollowing" style="display:none">Ver parlamentares seguidos</a>
   </div>
+  <div *ngIf="loading">
+    <p>Carregando dados...</p>
+    <div class="loader"></div>
+  </div>
 </div>
 <br>
-<div class="col-sm-3 text-center" *ngFor="let p of parliamentarians">
 
-  <a routerLink="/parliamentarians/{{p['id']}}" routerLinkActivate="active">
-    <div class="panel panel-primary">
-      <div class="panel-heading">
-        <h3 class="panel-title">
-          <span>{{p['name']}} </span>
-        </h3>
-      </div>
-      <div class="panel-body">
-        <img src="{{p['photo']}}" width="114" height="152" alt="woops, someting went wrong">
-      </div>
-      <div class="panel-footer text-muted">{{p['political_party']}}/{{p['federal_unit']}}</div>
-      <div *ngIf="tokenValue !== ''" class="panel-footer text-muted alternative">{{p['compatibility']}}</div>
-    </div>
-  </a>
+<div *ngIf="!loading">
+  <div class="col-sm-3 text-center" *ngFor="let p of parliamentarians">
 
+    <a routerLink="/parliamentarians/{{p['id']}}" routerLinkActivate="active">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <span>{{p['name']}} </span>
+          </h3>
+        </div>
+        <div class="panel-body">
+          <img src="{{p['photo']}}" width="114" height="152" alt="woops, someting went wrong">
+        </div>
+        <div class="panel-footer text-muted">{{p['political_party']}}/{{p['federal_unit']}}</div>
+        <div *ngIf="tokenValue !== ''" class="panel-footer text-muted alternative">{{p['compatibility']}}</div>
+      </div>
+    </a>
+
+  </div>
 </div>
 <table style="width:100%" *ngIf="pages > 0">
   <tr>

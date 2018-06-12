@@ -14,6 +14,11 @@
   <br>
   <br>
   <br>
+  <div *ngIf="loading" align="center">
+    <p>Carregando dados...</p>
+    <div class="loader"></div>
+  </div>
+  <ng-container *ngIf="!loading" class="center">
   <div class="row">
     <div class="col-sm-6 text-center" *ngFor="let p of propositionVote let j = index">
       <div class="panel panel-primary">
@@ -62,6 +67,7 @@
       </div>
     </div>
   </div>
+</ng-container>
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
