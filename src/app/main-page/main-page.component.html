@@ -1,175 +1,185 @@
-<div class="container">
-  <div class="row">
-    <div class="text-center">
-      <img src="/assets/images/LogoVPAzul.png" width="30%" height="30%" alt="Logo">
-      <h3>Seja bem-vindo ao VoxPop!</h3>
-    </div>
-    <div class="text-justify" *ngIf="tokenValue === ''">
-      <br>
-      <h4>O que é o VoxPop?</h4>
-      <p>O VoxPop é uma aplicação criada no contexto das disciplinas Métodos de Desenvolvimento de Software (MDS) e Engenharia de Produto de Software (EPS) da Universidade de Brasília (UnB) - Faculdade do Gama (FGA), que visa criar uma classificação pessoal de deputados com base na compatibilidade dos usuários com os parlamentares.</p>
-      <br>
-      <h4>E como fazemos isso?</h4>
-      <p>Todo o conceito do VoxPop se baseia em cruzar dados abertos disponibilizados pela Câmara dos Deputados (<a href="https://dadosabertos.camara.leg.br/">confira aqui</a>) com dados fornecidos pelos usuários, podendo assim gerar estatísticas sobre os nossos parlamentares, sobre as proposições que são votadas por eles, e, acima de tudo, sobre a opinião do cidadão a respeito tanto dos parlamentares, quanto das proposições.</p>
-      <br>
-      <h4>Quais dados nós utilizamos?</h4>
-      <p>Nosso sistema utiliza sempre dados recentes disponibilizados pela Câmara dos Deputados referentes aos parlamentares atuais (informações pessoais, partidárias, etc.), às proposições votadas à partir do ano de 2015, e aos votos dos parlamentares em proposições votadas à partir do ano de 2015.</p>
-      <br>
-      <div class="text-center text-italic">
-        <strong><em>Crie já a sua conta e comece a votar!</em></strong>
+<div class="container"> 
+    <div class="row">
+      <div class="text-center" >
+        <img src="/assets/images/LogoVPAzul.png" width="30%" height="30%" alt="Logo">
+        <h3 *ngIf="tokenValue === ''">Seja bem-vindo ao VoxPop!</h3>
       </div>
-    </div>
-    <hr />
-    <div class="text-center">
-      <h3>Veja o que está acontecendo na Câmara dos Deputados!</h3>
-    </div>
-    <br>
-    <div class="row text-center">
-      <div class="col-sm-6">
-        <h4>O QUE ESTÁ SENDO VOTADO</h4>
-        <canvas id="propositionChart"></canvas>
+      <div>
+      <div class="text-justify" *ngIf="tokenValue === ''">
         <br>
-      </div>
-      <div class="col-sm-6">
-        <h4>PARLAMENTARES MAIS ATIVOS</h4>
-        <canvas id="parliamentaryChart"></canvas>
+        <h4>O que é o VoxPop?</h4>
+        <p>O VoxPop é uma aplicação criada no contexto das disciplinas Métodos de Desenvolvimento de Software (MDS) e Engenharia de Produto de Software (EPS) da Universidade de Brasília (UnB) - Faculdade do Gama (FGA), que visa criar uma classificação pessoal de deputados com base na compatibilidade dos usuários com os parlamentares.</p>
         <br>
-      </div>
-    </div>
-
-    <div *ngIf="proposition && proposition.length > 0 && most_actives && most_actives.length > 0">
-      <div class="row">
-        <div class="col-sm-6 text-center">
-          <!-- <div *ngFor="let p of proposition"> -->
-          <div class="panel panel-primary">
-            <div class="panel-heading">
-              <h3 class="panel-title">{{proposition[0]['proposition_type_initials']}} {{proposition[0]['number']}}/{{proposition[0]['year']}}</h3>
-            </div>
-            <div class="panel-body">
-              <h5>{{proposition[0]['proposition_type']}}</h5>
-              <div class="text-justify">
-                <p>{{proposition[0]['abstract']}}</p>
-              </div>
-              <button class="btn btn-primary" (click)="openProposition(proposition[0]['url_full'])">Veja na íntegra</button>
-            </div>
-            <div class="panel-footer text-muted">2 dias atrás</div>
-          </div>
-        </div>
-        <div class="col-sm-6 text-center">
-          <div class="panel panel-primary">
-            <div class="panel-heading">
-              <h3 class="panel-title">
-                <span>Deputado {{most_actives[0]['parliamentary']['name']}} </span>
-                <i class="glyphicon glyphicon-star" style="color:yellow"></i>
-                <i class="glyphicon glyphicon-star" style="color:yellow"></i>
-                <i class="glyphicon glyphicon-star" style="color:yellow"></i>
-              </h3>
-            </div>
-            <div class="panel-body">
-              <div class="col-sm-6">
-                <img src="{{most_actives[0]['parliamentary']['photo']}}" width="114" height="152" alt="woops, someting went wrong">
-              </div>
-              <div class="col-sm-6">
-                <h5>1ª lugar</h5><p class="help-block">Este é o deputado mais ativo!</p>
-                <p>{{most_actives[0]['parliamentary']['political_party']}}/{{most_actives[0]['parliamentary']['federal_unit']}}</p>
-                <a routerLink="/parliamentarians/{{most_actives[0]['parliamentary']['id']}}" routerLinkActivate="active" class="btn btn-primary">Ver parlamentar</a>
-              </div>
-            </div>
-            <div class="panel-footer text-muted">Quantidade de votos: {{most_actives[0]['votes']}}</div>
-          </div>
-
-          <!-- </div> -->
+        <h4>E como fazemos isso?</h4>
+        <p>Todo o conceito do VoxPop se baseia em cruzar dados abertos disponibilizados pela Câmara dos Deputados (<a href="https://dadosabertos.camara.leg.br/">confira aqui</a>) com dados fornecidos pelos usuários, podendo assim gerar estatísticas sobre os nossos parlamentares, sobre as proposições que são votadas por eles, e, acima de tudo, sobre a opinião do cidadão a respeito tanto dos parlamentares, quanto das proposições.</p>
+        <br>
+        <h4>Quais dados nós utilizamos?</h4>
+        <p>Nosso sistema utiliza sempre dados recentes disponibilizados pela Câmara dos Deputados referentes aos parlamentares atuais (informações pessoais, partidárias, etc.), às proposições votadas à partir do ano de 2015, e aos votos dos parlamentares em proposições votadas à partir do ano de 2015.</p>
+        <br>
+        <div class="text-center text-italic">
+          <strong><em>Crie já a sua conta e comece a votar!</em></strong>
         </div>
       </div>
-
-      <div class="row">
-        <div class="col-sm-6 text-center">
-
-          <div class="panel panel-primary">
-            <div class="panel-heading">
-              <h3 class="panel-title">{{proposition[1]['proposition_type_initials']}} {{proposition[1]['number']}}/{{proposition[1]['year']}}</h3>
+      <div class="text-center">
+        <h3>Veja o que está acontecendo na Câmara dos Deputados!</h3>
+      </div>
+      <br>
+      <div class="row text-center">
+        <div class="col-sm-6">
+          <h4 >O QUE ESTÁ SENDO VOTADO</h4>
+            <div *ngIf="loading">
+              <p>Carregando dados</p>
+              <!-- <img src="http://1.bp.blogspot.com/-AKZikJyNdEQ/TrmZtRb5UVI/AAAAAAAACOo/dAoYDzPIBK4/s1600/carregando-cinza-psdtutz.gif"> -->
+              <div class="loader"></div>
             </div>
-            <div class="panel-body">
-              <h5>{{proposition[1]['proposition_type']}}</h5>
-              <div class="text-justify">
-                <p>{{proposition[1]['abstract']}}</p>
-              </div>
-              <button class="btn btn-primary" (click)="openProposition(proposition[1]['url_full'])">Veja na íntegra</button>
-            </div>
-            <div class="panel-footer text-muted">2 dias atrás</div>
-          </div>
+          <canvas id="propositionChart"></canvas>
+          <br>
         </div>
-        <div class="col-sm-6 text-center">
-          <div class="panel panel-primary">
-            <div class="panel-heading">
-              <h3 class="panel-title">
-                <span>Deputado {{most_actives[1]['parliamentary']['name']}} </span>
-                <i class="glyphicon glyphicon-star" style="color:yellow"></i>
-                <i class="glyphicon glyphicon-star" style="color:yellow"></i>
-              </h3>
-            </div>
-            <div class="panel-body">
-              <div class="col-sm-6">
-                <img src="{{most_actives[1]['parliamentary']['photo']}}" width="114" height="152" alt="woops, someting went wrong">
-              </div>
-              <div class="col-sm-6">
-                <h5>2ª lugar</h5><p class="help-block">Este é o segundo deputado mais ativo!</p>
-                <p>{{most_actives[1]['parliamentary']['political_party']}}/{{most_actives[1]['parliamentary']['federal_unit']}}</p>
-                <a routerLink="/parliamentarians/{{most_actives[1]['parliamentary']['id']}}" routerLinkActivate="active" class="btn btn-primary">Ver parlamentar</a>
-              </div>
-            </div>
-            <div class="panel-footer text-muted">Quantidade de votos: {{most_actives[1]['votes']}}</div>
+        <div class="col-sm-6">
+          <h4>PARLAMENTARES MAIS ATIVOS</h4>
+          <div *ngIf="loading">
+            <p>Carregando dados</p>
+            <!-- <img src="http://1.bp.blogspot.com/-AKZikJyNdEQ/TrmZtRb5UVI/AAAAAAAACOo/dAoYDzPIBK4/s1600/carregando-cinza-psdtutz.gif"> -->
+            <div class="loader"></div>
           </div>
-
+          <canvas id="parliamentaryChart"></canvas>
+          <br>
         </div>
       </div>
-
-      <div class="row">
-        <div class="col-sm-6 text-center">
-
-          <div class="panel panel-primary">
-            <div class="panel-heading">
-              <h3 class="panel-title">{{proposition[2]['proposition_type_initials']}} {{proposition[2]['number']}}/{{proposition[2]['year']}}</h3>
-            </div>
-            <div class="panel-body">
-              <h5>{{proposition[2]['proposition_type']}}</h5>
-              <div class="text-justify">
-                <p>{{proposition[2]['abstract']}}</p>
+  
+      <div *ngIf="proposition && proposition.length > 0 && most_actives && most_actives.length > 0">
+        <div class="row">
+          <div class="col-sm-6 text-center">
+            <!-- <div *ngFor="let p of proposition"> -->
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title">{{proposition[0]['proposition_type_initials']}} {{proposition[0]['number']}}/{{proposition[0]['year']}}</h3>
               </div>
-              <button class="btn btn-primary" (click)="openProposition(proposition[2]['url_full'])">Veja na íntegra</button>
+              <div class="panel-body">
+                <h5>{{proposition[0]['proposition_type']}}</h5>
+                <div class="text-justify">
+                  <p>{{proposition[0]['abstract']}}</p>
+                </div>
+                <button class="btn btn-primary" (click)="openProposition(proposition[0]['url_full'])">Veja na íntegra</button>
+              </div>
+              <div class="panel-footer text-muted">2 dias atrás</div>
             </div>
-            <div class="panel-footer text-muted">2 dias atrás</div>
+          </div>
+          <div class="col-sm-6 text-center">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title">
+                  <span>Deputado {{most_actives[0]['parliamentary']['name']}} </span>
+                  <i class="glyphicon glyphicon-star" style="color:yellow"></i>
+                  <i class="glyphicon glyphicon-star" style="color:yellow"></i>
+                  <i class="glyphicon glyphicon-star" style="color:yellow"></i>
+                </h3>
+              </div>
+              <div class="panel-body">
+                <div class="col-sm-6">
+                  <img src="{{most_actives[0]['parliamentary']['photo']}}" width="114" height="152" alt="woops, someting went wrong">
+                </div>
+                <div class="col-sm-6">
+                  <h5>1ª lugar</h5><p class="help-block">Este é o deputado mais ativo!</p>
+                  <p>{{most_actives[0]['parliamentary']['political_party']}}/{{most_actives[0]['parliamentary']['federal_unit']}}</p>
+                  <a routerLink="/parliamentarians/{{most_actives[0]['parliamentary']['id']}}" routerLinkActivate="active" class="btn btn-primary">Ver parlamentar</a>
+                </div>
+              </div>
+              <div class="panel-footer text-muted">Quantidade de votos: {{most_actives[0]['votes']}}</div>
+            </div>
+  
+            <!-- </div> -->
           </div>
         </div>
-        <div class="col-sm-6 text-center">
-          <div class="panel panel-primary">
-            <div class="panel-heading">
-              <h3 class="panel-title">
-                <span>Deputado {{most_actives[2]['parliamentary']['name']}} </span>
-                <i class="glyphicon glyphicon-star" style="color:yellow"></i>
-              </h3>
-            </div>
-            <div class="panel-body">
-              <div class="col-sm-6">
-                <img src="{{most_actives[2]['parliamentary']['photo']}}" width="114" height="152" alt="woops, someting went wrong">
+  
+        <div class="row">
+          <div class="col-sm-6 text-center">
+  
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title">{{proposition[1]['proposition_type_initials']}} {{proposition[1]['number']}}/{{proposition[1]['year']}}</h3>
               </div>
-              <div class="col-sm-6">
-                <h5>3ª lugar</h5><p class="help-block">Este é o terceiro deputado mais ativo!</p>
-                <p>{{most_actives[2]['parliamentary']['political_party']}}/{{most_actives[2]['parliamentary']['federal_unit']}}</p>
-                <a routerLink="/parliamentarians/{{most_actives[2]['parliamentary']['id']}}" routerLinkActivate="active" class="btn btn-primary">Ver parlamentar</a>
+              <div class="panel-body">
+                <h5>{{proposition[1]['proposition_type']}}</h5>
+                <div class="text-justify">
+                  <p>{{proposition[1]['abstract']}}</p>
+                </div>
+                <button class="btn btn-primary" (click)="openProposition(proposition[1]['url_full'])">Veja na íntegra</button>
               </div>
+              <div class="panel-footer text-muted">2 dias atrás</div>
             </div>
-            <div class="panel-footer text-muted">Quantidade de votos: {{most_actives[2]['votes']}}</div>
           </div>
-
-          <!-- <div class="main-card vote">
-            <div class="main-card-content">
-
+          <div class="col-sm-6 text-center">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title">
+                  <span>Deputado {{most_actives[1]['parliamentary']['name']}} </span>
+                  <i class="glyphicon glyphicon-star" style="color:yellow"></i>
+                  <i class="glyphicon glyphicon-star" style="color:yellow"></i>
+                </h3>
+              </div>
+              <div class="panel-body">
+                <div class="col-sm-6">
+                  <img src="{{most_actives[1]['parliamentary']['photo']}}" width="114" height="152" alt="woops, someting went wrong">
+                </div>
+                <div class="col-sm-6">
+                  <h5>2ª lugar</h5><p class="help-block">Este é o segundo deputado mais ativo!</p>
+                  <p>{{most_actives[1]['parliamentary']['political_party']}}/{{most_actives[1]['parliamentary']['federal_unit']}}</p>
+                  <a routerLink="/parliamentarians/{{most_actives[1]['parliamentary']['id']}}" routerLinkActivate="active" class="btn btn-primary">Ver parlamentar</a>
+                </div>
+              </div>
+              <div class="panel-footer text-muted">Quantidade de votos: {{most_actives[1]['votes']}}</div>
             </div>
-          </div> -->
+  
+          </div>
         </div>
+  
+        <div class="row">
+          <div class="col-sm-6 text-center">
+  
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title">{{proposition[2]['proposition_type_initials']}} {{proposition[2]['number']}}/{{proposition[2]['year']}}</h3>
+              </div>
+              <div class="panel-body">
+                <h5>{{proposition[2]['proposition_type']}}</h5>
+                <div class="text-justify">
+                  <p>{{proposition[2]['abstract']}}</p>
+                </div>
+                <button class="btn btn-primary" (click)="openProposition(proposition[2]['url_full'])">Veja na íntegra</button>
+              </div>
+              <div class="panel-footer text-muted">2 dias atrás</div>
+            </div>
+          </div>
+          <div class="col-sm-6 text-center">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title">
+                  <span>Deputado {{most_actives[2]['parliamentary']['name']}} </span>
+                  <i class="glyphicon glyphicon-star" style="color:yellow"></i>
+                </h3>
+              </div>
+              <div class="panel-body">
+                <div class="col-sm-6">
+                  <img src="{{most_actives[2]['parliamentary']['photo']}}" width="114" height="152" alt="woops, someting went wrong">
+                </div>
+                <div class="col-sm-6">
+                  <h5>3ª lugar</h5><p class="help-block">Este é o terceiro deputado mais ativo!</p>
+                  <p>{{most_actives[2]['parliamentary']['political_party']}}/{{most_actives[2]['parliamentary']['federal_unit']}}</p>
+                  <a routerLink="/parliamentarians/{{most_actives[2]['parliamentary']['id']}}" routerLinkActivate="active" class="btn btn-primary">Ver parlamentar</a>
+                </div>
+              </div>
+              <div class="panel-footer text-muted">Quantidade de votos: {{most_actives[2]['votes']}}</div>
+            </div>
+  
+            <!-- <div class="main-card vote">
+              <div class="main-card-content">
+  
+              </div>
+            </div> -->
+          </div>
+        </div>
+  
       </div>
-
     </div>
   </div>
-</div>
