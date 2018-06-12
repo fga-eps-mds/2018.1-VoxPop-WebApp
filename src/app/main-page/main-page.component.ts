@@ -4,7 +4,7 @@ import { TokenService } from '../token.service';
 import { Token } from '@angular/compiler';
 import { RequestsService } from '../requests.service';
 
-declare var Chart:any;
+declare var Chart: any;
 
 @Component({
   selector: 'app-main-page',
@@ -14,6 +14,7 @@ declare var Chart:any;
 export class MainPageComponent implements OnInit {
 
   tokenValue = '';
+  loading = true;
   idValue: Number;
   proposition_ctx: HTMLElement;
   parliamentary_ctx: HTMLElement;
@@ -59,7 +60,7 @@ export class MainPageComponent implements OnInit {
   propositions(limit: number, offset: number) {
     let req: any;
     this.proposition = [];
-    req =  this.requester.getProposition(limit, offset);
+    req = this.requester.getProposition(limit, offset);
     this.handlePropositionsResponse(req, limit, offset);
     return req;
   }
@@ -67,66 +68,67 @@ export class MainPageComponent implements OnInit {
   mostActives(limit: number, offset: number) {
     let req: any;
     this.most_actives = [];
-    req =  this.requester.getMostActive(limit, offset);
+    req = this.requester.getMostActive(limit, offset);
     this.handleMostActivesResponse(req, limit, offset);
     return req;
   }
 
   handlePropositionsResponse(request, limit, offset) {
-      this.requester.getProposition(limit, offset).subscribe( response => {
+    this.requester.getProposition(limit, offset).subscribe(response => {
       const body = response['body'];
       this.proposition = body['results'];
 
       this.proposition_chart = new Chart(this.proposition_ctx, {
-          // The type of chart we want to create
-          type: 'horizontalBar',
+        // The type of chart we want to create
+        type: 'horizontalBar',
 
-          // The data for our dataset
-          data: {
-              labels: [2015, 2016, 2017, 2018],
-              datasets: [{
-                  label: "Número de votações",
-                  backgroundColor: 'rgb(51,122,183)',
-                  borderColor: 'rgb(255, 255, 255)',
-                  data: [66, 75, 59, 11, 0],
-              }]
-          },
+        // The data for our dataset
+        data: {
+          labels: [2015, 2016, 2017, 2018],
+          datasets: [{
+            label: 'Número de votações',
+            backgroundColor: 'rgb(51,122,183)',
+            borderColor: 'rgb(255, 255, 255)',
+            data: [66, 75, 59, 11, 0],
+          }]
+        },
 
-          // Configuration options go here
-          options: {}
+        // Configuration options go here
+        options: {}
       });
     });
   }
 
   handleMostActivesResponse(request, limit, offset) {
-      this.requester.getMostActive(limit, offset).subscribe( response =>{
+    this.requester.getMostActive(limit, offset).subscribe(response => {
       const body = response['body'];
       this.most_actives = body['results'];
 
-      var i, labels_list = [], data_list = [];
+      let i, labels_list = [], data_list = [];
       for (i = 0; i < this.most_actives.length; i++) {
-          labels_list.push(this.most_actives[i]['parliamentary'].name);
-          data_list.push(this.most_actives[i].votes);
+        labels_list.push(this.most_actives[i]['parliamentary'].name);
+        data_list.push(this.most_actives[i].votes);
       }
       data_list.push(200);
       this.parliamentary_chart = new Chart(this.parliamentary_ctx, {
-          // The type of chart we want to create
-          type: 'horizontalBar',
+        // The type of chart we want to create
+        type: 'horizontalBar',
 
-          // The data for our dataset
-          data: {
-              labels: labels_list,
-              datasets: [{
-                  label: "Quantidade de votos",
-                  backgroundColor: 'rgb(51,122,183)',
-                  borderColor: 'rgb(255, 255, 255)',
-                  data: data_list,
-              }]
-          },
+        // The data for our dataset
+        data: {
+          labels: labels_list,
+          datasets: [{
+            label: 'Quantidade de votos',
+            backgroundColor: 'rgb(51,122,183)',
+            borderColor: 'rgb(255, 255, 255)',
+            data: data_list,
+          }]
+        },
 
-          // Configuration options go here
-          options: {}
+        // Configuration options go here
+        options: {}
       });
+      this.loading = false;
     });
   }
 
