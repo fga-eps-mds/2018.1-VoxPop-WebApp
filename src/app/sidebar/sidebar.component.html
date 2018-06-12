@@ -1,88 +1,120 @@
 <div class="wrapper">
     <!-- Sidebar Holder -->
-<!-- <nav id="sidebar" class="active"> -->
-<nav id="sidebar">
-  <div ng-class="('true' == 'true') ? 'active' : ''">
-    <div class="sidebar-header text-center">
-        <h4><i>Descubra já quem realmente pensa como você!</i></h4>
-        <strong><i>VP</i></strong>
-    </div>
+    <!-- <nav id="sidebar" class="active"> -->
+    <nav id="sidebar">
+        <div ng-class="('true' == 'true') ? 'active' : ''">
+            <div class="sidebar-header text-center">
+                <h4>
+                    <i>Descubra já quem realmente pensa como você!</i>
+                </h4>
+                <strong>
+                    <i>VP</i>
+                </strong>
+            </div>
 
-    <ul class="list-unstyled components">
-        <!-- <li class="active"> -->
-        <li>
-            <a href="/">
-                <i class="glyphicon glyphicon-home"></i>
-                Página inicial
-            </a>
-        </li>
-        <li><!-- Link with dropdown items -->
-            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
-                <i class="glyphicon glyphicon-briefcase"></i>Deputados
-            </a>
-            <ul class="collapse list-unstyled" id="homeSubmenu">
+            <ul class="list-unstyled components">
+                <!-- <li class="active"> -->
                 <li>
-                    <a href="parliamentarians">
-                    Ver Todos Deputados
+                    <a href="/">
+                        <i class="glyphicon glyphicon-home"></i>
+                        Página inicial
                     </a>
                 </li>
-                <li [ngClass]="getStyle()" id="conditional">
-                    <a href="user-following">
-                        Ver Deputados seguidos
-                        <!-- <i class="glyphicon glyphicon-lock"></i> -->
+                <li>
+                    <!-- Link with dropdown items -->
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
+                        <i class="glyphicon glyphicon-briefcase"></i>Deputados
                     </a>
-                    
-                </li>
-            </ul>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="parliamentarians">
+                                Ver Todos Deputados
+                            </a>
+                        </li>
+                        <li id="conditional">
+                            <div class="tooltip">
+                                <a [ngClass]="getStyle()" href="user-following">
+                                    <div class="tooltip">Ver Deputados seguidos</div>
+                                </a>
+                                <span *ngIf="cookieService.get('token') === ''" class="tooltiptext">
+                                    Faça login para poder acessar esta opção
+                                </span>
+                            </div>
 
-        <li><!-- Link with dropdown items -->
-            <a href="#homeSubmenu2" data-toggle="collapse" aria-expanded="false">
-                <i class="glyphicon glyphicon-file"></i>Propostas de Lei
-            </a>
-            <ul class="collapse list-unstyled" id="homeSubmenu2">
-                <li><a href="seepl">
-                    Ver Todas Proposições
-                </a></li>
-                <div data-toggle="tooltip" title="Faça login para poder acessar esta opção">
-                    <li [ngClass]="getStyle()">
-                        <a href="propositions" id="deSuaOpiniao">
-                            Votar em proposta
-                            <!-- <i class="glyphicon glyphicon-lock"></i> -->
+                        </li>
+                    </ul>
+
+                    <li>
+                        <!-- Link with dropdown items -->
+                        <a href="#homeSubmenu2" data-toggle="collapse" aria-expanded="false">
+                            <i class="glyphicon glyphicon-file"></i>Propostas de Lei
                         </a>
-                    </li>
-                </div>
-                <div data-toggle="tooltip" title="Faça login para poder acessar esta opção">
-                    <li [ngClass]="getStyle()">
-                        <a href="mypls" id="deSuaOpiniao">
-                            Ver votos em propostas
-                            <!-- <i class="glyphicon glyphicon-lock"></i> -->
-                        </a>
-                    </li>
-                </div>
+                        <ul class="collapse list-unstyled" id="homeSubmenu2">
+                            <li>
+                                <a href="seepl">
+                                    Ver Todas Proposições
+                                </a>
+                            </li>
+                            <div>
+                                <li>
+                                    <div class="tooltip">
+                                        <a [ngClass]="getStyle()" href="propositions" id="deSuaOpiniao">
+                                            <div class="tooltip">Votar em proposta</div>
+                                        </a>
+                                        <span *ngIf="cookieService.get('token') === ''" class="tooltiptext">
+                                            Faça login para poder acessar esta opção
+                                        </span>
+                                    </div>
+
+                                </li>
+                            </div>
+                            <div>
+                                <li>
+                                    <div class="tooltip">
+                                        <a [ngClass]="getStyle()" href="mypls" id="deSuaOpiniao">
+                                            <div class="tooltip">Ver votos em propostas</div>
+                                        </a>
+                                        <span *ngIf="cookieService.get('token') === ''" class="tooltiptext">
+                                            Faça login para poder acessar esta opção
+                                        </span>
+                                    </div>
+                                </li>
+                            </div>
+                        </ul>
+                        <div>
+                            <li>
+                                <div class="tooltip">
+                                    <a [ngClass]="getStyle()" href="/user-compatible">
+                                        <div class="tooltip ranking"><i class="glyphicon glyphicon-star"></i>
+                                        Ranking compatibilidade
+                                    </div>
+                                    </a>
+                                    <span *ngIf="cookieService.get('token') === ''" class="tooltiptext">
+                                        Faça login para poder acessar esta opção
+                                    </span>
+                                </div>
+                            </li>
+                        </div>
+                        <li>
+                            <a href="/">
+                                <i class="glyphicon glyphicon-send"></i>
+                                Entre em contato
+                            </a>
+                        </li>
             </ul>
-        <div data-toggle="tooltip" title="Faça login para poder acessar esta opção">
-            <li [ngClass]="getStyle()">
-                <a href="/user-compatible">
-                        <i class="glyphicon glyphicon-star"></i>
-                        Ranking compatibilidade
-                        <!-- <i class="glyphicon glyphicon-lock"></i> -->
-                </a>
-            </li>
+            <ul class="list-unstyled CTAs">
+                <li>Contribua com o projeto!
+                    <i class="glyphicon glyphicon-heart"></i>
+                </li>
+                <br>
+                <li>
+                    <a href="https://github.com/fga-gpp-mds/2018.1-VoxPop-API" class="article">Repositório da API</a>
+                </li>
+                <li>
+                    <a href="https://github.com/fga-gpp-mds/2018.1-VoxPop-WebApp" class="article">Repositório do WebApp</a>
+                </li>
+            </ul>
         </div>
-        <li>
-            <a href="/">
-                <i class="glyphicon glyphicon-send"></i>
-                Entre em contato
-            </a>
-        </li>
-    </ul>
-    <ul class="list-unstyled CTAs">
-      <li>Contribua com o projeto! <i class="glyphicon glyphicon-heart"></i></li>
-      <br>
-      <li><a href="https://github.com/fga-gpp-mds/2018.1-VoxPop-API" class="article">Repositório da API</a></li>
-      <li><a href="https://github.com/fga-gpp-mds/2018.1-VoxPop-WebApp" class="article">Repositório do WebApp</a></li>
-    </ul>
-  </div>
-</nav>
+    </nav>
 
 </div>
