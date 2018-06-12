@@ -26,10 +26,10 @@
                     Ver Todos Deputados
                     </a>
                 </li>
-                <li id="conditional">
-                    <a href="user-following">
+                <li [style.pointer-events]="getStyle()" id="conditional">
+                    <a [style.opacity]="getActive()" href="user-following">
                         Ver Deputados seguidos
-                        <i class="glyphicon glyphicon-lock"></i>
+                        <!-- <i class="glyphicon glyphicon-lock"></i> -->
                     </a>
                     
                 </li>
@@ -43,29 +43,32 @@
                 <li><a href="seepl">
                     Ver Todas Proposições
                 </a></li>
-                <li><a href="propositions" id="deSuaOpiniao">
-                    Votar em proposta
-                    <i class="glyphicon glyphicon-lock"></i>
-                </a></li>
-                <li><a href="mypls" id="deSuaOpiniao">
-                    Ver votos em propostas
-                    <i class="glyphicon glyphicon-lock"></i>
-                </a></li>
+                <li [style.pointer-events]="getStyle()">
+                    <a [style.opacity]="getActive()" href="propositions" id="deSuaOpiniao">
+                        Votar em proposta
+                        <!-- <i class="glyphicon glyphicon-lock"></i> -->
+                    </a>
+                </li>
+                <li [style.pointer-events]="getStyle()">
+                    <a [style.opacity]="getActive()" href="mypls" id="deSuaOpiniao">
+                        Ver votos em propostas
+                        <!-- <i class="glyphicon glyphicon-lock"></i> -->
+                    </a>
+                </li>
             </ul>
-        <li>
-            <a href="/user-compatible">
+        <li [style.pointer-events]="getStyle()">
+            <a [style.opacity]="getActive()" href="/user-compatible">
                     <i class="glyphicon glyphicon-star"></i>
-                    Ranking 
-                    de compatibilidade
-                    <i class="glyphicon glyphicon-lock"></i>
+                    Ranking compatibilidade
+                    <!-- <i class="glyphicon glyphicon-lock"></i> -->
             </a>
         </li>
         <li>
-                <a href="/">
-                    <i class="glyphicon glyphicon-send"></i>
-                    Entre em contato
-                </a>
-            </li>
+            <a href="/">
+                <i class="glyphicon glyphicon-send"></i>
+                Entre em contato
+            </a>
+        </li>
     </ul>
     <ul class="list-unstyled CTAs">
       <li>Contribua com o projeto! <i class="glyphicon glyphicon-heart"></i></li>
