@@ -22,6 +22,8 @@ export class MinhasPlsComponent implements OnInit {
   userId: number;
   numberPLsVoted: number;
   propositionVote: any;
+  loading = true;
+
   proposition: any = [
     {
       option: null,
@@ -70,6 +72,7 @@ export class MinhasPlsComponent implements OnInit {
       this.offset = offset;
       this.pages = Math.ceil(response['body']['count'] / this.itemsPerPage);
       this.updateButtonsAppearence(this.offset, this.pages);
+      this.loading = false;
     });
   }
 
