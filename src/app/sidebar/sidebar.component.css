@@ -267,3 +267,8 @@ body {
 ::-webkit-scrollbar-thumb:window-inactive {
 	background: #4f5c99;  
 }
+
+.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}

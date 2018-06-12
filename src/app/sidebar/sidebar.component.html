@@ -26,8 +26,8 @@
                     Ver Todos Deputados
                     </a>
                 </li>
-                <li [style.pointer-events]="getStyle()" id="conditional">
-                    <a [style.opacity]="getActive()" href="user-following">
+                <li [ngClass]="getStyle()" id="conditional">
+                    <a href="user-following">
                         Ver Deputados seguidos
                         <!-- <i class="glyphicon glyphicon-lock"></i> -->
                     </a>
@@ -43,21 +43,21 @@
                 <li><a href="seepl">
                     Ver Todas Proposições
                 </a></li>
-                <li [style.pointer-events]="getStyle()">
-                    <a [style.opacity]="getActive()" href="propositions" id="deSuaOpiniao">
+                <li [ngClass]="getStyle()">
+                    <a href="propositions" id="deSuaOpiniao">
                         Votar em proposta
                         <!-- <i class="glyphicon glyphicon-lock"></i> -->
                     </a>
                 </li>
-                <li [style.pointer-events]="getStyle()">
-                    <a [style.opacity]="getActive()" href="mypls" id="deSuaOpiniao">
+                <li [ngClass]="getStyle()">
+                    <a href="mypls" id="deSuaOpiniao">
                         Ver votos em propostas
                         <!-- <i class="glyphicon glyphicon-lock"></i> -->
                     </a>
                 </li>
             </ul>
-        <li [style.pointer-events]="getStyle()">
-            <a [style.opacity]="getActive()" href="/user-compatible">
+        <li [ngClass]="getStyle()">
+            <a href="/user-compatible">
                     <i class="glyphicon glyphicon-star"></i>
                     Ranking compatibilidade
                     <!-- <i class="glyphicon glyphicon-lock"></i> -->

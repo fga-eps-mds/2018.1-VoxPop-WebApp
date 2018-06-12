@@ -32,18 +32,8 @@ export class SidebarComponent implements OnInit {
   getStyle() {
     let style = '';
     if (this.cookieService.get('token') === '') {
-      style = 'none';
+      style = 'disabled';
     }
     return style;
   }
-
-  getActive() {
-    let style = 1;
-    if (this.cookieService.get('token') === '') {
-      style = 0.6;
-    }
-    return style;
-  }
-
-
 }
