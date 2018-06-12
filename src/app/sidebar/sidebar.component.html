@@ -43,26 +43,32 @@
                 <li><a href="seepl">
                     Ver Todas Proposições
                 </a></li>
-                <li [ngClass]="getStyle()">
-                    <a href="propositions" id="deSuaOpiniao">
-                        Votar em proposta
-                        <!-- <i class="glyphicon glyphicon-lock"></i> -->
-                    </a>
-                </li>
-                <li [ngClass]="getStyle()">
-                    <a href="mypls" id="deSuaOpiniao">
-                        Ver votos em propostas
-                        <!-- <i class="glyphicon glyphicon-lock"></i> -->
-                    </a>
-                </li>
+                <div data-toggle="tooltip" title="Faça login para poder acessar esta opção">
+                    <li [ngClass]="getStyle()">
+                        <a href="propositions" id="deSuaOpiniao">
+                            Votar em proposta
+                            <!-- <i class="glyphicon glyphicon-lock"></i> -->
+                        </a>
+                    </li>
+                </div>
+                <div data-toggle="tooltip" title="Faça login para poder acessar esta opção">
+                    <li [ngClass]="getStyle()">
+                        <a href="mypls" id="deSuaOpiniao">
+                            Ver votos em propostas
+                            <!-- <i class="glyphicon glyphicon-lock"></i> -->
+                        </a>
+                    </li>
+                </div>
             </ul>
-        <li [ngClass]="getStyle()">
-            <a href="/user-compatible">
-                    <i class="glyphicon glyphicon-star"></i>
-                    Ranking compatibilidade
-                    <!-- <i class="glyphicon glyphicon-lock"></i> -->
-            </a>
-        </li>
+        <div data-toggle="tooltip" title="Faça login para poder acessar esta opção">
+            <li [ngClass]="getStyle()">
+                <a href="/user-compatible">
+                        <i class="glyphicon glyphicon-star"></i>
+                        Ranking compatibilidade
+                        <!-- <i class="glyphicon glyphicon-lock"></i> -->
+                </a>
+            </li>
+        </div>
         <li>
             <a href="/">
                 <i class="glyphicon glyphicon-send"></i>

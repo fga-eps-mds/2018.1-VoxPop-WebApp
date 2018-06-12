@@ -36,4 +36,11 @@ export class SidebarComponent implements OnInit {
     }
     return style;
   }
+
+  isLogged() {
+    if (this.cookieService.get('token') === '') {
+      return false;
+    }
+    return true;
+  }
 }
