@@ -15,6 +15,7 @@ export class SeePoliticianDetailedComponent implements OnInit {
   id = 0;
   unfollow;
   follow;
+  loading = false;
   parlimentarian: any = {
     name: '',
     gender: '',
@@ -64,20 +65,24 @@ export class SeePoliticianDetailedComponent implements OnInit {
   }
 
   followParliamentarian() {
+    this.loading = true;
     let status;
     this.requester.postFollow(this.parlimentarian.id).subscribe(response => {
       status = response.status;
       this.renderUnfollowButton();
+      this.loading = false;
     });
     return true;
 
   }
 
   unfollowParliamentarian() {
+    this.loading = true;
     let status;
     this.requester.deleteFollow(this.parlimentarian.id).subscribe(response => {
       status = response.status;
       this.renderFollowButton();
+      this.loading = false;
     });
     return true;
 
