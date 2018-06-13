@@ -25,7 +25,9 @@ export class PropositionsComponent implements OnInit {
     abstract: '',
     processing: '',
     situation: '',
-    url_full: ''
+    url_full: '',
+    parliamentarians_approval: '',
+    population_approval: '',
   }
 
   constructor(
@@ -39,9 +41,20 @@ export class PropositionsComponent implements OnInit {
     this.tokenValue = this.cookieService.get('token');
     this.token.checkToken(this.tokenValue);
     this.idValue = +this.cookieService.get('userID');
-    this.requester.getProjects().subscribe( response =>{
+    this.projects();
+  }
+
+  projects(){
+    const req = this.requester.getProjects();
+    this.projectsHandler(req);
+    return req;
+  }
+
+  projectsHandler(request){
+    request.subscribe( response =>{
+      response['parliamentarians_approval'] = parseFloat(response['parliamentarians_approval']);
+      response['population_approval'] = parseFloat(response['population_approval']);
       this.proposition = response['body'];
-      console.log(response['body']);
     });
   }
 
@@ -63,7 +76,7 @@ export class PropositionsComponent implements OnInit {
       } else {
         this.requester.getProjects().subscribe( response =>{
           this.proposition = response['body'];
-          console.log(response['body']);
+          // console.log(response['body']);
         });
       }
     });
