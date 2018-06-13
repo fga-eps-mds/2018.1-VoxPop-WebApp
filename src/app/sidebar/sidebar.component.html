@@ -34,7 +34,7 @@
                         <li id="conditional">
                             <div class="tooltip">
                                 <a [ngClass]="getStyle()" href="user-following">
-                                    <div class="tooltip">Ver Deputados seguidos</div>
+                                    Ver Deputados seguidos
                                 </a>
                                 <span *ngIf="cookieService.get('token') === ''" class="tooltiptext">
                                     Faça login para poder acessar esta opção
@@ -59,7 +59,7 @@
                                 <li>
                                     <div class="tooltip">
                                         <a [ngClass]="getStyle()" href="propositions" id="deSuaOpiniao">
-                                            <div class="tooltip">Votar em proposta</div>
+                                            Votar em proposta
                                         </a>
                                         <span *ngIf="cookieService.get('token') === ''" class="tooltiptext">
                                             Faça login para poder acessar esta opção
@@ -72,7 +72,7 @@
                                 <li>
                                     <div class="tooltip">
                                         <a [ngClass]="getStyle()" href="mypls" id="deSuaOpiniao">
-                                            <div class="tooltip">Ver votos em propostas</div>
+                                            Ver votos em propostas
                                         </a>
                                         <span *ngIf="cookieService.get('token') === ''" class="tooltiptext">
                                             Faça login para poder acessar esta opção
@@ -83,11 +83,10 @@
                         </ul>
                         <div>
                             <li>
-                                <div class="tooltip">
+                                <div class="tooltip ranking">
                                     <a [ngClass]="getStyle()" href="/user-compatible">
-                                        <div class="tooltip ranking"><i class="glyphicon glyphicon-star"></i>
+                                        <i class="glyphicon glyphicon-star"></i>
                                         Ranking compatibilidade
-                                    </div>
                                     </a>
                                     <span *ngIf="cookieService.get('token') === ''" class="tooltiptext">
                                         Faça login para poder acessar esta opção
