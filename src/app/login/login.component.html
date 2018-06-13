@@ -1,3 +1,4 @@
+
 <div class="col-sm-6 col-sm-offset-3">
     <div class="panel panel-primary">
       <div class="panel-heading">
@@ -5,6 +6,13 @@
           <span>Efetuar Login</span>
         </h3>
       </div>
+      <div *ngIf="logging" class="overlay">
+          <div *ngIf="logging" align="center" class="loading">
+              <p>Realizando login...</p>
+              <div class="loader"></div>
+            </div>
+        </div>
+      
       <div class="alert alert-success" role="alert" id="registerAlert" style="display:none">
           <p>Registro feito com sucesso!</p>
         </div>
