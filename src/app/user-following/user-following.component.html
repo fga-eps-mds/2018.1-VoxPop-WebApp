@@ -14,6 +14,11 @@
   </form>
 </div>
 <br>
+<div *ngIf="loading" align="center">
+  <p>Carregando dados...</p>
+  <div class="loader"></div>
+</div>
+<ng-container *ngIf="!loading">
 <div class="col-sm-3 text-center" *ngFor="let p of parliamentarians">
   <a routerLink="/parliamentarians/{{p.parliamentary['id']}}" routerLinkActivate="active">
     <div class="panel panel-primary">
@@ -30,6 +35,7 @@
     </div>
   </a>
 </div>
+</ng-container>
 <div class="row" *ngIf="pages == 0">
   <div class="main-card">
     <div class="main-card-content">

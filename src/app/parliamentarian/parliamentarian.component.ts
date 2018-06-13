@@ -18,6 +18,7 @@ export class ParliamentarianComponent implements OnInit {
   itemsPerPage = 36;
   offset = 1;
   term = '';
+  loading = true;
 
   parliamentarians: any = [
     {
@@ -89,6 +90,7 @@ export class ParliamentarianComponent implements OnInit {
       this.pages = auxPages;
       this.updateButtonsAppearence(this.offset, this.pages);
       this.parliamentarians = this.auxParliamentarian;
+      this.loading = false;
     });
   }
 

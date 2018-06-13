@@ -15,6 +15,7 @@ export class UserFollowingComponent implements OnInit {
   offset = 1;
   itemsPerPage = 36;
   pages = 1;
+  loading = true;
 
   parliamentarians: any = [
     {
@@ -82,6 +83,7 @@ export class UserFollowingComponent implements OnInit {
       this.parliamentarians = this.auxParliamentarian;
       this.updateButtonsAppearence(this.offset, this.pages);
       this.parliamentarians = this.auxParliamentarian;
+      this.loading = false;
       // console.log(this.parliamentarians);
       // console.log(this.pages);
     });

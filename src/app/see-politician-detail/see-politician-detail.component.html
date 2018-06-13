@@ -1,6 +1,19 @@
 <div class="text-center">
   <h3>Informações Detalhadas do Parlamentar</h3>
   <br>
+  <div *ngIf="loading" class="overlay">
+    <div *ngIf="loading" align="center" class="loading">
+      <p>Computando opção...</p>
+      <div class="loader"></div>
+    </div>
+  </div>
+  <div *ngIf="loader" class="overlay">
+      <div *ngIf="loader" align="center" class="loading">
+        <p>Caregando dados...</p>
+        <div class="loader"></div>
+      </div>
+    </div>
+  <!-- <ng-container *ngIf="!loader" > -->
   <div class="col-sm-6 col-sm-offset-3">
       <div class="panel panel-primary">
         <div class="panel-heading">
@@ -37,7 +50,8 @@
           </div>
         </div>
       <div class="panel-footer text-muted">{{parlimentarian['email']}}</div>
-      <div *ngIf="tokenValue !== ''" class="panel-footer text-muted alternative">{{parlimentarian['compatibility']}} %</div>
+      <div *ngIf="tokenValue !== ''" class="panel-footer text-muted alternative">{{parlimentarian['compatibility']}}% de compatibilidade</div>
     </div>
   </div>
+<!-- </ng-container> -->
 </div>

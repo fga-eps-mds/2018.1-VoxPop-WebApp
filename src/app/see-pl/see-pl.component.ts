@@ -16,6 +16,7 @@ export class SeePlComponent implements OnInit {
   pages = 1;
   itemsPerPage = 20;
   offset = 1;
+  loading = true;
 
   proposition: any = [
     {
@@ -83,6 +84,7 @@ export class SeePlComponent implements OnInit {
       }
       this.updateButtonsAppearence(this.offset, this.pages);
       this.proposition = this.auxProposition;
+      this.loading = false;
     });
   }
 
