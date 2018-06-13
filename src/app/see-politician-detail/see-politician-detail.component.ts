@@ -16,6 +16,7 @@ export class SeePoliticianDetailedComponent implements OnInit {
   unfollow;
   follow;
   loading = false;
+  loader = true;
   parlimentarian: any = {
     name: '',
     gender: '',
@@ -46,21 +47,22 @@ export class SeePoliticianDetailedComponent implements OnInit {
 
     this.checkParliamentarianFollowed();
     this.requester.getParlimentarianSpecific(this.id).subscribe( response => {
-    this.parlimentarian = response['body'];
-    if (this.parlimentarian['gender'] === 'M') {
-      this.gender = 'Masculino';
-    } else if (this.parlimentarian['gender'] === 'F') {
-      this.gender = 'Feminino';
-    } else {
-      this.gender = 'N/A';
-    }
+      this.parlimentarian = response['body'];
+      if (this.parlimentarian['gender'] === 'M') {
+        this.gender = 'Masculino';
+      } else if (this.parlimentarian['gender'] === 'F') {
+        this.gender = 'Feminino';
+      } else {
+        this.gender = 'N/A';
+      }
+      this.loader = false;
     }, error => {
-    this.parlimentarian = {
-      name : 'DEPUTADO NÃO ENCONTRADO',
-      gender : 'N/A',
-      federal_unit: 'N/A',
-      photo: 'N/A'
-    };
+      this.parlimentarian = {
+        name : 'DEPUTADO NÃO ENCONTRADO',
+        gender : 'N/A',
+        federal_unit: 'N/A',
+        photo: 'N/A'
+      };
     });
   }
 
@@ -70,7 +72,6 @@ export class SeePoliticianDetailedComponent implements OnInit {
     this.requester.postFollow(this.parlimentarian.id).subscribe(response => {
       status = response.status;
       this.renderUnfollowButton();
-      this.loading = false;
     });
     return true;
 
@@ -82,7 +83,6 @@ export class SeePoliticianDetailedComponent implements OnInit {
     this.requester.deleteFollow(this.parlimentarian.id).subscribe(response => {
       status = response.status;
       this.renderFollowButton();
-      this.loading = false;
     });
     return true;
 
@@ -91,12 +91,14 @@ export class SeePoliticianDetailedComponent implements OnInit {
   renderUnfollowButton() {
     this.unfollow = document.getElementById('unfollow').style.display = 'block';
     this.follow = document.getElementById('follow').style.display = 'none';
+    this.loading = false;
     return true;
   }
 
   renderFollowButton() {
     const unfollow = document.getElementById('unfollow').style.display = 'none';
     const follow = document.getElementById('follow').style.display = 'block';
+    this.loading = false;
     return true;
   }
 
