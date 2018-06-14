@@ -13,6 +13,12 @@ export class ContactUsComponent implements OnInit {
   tokenValue = ''
   idValue = 0
 
+  input = {
+    topic: '',
+    choice: '',
+    text: ''
+  }
+  
   constructor(private router:Router,
               private requester:RequestsService,
               private cookieService:CookieService,

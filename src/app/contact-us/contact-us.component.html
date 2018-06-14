@@ -5,6 +5,9 @@
         Fale Conosco
       </div>
       <div class="panel-body">
+        <p class="text-center">Alguma dúvida, sugestão ou reclamação em relação ao projeto?
+        <br> Escreva para nós aqui para melhorarmos o projeto!
+        </p>
         <div class="form-group">
           <label>Assunto</label>
           <input name="topic" type="text" class="form-control" placeholder="Digite o assunto do e-mail" [(ngModel)]="input.topic">
@@ -12,17 +15,19 @@
         <div class="form-group">
             <label data-toggle="tooltip" title="Escolha o motivo de contato">Motivo do Contato</label>
             <select name="choice" class="form-control" [(ngModel)]="input.choice">
-                 <option value="1" selected>Dúvida</option>
-                 <option value="2" selected>Sugestão</option>
-                 <option value="3" selected>Reclamação</option>
-                 <option value="0" selected>Outro</option>
+                 <option value="A" selected>Dúvida</option>
+                 <option value="B" >Sugestão</option>
+                 <option value="C" >Reclamação</option>
+                 <option value="D" >Outro</option>
             </select>
         </div>
         <textarea rows="10" class="form-control" [(ngModel)]="input.text">
         </textarea>
         <br>
-        <button class="btn btn-danger" type="submit" id="cancelBtn">Voltar</button>
-        <button class="btn btn-primary" type="submit" id="submitBtn" disabled>Enviar</button>
+        <div class="text-center">
+          <button class="btn btn-danger" type="submit" id="cancelBtn">Voltar</button>
+          <button class="btn btn-primary" type="submit" id="submitBtn" [disabled]="input.text == '' || input.topic == ''">Enviar</button>
+        </div>
       </div>
     </div>
   </div>
