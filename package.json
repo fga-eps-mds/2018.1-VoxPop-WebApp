@@ -21,6 +21,7 @@
     "@angular/platform-browser": "^5.2.0",
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
+    "angular-svg-round-progressbar": "^2.0.0",
     "bootstrap": "^3.3.7",
     "chart.js": "^2.7.2",
     "core-js": "^2.4.1",

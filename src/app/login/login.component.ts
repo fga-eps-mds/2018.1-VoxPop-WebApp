@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
     valueInvalid = 'Usuário ou senha inválida';
     tokenValue = '';
     registerSuccess = '';
+    logging = false;
 
     constructor(private router: Router,
                 private requester: RequestsService,
@@ -32,6 +33,7 @@ export class LoginComponent implements OnInit {
     }
 
     login(username: string, password: string) {
+        this.logging = true;
         let user: LoginModel;
         let req: any;
         user = {
@@ -45,34 +47,20 @@ export class LoginComponent implements OnInit {
 
     }
 
-    checkRegister(success){
-        if(success == 'true'){
+    checkRegister(success) {
+        if (success === 'true') {
             document.getElementById('registerAlert').style.display = 'block';
         }
     }
 
     handleLoginResponse(request) {
-      let statusAuthentication;
-      let token;
-      let userID;
-      let userUsername;
-      let userFirstName;
-      let userLastName;
-
       request.subscribe(response => {
-          statusAuthentication = response.status;
-          token = response.body['token'];
-          userID = response.body['id'];
-          userUsername = response.body['username'];
-          userFirstName = response.body['first_name'];
-          userLastName = response.body['last_name'];
-
-          if (this.requester.didSucceed(statusAuthentication)) {
-              this.cookieService.set('token', token);
-              this.cookieService.set('userID', userID);
-              this.cookieService.set('userUsername', userUsername);
-              this.cookieService.set('userFirstName', userFirstName);
-              this.cookieService.set('userLastName', userLastName);
+          if (this.requester.didSucceed(response.status)) {
+              this.cookieService.set('token', response.body['token']);
+              this.cookieService.set('userID', response.body['id']);
+              this.cookieService.set('userUsername', response.body['username']);
+              this.cookieService.set('userFirstName', response.body['first_name']);
+              this.cookieService.set('userLastName', response.body['last_name']);
               this.router.navigate(['']);
           }
       },

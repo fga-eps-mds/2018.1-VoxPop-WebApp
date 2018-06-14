@@ -1,11 +1,15 @@
 <div class="row">
   <div class="col-sm-12 text-center">
     <h3>Proposições votadas pelos parlamentares</h3>
+    <div *ngIf="loading" class="center">
+      <p>Carregando dados...</p>
+      <div class="loader"></div>
+    </div>
   </div>
 </div>
 
 <br>
-
+<ng-container *ngIf="!loading">
 <div class="row">
   <div class="col-sm-6 text-center" *ngFor="let p of proposition">
     <div class="panel panel-primary">
@@ -28,6 +32,7 @@
     </div>
   </div>
 </div>
+</ng-container>
 <table style="width:100%" *ngIf="pages > 0">
     <tr>
       <div class="row">

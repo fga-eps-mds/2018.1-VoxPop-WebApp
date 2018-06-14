@@ -14,6 +14,11 @@
   </form>
 </div>
 <br>
+<div *ngIf="loading" align="center">
+  <p>Carregando dados...</p>
+  <div class="loader"></div>
+</div>
+<ng-container *ngIf="!loading">
 <div class="col-sm-3 text-center" *ngFor="let p of parliamentarians">
   <a routerLink="/parliamentarians/{{p.parliamentary['id']}}" routerLinkActivate="active">
     <div class="panel panel-primary">
@@ -26,10 +31,11 @@
         <img src="{{p.parliamentary['photo']}}" width="114" height="152" alt="woops, someting went wrong">
       </div>
       <div class="panel-footer text-muted">{{p.parliamentary['political_party']}}/{{p.parliamentary['federal_unit']}}</div>
-      <!--<div *ngIf="tokenValue !== ''" class="panel-footer text-muted alternative">{{p['compatibility']}}</div>-->
+      <div *ngIf="tokenValue !== ''" class="panel-footer text-muted alternative">{{p.parliamentary['compatibility']}} %</div>
     </div>
   </a>
 </div>
+</ng-container>
 <div class="row" *ngIf="pages == 0">
   <div class="main-card">
     <div class="main-card-content">

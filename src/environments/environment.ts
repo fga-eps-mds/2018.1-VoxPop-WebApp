@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  baseURL: 'http://hml.api.voxpop.ml/api/'
+  baseURL: 'https://hml.api.voxpop.ml/api/'
 };

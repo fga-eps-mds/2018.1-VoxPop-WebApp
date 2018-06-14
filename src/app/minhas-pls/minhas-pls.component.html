@@ -14,6 +14,11 @@
   <br>
   <br>
   <br>
+  <div *ngIf="loading" align="center">
+    <p>Carregando dados...</p>
+    <div class="loader"></div>
+  </div>
+  <ng-container *ngIf="!loading" class="center">
   <div class="row">
     <div class="col-sm-6 text-center" *ngFor="let p of propositionVote let j = index">
       <div class="panel panel-primary">
@@ -44,6 +49,22 @@
           </p>
           </div>
           <br>
+          <div class="row">
+            <div class="col-sm-4 col-sm-offset-1">
+                <div style="font-weight: bold">Aprovação dos Parlamentares</div>
+                <div class="progress-wrapper">
+                  <p>{{p.proposition['parliamentarians_approval']}}/100</p>
+                  <round-progress [current]=p.proposition.parliamentarians_approval [max]="100" [responsive]="true" [radius]="50" [color]="'#449D44'" [background]="'#C9302C'"></round-progress>
+                </div>
+            </div>
+            <div class="col-sm-4 col-sm-offset-2">
+                <div style="font-weight: bold">Aprovação dos Usuários</div>
+              <div class="progress-wrapper">
+                  <p>{{p.proposition['population_approval']}}/100</p>
+                  <round-progress [current]=p.proposition.population_approval [max]="100" [responsive]="true" [radius]="50" [color]="'#449D44'" [background]="'#C9302C'"></round-progress>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="panel-footer buttons">
           <button class="btn btn-primary" (click)="openProposition(p.proposition['url_full'])">Veja na íntegra</button>
@@ -62,6 +83,7 @@
       </div>
     </div>
   </div>
+</ng-container>
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -84,7 +106,7 @@
           <div>Na íntegra:
             <a href="{{propositionVote['url_full']}}">link íntegra</a><br/>
           </div>
-          <p> Seu voto: 
+          <p> Seu voto:
             <ng-container *ngIf="propositionVote[votePosition]['option'] === 'Y'">
               <span class="glyphicon glyphicon-ok"></span> SIM
             </ng-container>

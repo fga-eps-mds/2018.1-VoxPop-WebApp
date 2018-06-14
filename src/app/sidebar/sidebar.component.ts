@@ -9,6 +9,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class SidebarComponent implements OnInit {
 
   sidebar = '';
+  tokenValue = '';
 
   constructor(
     private cookieService: CookieService,
@@ -28,4 +29,18 @@ export class SidebarComponent implements OnInit {
     }
   }
 
+  getStyle() {
+    let style = '';
+    if (this.cookieService.get('token') === '') {
+      style = 'disabled';
+    }
+    return style;
+  }
+
+  isLogged() {
+    if (this.cookieService.get('token') === '') {
+      return false;
+    }
+    return true;
+  }
 }

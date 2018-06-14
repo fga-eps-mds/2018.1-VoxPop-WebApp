@@ -18,6 +18,7 @@ export class ParliamentarianComponent implements OnInit {
   itemsPerPage = 36;
   offset = 1;
   term = '';
+  loading = true;
 
   parliamentarians: any = [
     {
@@ -78,16 +79,18 @@ export class ParliamentarianComponent implements OnInit {
   handleParliamentariansSearchResponse(request, offset, term) {
     this.requester.getSearchedParliamentarian(this.itemsPerPage, (offset - 1) * this.itemsPerPage, term).subscribe( response => {
       this.auxParliamentarian = response['body']['results'];
-      this.pages = Math.ceil(response['body']['count'] / this.itemsPerPage);
-      if (this.pages === 0) {
+      const auxPages = Math.ceil(response['body']['count'] / this.itemsPerPage);
+      if (auxPages === 0) {
         alert('A pesquisa não retornou resultados');
         return;
       } else if (this.auxParliamentarian.length <= 0) {
         alert('Número da página inválido, favor digitar entre 1 e ' + this.pages);
         return;
       }
+      this.pages = auxPages;
       this.updateButtonsAppearence(this.offset, this.pages);
       this.parliamentarians = this.auxParliamentarian;
+      this.loading = false;
     });
   }
 
