@@ -49,6 +49,7 @@ export class MinhasPlsComponent implements OnInit {
     this.tokenValue = this.cookieService.get('token');
     this.userId = Number(this.cookieService.get('userID'));
     this.token.checkToken(this.tokenValue);
+    this.token.filterRestrictPage(this.tokenValue);
     this.votePosition = 0;
     this.propositions(1, '');
   }
