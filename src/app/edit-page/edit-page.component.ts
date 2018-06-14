@@ -46,6 +46,7 @@ export class EditPageComponent implements OnInit {
   ngOnInit() {
     this.tokenValue = this.cookieService.get('token');
     this.token.checkToken(this.tokenValue);
+    this.token.filterRestrictPage(this.tokenValue);
     this.userID = +this.cookieService.get('userID');
     this.requester.getUser(this.userID).subscribe( response => {
       this.user = response['body'];

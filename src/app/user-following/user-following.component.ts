@@ -49,6 +49,7 @@ export class UserFollowingComponent implements OnInit {
   ngOnInit() {
     this.tokenValue = this.cookieService.get('token');
     this.token.checkToken(this.tokenValue);
+    this.token.filterRestrictPage(this.tokenValue);
     this.loadPage(1, '');
   }
 
@@ -73,9 +74,12 @@ export class UserFollowingComponent implements OnInit {
       const auxPages = Math.ceil(response['body']['count'] / this.itemsPerPage);
       if (auxPages === 0) {
         alert('A pesquisa não retornou resultados');
+        this.loading = false;
+        this.pages = 0;
         return;
       } else if (this.auxParliamentarian.length <= 0) {
         alert('Número da página inválido, favor digitar entre 1 e ' + this.pages);
+        this.loading = false;
         return;
       }
       this.pages = auxPages;
