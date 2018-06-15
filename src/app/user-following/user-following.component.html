@@ -48,33 +48,33 @@
     </div>
   </div>
 </div>
-<table style="width:100%" *ngIf="pages > 0">
+<table style="width:100%" *ngIf="pages > 0 && !loading">
   <tr>
     <div class="row">
       <div class="col-sm-12">
         <ul class="nav nav-pills center">
           <td>
-            <button id="beforeBtn1" class="btn" (click)="loadPage(1, term)">Inicio</button>
+            <button *ngIf="offset > 1" class="btn" (click)="loadPage(1, term)">Inicio</button>
           </td>
           <td>
-            <button id="beforeBtn2" class="btn" (click)="loadPage(offset-1, term)">Ant.</button>
+            <button *ngIf="offset > 1" class="btn" (click)="loadPage(offset-1, term)">Ant.</button>
           </td>
           <td>
-            <input id="pageBtn1" type="text" size="3" class="form-control" #page>
+            <input *ngIf="pages > 1" type="text" size="3" class="form-control" #page>
           </td>
           <td>
-            <button id="pageBtn2" class="btn" (click)="loadPage(page.value, term)">Ir</button>
+            <button *ngIf="pages > 1" class="btn" (click)="loadPage(page.value, term)">Ir</button>
           </td>
           <td>
-            <button id="afterBtn1" class="btn" (click)="loadPage(offset+1, term)">Prox.</button>
+            <button *ngIf="offset < pages" class="btn" (click)="loadPage(offset+1, term)">Prox.</button>
           </td>
           <td>
-            <button id="afterBtn2" class="btn" (click)="loadPage(pages, term)">Fim</button>
+            <button *ngIf="offset < pages" class="btn" (click)="loadPage(pages, term)">Fim</button>
           </td>
         </ul>
         <br>
         <br>
-        <p class="p-center">Página: {{offset}}/{{pages}}</p>
+        <p class="p-center" *ngIf="pages > 1">Página: {{offset}}/{{pages}}</p>
         <br>
       </div>
     </div>
