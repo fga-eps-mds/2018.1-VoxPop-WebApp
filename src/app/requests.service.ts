@@ -9,6 +9,7 @@ import { UserModel } from '../models/user';
 import { SocialInformationModel } from '../models/socialInformation';
 import { LoginModel } from '../models/login';
 import { VoteModel } from '../models/vote';
+import { MessageModel } from '../models/message';
 
 @Injectable()
 export class RequestsService {
@@ -174,6 +175,12 @@ export class RequestsService {
     console.log('Making POST REQUEST FOLLOW ON URL: ' + endpoint);
     console.log(jsonString);
     return this.http.post(endpoint, jsonString, {headers: this.tokenHeader, observe: 'response'});
+  }
+ 
+  postMessage(msg: MessageModel){
+    const endpoint = this.baseURL.concat('contact_us/');
+    console.log('Making POST REQUEST MESSAGE ON URL: ' + endpoint);
+    return this.http.post(endpoint, JSON.stringify(msg), {headers: this.headers, observe: 'response'});
   }
 
   deleteFollow(id: Number) {
