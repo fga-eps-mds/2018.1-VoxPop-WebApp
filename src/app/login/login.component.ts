@@ -62,12 +62,14 @@ export class LoginComponent implements OnInit {
               this.cookieService.set('userFirstName', response.body['first_name']);
               this.cookieService.set('userLastName', response.body['last_name']);
               this.router.navigate(['']);
+              this.logging = false;
           }
       },
       error => {
           console.log(error);
           const statusAuth = error.status;
           this.errorHandler(statusAuth);
+          this.logging = false;
       });
     }
 
