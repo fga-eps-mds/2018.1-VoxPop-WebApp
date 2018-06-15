@@ -18,12 +18,12 @@ export class ContactUsComponent implements OnInit {
     email: '',
     choice: '',
     text: ''
-  }
-  
-  constructor(private router:Router,
-              private requester:RequestsService,
-              private cookieService:CookieService,
-              private token:TokenService) { }
+  };
+
+  constructor(private router: Router,
+              private requester: RequestsService,
+              private cookieService: CookieService,
+              private token: TokenService) { }
 
   ngOnInit() {
     this.tokenValue = this.cookieService.get('token');
@@ -31,14 +31,14 @@ export class ContactUsComponent implements OnInit {
     this.idValue = +this.cookieService.get('userID');
   }
 
-  postMsg(){
-    let request = this.input;
+  postMsg() {
+    const request = this.input;
     const response = this.requester.postMessage(this.input);
     this.postMsgHandler(response);
     return request;
   }
 
-  postMsgHandler(request){
+  postMsgHandler(request) {
     request.subscribe(response => {
       const statusMsg = response.status;
       // console.log('STATUS CODE RETURNED ON USER: ' + statusUser);
@@ -48,6 +48,10 @@ export class ContactUsComponent implements OnInit {
     }, error => {
       this.errorHandler(error.status);
     });
+  }
+
+  back() {
+    this.router.navigate(['']);
   }
 
   errorHandler(status) {

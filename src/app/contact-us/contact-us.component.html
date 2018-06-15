@@ -35,7 +35,7 @@
         </textarea>
         <br>
         <div class="text-center">
-          <button class="btn btn-danger" type="submit" id="cancelBtn">Voltar</button>
+          <button class="btn btn-danger" type="submit" id="cancelBtn" (click)="back()">Voltar</button>
           <button class="btn btn-primary" type="submit" id="submitBtn" [disabled]="input.text == '' || input.topic == ''" (click)="postMsg()">Enviar</button>
         </div>
       </div>

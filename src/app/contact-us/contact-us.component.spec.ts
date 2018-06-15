@@ -50,4 +50,8 @@ describe('ContactUsComponent', () => {
     expect(component.errorHandler(201)).toBeDefined();
   });
 
+  it('should go to back page', () => {
+    expect(component.back()).toBeUndefined();
+  });
+
 });
