@@ -54,6 +54,10 @@ export class MinhasPlsComponent implements OnInit {
   }
 
   propositions(offset: number, term) {
+    if (offset < 1 || isNaN(Number(offset)) || offset > this.pages) {
+      alert('Número de páginas inválido, favor digitar um número positivo');
+      return;
+    }
     this.term = term.toUpperCase();
     let req: any;
     this.pages = 1;
@@ -84,7 +88,7 @@ export class MinhasPlsComponent implements OnInit {
       document.getElementById('beforeBtn1').style.display = 'block';
       document.getElementById('beforeBtn2').style.display = 'block';
     }
-    if (offset === limit) {
+    if (offset >= limit) {
       document.getElementById('afterBtn1').style.display = 'none';
       document.getElementById('afterBtn2').style.display = 'none';
     } else {
