@@ -39,8 +39,11 @@
 <div class="row" *ngIf="pages == 0">
   <div class="main-card">
     <div class="main-card-content">
-      <p>Você verá aqui os parlamentares seguidos,
-        <a href="/parliamentarians">ver parlamentares</a>
+      <p *ngIf="term === ''">Você ainda não segue deputados,
+        <a href="/parliamentarians">veja a lista de deputados</a> e escolha os que você quiser seguir
+      </p>
+      <p *ngIf="term !== ''">Sua busca não retornou resultados :( Talvez você não siga este detputado, procure-o 
+        <a href="/parliamentarians">aqui</a>.
       </p>
     </div>
   </div>
