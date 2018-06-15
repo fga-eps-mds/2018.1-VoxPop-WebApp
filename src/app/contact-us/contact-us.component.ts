@@ -10,11 +10,12 @@ import { TokenService } from '../token.service';
   styleUrls: ['./contact-us.component.css']
 })
 export class ContactUsComponent implements OnInit {
-  tokenValue = ''
-  idValue = 0
+  tokenValue = '';
+  idValue = 0;
 
   input = {
     topic: '',
+    email: '',
     choice: '',
     text: ''
   }
@@ -28,6 +29,41 @@ export class ContactUsComponent implements OnInit {
     this.tokenValue = this.cookieService.get('token');
     this.token.checkToken(this.tokenValue);
     this.idValue = +this.cookieService.get('userID');
+  }
+
+  postMsg(){
+    let request = this.input;
+    const response = this.requester.postMessage(this.input);
+    this.postMsgHandler(response);
+    return request;
+  }
+
+  postMsgHandler(request){
+    request.subscribe(response => {
+      const statusMsg = response.status;
+      // console.log('STATUS CODE RETURNED ON USER: ' + statusUser);
+      if (this.requester.didSucceed(statusMsg)) {
+        document.getElementById('contactSuccess').style.display = 'block';
+      }
+    }, error => {
+      this.errorHandler(error.status);
+    });
+  }
+
+  errorHandler(status) {
+    if (status === 401) {
+      document.getElementById('contactFail').style.display = 'block';
+      return true;
+    }
+    if (status === 500) {
+      document.getElementById('contactFail').style.display = 'block';
+      return true;
+    }
+    if (status === 400) {
+      document.getElementById('contactFail').style.display = 'block';
+      return true;
+    }
+    return false;
   }
 
 }
