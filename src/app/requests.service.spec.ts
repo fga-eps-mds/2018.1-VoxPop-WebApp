@@ -6,6 +6,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { UserModel } from '../models/user';
 import { SocialInformationModel } from '../models/socialInformation';
 import { VoteModel } from '../models/vote';
+import { MessageModel } from '../models/message';
 
 describe('RequestsService', () => {
   beforeEach(() => {
@@ -164,6 +165,18 @@ describe('RequestsService', () => {
     const id = 1;
 
     const promise = service.deleteFollow(id);
+    expect(promise).toBeDefined();
+  }));
+
+  it('postMessage should return a promise', inject([RequestsService], (service: RequestsService) => {
+    const msg: MessageModel = {
+      topic: 'abc',
+      email: 'abc@123.com',
+      choice: 'A',
+      text: 'aaabbb'
+    }
+
+    const promise = service.postMessage(msg);
     expect(promise).toBeDefined();
   }));
 });
