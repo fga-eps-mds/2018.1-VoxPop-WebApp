@@ -176,7 +176,7 @@ export class RequestsService {
     console.log(jsonString);
     return this.http.post(endpoint, jsonString, {headers: this.tokenHeader, observe: 'response'});
   }
- 
+
   postMessage(msg: MessageModel){
     const endpoint = this.baseURL.concat('contact_us/');
     console.log('Making POST REQUEST MESSAGE ON URL: ' + endpoint);
@@ -205,11 +205,12 @@ export class RequestsService {
     console.log('Making POST REQUEST ON URL: ' + endpoint);
     var data = {
       'grant_type': 'convert_token',
-      'client_id': '46tECQl5ABqDmaff0z0Uq8PICIREvDTf9UQUWUFy',
-      'client_secret': 'jdtnxWb2CB0jT10DB7M96NoE8JkiH9tnBW0nxN68aSVvval4whmY11qTLVNbsc1oYXPHteCXcEShh9RPzZAfsF9cVNpv3ulkxoa4wKYc1MrnZQVK4L5nAZZ28QGAILTM',
+      'client_id': 'Ykp0QxJhZoe8WZ4G32V06Mr2o8VaMFNfipNcdgSu',
+      'client_secret': 'Gvqi0s5pklY7fqemR9EiW2pUgTzUmK032IaTgJawHp9CPjM4pZOa8AyMTPckyuHOOBIrunxATFaxAy444HdnRomhdozHR2gKeAcjGRRw5QhuHOy9j0KiWstsO2wwP4YZ',
       'backend': 'facebook',
       'token': accessToken
     }
+    console.log(data);
     return this.http.post(endpoint, data, {observe: 'response'});
   }
 

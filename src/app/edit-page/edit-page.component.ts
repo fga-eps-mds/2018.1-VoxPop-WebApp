@@ -27,12 +27,12 @@ export class EditPageComponent implements OnInit {
     social_information: {
         id: 0,
         owner: 0,
-        federal_unit: null,
-        city: '',
+        region: null,
         income: null,
         education: null,
-        job: '',
-        birth_date: 0,
+        race: null,
+        gender: null,
+        birth_date: null
     },
   };
 

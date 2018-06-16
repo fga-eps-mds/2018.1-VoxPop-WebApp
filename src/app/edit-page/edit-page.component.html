@@ -87,79 +87,62 @@
         </div>
         <div class="panel-body">
           <div class="form-group">
-            <label>Estado</label>
-            <select name="Estado" class="form-control" value="{{user.social_information.federal_unit}}"
-            [(ngModel)]="user.social_information['federal_unit']">
-              <option value=null>Prefiro não responder</option>
-              <option value="AC">Acre</option>
-              <option value="AL">Alagoas</option>
-              <option value="AP">Amapá</option>
-              <option value="AM">Amazonas</option>
-              <option value="BA">Bahia</option>
-              <option value="CE">Ceará</option>
-              <option value="DF">Distrito Federal</option>
-              <option value="ES">Espírito Santo</option>
-              <option value="GO">Goiás</option>
-              <option value="MA">Maranhão</option>
-              <option value="MT">Mato Grosso</option>
-              <option value="MS">Mato Grosso do Sul</option>
-              <option value="MG">Minas Gerais</option>
-              <option value="PA">Pará</option>
-              <option value="PB">Paraíba</option>
-              <option value="PR">Paraná</option>
-              <option value="PE">Pernambuco</option>
-              <option value="PI">Piauí</option>
-              <option value="RJ">Rio de Janeiro</option>
-              <option value="RN">Rio Grande do Norte</option>
-              <option value="RS">Rio Grande do Sul</option>
-              <option value="RO">Rondônia</option>
-              <option value="RR">Roraima</option>
-              <option value="SC">Santa Catarina</option>
-              <option value="SP">São Paulo</option>
-              <option value="SE">Sergipe</option>
-              <option value="TO">Tocantins</option>
+            <label>Região</label>
+            <select name="region" class="form-control" value="{{user.social_information.region}}"
+            [(ngModel)]="user.social_information['region']">
+              <option value=null selected>Prefiro não responder</option>
+              <option value="N">Norte</option>
+              <option value="NE">Nordeste</option>
+              <option value="CO">Centro-Oeste</option>
+              <option value="SE">Sudeste</option>
+              <option value="S">Sul</option>
             </select>
           </div>
           <div class="form-group">
-              <label>Cidade</label>
-              <input name="city" type="text" class="form-control" placeholder="Cidade" value="{{user.social_information.city}}"
-              [(ngModel)]="user.social_information['city']">
-          </div>
-          <div class="form-group">
             <label>Renda</label>
-            <select name="Renda" class="form-control" value="{{user.social_information.income}}"
+            <select name="income" class="form-control" value="{{user.social_information.income}}"
             [(ngModel)]="user.social_information['income']">
-              <option value=-1>Prefiro não responder</option>
-              <option value="0">Entre R$0,00 até R$1000,00</option>
-              <option value="1">Entre R$1000,01 até R$3000,00</option>
-              <option value="2">Entre R$3000,01 até R$6000,00</option>
-              <option value="3">Entre R$6000,01 até R$9000,00</option>
-              <option value="4">Entre R$9000,01 até R$15000,00</option>
-              <option value="5">Entre R$15000,01 até R$25000,00</option>
-              <option value="6">R$25000,01 para cima</option>
+              <option value=null>Prefiro não responder</option>
+              <option value="E">Entre R$0,00 até R$1874,00</option>
+              <option value="D">Entre R$1874,01 até R$3748,00</option>
+              <option value="C">Entre R$3748,01 até R$9370,00</option>
+              <option value="B">Entre R$9370,01 até R$18740,00</option>
+              <option value="A">R$18740,01 para cima</option>
             </select>
           </div>
           <div class="form-group">
             <label>Formação</label>
-            <select name="Formacao" class="form-control" value="{{user.social_information.education}}"
+            <select name="education" class="form-control" value="{{user.social_information.education}}"
             [(ngModel)]="user.social_information['education']">
               <option value=null>Prefiro não responder</option>
-              <option value="EFC">Ensino Fundamental Completo</option>
-              <option value="EFI">Ensino Fundamental Incompleto</option>
-              <option value="EMC">Ensino Médio Completo</option>
-              <option value="EMI">Ensino Médio Incompleto</option>
-              <option value="ESC">Ensino Superior Completo</option>
-              <option value="ESI">Ensino Superior Incompleto</option>
+              <option value="SE">Sem Escolaridade</option>
+              <option value="EF">Ensino Fundamental</option>
+              <option value="EM">Ensino Médio</option>
+              <option value="ES">Ensino Superior</option>
               <option value="PG">Pós Graduação</option>
-              <option value="ME">Mestrado</option>
-              <option value="DO">Doutorado</option>
-              <option value="PD">Pós Doutorado</option>
             </select>
           </div>
           <div class="form-group">
-            <label>Profissão</label>
-            <input name="job" type="text" class="form-control" placeholder="Profissão" value="{{user.social_information.job}}"
-            [(ngModel)]="user.social_information['job']">
+            <label>Raça</label>
+            <select name="race" class="form-control" value="{{user.social_information.race}}"
+            [(ngModel)]="user.social_information['race']">
+              <option value=null>Prefiro não responder</option>
+              <option value="B">Branca</option>
+              <option value="PR">Preta</option>
+              <option value="A">Amarela</option>
+              <option value="PA">Parda</option>
+              <option value="I">Indígena</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Gênero</label>
+            <select name="gender" class="form-control" value="{{user.social_information.gender}}"
+            [(ngModel)]="user.social_information['gender']">
+              <option value=null>Prefiro não responder</option>
+              <option value="M">Masculino</option>
+              <option value="F">Feminino</option>
+              <option value="O">Outros</option>
+            </select>
           </div>
           <div class="form-group">
             <label>Data de Nascimento</label>

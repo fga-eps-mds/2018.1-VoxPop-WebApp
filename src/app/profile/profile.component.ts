@@ -18,12 +18,12 @@ export class ProfileComponent implements OnInit {
     last_name: '',
     email: '',
     social_information: {
-        federal_unit: '',
-        city: '',
-        income: 0,
-        education: '',
-        job: '',
-        birth_date: '',
+      region: null,
+      income: null,
+      education: null,
+      race: null,
+      gender: null,
+      birth_date: null
     }
   };
   tokenValue = '';

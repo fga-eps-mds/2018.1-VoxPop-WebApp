@@ -46,7 +46,7 @@ export class AppComponent implements OnInit {
      }(document, 'script', 'facebook-jssdk'));
 
     var auth_status_change_callback = function(response) {
-      console.log('auth_status_change_callback');
+      // console.log('auth_status_change_callback');
       FB.getLoginStatus(function(response) {
         This.loginFacebook(This, response);
       });
@@ -66,6 +66,7 @@ export class AppComponent implements OnInit {
   getActualUserHandler(this_context, accessToken: string) {
     this_context.requester.getActualUser(accessToken).subscribe( response => {
       var res = response['body'];
+      console.log(res);
       this_context.cookieService.set('userID', res['id']);
       this_context.cookieService.set('userUsername', res['username']);
       this_context.cookieService.set('userFirstName', res['first_name']);

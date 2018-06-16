@@ -50,12 +50,12 @@ describe('RegisterFormComponent', () => {
       email: 'john@doe.com',
       password: '123qwe!@#QWE',
       social_information: {
-        federal_unit: null,
-        city: '',
+        region: null,
         income: null,
         education: null,
-        job: '',
-        birth_date: ''
+        race: null,
+        gender: null,
+        birth_date: null
       }
     };
     const statusCode = 0;
@@ -75,12 +75,12 @@ describe('RegisterFormComponent', () => {
       email: 'john',
       password: '123qwe!@#QWE',
       social_information: {
-        federal_unit: null,
-        city: '',
+        region: null,
         income: null,
         education: null,
-        job: '',
-        birth_date: ''
+        race: null,
+        gender: null,
+        birth_date: null
       }
     };
     const statusCode = 0;

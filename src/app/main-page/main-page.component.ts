@@ -88,7 +88,7 @@ export class MainPageComponent implements OnInit {
             label: 'Número de votações',
             backgroundColor: 'rgb(51,122,183)',
             borderColor: 'rgb(255, 255, 255)',
-            data: [66, 75, 59, 11, 0],
+            data: [96, 75, 82, 15, 0],
           }]
         },
 

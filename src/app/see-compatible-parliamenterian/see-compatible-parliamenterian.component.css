@@ -8,7 +8,7 @@
     -webkit-animation: spin 1s linear infinite; /* Safari */
     animation: spin 1s linear infinite;
 }
-  
+
 /* Safari */
 @-webkit-keyframes spin {
 0% { -webkit-transform: rotate(0deg); }
@@ -22,4 +22,9 @@
 
 p, h3 {
     text-align: center;
+}
+
+.alternative {
+    background-color: #638bad;
+    color: white;
 }

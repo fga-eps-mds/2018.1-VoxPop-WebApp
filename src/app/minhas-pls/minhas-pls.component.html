@@ -72,14 +72,14 @@
             Editar Voto
           </button>
         </div>
-        <div class="panel-footer text-muted">2 dias atrás</div>
+        <div class="panel-footer text-muted">atualizada {{p.proposition['days_ago']}} dia(s) atrás</div>
       </div>
     </div>
   </div>
   <div class="row" *ngIf="propositionVote?.length <= 0">
     <div class="main-card">
       <div class="main-card-content">
-        <p>Você verá aqui as propostas em que votar, clique  
+        <p>Você verá aqui as propostas em que votar, clique
           <a href="/propositions">aqui </a>
           para votar.
         </p>
