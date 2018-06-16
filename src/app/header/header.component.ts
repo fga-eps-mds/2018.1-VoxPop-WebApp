@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    this.cookieService.set('token', '');
+    this.cookieService.deleteAll();
   }
 
   toggleMenu() {

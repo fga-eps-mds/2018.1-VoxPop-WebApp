@@ -104,9 +104,6 @@
           <p>Ano: {{propositionVote[votePosition].proposition['year']}}</p>
           <p>Abstract: {{propositionVote[votePosition].proposition['abstract']}}</p>
           <p>Situação: {{propositionVote[votePosition].proposition['situation']}}</p>
-          <div>Na íntegra:
-            <a href="{{propositionVote['url_full']}}">link íntegra</a><br/>
-          </div>
           <p> Seu voto:
             <ng-container *ngIf="propositionVote[votePosition]['option'] === 'Y'">
               <span class="glyphicon glyphicon-ok"></span> SIM
@@ -118,6 +115,10 @@
               <span class="glyphicon glyphicon-remove"></span> NÃO
             </ng-container><br>
           </p>
+          <!-- TODO, referenciar essa parada aí em baixo direito! -->
+          <div class="text-center">
+            <button class="btn btn-primary" (click)="openProposition(propositionVote[votePosition].proposition['url_full'])">Veja na íntegra</button>
+          </div>
         </div>
         <div class="modal-footer" *ngIf="showEditButtons">
           <div style="text-align: center; margin-bottom: 10px">
