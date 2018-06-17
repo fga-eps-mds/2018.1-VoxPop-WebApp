@@ -64,12 +64,12 @@ describe('EditPageComponent', () => {
       email: 'french@fries.com',
       password: '123qwe!@#QWE',
       social_information: {
-          federal_unit: null,
-          city: '',
-          income: null,
-          education: null,
-          job: 'Atendente no McDonalds',
-          birth_date: '05-02-2018',
+        region: null,
+        income: null,
+        education: null,
+        race: null,
+        gender: null,
+        birth_date: null
       },
     };
     let statusCode = 0;

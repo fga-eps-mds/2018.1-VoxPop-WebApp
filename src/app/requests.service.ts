@@ -25,24 +25,24 @@ export class RequestsService {
   tokenHeader: any;
 
   getUser(userId) {
-    this.tokenValue = this.cookieService.get('token');
-    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
+    this.tokenValue = this.token.getToken();
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': this.tokenValue};
     const endpoint = this.baseURL.concat('users/' + userId.toString() + '/');
     console.log('Making GET REQUEST USER ON URL: ' + endpoint);
     return this.http.get(endpoint,  {headers: this.tokenHeader, observe: 'response'});
   }
 
   getVotedProposition(offset) {
-    this.tokenValue = this.cookieService.get('token');
-    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
+    this.tokenValue = this.token.getToken();
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': this.tokenValue};
     const endpoint = this.baseURL.concat('user_votes/?limit=10&offset=' + offset);
     console.log('Making GET REQUEST VOTED PROPOITION ON URL: ' + endpoint);
     return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
   }
 
   getSearchVotedProposition(offset, keyword) {
-    this.tokenValue = this.cookieService.get('token');
-    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
+    this.tokenValue = this.token.getToken();
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': this.tokenValue};
     const endpoint = this.baseURL.concat('user_votes/?limit=10&offset=' + offset + '&query=' + keyword);
     console.log('Making GET REQUEST SEARCH VOTED PROPOITION ON URL: ' + endpoint);
     return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
@@ -63,32 +63,32 @@ export class RequestsService {
   }
 
   getMostCompatible() {
-    this.tokenValue = this.cookieService.get('token');
-    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
+    this.tokenValue = this.token.getToken();
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': this.tokenValue};
     const endpoint = this.baseURL.concat('statistics/most_compatible/');
     console.log('Making GET MOST COMPATIBLE REQUEST ON URL: ' + endpoint);
     return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
   }
 
   getProjects() {
-    this.tokenValue = this.cookieService.get('token');
-    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
+    this.tokenValue = this.token.getToken();
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': this.tokenValue};
     const endpoint = this.baseURL.concat('propositions/non_voted_by_user/');
     console.log('Making GET PROJECTS REQUEST ON URL: ' + endpoint);
     return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
   }
 
   getParliamentarian (limit, offset) {
-    this.tokenValue = this.cookieService.get('token');
-    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
+    this.tokenValue = this.token.getToken();
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': this.tokenValue};
     const endpoint = this.baseURL.concat('parliamentarians/?limit=' + limit + '&offset=' + offset);
     console.log('Making GET PARLIAMENTERIAN REQUEST ON URL: ' + endpoint);
     return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
   }
 
   getSearchedParliamentarian (limit, offset, keyword: string) {
-    this.tokenValue = this.cookieService.get('token');
-    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
+    this.tokenValue = this.token.getToken();
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': this.tokenValue};
     const endpoint = this.baseURL.concat('parliamentarians/?limit=' + limit + '&offset=' + offset + '&query=' + keyword);
     console.log('Making QUERY REQUEST USER ON URL: ' + endpoint);
     this.headers = (this.tokenValue === '') ? this.headers : this.tokenHeader;
@@ -96,16 +96,16 @@ export class RequestsService {
   }
 
   getParlimentarianSpecific(parlimentaryId) {
-    this.tokenValue = this.cookieService.get('token');
-    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
+    this.tokenValue = this.token.getToken();
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': this.tokenValue};
     const endpoint = this.baseURL.concat('parliamentarians/' + parlimentaryId + '/');
     this.headers = (this.tokenValue === '') ? this.headers : this.tokenHeader;
     return this.http.get(endpoint, {headers: this.headers, observe: 'response'});
   }
 
   getFollow(id) {
-    this.tokenValue = this.cookieService.get('token');
-    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
+    this.tokenValue = this.token.getToken();
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': this.tokenValue};
     const endpoint = this.baseURL.concat('user_following/' + id + '/');
     this.headers = (this.tokenValue === '') ? this.headers : this.tokenHeader;
     console.log('Making GET FOLLOW REQUEST ON URL: ' + endpoint);
@@ -113,8 +113,8 @@ export class RequestsService {
   }
 
   getFollowingParliamentarians(limit, offset) {
-    this.tokenValue = this.cookieService.get('token');
-    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
+    this.tokenValue = this.token.getToken();
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': this.tokenValue};
     const endpoint = this.baseURL.concat('user_following/?limit=' + limit + '&offset=' + offset);
     console.log('Making POST REQUEST USER ON URL: ' + endpoint);
     this.headers = (this.tokenValue === '') ? this.headers : this.tokenHeader;
@@ -123,8 +123,8 @@ export class RequestsService {
   }
 
   getSearchFollowingParliamentarians(limit, offset, keyword) {
-    this.tokenValue = this.cookieService.get('token');
-    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
+    this.tokenValue = this.token.getToken();
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': this.tokenValue};
     const endpoint = this.baseURL.concat('user_following/?limit=' + limit + '&offset=' + offset + '&query=' + keyword);
     console.log('Making POST REQUEST USER ON URL: ' + endpoint);
     this.headers = (this.tokenValue === '') ? this.headers : this.tokenHeader;
@@ -146,10 +146,10 @@ export class RequestsService {
 
   putUser(user: UserModel, userId) {
     const endpoint = this.baseURL.concat('users/' + userId.toString() + '/');
-    this.tokenValue = this.cookieService.get('token');
-    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
+    this.tokenValue = this.token.getToken();
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': this.tokenValue};
     console.log('Making PUT REQUEST USER ON URL: ' + endpoint);
-    return this.http.put(endpoint, JSON.stringify(user),  {headers: this.tokenHeader, observe: 'response'});
+    return this.http.patch(endpoint, JSON.stringify(user),  {headers: this.tokenHeader, observe: 'response'});
   }
 
   postAuthentication(login: LoginModel) {
@@ -159,8 +159,8 @@ export class RequestsService {
   }
 
   postVote(vote: VoteModel) {
-    this.tokenValue = this.cookieService.get('token');
-    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
+    this.tokenValue = this.token.getToken();
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': this.tokenValue};
     const endpoint = this.baseURL.concat('user_votes/');
     console.log('Making POST REQUEST VOTE ON URL: ' + endpoint);
     console.log(vote);
@@ -169,14 +169,14 @@ export class RequestsService {
 
   postFollow(id: Number) {
     const jsonString = '{"parliamentary": ' + id + '}';
-    this.tokenValue = this.cookieService.get('token');
-    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
+    this.tokenValue = this.token.getToken();
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': this.tokenValue};
     const endpoint = this.baseURL.concat('user_following/');
     console.log('Making POST REQUEST FOLLOW ON URL: ' + endpoint);
     console.log(jsonString);
     return this.http.post(endpoint, jsonString, {headers: this.tokenHeader, observe: 'response'});
   }
- 
+
   postMessage(msg: MessageModel){
     const endpoint = this.baseURL.concat('contact_us/');
     console.log('Making POST REQUEST MESSAGE ON URL: ' + endpoint);
@@ -184,20 +184,42 @@ export class RequestsService {
   }
 
   deleteFollow(id: Number) {
-    this.tokenValue = this.cookieService.get('token');
-    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
+    this.tokenValue = this.token.getToken();
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': this.tokenValue};
     const endpoint = this.baseURL.concat('user_following/' + id + '/');
     console.log('Making DELETE FOLLOW REQUEST ON URL: ' + endpoint);
     return this.http.delete(endpoint, {headers: this.tokenHeader, observe: 'response'});
   }
 
   updateVote(vote: VoteModel, id: number) {
-    this.tokenValue = this.cookieService.get('token');
-    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Token ' + this.tokenValue};
+    this.tokenValue = this.token.getToken();
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': this.tokenValue};
     const endpoint = this.baseURL.concat('user_votes/' + id + '/');
     console.log('Making PUT REQUEST VOTE ON URL: ' + endpoint);
     console.log(vote);
     return this.http.put(endpoint, JSON.stringify(vote), {headers: this.tokenHeader, observe: 'response'});
+  }
+
+  convertToken(accessToken: string) {
+    const endpoint = this.baseURL.concat('oauth/convert-token/');
+    console.log('Making POST REQUEST ON URL: ' + endpoint);
+    var data = {
+      'grant_type': 'convert_token',
+      'client_id': 'Ykp0QxJhZoe8WZ4G32V06Mr2o8VaMFNfipNcdgSu',
+      'client_secret': 'Gvqi0s5pklY7fqemR9EiW2pUgTzUmK032IaTgJawHp9CPjM4pZOa8AyMTPckyuHOOBIrunxATFaxAy444HdnRomhdozHR2gKeAcjGRRw5QhuHOy9j0KiWstsO2wwP4YZ',
+      'backend': 'facebook',
+      'token': accessToken
+    }
+    console.log(data);
+    return this.http.post(endpoint, data, {observe: 'response'});
+  }
+
+  getActualUser(accessToken: string) {
+    const endpoint = this.baseURL.concat('users/actual_user/');
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': ' Bearer ' + accessToken};
+    console.log(this.tokenHeader);
+    console.log('Making GET REQUEST ON URL: ' + endpoint);
+    return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
   }
 
   didSucceed(status) {

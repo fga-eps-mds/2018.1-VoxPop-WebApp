@@ -1,4 +1,4 @@
-<div class="container"> 
+<div class="container">
     <div class="row">
       <div class="text-center" >
         <img src="/assets/images/LogoVPAzul.png" width="30%" height="30%" alt="Logo">
@@ -46,7 +46,7 @@
           <br>
         </div>
       </div>
-  
+
       <div *ngIf="proposition && proposition.length > 0 && most_actives && most_actives.length > 0">
         <div class="row">
           <div class="col-sm-6 text-center">
@@ -62,7 +62,7 @@
                 </div>
                 <button class="btn btn-primary" (click)="openProposition(proposition[0]['url_full'])">Veja na íntegra</button>
               </div>
-              <div class="panel-footer text-muted">2 dias atrás</div>
+              <div class="panel-footer text-muted">atualizada {{proposition[0]['days_ago']}} dia(s) atrás</div>
             </div>
           </div>
           <div class="col-sm-6 text-center">
@@ -87,14 +87,14 @@
               </div>
               <div class="panel-footer text-muted">Quantidade de votos: {{most_actives[0]['votes']}}</div>
             </div>
-  
+
             <!-- </div> -->
           </div>
         </div>
-  
+
         <div class="row">
           <div class="col-sm-6 text-center">
-  
+
             <div class="panel panel-primary">
               <div class="panel-heading">
                 <h3 class="panel-title">{{proposition[1]['proposition_type_initials']}} {{proposition[1]['number']}}/{{proposition[1]['year']}}</h3>
@@ -106,7 +106,7 @@
                 </div>
                 <button class="btn btn-primary" (click)="openProposition(proposition[1]['url_full'])">Veja na íntegra</button>
               </div>
-              <div class="panel-footer text-muted">2 dias atrás</div>
+              <div class="panel-footer text-muted">atualizada {{proposition[1]['days_ago']}} dia(s) atrás</div>
             </div>
           </div>
           <div class="col-sm-6 text-center">
@@ -130,13 +130,13 @@
               </div>
               <div class="panel-footer text-muted">Quantidade de votos: {{most_actives[1]['votes']}}</div>
             </div>
-  
+
           </div>
         </div>
-  
+
         <div class="row">
           <div class="col-sm-6 text-center">
-  
+
             <div class="panel panel-primary">
               <div class="panel-heading">
                 <h3 class="panel-title">{{proposition[2]['proposition_type_initials']}} {{proposition[2]['number']}}/{{proposition[2]['year']}}</h3>
@@ -148,7 +148,7 @@
                 </div>
                 <button class="btn btn-primary" (click)="openProposition(proposition[2]['url_full'])">Veja na íntegra</button>
               </div>
-              <div class="panel-footer text-muted">2 dias atrás</div>
+              <div class="panel-footer text-muted">atualizada {{proposition[2]['days_ago']}} dia(s) atrás</div>
             </div>
           </div>
           <div class="col-sm-6 text-center">
@@ -171,15 +171,15 @@
               </div>
               <div class="panel-footer text-muted">Quantidade de votos: {{most_actives[2]['votes']}}</div>
             </div>
-  
+
             <!-- <div class="main-card vote">
               <div class="main-card-content">
-  
+
               </div>
             </div> -->
           </div>
         </div>
-  
+
       </div>
     </div>
   </div>

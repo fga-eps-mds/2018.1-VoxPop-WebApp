@@ -1,12 +1,33 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable()
 export class TokenService {
 
+  tokenValue = ''
+
   constructor(
     private router: Router,
+    private cookieService: CookieService,
   ) { }
+
+  getToken() {
+    this.tokenValue = this.cookieService.get('basic_token');
+
+    if(this.tokenValue != '') {
+      return 'Token ' + this.tokenValue;
+    }
+    else {
+      this.tokenValue = this.cookieService.get('bearer_token');
+
+      if(this.tokenValue != '') {
+        return 'Bearer ' + this.tokenValue;
+      }
+    }
+
+    return '';
+  }
 
   checkToken(token) {
     if (token === '') {

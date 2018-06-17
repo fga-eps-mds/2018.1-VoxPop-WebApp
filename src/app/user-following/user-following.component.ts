@@ -47,7 +47,7 @@ export class UserFollowingComponent implements OnInit {
     private token: TokenService) { }
 
   ngOnInit() {
-    this.tokenValue = this.cookieService.get('token');
+    this.tokenValue = this.token.getToken();
     this.token.checkToken(this.tokenValue);
     this.token.filterRestrictPage(this.tokenValue);
     this.loadPage(1, '');

@@ -1,8 +1,8 @@
 export interface SocialInformationModel {
-    federal_unit: string;
-    city: string;
-    income: number;
-    education: string;
-    job: string;
+    region: string;
+    income: string;
+    education: number;
+    race: string;
+    gender: string;
     birth_date: Date;
 }
