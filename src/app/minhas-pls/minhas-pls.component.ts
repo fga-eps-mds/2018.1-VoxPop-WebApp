@@ -55,6 +55,10 @@ export class MinhasPlsComponent implements OnInit {
   }
 
   propositions(offset: number, term) {
+    if (offset < 1 || isNaN(Number(offset)) || offset > this.pages) {
+      alert('Número de páginas inválido, favor digitar um número positivo');
+      return;
+    }
     this.term = term.toUpperCase();
     let req: any;
     this.pages = 1;
@@ -72,34 +76,8 @@ export class MinhasPlsComponent implements OnInit {
       // console.log(this.propositionVote);
       this.offset = offset;
       this.pages = Math.ceil(response['body']['count'] / this.itemsPerPage);
-      this.updateButtonsAppearence(this.offset, this.pages);
       this.loading = false;
     });
-  }
-
-  updateButtonsAppearence(offset, limit) {
-    if (offset === 1) {
-      document.getElementById('beforeBtn1').style.display = 'none';
-      document.getElementById('beforeBtn2').style.display = 'none';
-    } else {
-      document.getElementById('beforeBtn1').style.display = 'block';
-      document.getElementById('beforeBtn2').style.display = 'block';
-    }
-    if (offset === limit) {
-      document.getElementById('afterBtn1').style.display = 'none';
-      document.getElementById('afterBtn2').style.display = 'none';
-    } else {
-      document.getElementById('afterBtn1').style.display = 'block';
-      document.getElementById('afterBtn2').style.display = 'block';
-    }
-    if (this.pages < 2) {
-      document.getElementById('pageBtn1').style.display = 'none';
-      document.getElementById('pageBtn2').style.display = 'none';
-    } else {
-      document.getElementById('pageBtn1').style.display = 'block';
-      document.getElementById('pageBtn2').style.display = 'block';
-    }
-
   }
 
   specifyProposition(position, showButtons) {
@@ -126,6 +104,13 @@ export class MinhasPlsComponent implements OnInit {
       }
 
     });
+  }
 
+  openProposition(proposition_url) {
+    window.open(
+      proposition_url,
+      '_blank',
+      'height=700, width=820, scrollbars=yes, status=yes'
+    );
   }
 }
