@@ -1,155 +1,154 @@
-<div class="col-md-6 col-md-offset-3">
-  <form (submit)="registerUser($event)">
-      <div class="alert alert-danger" role="alert" id="alert-invalid" style="display:none">
-        <p>{{validator.valueErrorHandler}}</p>
-      </div>
-    <div id="firstPart" class="register-card">
-        <div class="alert alert-danger" role="alert" id="alert-invalid-inputs" style="display:none">
-          <p>{{validator.valueInvalidInput}}</p>
+<div class="container">
+<div class="col-md-8 col-md-offset-2">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title text-center">
+        <span>Criar Conta</span>
+      </h3>
+    </div>
+    <div class="panel-body">
+      <form (submit)="registerUser($event)">
+          <div class="alert alert-danger" role="alert" id="alert-invalid" style="display:none">
+            <p>{{validator.valueErrorHandler}}</p>
+          </div>
+        <div id="firstPart">
+            <div class="alert alert-danger" role="alert" id="alert-invalid-inputs" style="display:none">
+              <p>{{validator.valueInvalidInput}}</p>
+            </div>
+             <div class="form-group">
+                  <span class="required">*</span>
+                  <label data-toggle="tooltip" title="Este é o nome usado para entrar no site">Nome de Usuário</label>
+                  <input name="username" type="text" class="form-control" placeholder="Entre o nome do usuário" id = "username"
+                  (keyup)="validator.onKeyUsername($event)" [(ngModel)]="user.username">
+                  <div class="alert alert-danger" role="alert" id="alert-username" style="display:none">
+                    <p>{{validator.valueUsername}}</p>
+                  </div>
+             </div>
+             <div class="form-group">
+                <label>Primeiro Nome</label>
+                <input name="first_name" type="text" class="form-control" placeholder="Digite o seu primeiro nome" [(ngModel)]="user.first_name">
+             </div>
+             <div class="form-group">
+                <label>Sobrenome</label>
+                <input name="last_name" type="text" class="form-control" placeholder="Digite o seu sobrenome" [(ngModel)]="user.last_name">
+             </div>
+             <div class="form-group">
+                  <span class="required">*</span>
+                  <label data-toggle="tooltip" title="Esta é a senha usada para entrar no site">Senha</label>
+                  <input name="password" type="password" class="form-control" minlength="8" id="password"
+                  (keyup)="validator.onKeyPassword($event)"
+                  placeholder="Senha"
+                  [(ngModel)]="user.password">
+                  <div class="alert alert-danger" role="alert" id="alert-invalid-password" style="display:none">
+                    <p>{{validator.valueInvalidPassword}}</p>
+                  </div>
+             </div>
+             <div class="form-group">
+                  <span class="required">*</span>
+                  <label data-toggle="tooltip" title="Digite a senha novamente">Confirmar Senha</label>
+                  <input name="confirm-password" type="password" class="form-control" minlength="6" id="confirm-password"
+                  maxlength="20" (keyup)="validator.onKeyConfirmPassword($event)"
+                  (keyup)="validator.onKeyValidatorPassword($event)" placeholder="Confirmar senha">
+                  <div class="alert alert-danger" role="alert" id="alert-password" style="display:none">
+                       <p>{{validator.valuePassword}}</p>
+                  </div>
+             </div>
+             <div class="form-group">
+                  <span class="required">*</span>
+                  <label data-toggle="tooltip" title="Digite aqui o seu endereço de E-mail">E-mail</label>
+                  <input name="email" type="email" class="form-control" id="email"
+                  (keyup)="validator.onKeyEmail($event)" placeholder="exemplo@exemplo.com"
+                  [(ngModel)]="user.email">
+                  <div class="alert alert-danger" role="alert" id="alert-email" style="display:none">
+                    <p>{{validator.valueEmail}}</p>
+                  </div>
+             </div>
+             <div style="text-align: right">
+               <span class="required">*</span>
+               Obrigatório
+             </div>
+             <div style="text-align: center">
+              <button class="btn btn-primary btn-lg"
+              type="button" id="nextBtn"
+              (click)="validator.validatorRegisterUser()">
+              Próxima parte</button>
+             </div>
+             <br>
+             <div class="text-center">
+               <p>Ou se preferir:</p>
+               <div class="fb-login-button" data-width="300" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="true" data-auto-logout-link="false" data-use-continue-as="true" data-scope="public_profile, email"></div>
+             </div>
         </div>
-         <div class="form-group">
-              <span class="required">*</span>
-              <label data-toggle="tooltip" title="Este é o nome usado para entrar no site">Nome de Usuário</label>
-              <input name="username" type="text" class="form-control" placeholder="Entre o nome do usuário" id = "username"
-              (keyup)="validator.onKeyUsername($event)" [(ngModel)]="user.username">
-              <div class="alert alert-danger" role="alert" id="alert-username" style="display:none">
-                <p>{{validator.valueUsername}}</p>
-              </div>
-         </div>
-         <div class="form-group">
-            <label>Primeiro Nome</label>
-            <input name="first_name" type="text" class="form-control" placeholder="Digite o seu primeiro nome" [(ngModel)]="user.first_name">
-         </div>
-         <div class="form-group">
-            <label>Sobrenome</label>
-            <input name="last_name" type="text" class="form-control" placeholder="Digite o seu sobrenome" [(ngModel)]="user.last_name">
-         </div>
-         <div class="form-group">
-              <span class="required">*</span>
-              <label data-toggle="tooltip" title="Esta é a senha usada para entrar no site">Senha</label>
-              <input name="password" type="password" class="form-control" minlength="8" id="password"
-              (keyup)="validator.onKeyPassword($event)"
-              placeholder="Senha"
-              [(ngModel)]="user.password">
-              <div class="alert alert-danger" role="alert" id="alert-invalid-password" style="display:none">
-                <p>{{validator.valueInvalidPassword}}</p>
-              </div>
-         </div>
-         <div class="form-group">
-              <span class="required">*</span>
-              <label data-toggle="tooltip" title="Digite a senha novamente">Confirmar Senha</label>
-              <input name="confirm-password" type="password" class="form-control" minlength="6" id="confirm-password"
-              maxlength="20" (keyup)="validator.onKeyConfirmPassword($event)"
-              (keyup)="validator.onKeyValidatorPassword($event)" placeholder="Confirmar senha">
-              <div class="alert alert-danger" role="alert" id="alert-password" style="display:none">
-                   <p>{{validator.valuePassword}}</p>
-              </div>
-         </div>
-         <div class="form-group">
-              <span class="required">*</span>
-              <label data-toggle="tooltip" title="Digite aqui o seu endereço de E-mail">E-mail</label>
-              <input name="email" type="email" class="form-control" id="email"
-              (keyup)="validator.onKeyEmail($event)" placeholder="exemplo@exemplo.com"
-              [(ngModel)]="user.email">
-              <div class="alert alert-danger" role="alert" id="alert-email" style="display:none">
-                <p>{{validator.valueEmail}}</p>
-              </div>
-         </div>
-         <div style="text-align: right">
-           <span class="required">*</span>
-           Obrigatório
-         </div>
-         <div style="text-align: center">
-          <button class="btn btn-primary"
-          type="button" id="nextBtn"
-          (click)="validator.validatorRegisterUser()">
-          Próxima parte</button>
-         </div>
+
+
+        <div style="display:none" id="secondPart">
+             <div class="form-group">
+                  <label data-toggle="tooltip" title="Escolha a região em que você mora entre as opções abaixo">Região</label>
+                  <select name="region" class="form-control" [(ngModel)]="user.social_information['region']">
+                       <option value=null selected>Prefiro não responder</option>
+                       <option value="N">Norte</option>
+                       <option value="NE">Nordeste</option>
+                       <option value="CO">Centro-Oeste</option>
+                       <option value="SE">Sudeste</option>
+                       <option value="S">Sul</option>
+                  </select>
+             </div>
+             <div class="form-group">
+                  <label data-toggle="tooltip" title="Escolha a sua renda mensal entre as opções abaixo">Renda</label>
+                  <select name="income" class="form-control" [(ngModel)]="user.social_information['income']">
+                       <option value=null>Prefiro não responder</option>
+                       <option value="E">Entre R$0,00 até R$1874,00</option>
+                       <option value="D">Entre R$1874,01 até R$3748,00</option>
+                       <option value="C">Entre R$3748,01 até R$9370,00</option>
+                       <option value="B">Entre R$9370,01 até R$18740,00</option>
+                       <option value="A">R$18740,01 para cima</option>
+                  </select>
+             </div>
+             <div class="form-group">
+                  <label data-toggle="tooltip" title="Escolha o seu nível de escolaridade entre as opções abaixo">Formação </label>
+                  <select name="education" class="form-control" [(ngModel)]="user.social_information['education']">
+                       <option value=null>Prefiro não responder</option>
+                       <option value="SE">Sem Escolaridade</option>
+                       <option value="EF">Ensino Fundamental</option>
+                       <option value="EM">Ensino Médio</option>
+                       <option value="ES">Ensino Superior</option>
+                       <option value="PG">Pós Graduação</option>
+                  </select>
+             </div>
+             <div class="form-group">
+                  <label data-toggle="tooltip" title="Escolha a sua raça entre as opções abaixo">Raça </label>
+                  <select name="race" class="form-control" [(ngModel)]="user.social_information['race']">
+                       <option value=null>Prefiro não responder</option>
+                       <option value="B">Branca</option>
+                       <option value="PR">Preta</option>
+                       <option value="A">Amarela</option>
+                       <option value="PA">Parda</option>
+                       <option value="I">Indígena</option>
+                  </select>
+             </div>
+             <div class="form-group">
+                  <label data-toggle="tooltip" title="Escolha o seu gênero entre as opções abaixo">Gênero </label>
+                  <select name="gender" class="form-control" [(ngModel)]="user.social_information['gender']">
+                       <option value=null>Prefiro não responder</option>
+                       <option value="M">Masculino</option>
+                       <option value="F">Feminino</option>
+                       <option value="O">Outros</option>
+                  </select>
+             </div>
+             <div class="form-group">
+                  <label data-toggle="tooltip" title="Digite a data do seu nascimento">Data de Nascimento</label>
+                  <input name="birth_date" type="date" class="form-control" [(ngModel)]="user.social_information['birth_date']">
+             </div>
+             <button class="btn btn-primary btn-lg"
+             type="button" id="returnBtn"
+             (click)="validator.clickReturnButton()">
+             Retornar</button>
+             <button class="btn btn-primary btn-lg" type="submit" id="registerBtn" disabled>Cadastrar</button>
+
+          </div>
+
+        </form>
+      </div>
     </div>
-
-
-    <div style="display:none" id="secondPart" class="register-card">
-         <div class="form-group">
-              <label data-toggle="tooltip" title="Escolha a UF em que você mora entre as opções abaixo">Estado</label>
-              <select name="federal_unit" class="form-control" [(ngModel)]="user.social_information['federal_unit']">
-                   <option value="N" selected>Prefiro não responder</option>
-                   <option value="AC" >Acre</option>
-                   <option value="AL">Alagoas</option>
-                   <option value="AP">Amapá</option>
-                   <option value="AM">Amazonas</option>
-                   <option value="BA">Bahia</option>
-                   <option value="CE">Ceará</option>
-                   <option value="DF">Distrito Federal</option>
-                   <option value="ES">Espírito Santo</option>
-                   <option value="GO">Goiás</option>
-                   <option value="MA">Maranhão</option>
-                   <option value="MT">Mato Grosso</option>
-                   <option value="MS">Mato Grosso do Sul</option>
-                   <option value="MG">Minas Gerais</option>
-                   <option value="PA">Pará</option>
-                   <option value="PB">Paraíba</option>
-                   <option value="PR">Paraná</option>
-                   <option value="PE">Pernambuco</option>
-                   <option value="PI">Piauí</option>
-                   <option value="RJ">Rio de Janeiro</option>
-                   <option value="RN">Rio Grande do Norte</option>
-                   <option value="RS">Rio Grande do Sul</option>
-                   <option value="RO">Rondônia</option>
-                   <option value="RR">Roraima</option>
-                   <option value="SC">Santa Catarina</option>
-                   <option value="SP">São Paulo</option>
-                   <option value="SE">Sergipe</option>
-                   <option value="TO">Tocantins</option>
-              </select>
-         </div>
-         <div class="form-group">
-              <label data-toggle="tooltip" title="Digite o nome da cidade onde você mora">Cidade</label>
-              <input name="city" type="text" class="form-control" placeholder="Cidade" [(ngModel)]="user.social_information['city']">
-         </div>
-         <div class="form-group">
-              <label data-toggle="tooltip" title="Escolha a sua renda mensal entre as opções abaixo">Renda</label>
-              <select name="income" class="form-control" [(ngModel)]="user.social_information['income']">
-                   <option value="-1">Prefiro não responder</option>
-                   <option value="0">Entre R$0,00 até R$1000,00</option>
-                   <option value="1">Entre R$1000,01 até R$3000,00</option>
-                   <option value="2">Entre R$3000,01 até R$6000,00</option>
-                   <option value="3">Entre R$6000,01 até R$9000,00</option>
-                   <option value="4">Entre R$9000,01 até R$15000,00</option>
-                   <option value="5">Entre R$15000,01 até R$25000,00</option>
-                   <option value="6">R$25000,01 para cima</option>
-              </select>
-         </div>
-         <div class="form-group">
-              <label data-toggle="tooltip" title="Escolha o seu nível de escolaridade entre as opções abaixo">Formação </label>
-              <select name="education" class="form-control" [(ngModel)]="user.social_information['education']">
-                   <option value="N">Prefiro não responder</option>
-                   <option value="EFI">Ensino Fundamental Incompleto</option>
-                   <option value="EFC">Ensino Fundamental Completo</option>
-                   <option value="EMI">Ensino Médio Incompleto</option>
-                   <option value="EMC">Ensino Médio Completo</option>
-                   <option value="ESI">Ensino Superior Incompleto</option>
-                   <option value="ESC">Ensino Superior Completo</option>
-                   <option value="PG">Pós Graduação</option>
-                   <option value="ME">Mestrado</option>
-                   <option value="DO">Doutorado</option>
-                   <option value="PD">Pós Doutorado</option>
-              </select>
-         </div>
-         <div class="form-group">
-              <label data-toggle="tooltip" title="Digite o nome da sua ocupação"> Ocupação </label>
-              <input name="job" type="text" class="form-control" placeholder="Ocupação" [(ngModel)]="user.social_information['job']">
-         </div>
-         <div class="form-group">
-              <label data-toggle="tooltip" title="Digite a data do seu nascimento">Data de Nascimento</label>
-              <input name="birth_date" type="date" class="form-control" [(ngModel)]="user.social_information['birth_date']">
-         </div>
-         <button class="btn btn-primary"
-         type="button" id="returnBtn"
-         (click)="validator.clickReturnButton()">
-         Retornar</button>
-         <button class="btn btn-primary" type="submit" id="registerBtn" disabled>Cadastrar</button>
-
-    </div>
-
-  </form>
+  </div>
 </div>

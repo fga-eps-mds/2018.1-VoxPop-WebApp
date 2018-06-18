@@ -25,8 +25,9 @@ import { SeePlComponent } from './see-pl/see-pl.component';
 import { SeePoliticianDetailedComponent } from './see-politician-detail/see-politician-detail.component';
 import { UserFollowingComponent } from './user-following/user-following.component';
 import { SeeCompatibleParliamenterianComponent } from './see-compatible-parliamenterian/see-compatible-parliamenterian.component';
-import {RoundProgressModule} from 'angular-svg-round-progressbar';
-
+import { RoundProgressModule } from 'angular-svg-round-progressbar';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { PoliticaDePrivacidadeComponent } from './politica-de-privacidade/politica-de-privacidade.component';
 
 const appRoutes: Routes = [
   {
@@ -77,6 +78,14 @@ const appRoutes: Routes = [
     path: 'user-compatible',
     component: SeeCompatibleParliamenterianComponent
   },
+  {
+    path: 'contact-us',
+    component: ContactUsComponent
+  },
+  {
+    path: 'politica-de-privacidade',
+    component: PoliticaDePrivacidadeComponent
+  },
 ];
 
 @NgModule({
@@ -97,6 +106,8 @@ const appRoutes: Routes = [
     SeePoliticianDetailedComponent,
     UserFollowingComponent,
     SeeCompatibleParliamenterianComponent,
+    ContactUsComponent,
+    PoliticaDePrivacidadeComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

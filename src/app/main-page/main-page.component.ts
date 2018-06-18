@@ -47,8 +47,7 @@ export class MainPageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.tokenValue = this.cookieService.get('token');
-    console.log(this.tokenValue);
+    this.tokenValue = this.token.getToken();
     this.token.checkToken(this.tokenValue);
     this.idValue = +this.cookieService.get('userID');
     this.propositions(3, 0);
@@ -89,7 +88,7 @@ export class MainPageComponent implements OnInit {
             label: 'Número de votações',
             backgroundColor: 'rgb(51,122,183)',
             borderColor: 'rgb(255, 255, 255)',
-            data: [66, 75, 59, 11, 0],
+            data: [96, 75, 82, 15, 0],
           }]
         },
 

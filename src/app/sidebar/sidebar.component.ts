@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
+import { TokenService } from '../token.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -13,6 +14,7 @@ export class SidebarComponent implements OnInit {
 
   constructor(
     private cookieService: CookieService,
+    private token: TokenService,
   ) { }
 
   ngOnInit() {
@@ -31,14 +33,14 @@ export class SidebarComponent implements OnInit {
 
   getStyle() {
     let style = '';
-    if (this.cookieService.get('token') === '') {
+    if (this.token.getToken() === '') {
       style = 'disabled';
     }
     return style;
   }
 
   isLogged() {
-    if (this.cookieService.get('token') === '') {
+    if (this.token.getToken() === '') {
       return false;
     }
     return true;

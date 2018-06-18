@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <div class="panel panel-primary text-left">
+      <div class="panel-heading">
+        Fale Conosco
+      </div>
+      <div class="alert alert-success" role="alert" id="contactSuccess" style="display:none">
+        <p>Mensagem enviada com sucesso!</p>
+      </div>
+      <div class="alert alert-success" role="alert" id="contactFail" style="display:none">
+        <p>Mensagem não enviada. Tente novamente mais tarde.</p>
+      </div>
+      <div class="panel-body">
+        <p class="text-center">Alguma dúvida, sugestão ou reclamação em relação ao site?
+          <br> Escreva para nós aqui para melhorarmos o projeto!
+        </p>
+        <div class="form-group">
+          <label>Assunto</label>
+          <input name="topic" type="text" class="form-control" placeholder="Digite o assunto do e-mail" [(ngModel)]="input.topic">
+        </div>
+        <div class="form-group">
+          <label>E-mail</label>
+          <input name="email" type="text" class="form-control" placeholder="Digite o seu e-mail para contato" [(ngModel)]="input.email">
+        </div>
+        <div class="form-group">
+          <label data-toggle="tooltip" title="Escolha o motivo de contato">Motivo do Contato</label>
+          <select name="choice" class="form-control" [(ngModel)]="input.choice">
+            <option value="A" selected>Dúvida</option>
+            <option value="B">Sugestão</option>
+            <option value="C">Reclamação</option>
+            <option value="D">Outro</option>
+          </select>
+        </div>
+        <textarea rows="10" class="form-control" [(ngModel)]="input.text">
+        </textarea>
+        <br>
+        <div class="text-center">
+          <button class="btn btn-danger" type="submit" id="cancelBtn" (click)="back()">Voltar</button>
+          <button class="btn btn-primary" type="submit" id="submitBtn" [disabled]="input.text == '' || input.topic == ''" (click)="postMsg()">Enviar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

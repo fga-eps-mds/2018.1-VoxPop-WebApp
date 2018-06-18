@@ -23,8 +23,9 @@ export class SeeCompatibleParliamenterianComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.tokenValue = this.cookieService.get('token');
+    this.tokenValue = this.token.getToken();
     this.token.checkToken(this.tokenValue);
+    this.token.filterRestrictPage(this.tokenValue);
     this.mostCompatible();
   }
 

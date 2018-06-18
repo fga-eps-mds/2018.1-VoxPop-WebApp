@@ -5,6 +5,7 @@ import { RequestsService } from '../requests.service';
 import { HttpResponseBase } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { TokenService } from '../token.service';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-login',
@@ -23,10 +24,11 @@ export class LoginComponent implements OnInit {
     constructor(private router: Router,
                 private requester: RequestsService,
                 private token: TokenService,
-                private cookieService: CookieService) { }
+                private cookieService: CookieService,
+                private appComponent: AppComponent,) { }
 
     ngOnInit() {
-        this.tokenValue = this.cookieService.get('token');
+        this.tokenValue = this.token.getToken();
         this.token.checkToken(this.tokenValue);
         this.registerSuccess = this.cookieService.get('success');
         this.checkRegister(this.registerSuccess);
@@ -56,7 +58,7 @@ export class LoginComponent implements OnInit {
     handleLoginResponse(request) {
       request.subscribe(response => {
           if (this.requester.didSucceed(response.status)) {
-              this.cookieService.set('token', response.body['token']);
+              this.cookieService.set('basic_token', response.body['token']);
               this.cookieService.set('userID', response.body['id']);
               this.cookieService.set('userUsername', response.body['username']);
               this.cookieService.set('userFirstName', response.body['first_name']);
@@ -79,5 +81,4 @@ export class LoginComponent implements OnInit {
             return false;
         }
     }
-
 }

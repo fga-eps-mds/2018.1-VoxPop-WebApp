@@ -20,12 +20,12 @@ export class RegisterFormComponent implements OnInit {
     email: '',
     password: '',
     social_information: {
-      federal_unit: 'N',
-      city: '',
-      income: '-1',
-      education: 'N',
-      job: '',
-      birth_date: '0001-01-01',
+      region: null,
+      income: null,
+      education: null,
+      race: null,
+      gender: null,
+      birth_date: null
     }
   };
 

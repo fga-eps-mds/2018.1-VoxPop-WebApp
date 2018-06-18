@@ -36,7 +36,7 @@
                                 <a [ngClass]="getStyle()" href="user-following">
                                     Ver Deputados seguidos
                                 </a>
-                                <span *ngIf="cookieService.get('token') === ''" class="tooltiptext">
+                                <span *ngIf="token.getToken() === ''" class="tooltiptext">
                                     Faça login para poder acessar esta opção
                                 </span>
                             </div>
@@ -61,7 +61,7 @@
                                         <a [ngClass]="getStyle()" href="propositions" id="deSuaOpiniao">
                                             Votar em proposta
                                         </a>
-                                        <span *ngIf="cookieService.get('token') === ''" class="tooltiptext">
+                                        <span *ngIf="token.getToken() === ''" class="tooltiptext">
                                             Faça login para poder acessar esta opção
                                         </span>
                                     </div>
@@ -74,7 +74,7 @@
                                         <a [ngClass]="getStyle()" href="mypls" id="deSuaOpiniao">
                                             Ver votos em propostas
                                         </a>
-                                        <span *ngIf="cookieService.get('token') === ''" class="tooltiptext">
+                                        <span *ngIf="token.getToken() === ''" class="tooltiptext">
                                             Faça login para poder acessar esta opção
                                         </span>
                                     </div>
@@ -88,14 +88,14 @@
                                         <i class="glyphicon glyphicon-star"></i>
                                         Ranking compatibilidade
                                     </a>
-                                    <span *ngIf="cookieService.get('token') === ''" class="tooltiptext">
+                                    <span *ngIf="token.getToken() === ''" class="tooltiptext">
                                         Faça login para poder acessar esta opção
                                     </span>
                                 </div>
                             </li>
                         </div>
                         <li>
-                            <a href="/">
+                            <a href="/contact-us">
                                 <i class="glyphicon glyphicon-send"></i>
                                 Entre em contato
                             </a>

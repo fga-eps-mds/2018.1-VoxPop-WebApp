@@ -29,24 +29,26 @@
             <p>Gênero: {{gender}}</p>
             <p>Data de nascimento: {{parlimentarian['birth_date']}}</p>
             <p>Escolaridade: {{parlimentarian['education']}}</p>
-            <div id="follow" style="display: none">
-              <div class ="right">
-                  <button class="btn btn-primary" (click)="followParliamentarian()" >
-                      <span class="glyphicon glyphicon-eye-open">
-                      </span>
-                       Seguir parlamentar
-                  </button>
+            <ng-container *ngIf="tokenValue !== ''">
+              <div id="follow" style="display: none">
+                <div class ="right">
+                    <button class="btn btn-primary" (click)="followParliamentarian()" data-toggle="tooltip" title="Ao seguir um parlamentar, você aumentar a popularidade dele no ranking de mais seguidos.">
+                        <span class="glyphicon glyphicon-eye-open">
+                        </span>
+                         Seguir parlamentar
+                    </button>
+                </div>
               </div>
-            </div>
-            <div id="unfollow" style="display: none">
-              <div class ="right">
-                  <button class="btn btn-primary" (click)="unfollowParliamentarian()" >
-                      <span class="glyphicon glyphicon-eye-close">
-                      </span>
-                       Deixar de seguir parlamentar
-                  </button>
+              <div id="unfollow" style="display: none">
+                <div class ="right">
+                    <button class="btn btn-primary" (click)="unfollowParliamentarian()" >
+                        <span class="glyphicon glyphicon-eye-close">
+                        </span>
+                         Deixar de seguir parlamentar
+                    </button>
+                </div>
               </div>
-            </div>
+            </ng-container>
           </div>
         </div>
       <div class="panel-footer text-muted">{{parlimentarian['email']}}</div>

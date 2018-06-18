@@ -6,6 +6,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { UserModel } from '../models/user';
 import { SocialInformationModel } from '../models/socialInformation';
 import { VoteModel } from '../models/vote';
+import { MessageModel } from '../models/message';
 
 describe('RequestsService', () => {
   beforeEach(() => {
@@ -109,12 +110,12 @@ describe('RequestsService', () => {
       email: 'samuel@borges.com',
       password: 'amo0S4muel,MasÉSegredo!',
       social_information: {
-        federal_unit: 'AC',
-        city: '',
-        income: 0,
-        education: '',
-        job: 'Gerente de Recursos Humanos em Clube de Entretenimento Adulto',
-        birth_date: new Date('12-12-1929'),
+        region: null,
+        income: null,
+        education: null,
+        race: null,
+        gender: null,
+        birth_date: null
       },
     };
     const promise = service.postUser(user);
@@ -123,12 +124,12 @@ describe('RequestsService', () => {
 
   it('postSocialInformation should return a promise', inject([RequestsService], (service: RequestsService) => {
     const social_information: SocialInformationModel = {
-      federal_unit: 'RJ',
-      city: '',
-      income: 0,
-      education: '',
-      job: '',
-      birth_date: new Date('02-05-1992'),
+      region: null,
+      income: null,
+      education: null,
+      race: null,
+      gender: null,
+      birth_date: null
     };
     const promise = service.postSocialInformation(social_information);
     expect(promise).toBeDefined();
@@ -164,6 +165,18 @@ describe('RequestsService', () => {
     const id = 1;
 
     const promise = service.deleteFollow(id);
+    expect(promise).toBeDefined();
+  }));
+
+  it('postMessage should return a promise', inject([RequestsService], (service: RequestsService) => {
+    const msg: MessageModel = {
+      topic: 'abc',
+      email: 'abc@123.com',
+      choice: 'A',
+      text: 'aaabbb'
+    }
+
+    const promise = service.postMessage(msg);
     expect(promise).toBeDefined();
   }));
 });

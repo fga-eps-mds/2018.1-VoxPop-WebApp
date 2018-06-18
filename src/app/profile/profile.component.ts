@@ -18,12 +18,12 @@ export class ProfileComponent implements OnInit {
     last_name: '',
     email: '',
     social_information: {
-        federal_unit: '',
-        city: '',
-        income: 0,
-        education: '',
-        job: '',
-        birth_date: '',
+      region: null,
+      income: null,
+      education: null,
+      race: null,
+      gender: null,
+      birth_date: null
     }
   };
   tokenValue = '';
@@ -34,13 +34,14 @@ export class ProfileComponent implements OnInit {
               private requester: RequestsService) { }
 
   ngOnInit() {
-    this.tokenValue = this.cookieService.get('token');
+    this.tokenValue = this.token.getToken();
     this.token.checkToken(this.tokenValue);
+    this.token.filterRestrictPage(this.tokenValue);
     this.userID = +this.cookieService.get('userID');
     this.requester.getUser(this.userID).subscribe( response => {
-      console.log(response);
+      // console.log(response);
       this.user = response['body'];
-      console.log(this.user);
+      // console.log(this.user);
     }, error => {
       console.log('something wrong');
     });

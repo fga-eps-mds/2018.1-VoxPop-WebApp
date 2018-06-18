@@ -38,7 +38,7 @@ export class SeePoliticianDetailedComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.tokenValue = this.cookieService.get('token');
+    this.tokenValue = this.token.getToken();
     this.token.checkToken(this.tokenValue);
 
     this.sub = this.route.params.subscribe(params => {

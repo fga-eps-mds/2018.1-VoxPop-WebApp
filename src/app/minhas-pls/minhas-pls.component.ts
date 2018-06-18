@@ -46,9 +46,10 @@ export class MinhasPlsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.tokenValue = this.cookieService.get('token');
+    this.tokenValue = this.token.getToken();
     this.userId = Number(this.cookieService.get('userID'));
     this.token.checkToken(this.tokenValue);
+    this.token.filterRestrictPage(this.tokenValue);
     this.votePosition = 0;
     this.propositions(1, '');
   }
@@ -72,7 +73,7 @@ export class MinhasPlsComponent implements OnInit {
     request.subscribe( response => {
       const body = response['body'];
       this.propositionVote = body['results'];
-      console.log(this.propositionVote);
+      // console.log(this.propositionVote);
       this.offset = offset;
       this.pages = Math.ceil(response['body']['count'] / this.itemsPerPage);
       this.loading = false;
