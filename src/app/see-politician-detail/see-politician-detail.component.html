@@ -1,5 +1,5 @@
 <div class="text-center">
-  <h3>Informações Detalhadas do Parlamentar</h3>
+  <h3>Informações do Parlamentar</h3>
   <br>
   <div *ngIf="loading" class="overlay">
     <div *ngIf="loading" align="center" class="loading">
@@ -14,45 +14,125 @@
       </div>
     </div>
   <!-- <ng-container *ngIf="!loader" > -->
-  <div class="col-sm-6 col-sm-offset-3">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <h3 class="panel-title">
-            <span>Deputado {{parlimentarian['name']}} - {{parlimentarian['political_party']}}/{{parlimentarian['federal_unit']}}</span>
-          </h3>
-        </div>
-        <div class="panel-body">
-          <div class="col-sm-3">
-            <img src="{{parlimentarian['photo']}}" width="114" height="152" alt="woops, someting went wrong">
+  <div class="row">
+    <ng-container *ngIf="tokenValue === ''">
+      <div class="col-sm-2"></div>
+    </ng-container>
+    <div class="col-sm-6 col-sm-offset-1">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <span>Deputado {{parlimentarian['name']}} - {{parlimentarian['political_party']}}/{{parlimentarian['federal_unit']}}</span>
+            </h3>
           </div>
-          <div class="col-sm-9">
-            <p>Gênero: {{gender}}</p>
-            <p>Data de nascimento: {{parlimentarian['birth_date']}}</p>
-            <p>Escolaridade: {{parlimentarian['education']}}</p>
-            <ng-container *ngIf="tokenValue !== ''">
-              <div id="follow" style="display: none">
-                <div class ="right">
-                    <button class="btn btn-primary" (click)="followParliamentarian()" data-toggle="tooltip" title="Ao seguir um parlamentar, você aumentar a popularidade dele no ranking de mais seguidos.">
-                        <span class="glyphicon glyphicon-eye-open">
-                        </span>
-                         Seguir parlamentar
-                    </button>
+          <div class="panel-body">
+            <div class="col-sm-3">
+              <img src="{{parlimentarian['photo']}}" width="114" height="152" alt="woops, someting went wrong">
+            </div>
+            <div class="col-sm-9">
+              <p>Gênero: {{gender}}</p>
+              <p>Data de nascimento: {{parlimentarian['birth_date']}}</p>
+              <p>Escolaridade: {{parlimentarian['education']}}</p>
+              <ng-container *ngIf="tokenValue !== ''">
+                <div id="follow" style="display: none">
+                  <div class ="right">
+                      <button class="btn btn-primary" (click)="followParliamentarian()" data-toggle="tooltip" title="Ao seguir um parlamentar, você aumentar a popularidade dele no ranking de mais seguidos.">
+                          <span class="glyphicon glyphicon-eye-open">
+                          </span>
+                           Seguir parlamentar
+                      </button>
+                  </div>
                 </div>
-              </div>
-              <div id="unfollow" style="display: none">
-                <div class ="right">
-                    <button class="btn btn-primary" (click)="unfollowParliamentarian()" >
-                        <span class="glyphicon glyphicon-eye-close">
-                        </span>
-                         Deixar de seguir parlamentar
-                    </button>
+                <div id="unfollow" style="display: none">
+                  <div class ="right">
+                      <button class="btn btn-primary" (click)="unfollowParliamentarian()" >
+                          <span class="glyphicon glyphicon-eye-close">
+                          </span>
+                           Deixar de seguir parlamentar
+                      </button>
+                  </div>
                 </div>
-              </div>
+              </ng-container>
+            </div>
+          </div>
+        <div class="panel-footer text-muted">{{parlimentarian['email']}}</div>
+        <div *ngIf="tokenValue !== ''" class="panel-footer text-muted alternative">{{parlimentarian['compatibility']}}% de compatibilidade</div>
+      </div>
+    </div>
+    <div *ngIf="tokenValue !== ''" class="col-sm-3 col-sm-offset-1 progress-wrapper">
+      <br>
+      <b>{{parlimentarian['compatibility']}}% de compatibilidade</b>
+      <round-progress [current]=parlimentarian.compatibility [max]="100" [responsive]="true" [radius]="50" [color]="'#449D44'" [background]="'#C9302C'"></round-progress>
+    </div>
+  </div>
+  <div *ngIf="tokenValue !== ''">
+    <hr>
+    <h4>Proposições em que você votou</h4>
+    <div class="row">
+      <div class="col-sm-12">
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr class="text-left">
+              <th >Proposição</th>
+              <th>Voto do Parlamentar</th>
+              <th>Seu Voto</th>
+              <th>Aprovação dos Parlamentares</th>
+              <th>Aprovação dos Usuários</th>
+            </tr>
+          </thead>
+          <!-- class="col-sm-12 text-center" -->
+          <tbody>
+            <ng-container *ngIf="parlimentarian.voted_by_both.length == 0">
+              <tr class="text-left">
+                <td>---</td>
+                <td>---</td>
+                <td>---</td>
+                <td>---</td>
+                <td>---</td>
+              </tr>
             </ng-container>
-          </div>
-        </div>
-      <div class="panel-footer text-muted">{{parlimentarian['email']}}</div>
-      <div *ngIf="tokenValue !== ''" class="panel-footer text-muted alternative">{{parlimentarian['compatibility']}}% de compatibilidade</div>
+            <tr class="text-left" *ngFor="let vote of parlimentarian.voted_by_both">
+              <td>{{vote.proposition}}</td>
+              <td>
+                <ng-container *ngIf="vote.parliamentary_vote === 'Y'">
+                  <span class="glyphicon glyphicon-ok"></span> SIM
+                </ng-container>
+                <ng-container *ngIf="vote.parliamentary_vote === 'N'">
+                  <span class="glyphicon glyphicon-remove"></span> NÃO
+                </ng-container>
+                <ng-container *ngIf="vote.parliamentary_vote === 'A'">
+                  <span class="glyphicon glyphicon-minus"></span> ABSTENÇÃO
+                </ng-container>
+                <ng-container *ngIf="vote.parliamentary_vote === 'O'">
+                  <span class="glyphicon glyphicon-minus"></span> OBSTRUÇÃO
+                </ng-container>
+                <ng-container *ngIf="vote.parliamentary_vote === 'M'">
+                  <span class="glyphicon glyphicon-minus"></span> SEM VOTO
+                </ng-container>
+              </td>
+              <td>
+                <ng-container *ngIf="vote.user_vote === 'Y'">
+                  <span class="glyphicon glyphicon-ok"></span> SIM
+                </ng-container>
+                <ng-container *ngIf="vote.user_vote === 'N'">
+                  <span class="glyphicon glyphicon-remove"></span> NÃO
+                </ng-container>
+                <ng-container *ngIf="vote.user_vote === 'A'">
+                  <span class="glyphicon glyphicon-minus"></span> ABSTENÇÃO
+                </ng-container>
+                <ng-container *ngIf="vote.user_vote === 'O'">
+                  <span class="glyphicon glyphicon-minus"></span> OBSTRUÇÃO
+                </ng-container>
+                <ng-container *ngIf="vote.user_vote === 'M'">
+                  <span class="glyphicon glyphicon-minus"></span> SEM VOTO
+                </ng-container>
+              </td>
+              <td>{{vote.parliamentarians_approval}}%</td>
+              <td>{{vote.population_approval}}%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 <!-- </ng-container> -->
