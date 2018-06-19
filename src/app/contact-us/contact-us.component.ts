@@ -26,7 +26,7 @@ export class ContactUsComponent implements OnInit {
               private token: TokenService) { }
 
   ngOnInit() {
-    this.tokenValue = this.cookieService.get('token');
+    this.tokenValue = this.token.getToken();
     this.token.checkToken(this.tokenValue);
     this.idValue = +this.cookieService.get('userID');
   }

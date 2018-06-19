@@ -4,14 +4,13 @@ import { CookieService } from 'ngx-cookie-service';
 import { TokenService } from '../token.service';
 
 @Component({
-  selector: 'app-politica-de-privacidade',
-  templateUrl: './politica-de-privacidade.component.html',
-  styleUrls: ['./politica-de-privacidade.component.css']
+  selector: 'app-termos-de-servico',
+  templateUrl: './termos-de-servico.component.html',
+  styleUrls: ['./termos-de-servico.component.css']
 })
-export class PoliticaDePrivacidadeComponent implements OnInit {
+export class TermosDeServicoComponent implements OnInit {
 
   tokenValue = '';
-
   constructor(private requester: RequestsService,
               private cookieService: CookieService,
               private token: TokenService) { }
