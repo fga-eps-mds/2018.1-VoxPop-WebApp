@@ -23,7 +23,6 @@ export class MostFollowedComponent implements OnInit {
   ngOnInit() {
     this.tokenValue = this.token.getToken();
     this.token.checkToken(this.tokenValue);
-    this.token.filterRestrictPage(this.tokenValue);
     this.mostFollowed();
   }
 
