@@ -62,6 +62,13 @@ export class RequestsService {
     return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
   }
 
+  getMostFollowed() {
+    this.tokenHeader = {'Content-Type': 'application/json'};
+    const endpoint = this.baseURL.concat('statistics/most_followed/');
+    console.log('Making GET MOST FOLLOWED REQUEST ON URL: ' + endpoint);
+    return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
+  }
+
   getMostCompatible() {
     this.tokenValue = this.token.getToken();
     this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': this.tokenValue};
