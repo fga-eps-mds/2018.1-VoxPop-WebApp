@@ -179,4 +179,19 @@ describe('RequestsService', () => {
     const promise = service.postMessage(msg);
     expect(promise).toBeDefined();
   }));
+
+  it('getPropositionSpecific should return a promise',  inject([RequestsService], (service: RequestsService) => {
+    const id = 18;
+
+    const promise = service.getPropositionSpecific(id);
+    expect(promise).toBeDefined();
+  }));
+
+  it('getPropositionSpecificSocialInfo should return a promise',  inject([RequestsService], (service: RequestsService) => {
+    const id = 19;
+
+    const promise = service.getPropositionSpecificSocialInfo(id);
+    expect(promise).toBeDefined();
+  }));
+
 });
