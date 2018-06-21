@@ -30,12 +30,14 @@ export class LoginComponent implements OnInit {
     ngOnInit() {
         this.tokenValue = this.token.getToken();
         this.token.checkToken(this.tokenValue);
+        this.token.filterLoginPage(this.tokenValue);
         this.registerSuccess = this.cookieService.get('success');
         this.checkRegister(this.registerSuccess);
     }
 
     login(username: string, password: string) {
         this.logging = true;
+        this.cookieService.set('success', 'false');
         let user: LoginModel;
         let req: any;
         user = {
@@ -51,7 +53,7 @@ export class LoginComponent implements OnInit {
 
     checkRegister(success) {
         if (success === 'true') {
-            document.getElementById('registerAlert').style.display = 'block';
+            let registerAlert = document.getElementById('registerAlert').style.display = 'block';
         }
     }
 
