@@ -1,3 +1,63 @@
-<p>
-  proposition works!
-</p>
+<div class="text-center">
+  <div *ngIf="loading" class="overlay">
+    <div *ngIf="loading" align="center" class="loading">
+      <p>Computando opção...</p>
+      <div class="loader"></div>
+    </div>
+  </div>
+  <div *ngIf="loader" class="overlay">
+      <div *ngIf="loader" align="center" class="loading">
+        <p>Caregando dados...</p>
+        <div class="loader"></div>
+      </div>
+    </div>
+  <!-- <ng-container *ngIf="!loader" > -->
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <div class="panel panel-primary text-center">
+        <div class="panel-heading">
+          <h3 class="panel-title">{{proposition['proposition_type_initials']}} {{proposition['number']}}/{{proposition['year']}}</h3>
+        </div>
+        <div class="panel-body">
+          <h5>{{proposition['proposition_type']}}</h5>
+          <p>{{proposition['abstract']}}</p>
+          <br>
+          <div class="row">
+            <div class="col-sm-6">
+              <div style="font-weight: bold">Aprovação dos Parlamentares</div>
+            </div>
+            <div class="col-sm-6">
+              <div style="font-weight: bold">Aprovação dos Usuários</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4 col-sm-offset-1">
+                <div class="progress-wrapper">
+                  <p>{{proposition['parliamentarians_approval']}}/100</p>
+                  <round-progress [current]=proposition.parliamentarians_approval [max]="100" [responsive]="true" [radius]="50" [color]="'#449D44'" [background]="'#C9302C'"></round-progress>
+                </div>
+            </div>
+            <div class="col-sm-4 col-sm-offset-2">
+              <div class="progress-wrapper">
+                  <p>{{proposition['population_approval']}}/100</p>
+                  <round-progress [current]=proposition.population_approval [max]="100" [responsive]="true" [radius]="50" [color]="'#449D44'" [background]="'#C9302C'"></round-progress>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-primary" (click)="openProposition(proposition['url_full'])">Veja na íntegra</button>
+        </div>
+        <div class="panel-footer text-muted">atualizada {{proposition['days_ago']}} dia(s) atrás</div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1">
+      <hr>
+    </div>
+    <div class="col-sm-8 col-sm-offset-2">
+      <h4>Aprovação por região do Brasil</h4>
+      <canvas id="regionChart"></canvas>
+      <br><br>
+    </div>
+  </div>
+</div>
