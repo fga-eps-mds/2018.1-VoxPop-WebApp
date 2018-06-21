@@ -24,120 +24,194 @@ export class RequestsService {
   headers = {'Content-Type': 'application/json'};
   tokenHeader: any;
 
-  getUser(userId) {
-    this.tokenValue = this.token.getToken();
-    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': this.tokenValue};
-    const endpoint = this.baseURL.concat('users/' + userId.toString() + '/');
-    console.log('Making GET REQUEST USER ON URL: ' + endpoint);
-    return this.http.get(endpoint,  {headers: this.tokenHeader, observe: 'response'});
-  }
-
-  getVotedProposition(offset) {
-    this.tokenValue = this.token.getToken();
-    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': this.tokenValue};
-    const endpoint = this.baseURL.concat('user_votes/?limit=10&offset=' + offset);
-    console.log('Making GET REQUEST VOTED PROPOITION ON URL: ' + endpoint);
-    return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
+  getRequest(argument: string) {
+    const tokenValue = this.token.getToken();
+    const tokenHeader = {
+      'Content-Type'  : 'application/json',
+      'Authorization' : tokenValue
+    };
+    const endpoint = this.baseURL.concat(argument);
+    console.log('Get Request on URL ' + endpoint);
+    return this.http.get(
+      endpoint,
+      {
+        headers: tokenHeader,
+        observe: 'response'
+      }
+    );
   }
 
   getSearchVotedProposition(offset, keyword) {
-    this.tokenValue = this.token.getToken();
-    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': this.tokenValue};
-    const endpoint = this.baseURL.concat('user_votes/?limit=10&offset=' + offset + '&query=' + keyword);
-    console.log('Making GET REQUEST SEARCH VOTED PROPOITION ON URL: ' + endpoint);
-    return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
+    const endpoint = 'user_votes/?limit=10&offset=' + offset + '&query=' + keyword;
+    return this.getRequest(endpoint);
   }
+
+  // getSearchVotedProposition(offset, keyword) {
+  //   this.tokenValue = this.token.getToken();
+  //   this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': this.tokenValue};
+  //   const endpoint = this.baseURL.concat('user_votes/?limit=10&offset=' + offset + '&query=' + keyword);
+  //   console.log('Making GET REQUEST SEARCH VOTED PROPOITION ON URL: ' + endpoint);
+  //   return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
+  // }
+
+  getUser(userId) {
+    const endpoint = 'users/' + userId.toString() + '/';
+    return this.getRequest(endpoint);
+  }
+
+  // getUser(userId) {
+  //   this.tokenValue = this.token.getToken();
+  //   this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': this.tokenValue};
+  //   const endpoint = this.baseURL.concat('users/' + userId.toString() + '/');
+  //   console.log('Making GET REQUEST USER ON URL: ' + endpoint);
+  //   return this.http.get(endpoint,  {headers: this.tokenHeader, observe: 'response'});
+  // }
 
   getProposition(limit, offset) {
-    this.tokenHeader = {'Content-Type': 'application/json'};
-    const endpoint = this.baseURL.concat('propositions/voted_by_parliamentary/?limit=' + limit + '&offset=' + offset);
-    console.log('Making GET REQUEST PREPOSITIONS ON URL: ' + endpoint);
-    return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
+    const endpoint = 'propositions/voted_by_parliamentary/?limit=' + limit + '&offset=' + offset;
+    return this.getRequest(endpoint);
   }
+
+  // getProposition(limit, offset) {
+  //   this.tokenHeader = {'Content-Type': 'application/json'};
+  //   const endpoint = this.baseURL.concat('propositions/voted_by_parliamentary/?limit=' + limit + '&offset=' + offset);
+  //   console.log('Making GET REQUEST PREPOSITIONS ON URL: ' + endpoint);
+  //   return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
+  // }
 
   getMostActive(limit, offset) {
-    this.tokenHeader = {'Content-Type': 'application/json'};
-    const endpoint = this.baseURL.concat('statistics/most_active/?limit=' + limit + '&offset=' + offset);
-    console.log('Making GET MOST ACTIVE REQUEST ON URL: ' + endpoint);
-    return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
+    const endpoint = 'statistics/most_active/?limit=' + limit + '&offset=' + offset;
+    return this.getRequest(endpoint);
   }
+
+  // getMostActive(limit, offset) {
+  //   this.tokenHeader = {'Content-Type': 'application/json'};
+  //   const endpoint = this.baseURL.concat('statistics/most_active/?limit=' + limit + '&offset=' + offset);
+  //   console.log('Making GET MOST ACTIVE REQUEST ON URL: ' + endpoint);
+  //   return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
+  // }
 
   getMostFollowed() {
-    this.tokenHeader = {'Content-Type': 'application/json'};
-    const endpoint = this.baseURL.concat('statistics/most_followed/');
-    console.log('Making GET MOST FOLLOWED REQUEST ON URL: ' + endpoint);
-    return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
+    const endpoint = 'statistics/most_followed/';
+    return this.getRequest(endpoint);
   }
+
+  // getMostFollowed() {
+  //   this.tokenHeader = {'Content-Type': 'application/json'};
+  //   const endpoint = this.baseURL.concat('statistics/most_followed/');
+  //   console.log('Making GET MOST FOLLOWED REQUEST ON URL: ' + endpoint);
+  //   return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
+  // }
 
   getMostCompatible() {
-    this.tokenValue = this.token.getToken();
-    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': this.tokenValue};
-    const endpoint = this.baseURL.concat('statistics/most_compatible/');
-    console.log('Making GET MOST COMPATIBLE REQUEST ON URL: ' + endpoint);
-    return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
+    const endpoint = 'statistics/most_compatible/';
+    return this.getRequest(endpoint);
   }
+
+  // getMostCompatible() {
+  //   this.tokenValue = this.token.getToken();
+  //   this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': this.tokenValue};
+  //   const endpoint = this.baseURL.concat('statistics/most_compatible/');
+  //   console.log('Making GET MOST COMPATIBLE REQUEST ON URL: ' + endpoint);
+  //   return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
+  // }
 
   getProjects() {
-    this.tokenValue = this.token.getToken();
-    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': this.tokenValue};
-    const endpoint = this.baseURL.concat('propositions/non_voted_by_user/');
-    console.log('Making GET PROJECTS REQUEST ON URL: ' + endpoint);
-    return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
+    const endpoint = 'propositions/non_voted_by_user';
+    return this.getRequest(endpoint);
   }
 
-  getParliamentarian (limit, offset) {
-    this.tokenValue = this.token.getToken();
-    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': this.tokenValue};
-    const endpoint = this.baseURL.concat('parliamentarians/?limit=' + limit + '&offset=' + offset);
-    console.log('Making GET PARLIAMENTERIAN REQUEST ON URL: ' + endpoint);
-    return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
+  // getProjects() {
+  //   this.tokenValue = this.token.getToken();
+  //   this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': this.tokenValue};
+  //   const endpoint = this.baseURL.concat('propositions/non_voted_by_user/');
+  //   console.log('Making GET PROJECTS REQUEST ON URL: ' + endpoint);
+  //   return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
+  // }
+
+  getParliamentarian(limit, offset) {
+    const endpoint = 'parliamentarians/?limit=' + limit + '&offset=' + offset;
+    return this.getRequest(endpoint);
   }
 
-  getSearchedParliamentarian (limit, offset, keyword: string) {
-    this.tokenValue = this.token.getToken();
-    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': this.tokenValue};
-    const endpoint = this.baseURL.concat('parliamentarians/?limit=' + limit + '&offset=' + offset + '&query=' + keyword);
-    console.log('Making QUERY REQUEST USER ON URL: ' + endpoint);
-    this.headers = (this.tokenValue === '') ? this.headers : this.tokenHeader;
-    return this.http.get(endpoint, {headers: this.headers, observe: 'response'});
+  // getParliamentarian (limit, offset) {
+  //   this.tokenValue = this.token.getToken();
+  //   this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': this.tokenValue};
+  //   const endpoint = this.baseURL.concat('parliamentarians/?limit=' + limit + '&offset=' + offset);
+  //   console.log('Making GET PARLIAMENTERIAN REQUEST ON URL: ' + endpoint);
+  //   return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
+  // }
+
+  getSearchedParliamentarian(limit, offset, keyword: string = '\'\'') {
+    const endpoint = 'parliamentarians/?limit=' + limit + '&offset=' + offset + '&query=' + keyword;
+    return this.getRequest(endpoint);
   }
+
+  // getSearchedParliamentarian (limit, offset, keyword: string) {
+  //   this.tokenValue = this.token.getToken();
+  //   this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': this.tokenValue};
+  //   const endpoint = this.baseURL.concat('parliamentarians/?limit=' + limit + '&offset=' + offset + '&query=' + keyword);
+  //   console.log('Making QUERY REQUEST USER ON URL: ' + endpoint);
+  //   this.headers = (this.tokenValue === '') ? this.headers : this.tokenHeader;
+  //   return this.http.get(endpoint, {headers: this.headers, observe: 'response'});
+  // }
 
   getParlimentarianSpecific(parlimentaryId) {
-    this.tokenValue = this.token.getToken();
-    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': this.tokenValue};
-    const endpoint = this.baseURL.concat('parliamentarians/' + parlimentaryId + '/');
-    this.headers = (this.tokenValue === '') ? this.headers : this.tokenHeader;
-    return this.http.get(endpoint, {headers: this.headers, observe: 'response'});
+    const endpoint = 'parliamentarians/' + parlimentaryId + '/';
+    return this.getRequest(endpoint);
   }
+
+  // getParlimentarianSpecific(parlimentaryId) {
+  //   this.tokenValue = this.token.getToken();
+  //   this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': this.tokenValue};
+  //   const endpoint = this.baseURL.concat('parliamentarians/' + parlimentaryId + '/');
+  //   this.headers = (this.tokenValue === '') ? this.headers : this.tokenHeader;
+  //   return this.http.get(endpoint, {headers: this.headers, observe: 'response'});
+  // }
 
   getFollow(id) {
-    this.tokenValue = this.token.getToken();
-    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': this.tokenValue};
-    const endpoint = this.baseURL.concat('user_following/' + id + '/');
-    this.headers = (this.tokenValue === '') ? this.headers : this.tokenHeader;
-    console.log('Making GET FOLLOW REQUEST ON URL: ' + endpoint);
-    return this.http.get(endpoint, {headers: this.headers, observe: 'response'});
+    const endpoint = 'user_following/' + id + '/';
+    return this.getRequest(endpoint);
   }
+
+  // getFollow(id) {
+  //   this.tokenValue = this.token.getToken();
+  //   this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': this.tokenValue};
+  //   const endpoint = this.baseURL.concat('user_following/' + id + '/');
+  //   this.headers = (this.tokenValue === '') ? this.headers : this.tokenHeader;
+  //   console.log('Making GET FOLLOW REQUEST ON URL: ' + endpoint);
+  //   return this.http.get(endpoint, {headers: this.headers, observe: 'response'});
+  // }
 
   getFollowingParliamentarians(limit, offset) {
-    this.tokenValue = this.token.getToken();
-    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': this.tokenValue};
-    const endpoint = this.baseURL.concat('user_following/?limit=' + limit + '&offset=' + offset);
-    console.log('Making POST REQUEST USER ON URL: ' + endpoint);
-    this.headers = (this.tokenValue === '') ? this.headers : this.tokenHeader;
-    console.log('Making GET FOLLOWING PARLIAMENTERIANS REQUEST ON URL: ' + endpoint);
-    return this.http.get(endpoint, {headers: this.headers, observe: 'response'});
+    const endpoint = 'user_following/?limit=' + limit + '&offset=' + offset;
+    return this.getRequest(endpoint);
   }
 
+  // getFollowingParliamentarians(limit, offset) {
+  //   this.tokenValue = this.token.getToken();
+  //   this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': this.tokenValue};
+  //   const endpoint = this.baseURL.concat('user_following/?limit=' + limit + '&offset=' + offset);
+  //   console.log('Making POST REQUEST USER ON URL: ' + endpoint);
+  //   this.headers = (this.tokenValue === '') ? this.headers : this.tokenHeader;
+  //   console.log('Making GET FOLLOWING PARLIAMENTERIANS REQUEST ON URL: ' + endpoint);
+  //   return this.http.get(endpoint, {headers: this.headers, observe: 'response'});
+  // }
+
   getSearchFollowingParliamentarians(limit, offset, keyword) {
-    this.tokenValue = this.token.getToken();
-    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': this.tokenValue};
-    const endpoint = this.baseURL.concat('user_following/?limit=' + limit + '&offset=' + offset + '&query=' + keyword);
-    console.log('Making POST REQUEST USER ON URL: ' + endpoint);
-    this.headers = (this.tokenValue === '') ? this.headers : this.tokenHeader;
-    console.log('Making GET SEARCH FOLLOWING PARLIAMENTARIAN REQUEST ON URL: ' + endpoint);
-    return this.http.get(endpoint, {headers: this.headers, observe: 'response'});
+    const endpoint = 'user_following/?limit=' + limit + '&offset=' + offset + '&query=' + keyword;
+    return this.getRequest(endpoint);
   }
+
+  // getSearchFollowingParliamentarians(limit, offset, keyword) {
+  //   this.tokenValue = this.token.getToken();
+  //   this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': this.tokenValue};
+  //   const endpoint = this.baseURL.concat('user_following/?limit=' + limit + '&offset=' + offset + '&query=' + keyword);
+  //   console.log('Making POST REQUEST USER ON URL: ' + endpoint);
+  //   this.headers = (this.tokenValue === '') ? this.headers : this.tokenHeader;
+  //   console.log('Making GET SEARCH FOLLOWING PARLIAMENTARIAN REQUEST ON URL: ' + endpoint);
+  //   return this.http.get(endpoint, {headers: this.headers, observe: 'response'});
+  // }
 
   postUser(user: UserModel) {
     const endpoint = this.baseURL.concat('users/');
