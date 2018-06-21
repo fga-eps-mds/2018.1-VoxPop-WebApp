@@ -29,6 +29,7 @@ import { RoundProgressModule } from 'angular-svg-round-progressbar';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { PoliticaDePrivacidadeComponent } from './politica-de-privacidade/politica-de-privacidade.component';
 import { TermosDeServicoComponent } from './termos-de-servico/termos-de-servico.component';
+import { MostFollowedComponent } from './most-followed/most-followed.component';
 
 const appRoutes: Routes = [
   {
@@ -91,6 +92,10 @@ const appRoutes: Routes = [
     path: 'termos-de-servico',
     component: TermosDeServicoComponent
   },
+  {
+    path: 'most-followed',
+    component: MostFollowedComponent
+  },
 ];
 
 @NgModule({
@@ -114,6 +119,7 @@ const appRoutes: Routes = [
     ContactUsComponent,
     PoliticaDePrivacidadeComponent,
     TermosDeServicoComponent,
+    MostFollowedComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
