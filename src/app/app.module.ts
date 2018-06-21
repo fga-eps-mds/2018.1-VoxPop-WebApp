@@ -30,6 +30,8 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { PoliticaDePrivacidadeComponent } from './politica-de-privacidade/politica-de-privacidade.component';
 import { TermosDeServicoComponent } from './termos-de-servico/termos-de-servico.component';
 import { MostFollowedComponent } from './most-followed/most-followed.component';
+import { PropositionComponent } from './proposition/proposition.component';
+
 
 const appRoutes: Routes = [
   {
@@ -96,6 +98,10 @@ const appRoutes: Routes = [
     path: 'most-followed',
     component: MostFollowedComponent
   },
+  {
+    path: 'propositions/:id',
+    component: PropositionComponent
+  },
 ];
 
 @NgModule({
@@ -120,6 +126,7 @@ const appRoutes: Routes = [
     PoliticaDePrivacidadeComponent,
     TermosDeServicoComponent,
     MostFollowedComponent,
+    PropositionComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
