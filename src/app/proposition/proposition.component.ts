@@ -22,6 +22,12 @@ export class PropositionComponent implements OnInit {
   region_chart: any;
   income_ctx: HTMLElement;
   income_chart: any;
+  education_ctx: HTMLElement;
+  education_chart: any;
+  race_ctx: HTMLElement;
+  race_chart: any;
+  gender_ctx: HTMLElement;
+  gender_chart: any
 
   proposition: any = {
     proposition_id: 0,
@@ -79,6 +85,39 @@ export class PropositionComponent implements OnInit {
         'Renda não informada'
       ]
 
+      //education chart
+      let education_labels_list = [];
+      education_labels_list = [
+        'Sem Escolaridade',
+        'Ensino Fundamental',
+        'Ensino Médio',
+        'Ensino Superior',
+        'Pós Graduação',
+        'Escolaridade não informada'
+      ]
+
+      //race chart
+      let race_labels_list = [];
+      race_labels_list = [
+        'Branco',
+        'Preto',
+        'Amarelo',
+        'Pardo',
+        'Indígena',
+        'Não Informada'
+      ]
+
+      //gender chart
+      let gender_labels_list = [];
+      gender_labels_list = [
+        'Masculino',
+        'Feminino',
+        'Outro',
+        'Não Informado'
+      ]
+
+      //region
+
       let region_approve_data_list = [];
       region_approve_data_list.push(this.social_information['region']['N']['Y']);
       region_approve_data_list.push(this.social_information['region']['NE']['Y']);
@@ -103,6 +142,8 @@ export class PropositionComponent implements OnInit {
       region_abstention_data_list.push(this.social_information['region']['S']['A']);
       region_abstention_data_list.push(this.social_information['region']['null']['A']);
 
+      //income
+
       let income_approve_data_list = [];
       income_approve_data_list.push(this.social_information['income']['A']['Y']);
       income_approve_data_list.push(this.social_information['income']['B']['Y']);
@@ -126,6 +167,79 @@ export class PropositionComponent implements OnInit {
       income_abstention_data_list.push(this.social_information['income']['D']['A']);
       income_abstention_data_list.push(this.social_information['income']['E']['A']);
       income_abstention_data_list.push(this.social_information['income']['null']['A']);
+
+      //education
+
+      let education_approve_data_list = [];
+      education_approve_data_list.push(this.social_information['education']['SE']['Y']);
+      education_approve_data_list.push(this.social_information['education']['EF']['Y']);
+      education_approve_data_list.push(this.social_information['education']['EM']['Y']);
+      education_approve_data_list.push(this.social_information['education']['ES']['Y']);
+      education_approve_data_list.push(this.social_information['education']['PG']['Y']);
+      education_approve_data_list.push(this.social_information['education']['null']['Y']);
+
+      let education_disapprove_data_list = [];
+      education_disapprove_data_list.push(this.social_information['education']['SE']['N']);
+      education_disapprove_data_list.push(this.social_information['education']['EF']['N']);
+      education_disapprove_data_list.push(this.social_information['education']['EM']['N']);
+      education_disapprove_data_list.push(this.social_information['education']['ES']['N']);
+      education_disapprove_data_list.push(this.social_information['education']['PG']['N']);
+      education_disapprove_data_list.push(this.social_information['education']['null']['N']);
+
+      let education_abstention_data_list = [];
+      education_abstention_data_list.push(this.social_information['education']['SE']['A']);
+      education_abstention_data_list.push(this.social_information['education']['EF']['A']);
+      education_abstention_data_list.push(this.social_information['education']['EM']['A']);
+      education_abstention_data_list.push(this.social_information['education']['ES']['A']);
+      education_abstention_data_list.push(this.social_information['education']['PG']['A']);
+      education_abstention_data_list.push(this.social_information['education']['null']['A']);
+
+      //race
+
+      let race_approve_data_list = [];
+      race_approve_data_list.push(this.social_information['race']['B']['Y']);
+      race_approve_data_list.push(this.social_information['race']['PR']['Y']);
+      race_approve_data_list.push(this.social_information['race']['A']['Y']);
+      race_approve_data_list.push(this.social_information['race']['PA']['Y']);
+      race_approve_data_list.push(this.social_information['race']['I']['Y']);
+      race_approve_data_list.push(this.social_information['race']['null']['Y']);
+
+      let race_disapprove_data_list = [];
+      race_disapprove_data_list.push(this.social_information['race']['B']['N']);
+      race_disapprove_data_list.push(this.social_information['race']['PR']['N']);
+      race_disapprove_data_list.push(this.social_information['race']['A']['N']);
+      race_disapprove_data_list.push(this.social_information['race']['PA']['N']);
+      race_disapprove_data_list.push(this.social_information['race']['I']['N']);
+      race_disapprove_data_list.push(this.social_information['race']['null']['N']);
+
+      let race_abstention_data_list = [];
+      race_abstention_data_list.push(this.social_information['race']['B']['A']);
+      race_abstention_data_list.push(this.social_information['race']['PR']['A']);
+      race_abstention_data_list.push(this.social_information['race']['A']['A']);
+      race_abstention_data_list.push(this.social_information['race']['PA']['A']);
+      race_abstention_data_list.push(this.social_information['race']['I']['A']);
+      race_abstention_data_list.push(this.social_information['race']['null']['A']);
+
+      //gender
+
+      let gender_approve_data_list = [];
+      gender_approve_data_list.push(this.social_information['gender']['M']['Y']);
+      gender_approve_data_list.push(this.social_information['gender']['F']['Y']);
+      gender_approve_data_list.push(this.social_information['gender']['O']['Y']);
+      gender_approve_data_list.push(this.social_information['gender']['null']['Y']);
+
+      let gender_disapprove_data_list = [];
+      gender_disapprove_data_list.push(this.social_information['gender']['M']['N']);
+      gender_disapprove_data_list.push(this.social_information['gender']['F']['N']);
+      gender_disapprove_data_list.push(this.social_information['gender']['O']['N']);
+      gender_disapprove_data_list.push(this.social_information['gender']['null']['N']);
+
+      let gender_abstention_data_list = [];
+      gender_abstention_data_list.push(this.social_information['gender']['M']['A']);
+      gender_abstention_data_list.push(this.social_information['gender']['F']['A']);
+      gender_abstention_data_list.push(this.social_information['gender']['O']['A']);
+      gender_abstention_data_list.push(this.social_information['gender']['null']['A']);
+
 
       this.region_ctx = document.getElementById('regionChart');
       this.region_chart = new Chart(this.region_ctx, {
@@ -180,7 +294,7 @@ export class PropositionComponent implements OnInit {
           }
         }
       });
-      //graficozera
+      //income
       this.income_ctx = document.getElementById('incomeChart');
       this.income_chart = new Chart(this.income_ctx, {
         type: 'bar',
@@ -204,6 +318,170 @@ export class PropositionComponent implements OnInit {
               backgroundColor: 'rgb(255,255,0)',
               borderColor: 'rgb(255, 255, 255)',
               data: income_abstention_data_list,
+            }
+          ]
+        },
+        options: {
+          tooltips: {
+            callbacks: {
+                label: function(tooltipItem, data) {
+                    var label = data.datasets[tooltipItem.datasetIndex].label || '';
+
+                    if (label) {
+                        label += ': ';
+                    }
+                    label += Math.round(tooltipItem.yLabel * 100) / 100;
+                    return label + "%";
+                }
+            }
+          },
+          scales:{
+            xAxes:[{
+              stacked: false,
+              beginAtZero: true,
+              ticks:{
+                stepSize: 1,
+                min: 0,
+                autoSkip: false
+              }
+            }]
+          }
+        }
+      });
+      //education
+      this.education_ctx = document.getElementById('educationChart');
+      this.education_chart = new Chart(this.education_ctx, {
+        type: 'bar',
+        data: {
+          labels: education_labels_list,
+          datasets: [
+            {
+              label: 'Porcentagem de aprovação',
+              backgroundColor: 'rgb(68,157,68)',
+              borderColor: 'rgb(255, 255, 255)',
+              data: education_approve_data_list,
+            },
+            {
+              label: 'Porcentagem de desaprovação',
+              backgroundColor: 'rgb(201,48,44)',
+              borderColor: 'rgb(255, 255, 255)',
+              data: education_disapprove_data_list,
+            },
+            {
+              label: 'Porcentagem de abstenção',
+              backgroundColor: 'rgb(255,255,0)',
+              borderColor: 'rgb(255, 255, 255)',
+              data: education_abstention_data_list,
+            }
+          ]
+        },
+        options: {
+          tooltips: {
+            callbacks: {
+                label: function(tooltipItem, data) {
+                    var label = data.datasets[tooltipItem.datasetIndex].label || '';
+
+                    if (label) {
+                        label += ': ';
+                    }
+                    label += Math.round(tooltipItem.yLabel * 100) / 100;
+                    return label + "%";
+                }
+            }
+          },
+          scales:{
+            xAxes:[{
+              stacked: false,
+              beginAtZero: true,
+              ticks:{
+                stepSize: 1,
+                min: 0,
+                autoSkip: false
+              }
+            }]
+          }
+        }
+      });
+      //race 
+      this.race_ctx = document.getElementById('raceChart');
+      this.race_chart = new Chart(this.race_ctx, {
+        type: 'bar',
+        data: {
+          labels: race_labels_list,
+          datasets: [
+            {
+              label: 'Porcentagem de aprovação',
+              backgroundColor: 'rgb(68,157,68)',
+              borderColor: 'rgb(255, 255, 255)',
+              data: race_approve_data_list,
+            },
+            {
+              label: 'Porcentagem de desaprovação',
+              backgroundColor: 'rgb(201,48,44)',
+              borderColor: 'rgb(255, 255, 255)',
+              data: race_disapprove_data_list,
+            },
+            {
+              label: 'Porcentagem de abstenção',
+              backgroundColor: 'rgb(255,255,0)',
+              borderColor: 'rgb(255, 255, 255)',
+              data: race_abstention_data_list,
+            }
+          ]
+        },
+        options: {
+          tooltips: {
+            callbacks: {
+                label: function(tooltipItem, data) {
+                    var label = data.datasets[tooltipItem.datasetIndex].label || '';
+
+                    if (label) {
+                        label += ': ';
+                    }
+                    label += Math.round(tooltipItem.yLabel * 100) / 100;
+                    return label + "%";
+                }
+            }
+          },
+          scales:{
+            xAxes:[{
+              stacked: false,
+              beginAtZero: true,
+              ticks:{
+                stepSize: 1,
+                min: 0,
+                autoSkip: false
+              }
+            }]
+          }
+        }
+      });
+
+      //gender
+
+      this.gender_ctx = document.getElementById('genderChart');
+      this.gender_chart = new Chart(this.gender_ctx, {
+        type: 'bar',
+        data: {
+          labels: gender_labels_list,
+          datasets: [
+            {
+              label: 'Porcentagem de aprovação',
+              backgroundColor: 'rgb(68,157,68)',
+              borderColor: 'rgb(255, 255, 255)',
+              data: gender_approve_data_list,
+            },
+            {
+              label: 'Porcentagem de desaprovação',
+              backgroundColor: 'rgb(201,48,44)',
+              borderColor: 'rgb(255, 255, 255)',
+              data: gender_disapprove_data_list,
+            },
+            {
+              label: 'Porcentagem de abstenção',
+              backgroundColor: 'rgb(255,255,0)',
+              borderColor: 'rgb(255, 255, 255)',
+              data: gender_abstention_data_list,
             }
           ]
         },
