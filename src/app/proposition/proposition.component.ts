@@ -20,6 +20,8 @@ export class PropositionComponent implements OnInit {
   social_information: any;
   region_ctx: HTMLElement;
   region_chart: any;
+  income_ctx: HTMLElement;
+  income_chart: any;
 
   proposition: any = {
     proposition_id: 0,
@@ -66,6 +68,17 @@ export class PropositionComponent implements OnInit {
         'Região não informada'
       ]
 
+      //income chart
+      let income_labels_list = [];
+      income_labels_list = [
+        'Classe A',
+        'Classe B',
+        'Classe C',
+        'Classe D',
+        'Classe E',
+        'Renda não informada'
+      ]
+
       let region_approve_data_list = [];
       region_approve_data_list.push(this.social_information['region']['N']['Y']);
       region_approve_data_list.push(this.social_information['region']['NE']['Y']);
@@ -89,6 +102,30 @@ export class PropositionComponent implements OnInit {
       region_abstention_data_list.push(this.social_information['region']['SE']['A']);
       region_abstention_data_list.push(this.social_information['region']['S']['A']);
       region_abstention_data_list.push(this.social_information['region']['null']['A']);
+
+      let income_approve_data_list = [];
+      income_approve_data_list.push(this.social_information['income']['A']['Y']);
+      income_approve_data_list.push(this.social_information['income']['B']['Y']);
+      income_approve_data_list.push(this.social_information['income']['C']['Y']);
+      income_approve_data_list.push(this.social_information['income']['D']['Y']);
+      income_approve_data_list.push(this.social_information['income']['E']['Y']);
+      income_approve_data_list.push(this.social_information['income']['null']['Y']);
+
+      let income_disapprove_data_list = [];
+      income_disapprove_data_list.push(this.social_information['income']['A']['N']);
+      income_disapprove_data_list.push(this.social_information['income']['B']['N']);
+      income_disapprove_data_list.push(this.social_information['income']['C']['N']);
+      income_disapprove_data_list.push(this.social_information['income']['D']['N']);
+      income_disapprove_data_list.push(this.social_information['income']['E']['N']);
+      income_disapprove_data_list.push(this.social_information['income']['null']['N']);
+
+      let income_abstention_data_list = [];
+      income_abstention_data_list.push(this.social_information['income']['A']['A']);
+      income_abstention_data_list.push(this.social_information['income']['B']['A']);
+      income_abstention_data_list.push(this.social_information['income']['C']['A']);
+      income_abstention_data_list.push(this.social_information['income']['D']['A']);
+      income_abstention_data_list.push(this.social_information['income']['E']['A']);
+      income_abstention_data_list.push(this.social_information['income']['null']['A']);
 
       this.region_ctx = document.getElementById('regionChart');
       this.region_chart = new Chart(this.region_ctx, {
@@ -130,9 +167,73 @@ export class PropositionComponent implements OnInit {
                 }
             }
           },
+          scales:{
+            xAxes:[{
+              stacked: false,
+              beginAtZero: true,
+              ticks:{
+                stepSize: 1,
+                min: 0,
+                autoSkip: false
+              }
+            }]
+          }
         }
       });
+      //graficozera
+      this.income_ctx = document.getElementById('incomeChart');
+      this.income_chart = new Chart(this.income_ctx, {
+        type: 'bar',
+        data: {
+          labels: income_labels_list,
+          datasets: [
+            {
+              label: 'Porcentagem de aprovação',
+              backgroundColor: 'rgb(68,157,68)',
+              borderColor: 'rgb(255, 255, 255)',
+              data: income_approve_data_list,
+            },
+            {
+              label: 'Porcentagem de desaprovação',
+              backgroundColor: 'rgb(201,48,44)',
+              borderColor: 'rgb(255, 255, 255)',
+              data: income_disapprove_data_list,
+            },
+            {
+              label: 'Porcentagem de abstenção',
+              backgroundColor: 'rgb(255,255,0)',
+              borderColor: 'rgb(255, 255, 255)',
+              data: income_abstention_data_list,
+            }
+          ]
+        },
+        options: {
+          tooltips: {
+            callbacks: {
+                label: function(tooltipItem, data) {
+                    var label = data.datasets[tooltipItem.datasetIndex].label || '';
 
+                    if (label) {
+                        label += ': ';
+                    }
+                    label += Math.round(tooltipItem.yLabel * 100) / 100;
+                    return label + "%";
+                }
+            }
+          },
+          scales:{
+            xAxes:[{
+              stacked: false,
+              beginAtZero: true,
+              ticks:{
+                stepSize: 1,
+                min: 0,
+                autoSkip: false
+              }
+            }]
+          }
+        }
+      });
     });
   }
 
