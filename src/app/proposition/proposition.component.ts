@@ -130,21 +130,6 @@ export class PropositionComponent implements OnInit {
                 }
             }
           },
-          scales: {
-            yAxes: [
-              {
-                ticks: {
-                   min: 0,
-                   max: 100,
-                   callback: function(value){return value + "%"}
-                },
-                scaleLabel: {
-                   display: true,
-                   labelString: "Porcentagem"
-                }
-              }
-            ]
-          }
         }
       });
 
