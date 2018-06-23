@@ -11,7 +11,7 @@
 <br>
 <ng-container *ngIf="!loading">
 <div class="row">
-  <div class="col-sm-6 text-center" *ngFor="let p of proposition">
+  <div class="col-md-6 text-center vote" *ngFor="let p of proposition; let i = index">
     <div class="panel panel-primary">
       <div class="panel-heading">
         <h3 class="panel-title">{{p['proposition_type_initials']}} {{p['number']}}/{{p['year']}}</h3>
@@ -19,11 +19,11 @@
       <div class="panel-body">
         <h5>{{p['proposition_type']}}</h5>
         <div class="text-justify">
-          <div *ngIf="p['abstract'].length <= 400">
+          <div *ngIf="p['abstract'].length <= 250">
             <p>{{p['abstract']}}</p>
           </div>
-          <div *ngIf="p['abstract'].length > 400">
-            <p>{{p['abstract'].substr(0, 400)}}... [...]</p>
+          <div *ngIf="p['abstract'].length > 250">
+            <p>{{p['abstract'].substr(0, 250)}}... [...]</p>
           </div>
         </div>
         <button class="btn btn-primary" (click)="openProposition(p['url_full'])">Veja na íntegra</button>
@@ -33,6 +33,33 @@
   </div>
 </div>
 </ng-container>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <!-- <div class="modal-header" *ngIf="showEditButtons">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title" id="exampleModalLabel">Editar Voto</h4>
+      </div> -->
+      <div class="modal-body" *ngIf="proposition?.length > 0">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        <h5 class="card-title">
+          {{proposition[position].['proposition_type']}} - Número: {{proposition[position].['number'                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ]}}
+        </h5>
+        <!-- <p>Ano: {{propositionVote[votePosition].proposition['year']}}</p>
+        <p>Abstract: {{propositionVote[votePosition].proposition['abstract']}}</p>
+        <p>Situação: {{propositionVote[votePosition].proposition['situation']}}</p> -->
+        <!-- TODO, referenciar essa parada aí em baixo direito! -->
+        <div class="text-center">
+          <!-- <button class="btn btn-primary" (click)="openProposition(propositionVote[votePosition].proposition['url_full'])">Veja na íntegra</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <table style="width:100%" *ngIf="pages > 0">
     <tr>
       <div class="row">

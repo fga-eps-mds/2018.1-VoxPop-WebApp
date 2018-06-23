@@ -17,6 +17,7 @@ export class SeePlComponent implements OnInit {
   itemsPerPage = 20;
   offset = 1;
   loading = true;
+  position = 1;
 
   proposition: any = [
     {
@@ -104,6 +105,10 @@ export class SeePlComponent implements OnInit {
       document.getElementById('afterBtn2').style.display = 'block';
     }
     return true;
+  }
+
+  setSpecificProposition(index) {
+    this.position = index;
   }
 
   openProposition(proposition_url) {
