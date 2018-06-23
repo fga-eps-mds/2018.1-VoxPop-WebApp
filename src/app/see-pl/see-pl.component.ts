@@ -17,7 +17,7 @@ export class SeePlComponent implements OnInit {
   itemsPerPage = 20;
   offset = 1;
   loading = true;
-  position = 1;
+  position = 0;
 
   proposition: any = [
     {
@@ -78,13 +78,14 @@ export class SeePlComponent implements OnInit {
     this.requester.getProposition(this.itemsPerPage, (offset - 1) * this.itemsPerPage).subscribe( response => {
       this.auxProposition = response.body['results'];
       this.numberPLs = response.body['count'];
-      this.pages = Math.ceil(this.numberPLs/this.itemsPerPage);
+      this.pages = Math.ceil(this.numberPLs / this.itemsPerPage);
       if (this.auxProposition.length <= 0) {
         alert('Número da página inválido, favor digitar entre 1 e ' + this.pages);
         return false;
       }
       this.updateButtonsAppearence(this.offset, this.pages);
       this.proposition = this.auxProposition;
+      console.log(this.proposition);
       this.loading = false;
     });
   }
