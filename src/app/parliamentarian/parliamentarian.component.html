@@ -12,9 +12,6 @@
       </div>
     </div>
   </form>
-  <div class="col-sm-3 col-sm-offset-1">
-    <a href="/user-following" class="btn btn-primary" id="userFollowing" style="display:none">Ver parlamentares seguidos</a>
-  </div>
   <div *ngIf="loading">
     <p>Carregando dados...</p>
     <div class="loader"></div>
@@ -28,7 +25,7 @@
     <a routerLink="/parliamentarians/{{p['id']}}" routerLinkActivate="active">
       <div class="panel panel-primary">
         <div class="panel-heading">
-          <h3 class="panel-title">
+          <h3 class="panel-title namesize">
             <span>{{p['name']}} </span>
           </h3>
         </div>
