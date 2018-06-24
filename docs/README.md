@@ -29,6 +29,18 @@
 
 O VoxPop é uma aplicação criada no contexto das disciplinas Métodos de Desenvolvimento de Software (MDS) e Engenharia de Produto de Software (EPS) da Universidade de Brasília (UnB) - Faculdade do Gama (FGA), que visa criar uma classificação pessoal de deputados com base na compatibilidade dos usuários com os parlamentares.
 
+## E como fazemos isso?
+
+Todo o conceito do VoxPop se baseia em cruzar dados abertos disponibilizados pela Câmara dos Deputados [confira aqui](https://dadosabertos.camara.leg.br) com dados fornecidos pelos usuários, podendo assim gerar estatísticas sobre os nossos parlamentares, sobre as proposições que são votadas por eles, e, acima de tudo, sobre a opinião do cidadão a respeito tanto dos parlamentares, quanto das proposições.
+
+## Quais dados nós utilizamos?
+
+Nosso sistema utiliza sempre dados recentes disponibilizados pela Câmara dos Deputados referentes aos parlamentares atuais (informações pessoais, partidárias, etc.), às proposições votadas a partir do ano de 2015, e aos votos dos parlamentares em proposições votadas a partir do ano de 2015.
+
+## Licensa
+
+O projeto utiliza a licensa GNU General Public License v3.0, [confira aqui](https://github.com/fga-gpp-mds/2018.1-VoxPop-WebApp/blob/master/LICENSE)
+
 ## Mais informações
 
 Para mais informações sobre o projeto, veja a documentação completa aqui: [VoxPop Docs](https://docs.voxpop.ml/)
