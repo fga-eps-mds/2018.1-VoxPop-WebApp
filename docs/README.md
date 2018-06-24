@@ -37,6 +37,95 @@ Todo o conceito do VoxPop se baseia em cruzar dados abertos disponibilizados pel
 
 Nosso sistema utiliza sempre dados recentes disponibilizados pela Câmara dos Deputados referentes aos parlamentares atuais (informações pessoais, partidárias, etc.), às proposições votadas a partir do ano de 2015, e aos votos dos parlamentares em proposições votadas a partir do ano de 2015.
 
+## Instalação
+
+Para instalar o projeto, deve-se configurar o ambiente tanto para o repositório do Front End [2018.1-VoxPop-WebApp](https://github.com/fga-gpp-mds/2018.1-VoxPop-WebApp/tree/master) quanto do Back End [2018.1-VoxPop-API ](https://github.com/fga-gpp-mds/2018.1-VoxPop-API/tree/master) para trabalharem em conjunto.
+
+Para configurar o Front End:
+
+Deve-se instalar o Angular 5, e para ter o Angular 5, deve-se instalar o conjunto Node.js e o seu gestor de pacotes, o npm. Primeiramente é bom instalar o nvm que é o gerenciador de versões do Node.js. Mas antes de instalar o NVM precisamos de alguns pacotes de dependências que já estão no repositório de sua distribuição Debian Based. Portanto digite no terminal do linux:
+
+$ sudo apt-get update sudo apt-get install build-essential libssl-dev
+
+Agora que você já tem o necessário em seu sistema instale o NVM:
+
+$ curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh _-o installnvm.sh
+
+O número da versão <v0.33.11> pode mudar com o tempo, então recomendo acessar a [página do projeto no GitHub](https://github.com/creationix/nvm) e procurar pela nova versão.
+
+Execute o script com:
+
+$ _bash installnvm.sh
+
+O que está sendo feito aqui é o download de um script e a execução do mesmo, tudo vai ser instalado em um diretório oculto na pasta do seu usuário não é necessário utilizar o comando com sudo nesse caso.
+
+Agora execute:
+
+$ nvm ls-remote
+
+Ele vai te exibir várias versões do Node e assim sabemos que o NVM está funcionando corretamente. Nós escolhemos a versão mais recente do momento a v10.1.0, você pode instala-la digitando:
+
+$ nvm install  10.1.0
+
+Agora vamos verificar a versão do Node para ter certeza que tudo foi instalado corretamente utilizando o comando:
+
+$ node -v
+
+Agora no terminal instale o npm (gerenciador de pacotes do Node.js), digitando:
+
+$ sudo apt-get install npm
+
+Confira se foi instalado corretamente digitando:
+
+$ npm -v
+
+Agora que estamos prontos, podemos passar à instalação da interface de linha de comandos do angular. Para isso basta o seguinte comando:
+
+$ npm install @angular/cli -g
+
+ Assim que o gestor de pacotes terminar de instalar, fazemos a verificação se foi corretamente instalado com o seguinte comando:
+
+$ ng -v
+
+Para trabalhar com os containers já configurados, deve-se instalar o docker compose, já que o docker Compose é o orquestrador de containers do Docker. Digite no terminal para instalar a última versão do compose:
+
+$ sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+
+Teste a instalação com:
+
+$ docker-compose --version
+
+Agora pelo terminal dentro da pasta do Front End, instale os pacotes com:
+
+$ npm install
+
+Isso consiste as instalações do Front End, já para instalar o Back End, além de já ter o docker compose instalado, deve-se instalar o python, pip and django.Instale o python pelo terminal com:
+
+$ sudo apt-get install python3.5
+
+Para instalar o gerenciador de pacotes pip, digite no terminal:
+
+$ sudo apt-get install python-pip
+
+Para instalar o framework Django, digite:
+
+$ sudo apt-get install python-django
+
+Pronto, o projeto está todo configurado e pronto para uso. Para rodar a API, basta na pasta do Back End digitar:
+
+$ make start
+
+E logo apos:
+
+$ make up
+
+Agora para ver o projeto executando, entre na pasta do Back End pelo terminal e digite:
+
+$ ng serve
+
+Por ultimo va no browser do seu computador, e digite no navegador o endereço:
+http://localhost:4200
+
 ## Licensa
 
 O projeto utiliza a licensa GNU General Public License v3.0, [confira aqui](https://github.com/fga-gpp-mds/2018.1-VoxPop-WebApp/blob/master/LICENSE)
