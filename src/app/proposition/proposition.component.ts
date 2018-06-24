@@ -27,7 +27,9 @@ export class PropositionComponent implements OnInit {
   race_ctx: HTMLElement;
   race_chart: any;
   gender_ctx: HTMLElement;
-  gender_chart: any
+  gender_chart: any;
+  parliamentarian_ctx: HTMLElement;
+  parliamentarian_chart: any;
 
   proposition: any = {
     proposition_id: 0,
@@ -239,6 +241,16 @@ export class PropositionComponent implements OnInit {
       gender_abstention_data_list.push(this.social_information['gender']['F']['A']);
       gender_abstention_data_list.push(this.social_information['gender']['O']['A']);
       gender_abstention_data_list.push(this.social_information['gender']['null']['A']);
+
+      //parliamentary
+      let parliamentarian_approve_data_list = [];
+      parliamentarian_approve_data_list.push(this.social_information['parliamentarians_total_votes']['Y']);
+
+      let parliamentarian_disapprove_data_list = [];
+      parliamentarian_disapprove_data_list.push(this.social_information['parliamentarians_total_votes']['N']);
+
+      let parliamentarian_abstention_data_list = [];
+      parliamentarian_abstention_data_list.push(this.social_information['parliamentarians_total_votes']['A']);
 
 
       this.region_ctx = document.getElementById('regionChart');
@@ -484,6 +496,60 @@ export class PropositionComponent implements OnInit {
               data: gender_abstention_data_list,
             }
           ]
+        },
+        options: {
+          tooltips: {
+            callbacks: {
+                label: function(tooltipItem, data) {
+                    var label = data.datasets[tooltipItem.datasetIndex].label || '';
+
+                    if (label) {
+                        label += ': ';
+                    }
+                    label += Math.round(tooltipItem.yLabel * 100) / 100;
+                    return label + "%";
+                }
+            }
+          },
+          scales:{
+            xAxes:[{
+              stacked: false,
+              beginAtZero: true,
+              ticks:{
+                stepSize: 1,
+                min: 0,
+                autoSkip: false
+              }
+            }]
+          }
+        }
+      });
+
+      //parliamentarian
+      this.parliamentarian_ctx = document.getElementById('parliamentarianChart');
+      this.parliamentarian_chart = new Chart(this.parliamentarian_ctx, {
+        type: 'bar',
+        data: {
+          datasets: [
+            {
+              label: 'Porcentagem de aprovação',
+              backgroundColor: 'rgb(68,157,68)',
+              borderColor: 'rgb(255, 255, 255)',
+              data: parliamentarian_approve_data_list,
+            },
+            {
+              label: 'Porcentagem de desaprovação',
+              backgroundColor: 'rgb(201,48,44)',
+              borderColor: 'rgb(255, 255, 255)',
+              data: parliamentarian_disapprove_data_list,
+            },
+            {
+              label: 'Porcentagem de abstenção',
+              backgroundColor: 'rgb(255,255,0)',
+              borderColor: 'rgb(255, 255, 255)',
+              data: parliamentarian_abstention_data_list,
+            }
+          ],
         },
         options: {
           tooltips: {

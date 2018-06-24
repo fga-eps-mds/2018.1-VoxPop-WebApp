@@ -27,6 +27,7 @@
           </div>
         </div>
         <button class="btn btn-primary" (click)="openProposition(p['url_full'])">Veja na íntegra</button>
+        <a href="/propositions/{{p['id']}}" class="btn btn-primary" id="userFollowing">Ver aprovação</a>
       </div>
       <div class="panel-footer text-muted">atualizada {{p['days_ago']}} dia(s) atrás</div>
     </div>
