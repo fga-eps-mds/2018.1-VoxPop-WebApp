@@ -9,26 +9,46 @@ O Brasil atualmente é um país que tem as suas dificuldades, carências, proble
 Tendo tais motivações em mente a equipe trabalha com o ideal de disponibilizar como versão final um sistema capaz de funcionar sem grandes problemas em dispositivos com recursos limitados, abrangendo o maior público possível, contendo assim opções fáceis e interações intuitivas, de forma que não seja necessário qualquer tipo de tutorial ou um guia para uso completo. Para um maior esclarecimento, visualização e atratividade a seguir será exibido protótipos de telas exibindo assim a idéia e a qualidade do produto final.
 
 ## Página Principal
+![Main](https://github.com/kleberbritomoreira10/Markdown/blob/master/main-page.png)
+[Clique aqui para ampliar](https://i.imgur.com/f17Y6Ax.png)
 
-![Página Principal](https://image.ibb.co/eXQEmc/prot1.png)
+A página inicial da aplicação, contém a quantidade de projetos de lei votado pelo parlamentares de 2015 até atualmente, exibindo assim na parte esquerda os últimos projetos de lei votado, com a quantidade de dias referentes a essa última atualização. Na parte direita contem um ranking exibindo os 3 parlamentares mais ativos em relação a quantidade de votos de 2015 até os dias atuais.
 
-A página principal, acessível através do clique na logo do site, leva diretamente a uma seleção aleatória de Projetos de Lei que podem ser votados ou ignorados pelo usuário. Conforme a votação é realizada, deve ser atualizada a lista de raking de representação, ordenada por indíce de representatividade, contendo o nome, partido e uma foto do deputado em questão. Ao final da lista, deve ser possível efetuar a consulta aos deputados fixados pelo usuário.
+## Página de todos Deputados
+![Deputado](https://github.com/kleberbritomoreira10/Markdown/blob/master/parlamentares.png)
+[Clique aqui para ampliar](https://i.imgur.com/YbFnYfT.png)
 
-## Página de Projetos de Lei
+Com o VoxPop você poderá ver e consultar todos os parlamentares, contendo funcionalidades muito utéis, como a ficha do parlamentar, o seu grau de compatibilidade com o mesmo, tendo o voto nos projetos de lei como carater avaliativo desse grau de comparação
 
-![Página de PLs](https://image.ibb.co/i5poex/prot2.png)
+## Página de informações detalhadas dos Deputados
+![Informacao](https://github.com/kleberbritomoreira10/Markdown/blob/master/parlamentar.png)
+[Clique aqui para ampliar](https://i.imgur.com/MIBSqDf.png)
 
-A barra de navegação contém uma opção para a lista de Projetos de Lei já votados pelo usuário para alteração de histórico. É importante notar que os projetos de lei fixados devem ser exibidos no topo da lista.
+Página com as informações detalhadas de cada parlamentar
 
-Cada linha dessa lista deve conter o título do PL, uma breve descrição, um botão que redireciona o usuário para o texto na íntegra, as opções de aprovar, reprovar e fixar (ou desafixar, caso já esteja fixado).
+## Página de ranking dos deputados mais seguidos
+![Seguido](https://github.com/kleberbritomoreira10/Markdown/blob/master/deputados-seguidos.png)
+[Clique aqui para ampliar](https://i.imgur.com/YT8XsqI.png)
 
-## Página de Deputados
+Página que ranqueia os parlamentares com a maior quantidade de seguidores do site
 
-![Página de Deputados](https://image.ibb.co/fcbn6c/prot3.png)
+## Página dos Projetos de Lei
+![PL](https://github.com/kleberbritomoreira10/Markdown/blob/master/todas-proposicoes.png)
+[Clique aqui para ampliar](https://i.imgur.com/2o2jsM7.png)
 
-A barra de navegação contém uma opção para a lista de deputados. No topo deve conter a lista de deputados fixados.
+Todas as proposições votadas estarão disponivéis para o usuário, com o seu devido link na íntegra (abrindo assim o respectivo pdf da proposição) e estatísticas da mesma, ou seja, o grau de aprovação dessa proposição em relação aos parlamentares, usuários e por região no Brasil
 
-Cada linha da lista deve conter nome, foto e partido de cada deputado, além de um botão de redirecionamento para visualização completa do perfil na página da Câmara dos Deputados e de um botão para fixar o deputado.
+## Página de votar nas proposições
+![Votar](https://github.com/kleberbritomoreira10/Markdown/blob/master/votar.png)
+[Clique aqui para ampliar](https://i.imgur.com/t0VYbnK.png)
+
+Página que permite ao usuário votar em uma determinada proposição (sim, não ou abstendo-se), disponibilizando o link em pdf na íntegra e o grau de aprovação da mesma
+
+## Página do ranking de compatibilidade
+![Ranking](https://github.com/kleberbritomoreira10/Markdown/blob/master/ranking.png)
+[Clique aqui para ampliar](https://i.imgur.com/jh4BJXR.png)
+
+Página com o ranking de compatibilidade de cada parlamentar com o usuário em questão tendo como base a votação nos projetos de lei. Visando assim dar ao VoxPop maior tranparência e direncionamento aos usuários sobre quais parlamentares tem o pensamento e ação semelhantes aos deles.
 
 ## Endereços - VoxPop
 
