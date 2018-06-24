@@ -5,7 +5,7 @@ category: EPS
 ---
 
 # Burndown de Riscos
-Os riscos foram analisados e monitorados durante as 6 primeiras sprints. A análise detalhada encontram-se no link a seguir, e logo abaixo será exibido graficamente a análise individual de cada risco   
+Os riscos foram analisados e monitorados durante as 15 sprints do projeto. A análise detalhada encontram-se no link a seguir, e logo abaixo será exibido graficamente a análise individual de cada risco   
 
 [Clique aqui para visualizar a versão completa na planilha](https://docs.google.com/spreadsheets/d/1yBz6Zb7uJyTeoIlVK0-4nztAzV4mPScqFV56f10uicE/edit?usp=sharing)
 
