@@ -30,6 +30,8 @@ export class PropositionComponent implements OnInit {
   gender_chart: any;
   parliamentarian_ctx: HTMLElement;
   parliamentarian_chart: any;
+  population_ctx: HTMLElement;
+  population_chart: any;
 
   proposition: any = {
     proposition_id: 0,
@@ -73,7 +75,7 @@ export class PropositionComponent implements OnInit {
         'Centro-Oeste',
         'Sudeste',
         'Sul',
-        'Região não informada'
+        'Não informada'
       ]
 
       //income chart
@@ -84,29 +86,29 @@ export class PropositionComponent implements OnInit {
         'Classe C',
         'Classe D',
         'Classe E',
-        'Renda não informada'
+        'Não informada'
       ]
 
       //education chart
       let education_labels_list = [];
       education_labels_list = [
-        'Sem Escolaridade',
+        'Sem escolaridade',
         'Ensino Fundamental',
         'Ensino Médio',
         'Ensino Superior',
         'Pós Graduação',
-        'Escolaridade não informada'
+        'Não informada'
       ]
 
       //race chart
       let race_labels_list = [];
       race_labels_list = [
-        'Branco',
-        'Preto',
-        'Amarelo',
-        'Pardo',
+        'Branca',
+        'Preta',
+        'Amarela',
+        'Parda',
         'Indígena',
-        'Não Informada'
+        'Não informada'
       ]
 
       //gender chart
@@ -115,7 +117,7 @@ export class PropositionComponent implements OnInit {
         'Masculino',
         'Feminino',
         'Outro',
-        'Não Informado'
+        'Não informado'
       ]
 
       //region
@@ -243,15 +245,17 @@ export class PropositionComponent implements OnInit {
       gender_abstention_data_list.push(this.social_information['gender']['null']['A']);
 
       //parliamentary
-      let parliamentarian_approve_data_list = [];
-      parliamentarian_approve_data_list.push(this.social_information['parliamentarians_total_votes']['Y']);
+      let parliamentarian_data_list = [];
+      parliamentarian_data_list.push(this.social_information['parliamentarians_total_votes']['Y']);
+      parliamentarian_data_list.push(this.social_information['parliamentarians_total_votes']['N']);
+      parliamentarian_data_list.push(this.social_information['parliamentarians_total_votes']['A']);
+      parliamentarian_data_list.push(this.social_information['parliamentarians_total_votes']['others']);
 
-      let parliamentarian_disapprove_data_list = [];
-      parliamentarian_disapprove_data_list.push(this.social_information['parliamentarians_total_votes']['N']);
-
-      let parliamentarian_abstention_data_list = [];
-      parliamentarian_abstention_data_list.push(this.social_information['parliamentarians_total_votes']['A']);
-
+      //population
+      let population_data_list = [];
+      population_data_list.push(this.social_information['population_total_votes']['Y']);
+      population_data_list.push(this.social_information['population_total_votes']['N']);
+      population_data_list.push(this.social_information['population_total_votes']['A']);
 
       this.region_ctx = document.getElementById('regionChart');
       this.region_chart = new Chart(this.region_ctx, {
@@ -414,7 +418,7 @@ export class PropositionComponent implements OnInit {
           }
         }
       });
-      //race 
+      //race
       this.race_ctx = document.getElementById('raceChart');
       this.race_chart = new Chart(this.race_ctx, {
         type: 'bar',
@@ -528,57 +532,88 @@ export class PropositionComponent implements OnInit {
       //parliamentarian
       this.parliamentarian_ctx = document.getElementById('parliamentarianChart');
       this.parliamentarian_chart = new Chart(this.parliamentarian_ctx, {
-        type: 'bar',
+        type: 'doughnut',
         data: {
           datasets: [
             {
-              label: 'Porcentagem de aprovação',
-              backgroundColor: 'rgb(68,157,68)',
-              borderColor: 'rgb(255, 255, 255)',
-              data: parliamentarian_approve_data_list,
-            },
-            {
-              label: 'Porcentagem de desaprovação',
-              backgroundColor: 'rgb(201,48,44)',
-              borderColor: 'rgb(255, 255, 255)',
-              data: parliamentarian_disapprove_data_list,
-            },
-            {
-              label: 'Porcentagem de abstenção',
-              backgroundColor: 'rgb(255,255,0)',
-              borderColor: 'rgb(255, 255, 255)',
-              data: parliamentarian_abstention_data_list,
+              data: parliamentarian_data_list,
+              backgroundColor: [
+                'rgb(68,157,68)',
+                'rgb(201,48,44)',
+                'rgb(255,255,0)',
+                'rgb(115,134,213)'
+              ]
             }
           ],
+          labels: [
+            'Porcentagem de aprovação',
+            'Porcentagem de desaprovação',
+            'Porcentagem de abstenção',
+            'Sem voto'
+          ]
         },
         options: {
           tooltips: {
             callbacks: {
                 label: function(tooltipItem, data) {
-                    var label = data.datasets[tooltipItem.datasetIndex].label || '';
+                    var label = data.labels[tooltipItem.index] || '';
 
                     if (label) {
                         label += ': ';
                     }
-                    label += Math.round(tooltipItem.yLabel * 100) / 100;
+                    label += Math.round(data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index] * 100) / 100;
                     return label + "%";
                 }
             }
-          },
-          scales:{
-            xAxes:[{
-              stacked: false,
-              beginAtZero: true,
-              ticks:{
-                stepSize: 1,
-                min: 0,
-                autoSkip: false
-              }
-            }]
+          }
+        }
+      });
+
+      //population
+      this.population_ctx = document.getElementById('populationChart');
+      this.population_chart = new Chart(this.population_ctx, {
+        type: 'doughnut',
+        data: {
+          datasets: [
+            {
+              data: population_data_list,
+              backgroundColor: [
+                'rgb(68,157,68)',
+                'rgb(201,48,44)',
+                'rgb(255,255,0)'
+              ]
+            }
+          ],
+          labels: [
+            'Porcentagem de aprovação',
+            'Porcentagem de desaprovação',
+            'Porcentagem de abstenção'
+          ]
+        },
+        options: {
+          tooltips: {
+            callbacks: {
+                label: function(tooltipItem, data) {
+                    var label = data.labels[tooltipItem.index] || '';
+
+                    if (label) {
+                        label += ': ';
+                    }
+                    label += Math.round(data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index] * 100) / 100;
+                    return label + "%";
+                }
+            }
           }
         }
       });
     });
   }
 
+  openProposition(proposition_url) {
+    window.open(
+      proposition_url,
+      '_blank',
+      'height=700, width=820, scrollbars=yes, status=yes'
+    );
+  }
 }

@@ -10,3 +10,7 @@
     width: 0% !important;
     opacity: 1;
 }
+
+hr {
+  border-color: #a0a0a0;
+}

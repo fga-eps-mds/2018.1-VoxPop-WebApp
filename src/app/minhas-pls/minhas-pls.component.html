@@ -67,7 +67,7 @@
           </div>
         </div>
         <div class="panel-footer buttons">
-          <button class="btn btn-primary" (click)="openProposition(p.proposition['url_full'])">Veja na íntegra</button>
+          <a href="/proposicoes/{{p.proposition['id']}}" class="btn btn-primary">Ver detalhes da proposição</a>
           <button type="button" class="btn btn-primary" (click)="specifyProposition(j, true)" data-toggle="modal" data-target="#exampleModal">
             Editar Voto
           </button>

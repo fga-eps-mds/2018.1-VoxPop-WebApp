@@ -111,12 +111,4 @@ export class SeePlComponent implements OnInit {
   setSpecificProposition(index) {
     this.position = index;
   }
-
-  openProposition(proposition_url) {
-    window.open(
-      proposition_url,
-      '_blank',
-      'height=700, width=820, scrollbars=yes, status=yes'
-    );
-  }
 }

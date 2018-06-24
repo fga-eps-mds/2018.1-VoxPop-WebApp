@@ -21,7 +21,7 @@
 <ng-container *ngIf="!loading">
 <div *ngIf="pages > 0">
   <div class="col-md-3 text-center vote" *ngFor="let p of parliamentarians">
-    <a routerLink="/parliamentarians/{{p.parliamentary['id']}}" routerLinkActivate="active">
+    <a routerLink="/parlamentares/{{p.parliamentary['id']}}" routerLinkActivate="active">
       <div class="panel panel-primary">
         <div class="panel-heading">
           <h3 class="panel-title namesize">
@@ -44,7 +44,7 @@
       <p *ngIf="term === ''">Você ainda não segue deputados,
         <a href="/parliamentarians">veja a lista de deputados</a> e escolha os que você quiser seguir
       </p>
-      <p *ngIf="term !== ''">Sua busca não retornou resultados :( Talvez você não siga este deputado, procure-o 
+      <p *ngIf="term !== ''">Sua busca não retornou resultados :( Talvez você não siga este deputado, procure-o
         <a href="/parliamentarians">aqui</a>.
       </p>
     </div>
