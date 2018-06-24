@@ -20,11 +20,11 @@
 </div>
 <ng-container *ngIf="!loading">
 <div *ngIf="pages > 0">
-  <div class="col-sm-3 text-center" *ngFor="let p of parliamentarians">
+  <div class="col-md-3 text-center vote" *ngFor="let p of parliamentarians">
     <a routerLink="/parliamentarians/{{p.parliamentary['id']}}" routerLinkActivate="active">
       <div class="panel panel-primary">
         <div class="panel-heading">
-          <h3 class="panel-title">
+          <h3 class="panel-title namesize">
             <span>{{p.parliamentary['name']}} </span>
           </h3>
         </div>

@@ -140,7 +140,7 @@ a.article, a.article:hover {
     transition: all 0.3s;
 }
 #content-padding {
-    padding: 20px;
+    padding: 50px;
 }
 #content-no-padding {
     padding: 0;
