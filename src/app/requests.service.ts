@@ -62,6 +62,13 @@ export class RequestsService {
     return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
   }
 
+  getMostFollowed() {
+    this.tokenHeader = {'Content-Type': 'application/json'};
+    const endpoint = this.baseURL.concat('statistics/most_followed/');
+    console.log('Making GET MOST FOLLOWED REQUEST ON URL: ' + endpoint);
+    return this.http.get(endpoint, {headers: this.tokenHeader, observe: 'response'});
+  }
+
   getMostCompatible() {
     this.tokenValue = this.token.getToken();
     this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': this.tokenValue};
@@ -99,6 +106,22 @@ export class RequestsService {
     this.tokenValue = this.token.getToken();
     this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': this.tokenValue};
     const endpoint = this.baseURL.concat('parliamentarians/' + parlimentaryId + '/');
+    this.headers = (this.tokenValue === '') ? this.headers : this.tokenHeader;
+    return this.http.get(endpoint, {headers: this.headers, observe: 'response'});
+  }
+
+  getPropositionSpecific(propositionId) {
+    this.tokenValue = this.token.getToken();
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': this.tokenValue};
+    const endpoint = this.baseURL.concat('propositions/' + propositionId + '/');
+    this.headers = (this.tokenValue === '') ? this.headers : this.tokenHeader;
+    return this.http.get(endpoint, {headers: this.headers, observe: 'response'});
+  }
+
+  getPropositionSpecificSocialInfo(propositionId) {
+    this.tokenValue = this.token.getToken();
+    this.tokenHeader = {'Content-Type': 'application/json', 'Authorization': this.tokenValue};
+    const endpoint = this.baseURL.concat('propositions/' + propositionId + '/social_information_data/');
     this.headers = (this.tokenValue === '') ? this.headers : this.tokenHeader;
     return this.http.get(endpoint, {headers: this.headers, observe: 'response'});
   }

@@ -60,7 +60,7 @@
                 <div class="text-justify">
                   <p>{{proposition[0]['abstract']}}</p>
                 </div>
-                <button class="btn btn-primary" (click)="openProposition(proposition[0]['url_full'])">Veja na íntegra</button>
+                <a href="/proposicoes/{{proposition[0]['id']}}" class="btn btn-primary">Ver detalhes da proposição</a>
               </div>
               <div class="panel-footer text-muted">atualizada {{proposition[0]['days_ago']}} dia(s) atrás</div>
             </div>
@@ -82,7 +82,7 @@
                 <div class="col-sm-6">
                   <h5>1ª lugar</h5><p class="help-block">Este é o deputado mais ativo!</p>
                   <p>{{most_actives[0]['parliamentary']['political_party']}}/{{most_actives[0]['parliamentary']['federal_unit']}}</p>
-                  <a routerLink="/parliamentarians/{{most_actives[0]['parliamentary']['id']}}" routerLinkActivate="active" class="btn btn-primary">Ver parlamentar</a>
+                  <a routerLink="/parlamentares/{{most_actives[0]['parliamentary']['id']}}" routerLinkActivate="active" class="btn btn-primary">Ver parlamentar</a>
                 </div>
               </div>
               <div class="panel-footer text-muted">Quantidade de votos: {{most_actives[0]['votes']}}</div>
@@ -104,7 +104,7 @@
                 <div class="text-justify">
                   <p>{{proposition[1]['abstract']}}</p>
                 </div>
-                <button class="btn btn-primary" (click)="openProposition(proposition[1]['url_full'])">Veja na íntegra</button>
+                <a href="/proposicoes/{{proposition[1]['id']}}" class="btn btn-primary">Ver detalhes da proposição</a>
               </div>
               <div class="panel-footer text-muted">atualizada {{proposition[1]['days_ago']}} dia(s) atrás</div>
             </div>
@@ -125,7 +125,7 @@
                 <div class="col-sm-6">
                   <h5>2ª lugar</h5><p class="help-block">Este é o segundo deputado mais ativo!</p>
                   <p>{{most_actives[1]['parliamentary']['political_party']}}/{{most_actives[1]['parliamentary']['federal_unit']}}</p>
-                  <a routerLink="/parliamentarians/{{most_actives[1]['parliamentary']['id']}}" routerLinkActivate="active" class="btn btn-primary">Ver parlamentar</a>
+                  <a routerLink="/parlamentares/{{most_actives[1]['parliamentary']['id']}}" routerLinkActivate="active" class="btn btn-primary">Ver parlamentar</a>
                 </div>
               </div>
               <div class="panel-footer text-muted">Quantidade de votos: {{most_actives[1]['votes']}}</div>
@@ -146,7 +146,7 @@
                 <div class="text-justify">
                   <p>{{proposition[2]['abstract']}}</p>
                 </div>
-                <button class="btn btn-primary" (click)="openProposition(proposition[2]['url_full'])">Veja na íntegra</button>
+                <a href="/proposicoes/{{proposition[2]['id']}}" class="btn btn-primary">Ver detalhes da proposição</a>
               </div>
               <div class="panel-footer text-muted">atualizada {{proposition[2]['days_ago']}} dia(s) atrás</div>
             </div>
@@ -166,7 +166,7 @@
                 <div class="col-sm-6">
                   <h5>3ª lugar</h5><p class="help-block">Este é o terceiro deputado mais ativo!</p>
                   <p>{{most_actives[2]['parliamentary']['political_party']}}/{{most_actives[2]['parliamentary']['federal_unit']}}</p>
-                  <a routerLink="/parliamentarians/{{most_actives[2]['parliamentary']['id']}}" routerLinkActivate="active" class="btn btn-primary">Ver parlamentar</a>
+                  <a routerLink="/parlamentares/{{most_actives[2]['parliamentary']['id']}}" routerLinkActivate="active" class="btn btn-primary">Ver parlamentar</a>
                 </div>
               </div>
               <div class="panel-footer text-muted">Quantidade de votos: {{most_actives[2]['votes']}}</div>

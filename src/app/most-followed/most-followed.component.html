@@ -1,9 +1,9 @@
-<h3>Ranking de Compatibilidade</h3><br/>
+<h3>Ranking de deputados mais seguidos</h3><br/>
 <div *ngIf="loading">
-  <p>Calculando Compatibilidade...</p>
+  <p>Carregando o ranking...</p>
   <div class="loader"></div>
 </div>
-<div *ngFor="let parliamentarian of most_compatible; let i = index" class="col-sm-6 text-center" >
+<div *ngFor="let parliamentarian of most_followed; let i = index" class="col-sm-6 text-center" >
     <div class="panel panel-primary">
       <div class="panel-heading">
         <h3 class="panel-title">
@@ -20,7 +20,7 @@
         <a routerLink="/parlamentares/{{parliamentarian['parliamentary']['id']}}" routerLinkActivate="active" class="btn btn-primary">Ver parlamentar</a>
       </div>
     </div>
-    <div *ngIf="tokenValue !== ''" class="panel-footer text-muted alternative">{{parliamentarian['compatibility']}}% de compatibilidade</div>
+    <div class="panel-footer text-muted alternative">{{parliamentarian['followers']}} seguidores</div>
     <!-- <div class="panel-footer text-muted">Compatibilidade: {{parliamentarian['compatibility']}}</div> -->
   </div>
 </div>

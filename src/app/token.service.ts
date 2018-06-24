@@ -49,4 +49,11 @@ export class TokenService {
     }
   }
 
+  filterLoginPage(token) {
+    if (token !== '') {
+      this.router.navigate(['']);
+      return true;
+    }
+  }
+
 }

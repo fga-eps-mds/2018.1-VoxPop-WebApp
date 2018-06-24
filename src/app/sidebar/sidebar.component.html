@@ -27,14 +27,19 @@
                     </a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="parliamentarians">
-                                Ver Todos Deputados
+                            <a href="parlamentares">
+                                Ver todos os deputados
+                            </a>
+                        </li>
+                        <li>
+                            <a href="parlamentares-mais-seguidos">
+                                Ver deputados mais seguidos
                             </a>
                         </li>
                         <li id="conditional">
                             <div class="tooltip">
-                                <a [ngClass]="getStyle()" href="user-following">
-                                    Ver Deputados seguidos
+                                <a [ngClass]="getStyle()" href="parlamentares-seguidos">
+                                    Ver deputados seguidos
                                 </a>
                                 <span *ngIf="token.getToken() === ''" class="tooltiptext">
                                     Faça login para poder acessar esta opção
@@ -47,19 +52,19 @@
                     <li>
                         <!-- Link with dropdown items -->
                         <a href="#homeSubmenu2" data-toggle="collapse" aria-expanded="false">
-                            <i class="glyphicon glyphicon-file"></i>Propostas de Lei
+                            <i class="glyphicon glyphicon-file"></i>Proposições
                         </a>
                         <ul class="collapse list-unstyled" id="homeSubmenu2">
                             <li>
-                                <a href="seepl">
-                                    Ver Todas Proposições
+                                <a href="proposicoes">
+                                    Ver todas as proposições
                                 </a>
                             </li>
                             <div>
                                 <li>
                                     <div class="tooltip">
-                                        <a [ngClass]="getStyle()" href="propositions" id="deSuaOpiniao">
-                                            Votar em proposta
+                                        <a [ngClass]="getStyle()" href="votar" id="deSuaOpiniao">
+                                            Votar em proposição
                                         </a>
                                         <span *ngIf="token.getToken() === ''" class="tooltiptext">
                                             Faça login para poder acessar esta opção
@@ -71,8 +76,8 @@
                             <div>
                                 <li>
                                     <div class="tooltip">
-                                        <a [ngClass]="getStyle()" href="mypls" id="deSuaOpiniao">
-                                            Ver votos em propostas
+                                        <a [ngClass]="getStyle()" href="proposicoes-votadas" id="deSuaOpiniao">
+                                            Ver votos em proposições
                                         </a>
                                         <span *ngIf="token.getToken() === ''" class="tooltiptext">
                                             Faça login para poder acessar esta opção
@@ -84,7 +89,7 @@
                         <div>
                             <li>
                                 <div class="tooltip ranking">
-                                    <a [ngClass]="getStyle()" href="/user-compatible">
+                                    <a [ngClass]="getStyle()" href="/ranking-de-compatibilidade">
                                         <i class="glyphicon glyphicon-star"></i>
                                         Ranking compatibilidade
                                     </a>
@@ -95,7 +100,7 @@
                             </li>
                         </div>
                         <li>
-                            <a href="/contact-us">
+                            <a href="/entre-em-contato">
                                 <i class="glyphicon glyphicon-send"></i>
                                 Entre em contato
                             </a>

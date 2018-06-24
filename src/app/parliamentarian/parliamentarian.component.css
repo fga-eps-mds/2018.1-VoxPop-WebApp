@@ -37,7 +37,7 @@
 }
 
 .vote{
-    height: 25rem;
+    height: 37rem;
 }
 
 .center {
@@ -53,11 +53,17 @@
     margin-bottom: 60px;
 }
 
-.btn .btn-primary{
+.btn-primary{
     background: #7386D5;
+    width: 100%;
 }
 
 .alternative {
     background-color: #638bad;
     color: white;
+}
+
+.namesize{
+    min-height: 30px;
+    max-height: 60px;
 }
