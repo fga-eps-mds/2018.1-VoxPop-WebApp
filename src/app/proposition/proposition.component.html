@@ -1,0 +1,142 @@
+<div class="text-center">
+  <div *ngIf="loading" class="overlay">
+    <div *ngIf="loading" align="center" class="loading">
+      <p>Computando opção...</p>
+      <div class="loader"></div>
+    </div>
+  </div>
+  <div *ngIf="loader" class="overlay">
+    <div *ngIf="loader" align="center" class="loading">
+      <p>Caregando dados...</p>
+      <div class="loader"></div>
+    </div>
+  </div>
+  <!-- <ng-container *ngIf="!loader" > -->
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <div id="carousel-example-generic" class="carousel slide" data-interval="false" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#carousel-example-generic" data-slide-to="0"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="5"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+          <div class="item active">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title">{{proposition['proposition_type_initials']}} {{proposition['number']}}/{{proposition['year']}} Por Região
+                  do Brasil</h3>
+              </div>
+              <div class="panel-body">
+                <canvas id="regionChart"></canvas>
+              </div>
+            </div>
+            <div class="carousel-caption">
+              <!-- <h3>Caption Text</h3> -->
+            </div>
+          </div>
+          <div class="item">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title">{{proposition['proposition_type_initials']}} {{proposition['number']}}/{{proposition['year']}} Por Gênero</h3>
+              </div>
+              <div class="panel-body">
+                <canvas id="genderChart"></canvas>
+              </div>
+            </div>
+            <div class="carousel-caption">
+              <!-- <h3>Caption Text</h3> -->
+            </div>
+          </div>
+          <div class="item">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title">{{proposition['proposition_type_initials']}} {{proposition['number']}}/{{proposition['year']}} Por Raça</h3>
+              </div>
+              <div class="panel-body">
+                <canvas id="raceChart"></canvas>
+              </div>
+            </div>
+            <div class="carousel-caption">
+              <!-- <h3>Caption Text</h3> -->
+            </div>
+          </div>
+          <div class="item">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title">{{proposition['proposition_type_initials']}} {{proposition['number']}}/{{proposition['year']}} Por Nível
+                  de Escolaridade</h3>
+              </div>
+              <div class="panel-body">
+                <canvas id="educationChart"></canvas>
+              </div>
+            </div>
+            <div class="carousel-caption">
+              <!-- <h3>Caption Text</h3> -->
+            </div>
+          </div>
+          <div class="item">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title">{{proposition['proposition_type_initials']}} {{proposition['number']}}/{{proposition['year']}} Por Nível
+                  de Renda</h3>
+              </div>
+              <div class="panel-body">
+                <canvas id="incomeChart"></canvas>
+              </div>
+            </div>
+            <div class="carousel-caption">
+              <!-- <h3>Caption Text</h3> -->
+            </div>
+          </div>
+          <div class="item">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title">{{proposition['proposition_type_initials']}} {{proposition['number']}}/{{proposition['year']}} Aprovação dos 
+                  Deputados
+                </h3>
+              </div>
+              <div class="panel-body">
+                <canvas id="parliamentarianChart"></canvas>
+              </div>
+            </div>
+            <div class="carousel-caption">
+              <!-- <h3>Caption Text</h3> -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+      </div>
+      <!-- Carousel -->
+
+    </div>
+  </div>
+</div>
+
+
+
+<!--
+  <h4>Aprovação por região do Brasil</h4>
+          <canvas id="regionChart"></canvas>
+          <h4>Aprovação por Nível de Renda</h4>
+          <canvas id="incomeChart"></canvas>
+          <h4>Aprovação por Nível de Escolaridade</h4>
+          <canvas id="educationChart"></canvas>
+          <h4>Aprovação por Raça</h4>
+          <canvas id="raceChart"></canvas>
+          <h4>Aprovação por Gênero</h4>
+          <canvas id="genderChart"></canvas>
+-->

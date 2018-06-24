@@ -1,0 +1,12 @@
+.carousel-indicators{
+    bottom: -10px;
+}
+
+.carousel-indicators li{
+    border: 1px solid #337ab7 !important;
+}
+
+.carousel-control {
+    width: 0% !important;
+    opacity: 1;
+}
