@@ -1,6 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PropositionComponent } from './proposition.component';
+import { HttpClientModule } from '@angular/common/http';
+import { RequestsService } from '../requests.service';
+import { CookieService } from 'ngx-cookie-service';
+import { TokenService } from '../token.service';
+import { ActivatedRoute } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('PropositionComponent', () => {
   let component: PropositionComponent;
@@ -8,7 +14,17 @@ describe('PropositionComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PropositionComponent ]
+      imports: [
+        RouterTestingModule.withRoutes([{ path: 'proposition/:id', component: PropositionComponent}]),
+        HttpClientModule
+      ],
+      declarations: [ PropositionComponent ],
+      providers: [
+        ActivatedRoute,
+        RequestsService,
+        CookieService,
+        TokenService,
+      ]
     })
     .compileComponents();
   }));
@@ -21,5 +37,9 @@ describe('PropositionComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should ngOnInit', () =>{
+    expect(component.ngOnInit).toBeDefined();
   });
 });
