@@ -9,49 +9,49 @@ O Brasil atualmente é um país que tem as suas dificuldades, carências, proble
 Tendo tais motivações em mente a equipe trabalha com o ideal de disponibilizar como versão final um sistema capaz de funcionar sem grandes problemas em dispositivos com recursos limitados, abrangendo o maior público possível, contendo assim opções fáceis e interações intuitivas, de forma que não seja necessário qualquer tipo de tutorial ou um guia para uso completo. Para um maior esclarecimento, visualização e atratividade a seguir será exibido protótipos de telas exibindo assim a idéia e a qualidade do produto final.
 
 ## Página Principal
-![Main](https://imgur.com/f17Y6Ax)
+![Main](https://i.imgur.com/f17Y6Ax.png)
 
 [Clique aqui para ampliar](https://i.imgur.com/f17Y6Ax.png)
 
 A página inicial da aplicação, contém a quantidade de projetos de lei votado pelo parlamentares de 2015 até atualmente, exibindo assim na parte esquerda os últimos projetos de lei votado, com a quantidade de dias referentes a essa última atualização. Na parte direita contem um ranking exibindo os 3 parlamentares mais ativos em relação a quantidade de votos de 2015 até os dias atuais.
 
 ## Todos os Deputados
-![Deputado](https://imgur.com/YbFnYfT)
+![Deputado](https://i.imgur.com/YbFnYfT.png)
 
 [Clique aqui para ampliar](https://i.imgur.com/YbFnYfT.png)
 
 Com o VoxPop você poderá ver e consultar todos os parlamentares, contendo funcionalidades muito utéis, como a ficha do parlamentar, o seu grau de compatibilidade com o mesmo, tendo o voto nos projetos de lei como carater avaliativo desse grau de comparação
 
 ## Informações detalhadas dos Deputados
-![Informacao](https://imgur.com/MIBSqDf)
+![Informacao](https://i.imgur.com/MIBSqDf.png)
 
 [Clique aqui para ampliar](https://i.imgur.com/MIBSqDf.png)
 
 Página com as informações detalhadas de cada parlamentar
 
 ## Ranking dos deputados mais seguidos
-![Seguido](https://imgur.com/YT8XsqI)
+![Seguido](https://i.imgur.com/YT8XsqI.png)
 
 [Clique aqui para ampliar](https://i.imgur.com/YT8XsqI.png)
 
 Página que ranqueia os parlamentares com a maior quantidade de seguidores do site
 
 ## Projetos de Lei
-![PL](https://imgur.com/2o2jsM7)
+![PL](https://i.imgur.com/2o2jsM7.png)
 
-[Clique aqui para ampliar]()
+[Clique aqui para ampliar](https://i.imgur.com/2o2jsM7.png)
 
 Todas as proposições votadas estarão disponivéis para o usuário, com o seu devido link na íntegra (abrindo assim o respectivo pdf da proposição) e estatísticas da mesma, ou seja, o grau de aprovação dessa proposição em relação aos parlamentares, usuários e por região no Brasil
 
 ## Votar nas proposições
-![Votar](https://imgur.com/t0VYbnK)
+![Votar](https://i.imgur.com/t0VYbnK.png)
 
 [Clique aqui para ampliar](https://i.imgur.com/t0VYbnK.png)
 
 Página que permite ao usuário votar em uma determinada proposição (sim, não ou abstendo-se), disponibilizando o link em pdf na íntegra e o grau de aprovação da mesma
 
 ## Ranking de compatibilidade
-![Ranking](https://imgur.com/jh4BJXR)
+![Ranking](https://i.imgur.com/jh4BJXR.png)
 
 [Clique aqui para ampliar](https://i.imgur.com/jh4BJXR.png)
 
