@@ -1,0 +1,133 @@
+<div class="text-center">
+  <div *ngIf="loading" class="overlay">
+    <div *ngIf="loading" align="center" class="loading">
+      <p>Computando opção...</p>
+      <div class="loader"></div>
+    </div>
+  </div>
+  <div *ngIf="loader" class="overlay">
+    <div *ngIf="loader" align="center" class="loading">
+      <p>Caregando dados...</p>
+      <div class="loader"></div>
+    </div>
+  </div>
+  <!-- <ng-container *ngIf="!loader" > -->
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3 text-center">
+      <h3>{{proposition['proposition_type']}} {{proposition['number']}}/{{proposition['year']}}</h3>
+    </div>
+    <div class="col-sm-10 col-sm-offset-1 text-center">
+
+      <div class="panel panel-primary text-center">
+        <div class="panel-heading">
+          <h3 class="panel-title">{{proposition['proposition_type_initials']}} {{proposition['number']}}/{{proposition['year']}}</h3>
+        </div>
+        <div class="panel-body">
+          <p>{{proposition['abstract']}}</p>
+          <button class="btn btn-primary" (click)="openProposition(proposition['url_full'])">Veja na íntegra</button>
+        </div>
+        <!-- <div class="panel-footer text-muted">atualizada {{proposition['days_ago']}} dia(s) atrás</div> -->
+      </div>
+    </div>
+
+    <div class="col-sm-10 col-sm-offset-1">
+      <br>
+      <hr>
+      <h3>Estatísticas gerais da proposição</h3>
+    </div>
+
+    <div class="col-sm-6 text-center">
+      <h4>Parlamentares ({{social_information['parliamentarians_total_votes']['count']}} votos)</h4>
+      <canvas id="parliamentarianChart"></canvas>
+    </div>
+    <div class="col-sm-6 text-center">
+      <h4>Usuários ({{social_information['population_total_votes']['count']}} votos)</h4>
+      <canvas id="populationChart"></canvas>
+    </div>
+
+    <div class="col-sm-10 col-sm-offset-1">
+      <br>
+      <hr>
+      <h3>Estatísticas dos usuários que votaram na proposição</h3>
+    </div>
+
+    <div class="col-sm-10 col-sm-offset-1">
+      <div id="carousel-example-generic" class="carousel slide" data-interval="false" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#carousel-example-generic" data-slide-to="0"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+          <!-- <li data-target="#carousel-example-generic" data-slide-to="5"></li> -->
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+          <div class="item active">
+            <h4>Por região do Brasil</h4>
+            <canvas id="regionChart"></canvas>
+            <div class="carousel-caption">
+              <!-- <h3>Caption Text</h3> -->
+            </div>
+          </div>
+          <div class="item">
+            <h4>Por gênero</h4>
+            <canvas id="genderChart"></canvas>
+            <div class="carousel-caption">
+              <!-- <h3>Caption Text</h3> -->
+            </div>
+          </div>
+          <div class="item">
+            <h4>Por raça</h4>
+            <canvas id="raceChart"></canvas>
+            <div class="carousel-caption">
+              <!-- <h3>Caption Text</h3> -->
+            </div>
+          </div>
+          <div class="item">
+            <h4>Por nível de escolaridade</h4>
+            <canvas id="educationChart"></canvas>
+            <div class="carousel-caption">
+              <!-- <h3>Caption Text</h3> -->
+            </div>
+          </div>
+          <div class="item">
+            <h4>Por nível de renda</h4>
+            <canvas id="incomeChart"></canvas>
+            <div class="carousel-caption">
+              <!-- <h3>Caption Text</h3> -->
+            </div>
+          </div>
+        </div>
+        <br><br>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+      </div>
+      <!-- Carousel -->
+
+    </div>
+  </div>
+</div>
+
+
+
+<!--
+  <h4>Aprovação por região do Brasil</h4>
+          <canvas id="regionChart"></canvas>
+          <h4>Aprovação por Nível de Renda</h4>
+          <canvas id="incomeChart"></canvas>
+          <h4>Aprovação por Nível de Escolaridade</h4>
+          <canvas id="educationChart"></canvas>
+          <h4>Aprovação por Raça</h4>
+          <canvas id="raceChart"></canvas>
+          <h4>Aprovação por Gênero</h4>
+          <canvas id="genderChart"></canvas>
+-->

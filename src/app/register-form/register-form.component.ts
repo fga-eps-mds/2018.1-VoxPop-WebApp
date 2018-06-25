@@ -40,6 +40,21 @@ export class RegisterFormComponent implements OnInit {
 
 
   registerUser() {
+    if(this.user.social_information.region == 'null') {
+      this.user.social_information.region = null;
+    }
+    if(this.user.social_information.income == 'null') {
+      this.user.social_information.income = null;
+    }
+    if(this.user.social_information.education == 'null') {
+      this.user.social_information.education = null;
+    }
+    if(this.user.social_information.race == 'null') {
+      this.user.social_information.race = null;
+    }
+    if(this.user.social_information.gender == 'null') {
+      this.user.social_information.gender = null;
+    }
     let req;
     req = this.requester.postUser(this.user);
     this.registerUserHandler(req);

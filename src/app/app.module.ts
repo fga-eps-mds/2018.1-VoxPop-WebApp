@@ -29,10 +29,14 @@ import { RoundProgressModule } from 'angular-svg-round-progressbar';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { PoliticaDePrivacidadeComponent } from './politica-de-privacidade/politica-de-privacidade.component';
 import { TermosDeServicoComponent } from './termos-de-servico/termos-de-servico.component';
+import { MostFollowedComponent } from './most-followed/most-followed.component';
+import { PropositionComponent } from './proposition/proposition.component';
+import { ComoUtilizarComponent } from './como-utilizar/como-utilizar.component';
+
 
 const appRoutes: Routes = [
   {
-    path: 'register',
+    path: 'registro',
     component: RegisterFormComponent
   },
   {
@@ -40,7 +44,7 @@ const appRoutes: Routes = [
     component: LoginComponent
   },
   {
-    path: 'mypls',
+    path: 'proposicoes-votadas',
     component: MinhasPlsComponent
   },
   {
@@ -48,39 +52,39 @@ const appRoutes: Routes = [
     component: MainPageComponent
   },
   {
-    path: 'profile',
+    path: 'perfil',
     component: ProfileComponent
   },
   {
-    path: 'propositions',
+    path: 'votar',
     component: PropositionsComponent
   },
   {
-    path: 'parliamentarians',
+    path: 'parlamentares',
     component: ParliamentarianComponent
   },
   {
-    path: 'profile/edit',
+    path: 'perfil/editar',
     component: EditPageComponent
   },
   {
-    path: 'seepl',
+    path: 'proposicoes',
     component: SeePlComponent
   },
   {
-    path: 'parliamentarians/:id',
+    path: 'parlamentares/:id',
     component: SeePoliticianDetailedComponent
   },
   {
-    path: 'user-following',
+    path: 'parlamentares-seguidos',
     component: UserFollowingComponent
   },
   {
-    path: 'user-compatible',
+    path: 'ranking-de-compatibilidade',
     component: SeeCompatibleParliamenterianComponent
   },
   {
-    path: 'contact-us',
+    path: 'entre-em-contato',
     component: ContactUsComponent
   },
   {
@@ -90,6 +94,18 @@ const appRoutes: Routes = [
   {
     path: 'termos-de-servico',
     component: TermosDeServicoComponent
+  },
+  {
+    path: 'parlamentares-mais-seguidos',
+    component: MostFollowedComponent
+  },
+  {
+    path: 'proposicoes/:id',
+    component: PropositionComponent
+  },
+  {
+    path: 'como-utilizar',
+    component: ComoUtilizarComponent
   },
 ];
 
@@ -114,6 +130,9 @@ const appRoutes: Routes = [
     ContactUsComponent,
     PoliticaDePrivacidadeComponent,
     TermosDeServicoComponent,
+    MostFollowedComponent,
+    PropositionComponent,
+    ComoUtilizarComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

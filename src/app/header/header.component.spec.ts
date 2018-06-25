@@ -48,7 +48,7 @@ describe('HeaderComponent', () => {
   });
 
   it('should return null', () => {
-    component.logout();
+    component.callLogout();
     service.token = '';
     const token = service.get();
     expect(token).toBe('');

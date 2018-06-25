@@ -55,7 +55,21 @@ export class EditPageComponent implements OnInit {
   }
 
   updateUser() {
-    console.log(this.user);
+    if(this.user.social_information.region == 'null') {
+      this.user.social_information.region = null;
+    }
+    if(this.user.social_information.income == 'null') {
+      this.user.social_information.income = null;
+    }
+    if(this.user.social_information.education == 'null') {
+      this.user.social_information.education = null;
+    }
+    if(this.user.social_information.race == 'null') {
+      this.user.social_information.race = null;
+    }
+    if(this.user.social_information.gender == 'null') {
+      this.user.social_information.gender = null;
+    }
     if(this.user.email != '') {
       const request = this.requester.putUser(this.user, this.userID);
       this.updateUserHandler(request);

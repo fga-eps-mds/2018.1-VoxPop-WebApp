@@ -1,0 +1,26 @@
+<h3>Ranking de deputados mais seguidos</h3><br/>
+<div *ngIf="loading">
+  <p>Carregando o ranking...</p>
+  <div class="loader"></div>
+</div>
+<div *ngFor="let parliamentarian of most_followed; let i = index" class="col-sm-6 text-center" >
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <span>Deputado {{parliamentarian['parliamentary']['name']}} </span>
+        </h3>
+      </div>
+      <div class="panel-body">
+        <div class="col-sm-6">
+          <img src="{{parliamentarian['parliamentary']['photo']}}" width="114" height="152" alt="woops, someting went wrong">
+        </div>
+      <div class="col-sm-6">
+        <h5>{{i + 1}}º lugar</h5>
+        <p>{{parliamentarian['parliamentary']['political_party']}}/{{parliamentarian['parliamentary']['federal_unit']}}</p>
+        <a routerLink="/parlamentares/{{parliamentarian['parliamentary']['id']}}" routerLinkActivate="active" class="btn btn-primary">Ver parlamentar</a>
+      </div>
+    </div>
+    <div class="panel-footer text-muted alternative">{{parliamentarian['followers']}} seguidores</div>
+    <!-- <div class="panel-footer text-muted">Compatibilidade: {{parliamentarian['compatibility']}}</div> -->
+  </div>
+</div>
