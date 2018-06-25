@@ -1,13 +1,13 @@
 ---
 layout: default
-title: Velocity Geral
+title: Velocity Geral do Projeto
 category: EPS
 ---
 
-# Velocity Geral
+# Velocity Geral do Projeto
 
-![Velocity Geral](images/finalchart.png)
+![Velocity Geral do Projeto](../assets/images/finalchart.png)
 
-[Clique aqui para ver em tamanho maior](images/finalchart.png)
+[Clique aqui para ver em tamanho maior](../assets/images/finalchart.png)
 
 [Voltar](./../)
