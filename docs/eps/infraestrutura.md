@@ -6,8 +6,8 @@ category: EPS
 
 # Esquemático da Arquitetura
 
-![Esquemático da Infraestrutura](images/diagrama-stack.png)
+![Esquemático da Infraestrutura](https://i.imgur.com/uziqBYC.png)
 
-[Clique aqui para ver em tamanho maior](images/diagrama-stack.png)
+[Clique aqui para ver em tamanho maior](https://i.imgur.com/uziqBYC.png)
 
 [Voltar](./../)
