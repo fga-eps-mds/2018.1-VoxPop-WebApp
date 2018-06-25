@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Sprint 2
+title: Sprint 02
 category: Acompanhamento
 ---
 
