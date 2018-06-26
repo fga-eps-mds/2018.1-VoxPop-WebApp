@@ -54,7 +54,6 @@ Página com o ranking de compatibilidade de cada parlamentar com o usuário em q
 
 * ![Online](https://img.shields.io/badge/STATUS-Online-green.svg) **--->** [**Documentação [https://docs.voxpop.ml]**](https://docs.voxpop.ml)
 * ![Online](https://img.shields.io/badge/STATUS-Online-green.svg) **--->** [**Jenkins (CI) [http://jenkins.voxpop.ml]**](http://jenkins.voxpop.ml)
-* ![Online](https://img.shields.io/badge/STATUS-Online-green.svg) **--->** [**Grafana [http://monitor.voxpop.ml]**](http://monitor.voxpop.ml)
 * ![Online](https://img.shields.io/badge/STATUS-Online-green.svg) **--->** [**API de Homologação [http://hml.api.voxpop.ml]**](http://hml.api.voxpop.ml)
 * ![Online](https://img.shields.io/badge/STATUS-Online-green.svg) **--->** [**WebApp de Homologação [http://hml.voxpop.ml]**](http://hml.voxpop.ml)
 * ![Online](https://img.shields.io/badge/STATUS-Online-green.svg) **--->** [**API de Produção [http://api.voxpop.ml]**](http://hml.api.voxpop.ml)
