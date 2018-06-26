@@ -126,9 +126,9 @@ $ ng serve
 Por ultimo va no browser do seu computador, e digite no navegador o endereço:
 http://localhost:4200
 
-## Licensa
+## Licença
 
-O projeto utiliza a licensa GNU General Public License v3.0, [confira aqui](https://github.com/fga-gpp-mds/2018.1-VoxPop-WebApp/blob/master/LICENSE)
+O projeto utiliza a licença GNU General Public License v3.0, [confira aqui](https://github.com/fga-gpp-mds/2018.1-VoxPop-WebApp/blob/master/LICENSE)
 
 ## Mais informações
 

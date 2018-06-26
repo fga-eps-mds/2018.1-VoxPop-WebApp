@@ -54,7 +54,7 @@ Página com o ranking de compatibilidade de cada parlamentar com o usuário em q
 
 * ![Online](https://img.shields.io/badge/STATUS-Online-green.svg) **--->** [**Documentação [https://docs.voxpop.ml]**](https://docs.voxpop.ml)
 * ![Online](https://img.shields.io/badge/STATUS-Online-green.svg) **--->** [**Jenkins (CI) [http://jenkins.voxpop.ml]**](http://jenkins.voxpop.ml)
-* ![Online](https://img.shields.io/badge/STATUS-Online-green.svg) **--->** [**API de Homologação [http://hml.api.voxpop.ml]**](http://hml.api.voxpop.ml)
-* ![Online](https://img.shields.io/badge/STATUS-Online-green.svg) **--->** [**WebApp de Homologação [http://hml.voxpop.ml]**](http://hml.voxpop.ml)
-* ![Online](https://img.shields.io/badge/STATUS-Online-green.svg) **--->** [**API de Produção [http://api.voxpop.ml]**](http://hml.api.voxpop.ml)
-* ![Online](https://img.shields.io/badge/STATUS-Online-green.svg) **--->** [**WebApp de Produção [http://voxpop.ml]**](http://hml.voxpop.ml)
+* ![Online](https://img.shields.io/badge/STATUS-Online-green.svg) **--->** [**API de Homologação [https://hml.api.voxpop.ml]**](https://hml.api.voxpop.ml)
+* ![Online](https://img.shields.io/badge/STATUS-Online-green.svg) **--->** [**WebApp de Homologação [https://hml.voxpop.ml]**](https://hml.voxpop.ml)
+* ![Online](https://img.shields.io/badge/STATUS-Online-green.svg) **--->** [**API de Produção [https://api.voxpop.ml]**](https://api.voxpop.ml)
+* ![Online](https://img.shields.io/badge/STATUS-Online-green.svg) **--->** [**WebApp de Produção [https://voxpop.ml]**](https://voxpop.ml)
